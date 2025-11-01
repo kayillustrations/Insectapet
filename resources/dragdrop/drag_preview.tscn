@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://be2mjmvt0u2fd"]
+
+[ext_resource type="Texture2D" uid="uid://das23bj3julwj" path="res://art/placeholders/coin.png" id="1_8ktuw"]
+[ext_resource type="Theme" uid="uid://cvpq11fkdk36a" path="res://ui/style/universal_pixel_style.tres" id="1_pu47o"]
+
+[node name="Drag Preview" type="Control"]
+modulate = Color(1, 1, 1, 0.588235)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 80.0
+
+[node name="Offset" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Offset"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="Offset/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_8ktuw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Offset"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_pu47o")
+theme_type_variation = &"TooltipLabel"
+text = "#"
+horizontal_alignment = 2

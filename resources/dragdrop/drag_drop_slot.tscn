@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=3 uid="uid://cmowwfai0o4f6"]
+
+[ext_resource type="Script" uid="uid://b2e6csflge2rp" path="res://_globals/resources/dragdrop/drag_drop_slot.gd" id="1_q5umr"]
+[ext_resource type="Texture2D" uid="uid://bun4i3fi5ovem" path="res://art/1000005672.png" id="2_gakry"]
+[ext_resource type="Texture2D" uid="uid://das23bj3julwj" path="res://art/placeholders/coin.png" id="2_mna85"]
+[ext_resource type="Theme" uid="uid://cvpq11fkdk36a" path="res://ui/style/universal_pixel_style.tres" id="3_ha5rc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gakry"]
+atlas = ExtResource("2_gakry")
+region = Rect2(2308.16, 1185.5, 770, 567.905)
+margin = Rect2(0, 100, 0, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alija"]
+atlas = ExtResource("2_gakry")
+region = Rect2(176, 162, 800, 800)
+margin = Rect2(10.8, 18.915, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w35bm"]
+atlas = ExtResource("2_gakry")
+region = Rect2(1367, 272, 770, 770)
+margin = Rect2(84.59, 80.375, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyn8d"]
+atlas = ExtResource("2_gakry")
+region = Rect2(2286, 254, 770, 770)
+margin = Rect2(20.445, 65.215, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2qay"]
+atlas = ExtResource("2_gakry")
+region = Rect2(296, 1150, 770, 770)
+margin = Rect2(54.52, 29.09, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrwbj"]
+atlas = ExtResource("2_gakry")
+region = Rect2(1319, 1191, 770, 770)
+margin = Rect2(42.99, 72.575, 0, 0)
+
+[node name="DragDrop_Slot" type="Panel"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = -1
+anchor_right = 0.0868056
+anchor_bottom = 0.154321
+mouse_default_cursor_shape = 2
+script = ExtResource("1_q5umr")
+icons = Array[Texture2D]([SubResource("AtlasTexture_gakry"), SubResource("AtlasTexture_alija"), SubResource("AtlasTexture_w35bm"), SubResource("AtlasTexture_qyn8d"), SubResource("AtlasTexture_r2qay"), SubResource("AtlasTexture_qrwbj")])
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.662294, 0.585824, 0.524013, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_mna85")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Amount" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -30.0
+offset_right = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_ha5rc")
+theme_type_variation = &"TooltipLabel"
+text = "#"
+horizontal_alignment = 2

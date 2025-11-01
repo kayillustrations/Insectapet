@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Insectapet"
+run/main_scene="uid://lu36lgbqel"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,3 +20,19 @@ config/icon="res://icon.svg"
 GameManager="*res://_autoload/GameManager.gd"
 GameSave="*res://_autoload/GameSave.gd"
 WindowManager="*res://_autoload/WindowManager.gd"
+
+[display]
+
+window/size/resizable=false
+window/size/borderless=true
+window/size/always_on_top=true
+window/size/transparent=true
+window/size/no_focus=true
+window/size/sharp_corners=true
+window/subwindows/embed_subwindows=false
+window/per_pixel_transparency/allowed=true
+
+[gui]
+
+theme/custom="uid://cvpq11fkdk36a"
+theme/custom_font="uid://do6g4q03tl1gj"
