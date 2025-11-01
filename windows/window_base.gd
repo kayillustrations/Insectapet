@@ -23,7 +23,7 @@ func _ready() -> void:
 			shape.polygon[i].y -= WindowManager.title_size
 		shape_size = shape.polygon[2]
 		shape_offset = Vector2(shape_offset.x,WindowManager.title_size+shape_offset.y)
-		$Shape/Control.size = shape_size
+		$Shape/ColorRect.size = shape_size
 	
 	anchor_dict = WindowManager.getScreenAnchors(
 		WindowManager.screen_size,shape_size,shape_offset)
