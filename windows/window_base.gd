@@ -42,6 +42,8 @@ func Config():
 	if anchor_position == "":
 		position = anchor_dict["TopL"]
 	else: position = anchor_dict[anchor_position]
+	
+	if anchor_position == "Center":
+		position -= size/2
 
 	isConfigured = true
-	print(size)

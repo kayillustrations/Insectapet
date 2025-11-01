@@ -5,17 +5,15 @@
 [ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="3_do3m4"]
 
 [node name="MiniHabitat" instance=ExtResource("1_jples")]
-exclusive = false
 anchor_position = "TopR"
 
 [node name="Shape" parent="." index="0"]
-position = Vector2(0, 0)
 polygon = PackedVector2Array(0, 0, 0, 100, 100, 100, 100, 0)
 
 [node name="ColorRect" type="ColorRect" parent="Shape" index="0"]
 custom_minimum_size = Vector2(100, 100)
-offset_right = 93.0
-offset_bottom = 92.0
+offset_right = 100.0
+offset_bottom = 100.0
 color = Color(1, 1, 1, 0)
 
 [node name="MarginContainer" type="MarginContainer" parent="Shape/ColorRect" index="0"]
