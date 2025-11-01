@@ -5,7 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="3_do3m4"]
 
 [node name="MiniHabitat" instance=ExtResource("1_jples")]
-anchor_position = "TopL"
+exclusive = false
+anchor_position = "TopR"
 
 [node name="Shape" parent="." index="0"]
 position = Vector2(0, 0)

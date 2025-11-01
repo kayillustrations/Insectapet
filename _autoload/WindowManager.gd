@@ -11,7 +11,8 @@ var anchor_dict: Dictionary = {
 	"MidR" : Vector2.ZERO,
 	"BotL" : Vector2.ZERO,
 	"BotR" : Vector2.ZERO,
-	"Center": Vector2.ZERO}
+	"Center": Vector2.ZERO
+	}
 
 func getScreenAnchors(screen_size,toolbar_size,toolbar_offset):
 	var temp_dict:Dictionary = {
@@ -21,7 +22,7 @@ func getScreenAnchors(screen_size,toolbar_size,toolbar_offset):
 		"MidR" : Vector2 (screen_size.x-toolbar_size.x,screen_size.y/2 - 100) - toolbar_offset,
 		"BotL" : Vector2 (0,screen_size.y-toolbar_size.y),
 		"BotR" : Vector2 (screen_size.x-toolbar_size.x,screen_size.y-toolbar_size.y) - toolbar_offset,
-		"Center": Vector2(screen_size.x/2,screen_size.y/2)
+		"Center": Vector2(screen_size/2)
 	}
 	return temp_dict
 

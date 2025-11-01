@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 
 [node name="FullHabitat" instance=ExtResource("1_bigu7")]
-anchor_position = "TopL"
+anchor_position = "Center"
 
 [node name="Shape" parent="." index="0"]
 polygon = PackedVector2Array(0, 0, 0, 500, 500, 500, 500, 0)

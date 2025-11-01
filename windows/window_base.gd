@@ -35,8 +35,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	get_window().mouse_passthrough = false
 	get_window().mouse_passthrough_polygon = $Shape.polygon
+	pass
 
 func Config():
 	if anchor_position == "":
@@ -44,3 +44,4 @@ func Config():
 	else: position = anchor_dict[anchor_position]
 
 	isConfigured = true
+	print(size)
