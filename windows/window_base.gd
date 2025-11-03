@@ -60,17 +60,17 @@ func _physics_process(delta: float) -> void:
 		#new_pos.x = WindowManager.anchor_dict["TopR"].x
 	#else: new_pos.x = WindowManager.anchor_dict["TopL"].x
 	
-	if new_pos.x <= WindowManager.anchor_dict["TopL"].x-8:
-		new_pos.x = WindowManager.anchor_dict["TopL"].x-8
-	elif new_pos.x >= WindowManager.anchor_dict["TopR"].x-8:
-		new_pos.x = WindowManager.anchor_dict["TopR"].x-8
-	
-	if new_pos.y <= WindowManager.anchor_dict["TopL"].y-8:
-		new_pos.y = WindowManager.anchor_dict["TopL"].y-8
-	elif new_pos.y >= WindowManager.anchor_dict["BotL"].y-8:
-		new_pos.y = WindowManager.anchor_dict["BotL"].y-8
-	
 	new_pos = difference + starting_window_position
+	
+	if new_pos.x <= anchor_dict["TopL"].x-8:
+		new_pos.x = anchor_dict["TopL"].x-8
+	if new_pos.x >= anchor_dict["BotR"].x-8:
+		new_pos.x = anchor_dict["BotR"].x-8
+	
+	if new_pos.y <= anchor_dict["TopL"].y-8:
+		new_pos.y = anchor_dict["TopL"].y-8
+	elif new_pos.y >= anchor_dict["BotL"].y-8:
+		new_pos.y = anchor_dict["BotL"].y-8
 	
 	WindowManager.setWindowPosition(new_pos)
 	starting_window_position = GameManager.current_window_position
