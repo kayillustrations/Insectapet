@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=3 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
+[ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
 
 [node name="FullHabitat" instance=ExtResource("1_bigu7")]
+title = "Center"
 size = Vector2i(500, 500)
+script = ExtResource("2_i2cyu")
 anchor_position = "Center"
 
 [node name="Shape" parent="." index="0"]
@@ -13,3 +16,18 @@ polygon = PackedVector2Array(0, 0, 0, 500, 500, 500, 500, 0)
 offset_right = 500.0
 offset_bottom = 500.0
 color = Color(0.15, 0.040025, 0.0255, 1)
+
+[node name="x" type="Button" parent="Shape/ColorRect" index="0"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -25.0
+offset_bottom = 25.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "x"
+
+[connection signal="pressed" from="Shape/ColorRect/x" to="." method="_on_x_pressed"]

@@ -1,8 +1,11 @@
 extends Node
 
+const BUG_WINDOW = preload("res://windows/bug_window.tscn")
+const FULL_HABITAT = preload("res://windows/full_habitat.tscn")
+
 @onready var screen_size = DisplayServer.screen_get_usable_rect().size
 var title_size: int = 40
-var toolbar_parent
+var main_window: WindowBase
 
 var anchor_dict: Dictionary = {
 	"TopL" : Vector2.ZERO,
@@ -31,4 +34,4 @@ func setScreenAnchors(position):
 	if typeof(position) == TYPE_STRING:
 		temp = anchor_dict[position]
 	else: temp = position
-	toolbar_parent.setAnchor(temp)
+	main_window.setAnchor(temp)

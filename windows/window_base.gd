@@ -9,6 +9,7 @@ class_name WindowBase
 @onready var shape_offset:Vector2 = shape.position
 
 var anchor_dict: Dictionary
+var is_held: bool = false
 
 var isConfigured:bool = false
 
@@ -47,3 +48,9 @@ func Config():
 		position -= size/2
 
 	isConfigured = true
+
+func add_window(window):
+	var window_instance = window.instantiate()
+	if window_instance.name == "FullHabitat":
+		return window_instance
+	add_child(window_instance)
