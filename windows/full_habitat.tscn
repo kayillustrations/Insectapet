@@ -1,13 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=4 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
 
-[node name="FullHabitat" instance=ExtResource("1_bigu7")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2cyu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.808121, 0.413835, 0.351751, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="FullHabitat" node_paths=PackedStringArray("move_button") instance=ExtResource("1_bigu7")]
 title = "Center"
-size = Vector2i(500, 500)
+size = Vector2i(508, 508)
 script = ExtResource("2_i2cyu")
 anchor_position = "Center"
+move_button = NodePath("Shape/ColorRect/Move")
+move_buffer = 0.1
 
 [node name="Shape" parent="." index="0"]
 polygon = PackedVector2Array(0, 0, 0, 500, 500, 500, 500, 0)
@@ -17,17 +31,65 @@ offset_right = 500.0
 offset_bottom = 500.0
 color = Color(0.15, 0.040025, 0.0255, 1)
 
-[node name="x" type="Button" parent="Shape/ColorRect" index="0"]
+[node name="Move" type="TextureButton" parent="Shape/ColorRect" index="0"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="Shape/ColorRect/Move" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.27, 0.18009, 0.1701, 1)
+
+[node name="Panel" type="Panel" parent="Shape/ColorRect/Move/ColorRect" index="0"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i2cyu")
+
+[node name="x" type="Button" parent="Shape/ColorRect" index="1"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -25.0
-offset_bottom = 25.0
+offset_left = -27.0
+offset_top = 3.0
+offset_right = -2.0
+offset_bottom = 28.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "x"
 
+[node name="Bug" type="Button" parent="Shape/ColorRect" index="2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Release the Bug"
+
 [connection signal="pressed" from="Shape/ColorRect/x" to="." method="_on_x_pressed"]
+[connection signal="pressed" from="Shape/ColorRect/Bug" to="." method="_on_bug_pressed"]

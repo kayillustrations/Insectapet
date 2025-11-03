@@ -5,8 +5,12 @@ class_name WindowBase
 @export var anchor_position: String
 
 @export var move_button:TextureButton
+@export var move_buffer: float = .25
+@export var isBug:bool = false
 
 @onready var shape: Polygon2D = $Shape
+@onready var color_rect: ColorRect = $Shape/ColorRect
+
 @onready var shape_size:Vector2 = shape.polygon[2]
 @onready var shape_offset:Vector2 = shape.position
 
@@ -17,10 +21,8 @@ var isHeld: bool = false
 var isDragging:bool = false
 var starting_mouse_position
 var starting_window_position
+var current_window_position
 var move_panel
-
-var isRight:bool = true
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if isFullScreen:
@@ -34,23 +36,30 @@ func _ready() -> void:
 		shape_offset = Vector2(shape_offset.x,WindowManager.title_size+shape_offset.y)
 		$Shape/ColorRect.size = shape_size
 	
+	size = shape_size + shape_offset
 	anchor_dict = WindowManager.getScreenAnchors(
 		WindowManager.screen_size,shape_size,shape_offset)
-		
-	size = shape_size + shape_offset
-	size.y += 5
 	Config()
-	pass # Replace with function body.
+	color_rect.size -= shape_offset
+	if move_button != null:
+		move_button.button_down.connect(_on_move_button_down)
+		move_button.button_up.connect(_on_move_button_up)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	get_window().mouse_passthrough_polygon = $Shape.polygon
+	get_window().mouse_passthrough_polygon = shape.polygon
 	pass
 
 func _physics_process(delta: float) -> void:
-	if !isDragging: return
+	if !isDragging: 
+		if isBug && current_window_position.y < anchor_dict["BotL"].y-shape_offset.y:
+			#var tween: Tween = create_tween()
+			#var pos
+			##tween.tween_method(WindowManager.setWindowPosition(self,fall_pos))
+			##WindowManager.setWindowPosition(self,fall_pos)
+		return
 	
-	var mouse = $Shape/ColorRect.get_global_mouse_position()
+	var mouse = color_rect.get_global_mouse_position()
 	var difference = mouse - starting_mouse_position
 	var new_pos: Vector2
 	
@@ -60,20 +69,20 @@ func _physics_process(delta: float) -> void:
 		#new_pos.x = WindowManager.anchor_dict["TopR"].x
 	#else: new_pos.x = WindowManager.anchor_dict["TopL"].x
 	
-	new_pos = difference + starting_window_position
+	new_pos = Vector2(difference) + Vector2(starting_window_position)
 	
-	if new_pos.x <= anchor_dict["TopL"].x-8:
-		new_pos.x = anchor_dict["TopL"].x-8
-	if new_pos.x >= anchor_dict["BotR"].x-8:
-		new_pos.x = anchor_dict["BotR"].x-8
+	if new_pos.x <= anchor_dict["TopL"].x:
+		new_pos.x = anchor_dict["TopL"].x
+	if new_pos.x >= anchor_dict["BotR"].x:
+		new_pos.x = anchor_dict["BotR"].x
 	
-	if new_pos.y <= anchor_dict["TopL"].y-8:
-		new_pos.y = anchor_dict["TopL"].y-8
-	elif new_pos.y >= anchor_dict["BotL"].y-8:
-		new_pos.y = anchor_dict["BotL"].y-8
+	if new_pos.y <= anchor_dict["TopL"].y-shape_offset.y:
+		new_pos.y = anchor_dict["TopL"].y-shape_offset.y
+	elif new_pos.y >= anchor_dict["BotL"].y-shape_offset.y:
+		new_pos.y = anchor_dict["BotL"].y-shape_offset.y
 	
-	WindowManager.setWindowPosition(new_pos)
-	starting_window_position = GameManager.current_window_position
+	WindowManager.setWindowPosition(self,new_pos)
+	starting_window_position = current_window_position
 
 func Config():
 	if anchor_position == "":
@@ -82,15 +91,15 @@ func Config():
 	
 	if anchor_position == "Center":
 		position -= size/2
-
 	isConfigured = true
+	current_window_position = get_window().position
 
 func SetPosition(a):
 	get_window().position = a
-	GameManager.current_window_position = get_window().position
+	current_window_position = get_window().position
 
 func _on_move_button_down() -> void:
-	var temp = get_tree().create_timer(.25)
+	var temp = get_tree().create_timer(move_buffer)
 	isHeld = true
 	await temp.timeout
 	if isHeld:
@@ -98,8 +107,8 @@ func _on_move_button_down() -> void:
 		if move_panel != null:
 			move_panel.visible = true
 		isDragging = true
-		starting_mouse_position = $Shape/ColorRect.get_global_mouse_position()
-		starting_window_position = GameManager.current_window_position
+		starting_mouse_position = color_rect.get_global_mouse_position()
+		starting_window_position = current_window_position
 
 func _on_move_button_up() -> void:
 	if isDragging:

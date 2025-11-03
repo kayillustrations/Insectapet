@@ -4,6 +4,7 @@ const BUG_WINDOW = preload("res://windows/bug_window.tscn")
 const FULL_HABITAT = preload("res://windows/full_habitat.tscn")
 
 @onready var screen_size = DisplayServer.screen_get_usable_rect().size
+
 var title_size: int = 40
 var main_window: WindowBase
 
@@ -29,9 +30,9 @@ func getScreenAnchors(screen_size,toolbar_size,toolbar_offset):
 	}
 	return temp_dict
 
-func setWindowPosition(position):
+func setWindowPosition(window,position):
 	var temp: Vector2
 	if typeof(position) == TYPE_STRING:
 		temp = anchor_dict[position]
 	else: temp = position
-	main_window.SetPosition(temp)
+	window.SetPosition(temp)

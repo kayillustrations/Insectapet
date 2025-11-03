@@ -61,6 +61,4 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l2vge")
 
-[connection signal="button_down" from="Shape/ColorRect/MarginContainer/TextureButton" to="." method="_on_move_button_down"]
-[connection signal="button_up" from="Shape/ColorRect/MarginContainer/TextureButton" to="." method="_on_move_button_up"]
 [connection signal="toggled" from="Shape/ColorRect/MarginContainer/TextureButton" to="." method="_on_texture_button_toggled"]
