@@ -1,13 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://lu36lgbqel"]
+[gd_scene load_steps=6 format=3 uid="uid://lu36lgbqel"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_jples"]
 [ext_resource type="Script" uid="uid://berrvbqxg880d" path="res://windows/mini_habitat.gd" id="2_l2vge"]
 [ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="2_sxag7"]
 [ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="3_do3m4"]
 
-[node name="MiniHabitat" instance=ExtResource("1_jples")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2vge"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.808121, 0.413835, 0.351751, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="MiniHabitat" node_paths=PackedStringArray("move_button") instance=ExtResource("1_jples")]
 script = ExtResource("2_l2vge")
 anchor_position = "BotR"
+move_button = NodePath("Shape/ColorRect/MarginContainer/TextureButton")
 
 [node name="Shape" parent="." index="0"]
 polygon = PackedVector2Array(0, 0, 0, 100, 100, 100, 100, 0)
@@ -38,4 +51,16 @@ texture_hover = ExtResource("3_do3m4")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="Panel" type="Panel" parent="Shape/ColorRect/MarginContainer/TextureButton" index="0"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l2vge")
+
+[connection signal="button_down" from="Shape/ColorRect/MarginContainer/TextureButton" to="." method="_on_move_button_down"]
+[connection signal="button_up" from="Shape/ColorRect/MarginContainer/TextureButton" to="." method="_on_move_button_up"]
 [connection signal="toggled" from="Shape/ColorRect/MarginContainer/TextureButton" to="." method="_on_texture_button_toggled"]

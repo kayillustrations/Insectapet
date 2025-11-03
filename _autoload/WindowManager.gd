@@ -29,9 +29,9 @@ func getScreenAnchors(screen_size,toolbar_size,toolbar_offset):
 	}
 	return temp_dict
 
-func setScreenAnchors(position):
+func setWindowPosition(position):
 	var temp: Vector2
 	if typeof(position) == TYPE_STRING:
 		temp = anchor_dict[position]
 	else: temp = position
-	main_window.setAnchor(temp)
+	main_window.SetPosition(temp)
