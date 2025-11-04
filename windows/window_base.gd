@@ -15,14 +15,17 @@ class_name WindowBase
 @onready var shape_offset:Vector2 = shape.position
 
 var anchor_dict: Dictionary
-var isConfigured:bool = false
 
+var isConfigured:bool = false
 var isHeld: bool = false
 var isDragging:bool = false
+var isFalling:bool = false
+
 var starting_mouse_position
 var starting_window_position
 var current_window_position
 var move_panel
+var fall_pos
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if isFullScreen:
@@ -51,13 +54,9 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	if !isDragging: 
-		if isBug && current_window_position.y < anchor_dict["BotL"].y-shape_offset.y:
-			#var tween: Tween = create_tween()
-			#var pos
-			##tween.tween_method(WindowManager.setWindowPosition(self,fall_pos))
-			##WindowManager.setWindowPosition(self,fall_pos)
-		return
+	if isFalling:
+		WindowManager.setWindowPosition(self,fall_pos)
+	if !isDragging: return
 	
 	var mouse = color_rect.get_global_mouse_position()
 	var difference = mouse - starting_mouse_position
@@ -117,6 +116,18 @@ func _on_move_button_up() -> void:
 		move_panel.visible = false
 	isDragging = false
 	isHeld = false
+	if isBug && current_window_position.y < anchor_dict["BotL"].y-shape_offset.y:
+		fall_pos = current_window_position
+		var time = snappedf(1 - (current_window_position.y/anchor_dict["BotR"].y),.1)
+		if time < .5: time = .5
+		var tween:Tween = create_tween()
+		tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+		tween.tween_property(self,"fall_pos", Vector2i(current_window_position.x,anchor_dict["BotR"].y+10),time)
+		isFalling = true
+		await tween.finished
+		var buffer_timer = get_tree().create_timer(.05)
+		await buffer_timer.timeout
+		isFalling = false
 
 func add_window(window):
 	var window_instance = window.instantiate()

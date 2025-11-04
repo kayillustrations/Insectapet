@@ -17,9 +17,18 @@ var newGame: bool = false
 var debug_mode:bool = true
 
 #--------Stats-------
-#var player_stats: Dictionary
-#var player_inventory: Inv
-#var highscore: int = 0
+var BugStats: Dictionary = {
+	"Energy" : 100,
+	"Hunger" : 100,
+	"Happiness" : 100,
+	"isHealthy" : true,
+	"Stage" : 0,
+	"XP" : 0
+}
+var HabitatStats: Dictionary = {
+	"isClean" : true,
+	"Hydration" : 100
+}
 
 func _ready() -> void:
 	if !CheckSaveFolder("settings"): #if no settings, make file
@@ -31,7 +40,7 @@ func _ready() -> void:
 
 func SaveGame(): #may be able to add multiple loads/saves in the future
 	##SAVE: game_config.set_value("category",variable", variable)
-	game_config.set_value("0","current_position",GameManager.toolbar_parent.current_position)
+	game_config.set_value("0","current_position",WindowManager.main_window.current_window_position)
 	
 	game_config.save(SCENE_SAVE_FOLDER+"save.cfg")
 	pass
