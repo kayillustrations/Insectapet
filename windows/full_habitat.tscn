@@ -1,7 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=15 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
+[ext_resource type="Texture2D" uid="uid://dhjifoj8pstd0" path="res://art/insectapet_Background.png" id="3_fnpmy"]
+[ext_resource type="Texture2D" uid="uid://cax7ubmkjqyq3" path="res://art/insectapet_lamp.png" id="3_sv7ce"]
+[ext_resource type="Texture2D" uid="uid://bpuiaif4mrt6w" path="res://art/insectapet_foreground.png" id="5_ifc8h"]
+[ext_resource type="Texture2D" uid="uid://bqadrk65i1edp" path="res://art/insectapet_Middleground.png" id="5_sv7ce"]
+[ext_resource type="Texture2D" uid="uid://cwi7gfawen2ep" path="res://art/isectapet_dark.png" id="6_sv7ce"]
+[ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="8_eer6e"]
+[ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="9_jatif"]
+[ext_resource type="Theme" uid="uid://cvpq11fkdk36a" path="res://ui/style/universal_pixel_style.tres" id="10_jatif"]
+[ext_resource type="Texture2D" uid="uid://ds3rsiblko8xw" path="res://ui/style/circle.tres" id="11_1cw3o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2cyu"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -15,21 +24,37 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_fombg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_eer6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jatif")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nakqe"]
+
 [node name="FullHabitat" node_paths=PackedStringArray("move_button") instance=ExtResource("1_bigu7")]
 title = "Center"
-size = Vector2i(508, 508)
+size = Vector2i(1000, 1000)
 script = ExtResource("2_i2cyu")
 anchor_position = "Center"
 move_button = NodePath("Shape/ColorRect/Move")
 move_buffer = 0.1
 
 [node name="Shape" parent="." index="0"]
-polygon = PackedVector2Array(0, 0, 0, 500, 500, 500, 500, 0)
+polygon = PackedVector2Array(0, 0, 0, 700, 700, 700, 700, 0)
 
 [node name="ColorRect" type="ColorRect" parent="Shape" index="0"]
-offset_right = 500.0
-offset_bottom = 500.0
-color = Color(0.15, 0.040025, 0.0255, 1)
+offset_right = 700.0
+offset_bottom = 700.0
+color = Color(0.14902, 0.0392157, 0.027451, 0)
 
 [node name="Move" type="TextureButton" parent="Shape/ColorRect" index="0"]
 custom_minimum_size = Vector2(0, 25)
@@ -44,7 +69,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 5.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -67,29 +92,345 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -27.0
-offset_top = 3.0
+offset_left = -30.0
+offset_top = 6.0
 offset_right = -2.0
-offset_bottom = 28.0
+offset_bottom = 34.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "x"
 
-[node name="Bug" type="Button" parent="Shape/ColorRect" index="2"]
+[node name="Center Anchor" type="Node2D" parent="Shape" index="1"]
+position = Vector2(368, 344)
+scale = Vector2(0.25, 0.25)
+
+[node name="Lamp" type="Sprite2D" parent="Shape/Center Anchor" index="0"]
+unique_name_in_owner = true
+texture = ExtResource("3_sv7ce")
+
+[node name="Base" type="Sprite2D" parent="Shape/Center Anchor" index="1"]
+texture = ExtResource("3_fnpmy")
+
+[node name="Bug" type="AnimatedSprite2D" parent="Shape/Center Anchor" index="2"]
+position = Vector2(64, 704)
+sprite_frames = SubResource("SpriteFrames_fombg")
+autoplay = "default"
+
+[node name="Mid" type="Sprite2D" parent="Shape/Center Anchor" index="3"]
+texture = ExtResource("5_sv7ce")
+
+[node name="Foreground" type="Sprite2D" parent="Shape/Center Anchor" index="4"]
+texture = ExtResource("5_ifc8h")
+
+[node name="Dark" type="Sprite2D" parent="Shape/Center Anchor" index="5"]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("6_sv7ce")
+
+[node name="UI" type="Control" parent="Shape" index="2"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 700.0
+offset_bottom = 700.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Bug" type="Button" parent="Shape/UI" index="0"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
+offset_left = -77.0
 offset_top = -20.0
-offset_right = 20.0
+offset_right = 77.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Release the Bug"
 
+[node name="Light" type="TextureButton" parent="Shape/UI" index="1"]
+layout_mode = 1
+offset_left = 350.0
+offset_top = 56.0
+offset_right = 390.0
+offset_bottom = 96.0
+scale = Vector2(1.5, 1.5)
+toggle_mode = true
+texture_normal = ExtResource("8_eer6e")
+texture_hover = ExtResource("9_jatif")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MainButtons" type="Control" parent="Shape/UI" index="2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -90.0
+offset_right = -192.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="L" type="TextureButton" parent="Shape/UI/MainButtons" index="0"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("8_eer6e")
+texture_hover = ExtResource("9_jatif")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="LM" type="TextureButton" parent="Shape/UI/MainButtons" index="1"]
+layout_mode = 1
+offset_left = 87.0
+offset_right = 127.0
+offset_bottom = 40.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("8_eer6e")
+texture_hover = ExtResource("9_jatif")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="M" type="TextureButton" parent="Shape/UI/MainButtons" index="2"]
+layout_mode = 1
+offset_left = 171.0
+offset_right = 211.0
+offset_bottom = 40.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("8_eer6e")
+texture_hover = ExtResource("9_jatif")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RM" type="TextureButton" parent="Shape/UI/MainButtons" index="3"]
+layout_mode = 1
+offset_left = 255.0
+offset_right = 295.0
+offset_bottom = 40.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("8_eer6e")
+texture_hover = ExtResource("9_jatif")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="R" type="TextureButton" parent="Shape/UI/MainButtons" index="4"]
+layout_mode = 1
+offset_left = 339.0
+offset_right = 379.0
+offset_bottom = 40.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("8_eer6e")
+texture_hover = ExtResource("9_jatif")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Screen" type="Polygon2D" parent="Shape/UI" index="3"]
+position = Vector2(0, 5)
+color = Color(0.2856, 0.51, 0.4165, 0.866667)
+polygon = PackedVector2Array(115, 300, 350, 310, 600, 300, 560, 575, 150, 575)
+
+[node name="Center" type="Control" parent="Shape/UI/Screen" index="0"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 354.0
+offset_top = 443.0
+offset_right = 354.0
+offset_bottom = 443.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Bug Info" type="Control" parent="Shape/UI/Screen/Center" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -227.0
+offset_top = -126.0
+offset_right = 237.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info" index="0"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 129.0
+offset_bottom = 129.0
+texture = ExtResource("8_eer6e")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Shape/UI/Screen/Center/Bug Info" index="1"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -339.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "Common Name"
+horizontal_alignment = 1
+
+[node name="Scientific" type="Label" parent="Shape/UI/Screen/Center/Bug Info" index="2"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -334.0
+offset_top = 42.0
+offset_bottom = 66.0
+grow_horizontal = 0
+theme = ExtResource("10_jatif")
+theme_type_variation = &"TooltipLabel"
+theme_override_font_sizes/font_size = 20
+text = "Scientific Name"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Stage" type="Label" parent="Shape/UI/Screen/Center/Bug Info" index="3"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -337.0
+offset_top = -54.5
+offset_bottom = -24.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("10_jatif")
+theme_type_variation = &"HeaderSmall"
+text = "Stage:"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="Shape/UI/Screen/Center/Bug Info" index="4"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -322.0
+offset_top = -17.0
+offset_right = -282.0
+offset_bottom = 17.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "XP"
+
+[node name="XP" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info" index="5"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -12.5
+offset_right = -38.0
+offset_bottom = 12.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Happy" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info" index="6"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -101.0
+offset_right = 35.0
+grow_vertical = 0
+value = 10.82
+fill_mode = 3
+
+[node name="Hunger" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info" index="7"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_top = -101.0
+offset_right = 82.0
+grow_vertical = 0
+value = 10.82
+fill_mode = 3
+
+[node name="Energy" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info" index="8"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 97.0
+offset_top = -101.0
+offset_right = 132.0
+grow_vertical = 0
+value = 10.82
+fill_mode = 3
+
+[node name="Likes3" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info" index="9"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -119.0
+offset_top = -81.0
+offset_right = -38.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("11_1cw3o")
+
+[node name="Likes2" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info" index="10"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -204.0
+offset_top = -81.0
+offset_right = -123.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("11_1cw3o")
+
+[node name="Likes1" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info" index="11"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -290.0
+offset_top = -81.0
+offset_right = -209.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("11_1cw3o")
+
+[node name="Sprite2D" type="Sprite2D" parent="Shape/UI/Screen" index="1"]
+texture = SubResource("ViewportTexture_nakqe")
+
 [connection signal="pressed" from="Shape/ColorRect/x" to="." method="_on_x_pressed"]
-[connection signal="pressed" from="Shape/ColorRect/Bug" to="." method="_on_bug_pressed"]
+[connection signal="pressed" from="Shape/UI/Bug" to="." method="_on_bug_pressed"]
+[connection signal="toggled" from="Shape/UI/Light" to="." method="_on_light_toggled"]

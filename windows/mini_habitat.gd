@@ -16,5 +16,6 @@ func _on_texture_button_toggled(toggled_on: bool) -> void:
 		full_habitat_instance = add_window(WindowManager.FULL_HABITAT)
 	else: 
 		full_habitat_instance.queue_free()
+		move_button.button_pressed = false 
 		full_habitat_instance = null
 	pass # Replace with function body.
