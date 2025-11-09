@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=41 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -10,7 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="8_eer6e"]
 [ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="9_jatif"]
 [ext_resource type="Theme" uid="uid://cvpq11fkdk36a" path="res://ui/style/universal_pixel_style.tres" id="10_jatif"]
-[ext_resource type="Texture2D" uid="uid://ds3rsiblko8xw" path="res://ui/style/circle.tres" id="11_1cw3o"]
+[ext_resource type="Texture2D" uid="uid://v43h4flqmnyi" path="res://art/buttons_normal.png" id="10_rd6cn"]
+[ext_resource type="Texture2D" uid="uid://cfpr0f7tdqnry" path="res://art/buttons_pressed.png" id="11_r54os"]
+[ext_resource type="Texture2D" uid="uid://ded0tnv2xrop1" path="res://art/buttons_hover.png" id="12_6obml"]
+[ext_resource type="Texture2D" uid="uid://d3p7oif4qbd6w" path="res://art/symbols.png" id="14_rd6cn"]
+[ext_resource type="Texture2D" uid="uid://b8lgmu251q3vw" path="res://art/icons.png" id="15_r54os"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2cyu"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -38,22 +42,121 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_nakqe"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7eo7q"]
+atlas = ExtResource("10_rd6cn")
+region = Rect2(0, 0, 296, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1np3n"]
+atlas = ExtResource("11_r54os")
+region = Rect2(0, 0, 296, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5got"]
+atlas = ExtResource("12_6obml")
+region = Rect2(0, 0, 296, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4sxy"]
+atlas = ExtResource("11_r54os")
+region = Rect2(0, 0, 296, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gwyg"]
+atlas = ExtResource("10_rd6cn")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m80mg"]
+atlas = ExtResource("11_r54os")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oa1e"]
+atlas = ExtResource("12_6obml")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7avne"]
+atlas = ExtResource("10_rd6cn")
+region = Rect2(600, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyogo"]
+atlas = ExtResource("11_r54os")
+region = Rect2(600, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xey8i"]
+atlas = ExtResource("12_6obml")
+region = Rect2(600, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07xw5"]
+atlas = ExtResource("10_rd6cn")
+region = Rect2(900, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn25v"]
+atlas = ExtResource("11_r54os")
+region = Rect2(900, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjwgn"]
+atlas = ExtResource("12_6obml")
+region = Rect2(900, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn6h2"]
+atlas = ExtResource("10_rd6cn")
+region = Rect2(1200, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frhdr"]
+atlas = ExtResource("11_r54os")
+region = Rect2(1200, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsfya"]
+atlas = ExtResource("12_6obml")
+region = Rect2(1200, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6obml"]
+atlas = ExtResource("14_rd6cn")
+region = Rect2(997, 101, 106, 97)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r54os"]
+bg_color = Color(0.504, 0.7, 0.667333, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn4ui"]
+atlas = ExtResource("15_r54os")
+region = Rect2(388, 218, 144, 106)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6obml"]
+bg_color = Color(0.7, 0.504, 0.504, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m6yi"]
+atlas = ExtResource("14_rd6cn")
+region = Rect2(715, 91, 75, 110)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7eo7q"]
+bg_color = Color(0.696733, 0.7, 0.504, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r54os"]
+atlas = ExtResource("14_rd6cn")
+region = Rect2(300, 0, 300, 300)
 
 [node name="FullHabitat" node_paths=PackedStringArray("move_button") instance=ExtResource("1_bigu7")]
 title = "Center"
-size = Vector2i(1000, 1000)
+size = Vector2i(750, 850)
 script = ExtResource("2_i2cyu")
 anchor_position = "Center"
 move_button = NodePath("Shape/ColorRect/Move")
 move_buffer = 0.1
 
 [node name="Shape" parent="." index="0"]
-polygon = PackedVector2Array(0, 0, 0, 700, 700, 700, 700, 0)
+polygon = PackedVector2Array(0, 0, 0, 850, 700, 850, 700, 0)
 
 [node name="ColorRect" type="ColorRect" parent="Shape" index="0"]
 offset_right = 700.0
-offset_bottom = 700.0
+offset_bottom = 800.0
 color = Color(0.14902, 0.0392157, 0.027451, 0)
 
 [node name="Move" type="TextureButton" parent="Shape/ColorRect" index="0"]
@@ -102,8 +205,8 @@ size_flags_vertical = 0
 text = "x"
 
 [node name="Center Anchor" type="Node2D" parent="Shape" index="1"]
-position = Vector2(368, 344)
-scale = Vector2(0.25, 0.25)
+position = Vector2(366, 415)
+scale = Vector2(0.3, 0.3)
 
 [node name="Lamp" type="Sprite2D" parent="Shape/Center Anchor" index="0"]
 unique_name_in_owner = true
@@ -165,7 +268,7 @@ texture_hover = ExtResource("9_jatif")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="MainButtons" type="Control" parent="Shape/UI" index="2"]
+[node name="MainButtons" type="HBoxContainer" parent="Shape/UI" index="2"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -173,129 +276,135 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -192.0
-offset_top = -90.0
-offset_right = -192.0
-offset_bottom = -90.0
+offset_left = -251.0
+offset_top = 21.0
+offset_right = 249.0
+offset_bottom = 121.0
 grow_horizontal = 2
 grow_vertical = 0
+rotation = 0.00408702
+alignment = 1
 
-[node name="L" type="TextureButton" parent="Shape/UI/MainButtons" index="0"]
-layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("8_eer6e")
-texture_hover = ExtResource("9_jatif")
+[node name="Clean" type="TextureButton" parent="Shape/UI/MainButtons" index="0"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_7eo7q")
+texture_pressed = SubResource("AtlasTexture_1np3n")
+texture_hover = SubResource("AtlasTexture_r5got")
+texture_disabled = SubResource("AtlasTexture_l4sxy")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="LM" type="TextureButton" parent="Shape/UI/MainButtons" index="1"]
-layout_mode = 1
-offset_left = 87.0
-offset_right = 127.0
-offset_bottom = 40.0
-scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("8_eer6e")
-texture_hover = ExtResource("9_jatif")
+[node name="Eat" type="TextureButton" parent="Shape/UI/MainButtons" index="1"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_2gwyg")
+texture_pressed = SubResource("AtlasTexture_m80mg")
+texture_hover = SubResource("AtlasTexture_3oa1e")
+texture_disabled = SubResource("AtlasTexture_m80mg")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="M" type="TextureButton" parent="Shape/UI/MainButtons" index="2"]
-layout_mode = 1
-offset_left = 171.0
-offset_right = 211.0
-offset_bottom = 40.0
-scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("8_eer6e")
-texture_hover = ExtResource("9_jatif")
+[node name="Info" type="TextureButton" parent="Shape/UI/MainButtons" index="2"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_7avne")
+texture_pressed = SubResource("AtlasTexture_gyogo")
+texture_hover = SubResource("AtlasTexture_xey8i")
+texture_disabled = SubResource("AtlasTexture_gyogo")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="RM" type="TextureButton" parent="Shape/UI/MainButtons" index="3"]
-layout_mode = 1
-offset_left = 255.0
-offset_right = 295.0
-offset_bottom = 40.0
-scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("8_eer6e")
-texture_hover = ExtResource("9_jatif")
+[node name="Play" type="TextureButton" parent="Shape/UI/MainButtons" index="3"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_07xw5")
+texture_pressed = SubResource("AtlasTexture_dn25v")
+texture_hover = SubResource("AtlasTexture_xjwgn")
+texture_disabled = SubResource("AtlasTexture_dn25v")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="R" type="TextureButton" parent="Shape/UI/MainButtons" index="4"]
-layout_mode = 1
-offset_left = 339.0
-offset_right = 379.0
-offset_bottom = 40.0
-scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("8_eer6e")
-texture_hover = ExtResource("9_jatif")
+[node name="Shop" type="TextureButton" parent="Shape/UI/MainButtons" index="4"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_nn6h2")
+texture_pressed = SubResource("AtlasTexture_frhdr")
+texture_hover = SubResource("AtlasTexture_lsfya")
+texture_disabled = SubResource("AtlasTexture_frhdr")
 ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Screen" type="Polygon2D" parent="Shape/UI" index="3"]
-position = Vector2(0, 5)
+visible = false
+position = Vector2(-75, 10)
+scale = Vector2(1.2, 1.2)
 color = Color(0.2856, 0.51, 0.4165, 0.866667)
 polygon = PackedVector2Array(115, 300, 350, 310, 600, 300, 560, 575, 150, 575)
 
 [node name="Center" type="Control" parent="Shape/UI/Screen" index="0"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 354.0
-offset_top = 443.0
-offset_right = 354.0
-offset_bottom = 443.0
+offset_left = 358.333
+offset_top = 442.5
+offset_right = 358.333
+offset_bottom = 442.5
 metadata/_edit_use_anchors_ = true
 
 [node name="Bug Info" type="Control" parent="Shape/UI/Screen/Center" index="0"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -227.0
-offset_top = -126.0
-offset_right = 237.0
-offset_bottom = 121.0
+offset_left = -232.0
+offset_top = -123.5
+offset_right = 232.0
+offset_bottom = 123.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info" index="0"]
-custom_minimum_size = Vector2(100, 100)
+[node name="HBoxContainer2" type="HBoxContainer" parent="Shape/UI/Screen/Center/Bug Info" index="0"]
 layout_mode = 1
-offset_left = 17.0
-offset_top = 17.0
-offset_right = 129.0
-offset_bottom = 129.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="CurrentSprite" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2" index="0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("8_eer6e")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="Shape/UI/Screen/Center/Bug Info" index="1"]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -339.0
-offset_bottom = 40.0
-grow_horizontal = 0
+[node name="VBoxContainer" type="VBoxContainer" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2" index="1"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="Name" type="Label" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2/VBoxContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Common Name"
 horizontal_alignment = 1
 
-[node name="Scientific" type="Label" parent="Shape/UI/Screen/Center/Bug Info" index="2"]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -334.0
-offset_top = 42.0
-offset_bottom = 66.0
-grow_horizontal = 0
+[node name="Scientific" type="Label" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2/VBoxContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
 theme = ExtResource("10_jatif")
 theme_type_variation = &"TooltipLabel"
 theme_override_font_sizes/font_size = 20
@@ -303,133 +412,125 @@ text = "Scientific Name"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Stage" type="Label" parent="Shape/UI/Screen/Center/Bug Info" index="3"]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -337.0
-offset_top = -54.5
-offset_bottom = -24.5
-grow_horizontal = 0
-grow_vertical = 2
+[node name="Stage" type="Label" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2/VBoxContainer" index="2"]
+unique_name_in_owner = true
+layout_mode = 2
 theme = ExtResource("10_jatif")
 theme_type_variation = &"HeaderSmall"
 text = "Stage:"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Label" type="Label" parent="Shape/UI/Screen/Center/Bug Info" index="4"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -322.0
-offset_top = -17.0
-offset_right = -282.0
-offset_bottom = 17.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2/VBoxContainer" index="3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2/VBoxContainer/HBoxContainer" index="0"]
+layout_mode = 2
 text = "XP"
 
-[node name="XP" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info" index="5"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -270.0
-offset_top = -12.5
-offset_right = -38.0
-offset_bottom = 12.5
-grow_horizontal = 0
-grow_vertical = 2
+[node name="XP" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2/VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
 
-[node name="Happy" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info" index="6"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Shape/UI/Screen/Center/Bug Info" index="1"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 12
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -101.0
-offset_right = 35.0
+offset_left = 35.0
+offset_top = -111.0
+offset_right = -34.0
+grow_horizontal = 2
 grow_vertical = 0
-value = 10.82
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_6obml")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Happy" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer/VBoxContainer" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_r54os")
+value = 50.0
 fill_mode = 3
+show_percentage = false
 
-[node name="Hunger" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info" index="7"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 47.0
-offset_top = -101.0
-offset_right = 82.0
-grow_vertical = 0
-value = 10.82
+[node name="VBoxContainer2" type="VBoxContainer" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer/VBoxContainer2" index="0"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_jn4ui")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Hunger" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer/VBoxContainer2" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_6obml")
+value = 50.0
 fill_mode = 3
+show_percentage = false
 
-[node name="Energy" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info" index="8"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 97.0
-offset_top = -101.0
-offset_right = 132.0
-grow_vertical = 0
-value = 10.82
+[node name="VBoxContainer3" type="VBoxContainer" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer" index="2"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer/VBoxContainer3" index="0"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_0m6yi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Energy" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer/VBoxContainer3" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_7eo7q")
+value = 50.0
 fill_mode = 3
+show_percentage = false
 
-[node name="Likes3" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info" index="9"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -119.0
-offset_top = -81.0
-offset_right = -38.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("11_1cw3o")
+[node name="Likes3" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer" index="3"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_r54os")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Likes2" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info" index="10"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -204.0
-offset_top = -81.0
-offset_right = -123.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("11_1cw3o")
+[node name="Likes2" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer" index="4"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_r54os")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Likes1" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info" index="11"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -290.0
-offset_top = -81.0
-offset_right = -209.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("11_1cw3o")
-
-[node name="Sprite2D" type="Sprite2D" parent="Shape/UI/Screen" index="1"]
-texture = SubResource("ViewportTexture_nakqe")
+[node name="Likes1" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer" index="5"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_r54os")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="pressed" from="Shape/ColorRect/x" to="." method="_on_x_pressed"]
 [connection signal="pressed" from="Shape/UI/Bug" to="." method="_on_bug_pressed"]
