@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BugInfo" load_steps=3 format=3 uid="uid://wrrgqib7e3s"]
+
+[ext_resource type="Texture2D" uid="uid://das23bj3julwj" path="res://art/placeholders/coin.png" id="1_yddsa"]
+[ext_resource type="Script" uid="uid://c3o6pbwowutks" path="res://resources/bugs/buginfo_resource.gd" id="2_8nqpl"]
+
+[resource]
+script = ExtResource("2_8nqpl")
+name = "Test"
+category = 0
+icons = Array[Texture2D]([ExtResource("1_yddsa")])
+metadata/_custom_type_script = "uid://c3o6pbwowutks"
