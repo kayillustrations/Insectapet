@@ -2,7 +2,7 @@ extends Window
 class_name WindowBase
 
 @export var isFullScreen: bool = false
-@export var anchor_position: String
+@export var anchor_position: String = "TopL"
 
 @export var move_button:TextureButton
 @export var move_buffer: float = .25
@@ -91,12 +91,13 @@ func _physics_process(delta: float) -> void:
 	starting_window_position = current_window_position
 
 func Config():
-	if anchor_position == "":
-		position = anchor_dict["TopL"]
-	else: position = anchor_dict[anchor_position]
+	if GameSave.habitat_locations[self.name] != Vector2i.ZERO:
+		position = GameSave.habitat_locations[self.name]
+	else: 
+		position = anchor_dict[anchor_position]
+		if anchor_position == "Center":
+			position -= size/2
 	
-	if anchor_position == "Center":
-		position -= size/2
 	isConfigured = true
 	current_window_position = get_window().position
 
@@ -119,6 +120,8 @@ func _on_move_button_down() -> void:
 func _on_move_button_up() -> void:
 	if isDragging:
 		move_button.button_pressed =false
+		GameSave.habitat_locations[self.name] = current_window_position
+		GameSave.SaveGame()
 	if move_panel != null:
 		move_panel.visible = false
 	isDragging = false

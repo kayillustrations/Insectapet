@@ -17,16 +17,23 @@ var newGame: bool = false
 var debug_mode:bool = true
 
 #--------Stats-------
+var habitat_locations: Dictionary = {
+	"MiniHabitat": Vector2i.ZERO,
+	"FullHabitat": Vector2i.ZERO,
+}
+
 var DefaultBugStats: Dictionary = {
 	"Energy" : 100,
-	"Hunger" : 100,
-	"Happiness" : 100,
+	"Hunger" : 75,
+	"Happiness" : 50,
 	"isHealthy" : true,
 	"Stage" : 0,
 	"XP" : 0
 }
 var DefaultHabitatStats: Dictionary = {
 	"isClean" : true,
+	"isLampOn": true,
+	"isBugReleased": false,
 	"Hydration" : 100
 }
 
@@ -34,24 +41,29 @@ func _ready() -> void:
 	if !CheckSaveFolder("settings"): #if no settings, make file
 		SaveSettings()
 	if !CheckSaveFolder("save"): #if no game save(s), disable load
-		newGame = true
-	LoadGame()
+		SaveGame()
+	else: LoadGame()
 	LoadSettings()
 
 func SaveGame(): #may be able to add multiple loads/saves in the future
 	##SAVE: game_config.set_value("category",variable", variable)
-	game_config.set_value("0","current_position",WindowManager.main_window.current_window_position)
+	game_config.set_value("0","habitat_locations",habitat_locations)
+	game_config.set_value("0","current_stats",GameManager.current_stats)
+	game_config.set_value("0","habitat_stats",GameManager.habitat_stats)
 	
 	game_config.save(SCENE_SAVE_FOLDER+"save.cfg")
+	print("Save")
 	pass
 
 func LoadGame():
 	var err = game_config.load(SCENE_SAVE_FOLDER+"save.cfg")
 	if err == OK:
 		##LOAD: variable = config.get_value("category","variable")
-		GameManager.toolbar_parent.current_position = game_config.get_value("0","current_position")
+		habitat_locations = game_config.get_value("0","habitat_locations")
+		GameManager.current_stats = game_config.get_value("0","current_stats")
+		GameManager.habitat_stats = game_config.get_value("0","habitat_stats")
 		pass
-	
+	print("Load")
 	#ConfigInventory()
 	#configure game
 

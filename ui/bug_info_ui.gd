@@ -1,6 +1,5 @@
 extends Control
 
-var current_bug:BugInfo
 
 func _ready():
 	GameManager.UpdateStats.connect(UpdateStats)
@@ -9,30 +8,29 @@ func _ready():
 	ConfigInfo()
 
 func ConfigInfo():    
-	current_bug = GameManager.current_bug
-	%Name.text = current_bug.name
-	%Scientific.text = current_bug.scientific
+	%Name.text = GameManager.current_bug.name
+	%Scientific.text = GameManager.current_bug.scientific
 	
 	UpdateStage()
 	UpdateStats()
 
 func UpdateStage():
-	#icon texture = current_bug.icons[current_bug.stats["Stage"]]
-	match current_bug.stats["Stage"]:
+	#icon texture = GameManager.current_bug.icons[GameManager.current_stats["Stage"]]
+	match GameManager.current_stats["Stage"]:
 		0: %Stage.text = "Egg"
 		1: 
-			if current_bug.category == 1: %Stage.text = "Larva"
+			if GameManager.current_bug.category == 1: %Stage.text = "Larva"
 			else: %Stage.text = "Young Nymph"
 		2:
-			if current_bug.category == 1: %Stage.text = "Pupa"
+			if GameManager.current_bug.category == 1: %Stage.text = "Pupa"
 			else: %Stage.text = "Nymph"
 		3:
 			%Stage.text = "Adult"
 
 func UpdateStats():
 	#progress bars
-	%XP.value = current_bug.stats["XP"]
-	%Hunger.value = current_bug.stats["Hunger"]
-	%Happiness.value = current_bug.stats["Happiness"]
-	%Energy.value = current_bug.stats["Energy"]
+	%XP.value = GameManager.current_stats["XP"]
+	%Hunger.value = GameManager.current_stats["Hunger"]
+	%Happiness.value = GameManager.current_stats["Happiness"]
+	%Energy.value = GameManager.current_stats["Energy"]
 	pass

@@ -1,4 +1,5 @@
 extends Node
+
 const TESTBUG = preload("res://resources/bugs/testbug.tres")
 #enum NeedType {WATER,UP,POTTY,BREAK}
 signal need_timeout(need_button)
@@ -6,20 +7,21 @@ signal need_timeout(need_button)
 signal UpdateAll
 signal UpdateStats
 
-var need_queue:Array = []
-
-var default_times: Array[float]=[.1,65,95,115]
+var default_times: Array[float]=[20,60,120]
 
 var snooze_time: float = 2
 var current_window_position: Vector2
 
 var current_bug: BugInfo
+var current_stats: Dictionary
+var habitat_stats: Dictionary
 var isBugReleased = false
 
 func _ready() -> void:
 	current_bug = BugInfo.new()
 	current_bug = TESTBUG
-	current_bug.stats = GameSave.DefaultBugStats
+	current_stats = GameSave.DefaultBugStats
+	habitat_stats = GameSave.DefaultHabitatStats
 
 func ReleaseBug(b:bool):
 	if b:

@@ -14,10 +14,12 @@ func _ready() -> void:
 	for i in all_screens.size():
 		ActivateScreen(all_screens[i],false)
 	
-	#checks
-	%Dark.visible = false
-	%Bug.disabled = GameManager.isBugReleased
+	HabitatChecks()
 	pass
+
+func HabitatChecks():
+	_on_light_toggled(GameManager.habitat_stats["isLampOn"])
+	%Bug.disabled = GameManager.isBugReleased
 
 func _on_x_pressed() -> void:
 	WindowManager.main_window._on_texture_button_toggled(false)
@@ -35,6 +37,8 @@ func _on_light_toggled(toggled_on: bool) -> void:
 	else:
 		%Lamp.texture = INSECTAPET_LAMP_DARK
 		%Dark.visible = true
+	GameManager.habitat_stats["isLampOn"] = !toggled_on
+	%LightButton.button_pressed = toggled_on
 	pass # Replace with function body.
 
 func ActivateScreen(screen,isOn:bool):

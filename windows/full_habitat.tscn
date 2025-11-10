@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=45 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -12,8 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="9_jatif"]
 [ext_resource type="Texture2D" uid="uid://v43h4flqmnyi" path="res://art/buttons_normal.png" id="10_rd6cn"]
 [ext_resource type="Script" uid="uid://b78f5hlmt16b7" path="res://windows/buttons_main.gd" id="11_1np3n"]
+[ext_resource type="Texture2D" uid="uid://dip5wdyvhk3m3" path="res://art/buttons_normal_arrow.png" id="11_r5got"]
 [ext_resource type="Texture2D" uid="uid://cfpr0f7tdqnry" path="res://art/buttons_pressed.png" id="11_r54os"]
 [ext_resource type="Texture2D" uid="uid://ded0tnv2xrop1" path="res://art/buttons_hover.png" id="12_6obml"]
+[ext_resource type="Texture2D" uid="uid://bcfmw8umqhbfk" path="res://art/buttons_pressed_arrows.png" id="12_l4sxy"]
+[ext_resource type="Texture2D" uid="uid://cv7kx3w2ac5dp" path="res://art/buttons_hover_arrow.png" id="13_2gwyg"]
 [ext_resource type="Shader" uid="uid://cfqt5vci8bwa" path="res://windows/ScreenSkew.gdshader" id="14_7eo7q"]
 [ext_resource type="PackedScene" uid="uid://dxsgw62s81q8n" path="res://ui/bug_info.tscn" id="16_6obml"]
 
@@ -50,6 +53,18 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn4ui"]
+atlas = ExtResource("11_r5got")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m6yi"]
+atlas = ExtResource("12_l4sxy")
+region = Rect2(600, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65vjh"]
+atlas = ExtResource("13_2gwyg")
+region = Rect2(300, 0, 300, 300)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7eo7q"]
 atlas = ExtResource("10_rd6cn")
@@ -251,16 +266,20 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Release the Bug"
 
-[node name="Light" type="TextureButton" parent="Shape/UI" index="1"]
+[node name="LightButton" type="TextureButton" parent="Shape/UI" index="1"]
+unique_name_in_owner = true
 layout_mode = 1
-offset_left = 350.0
-offset_top = 56.0
-offset_right = 390.0
-offset_bottom = 96.0
-scale = Vector2(1.5, 1.5)
+offset_left = 511.0
+offset_top = 148.0
+offset_right = 551.0
+offset_bottom = 188.0
+rotation = -2.34467
+scale = Vector2(2.1, 2.1)
 toggle_mode = true
-texture_normal = ExtResource("8_eer6e")
-texture_hover = ExtResource("9_jatif")
+texture_normal = SubResource("AtlasTexture_jn4ui")
+texture_pressed = SubResource("AtlasTexture_0m6yi")
+texture_hover = SubResource("AtlasTexture_65vjh")
+texture_disabled = SubResource("AtlasTexture_0m6yi")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -372,7 +391,7 @@ layout_mode = 1
 
 [connection signal="pressed" from="Shape/ColorRect/x" to="." method="_on_x_pressed"]
 [connection signal="pressed" from="Shape/UI/Bug" to="." method="_on_bug_pressed"]
-[connection signal="toggled" from="Shape/UI/Light" to="." method="_on_light_toggled"]
+[connection signal="toggled" from="Shape/UI/LightButton" to="." method="_on_light_toggled"]
 [connection signal="toggled" from="Shape/UI/MainButtons/Clean" to="Shape/UI/MainButtons" method="_on_clean_toggled"]
 [connection signal="toggled" from="Shape/UI/MainButtons/Eat" to="Shape/UI/MainButtons" method="_on_eat_toggled"]
 [connection signal="toggled" from="Shape/UI/MainButtons/Info" to="Shape/UI/MainButtons" method="_on_info_toggled"]
