@@ -8,11 +8,11 @@ class_name WindowBase
 @export var move_buffer: float = .25
 @export var isBug:bool = false
 
-@onready var shape: Polygon2D = $Shape
-@onready var color_rect: ColorRect = $Shape/ColorRect
+var shape: Polygon2D
+var color_rect: ColorRect
 
-@onready var shape_size:Vector2 = shape.polygon[2]
-@onready var shape_offset:Vector2 = shape.position
+var shape_size:Vector2
+var shape_offset:Vector2
 
 var anchor_dict: Dictionary
 
@@ -26,8 +26,15 @@ var starting_window_position
 var current_window_position
 var move_panel
 var fall_pos
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+
+func _enter_tree() -> void:
+	shape = find_child("Shape")
+	color_rect = shape.find_child("ColorRect")
+	shape_size = shape.polygon[2]
+	shape_offset = shape.position
+	WindowSize()
+
+func WindowSize():
 	if isFullScreen:
 		shape.polygon[0] = Vector2.ZERO - shape_offset
 		shape.polygon[1] = Vector2(0,WindowManager.screen_size.y)

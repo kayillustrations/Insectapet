@@ -3,7 +3,7 @@ extends Node
 const BUG_WINDOW = preload("res://windows/bug_window.tscn")
 const FULL_HABITAT = preload("res://windows/full_habitat.tscn")
 
-@onready var screen_size = DisplayServer.screen_get_usable_rect().size
+var screen_size
 
 var title_size: int = 40
 var main_window: WindowBase
@@ -17,6 +17,9 @@ var anchor_dict: Dictionary = {
 	"BotR" : Vector2.ZERO,
 	"Center": Vector2.ZERO
 	}
+
+func _init() -> void:
+	screen_size = DisplayServer.screen_get_usable_rect().size
 
 func getScreenAnchors(screen_size,toolbar_size,toolbar_offset):
 	var temp_dict:Dictionary = {

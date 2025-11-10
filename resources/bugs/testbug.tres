@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_8nqpl")
 name = "Test"
+scientific = "TestTest"
 category = 0
 icons = Array[Texture2D]([ExtResource("1_yddsa")])
 metadata/_custom_type_script = "uid://c3o6pbwowutks"

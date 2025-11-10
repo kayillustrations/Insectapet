@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=39 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -10,14 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://cwi7gfawen2ep" path="res://art/isectapet_dark.png" id="6_sv7ce"]
 [ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="8_eer6e"]
 [ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="9_jatif"]
-[ext_resource type="Theme" uid="uid://cvpq11fkdk36a" path="res://ui/style/universal_pixel_style.tres" id="10_jatif"]
 [ext_resource type="Texture2D" uid="uid://v43h4flqmnyi" path="res://art/buttons_normal.png" id="10_rd6cn"]
 [ext_resource type="Script" uid="uid://b78f5hlmt16b7" path="res://windows/buttons_main.gd" id="11_1np3n"]
 [ext_resource type="Texture2D" uid="uid://cfpr0f7tdqnry" path="res://art/buttons_pressed.png" id="11_r54os"]
 [ext_resource type="Texture2D" uid="uid://ded0tnv2xrop1" path="res://art/buttons_hover.png" id="12_6obml"]
 [ext_resource type="Shader" uid="uid://cfqt5vci8bwa" path="res://windows/ScreenSkew.gdshader" id="14_7eo7q"]
-[ext_resource type="Texture2D" uid="uid://d3p7oif4qbd6w" path="res://art/symbols.png" id="14_rd6cn"]
-[ext_resource type="Texture2D" uid="uid://b8lgmu251q3vw" path="res://art/icons.png" id="15_r54os"]
+[ext_resource type="PackedScene" uid="uid://dxsgw62s81q8n" path="res://ui/bug_info.tscn" id="16_6obml"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_12veu"]
 atlas = ExtResource("3_6obml")
@@ -127,43 +125,6 @@ shader_parameter/plane_size = Vector2(0, 0)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6obml"]
 viewport_path = NodePath("ScreenViewport")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6obml"]
-atlas = ExtResource("14_rd6cn")
-region = Rect2(997, 101, 106, 97)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r54os"]
-bg_color = Color(0.504, 0.7, 0.667333, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jn4ui"]
-atlas = ExtResource("15_r54os")
-region = Rect2(388, 218, 144, 106)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6obml"]
-bg_color = Color(0.7, 0.504, 0.504, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0m6yi"]
-atlas = ExtResource("14_rd6cn")
-region = Rect2(715, 91, 75, 110)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7eo7q"]
-bg_color = Color(0.696733, 0.7, 0.504, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r54os"]
-atlas = ExtResource("14_rd6cn")
-region = Rect2(300, 0, 300, 300)
 
 [node name="FullHabitat" node_paths=PackedStringArray("move_button") instance=ExtResource("1_bigu7")]
 title = "Center"
@@ -389,7 +350,6 @@ polygon = PackedVector2Array(115, 300, 350, 310, 600, 300, 560, 575, 150, 575)
 
 [node name="ScreenSprite" type="Sprite2D" parent="Shape/UI/Screen" index="0"]
 unique_name_in_owner = true
-visible = false
 material = SubResource("ShaderMaterial_1np3n")
 position = Vector2(355, 438.333)
 texture = SubResource("ViewportTexture_6obml")
@@ -406,194 +366,9 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.3536, 0.52, 0.42848, 0.94902)
 
-[node name="BugInfo" type="Control" parent="ScreenViewport" index="1"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Bug Info" type="Control" parent="ScreenViewport/BugInfo" index="0"]
+[node name="BugInfo" parent="ScreenViewport/ColorRect" index="0" instance=ExtResource("16_6obml")]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -232.0
-offset_top = -123.5
-offset_right = 232.0
-offset_bottom = 123.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="ScreenViewport/BugInfo/Bug Info" index="0"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 100.0
-grow_horizontal = 2
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="CurrentSprite" type="TextureRect" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2" index="0"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("8_eer6e")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2" index="1"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 2
-
-[node name="Name" type="Label" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2/VBoxContainer" index="0"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Common Name"
-horizontal_alignment = 1
-
-[node name="Scientific" type="Label" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2/VBoxContainer" index="1"]
-unique_name_in_owner = true
-layout_mode = 2
-theme = ExtResource("10_jatif")
-theme_type_variation = &"TooltipLabel"
-theme_override_font_sizes/font_size = 20
-text = "Scientific Name"
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="Stage" type="Label" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2/VBoxContainer" index="2"]
-unique_name_in_owner = true
-layout_mode = 2
-theme = ExtResource("10_jatif")
-theme_type_variation = &"HeaderSmall"
-text = "Stage:"
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2/VBoxContainer" index="3"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2/VBoxContainer/HBoxContainer" index="0"]
-layout_mode = 2
-text = "XP"
-
-[node name="XP" type="ProgressBar" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2/VBoxContainer/HBoxContainer" index="1"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ScreenViewport/BugInfo/Bug Info" index="1"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 35.0
-offset_top = -111.0
-offset_right = -34.0
-grow_horizontal = 2
-grow_vertical = 0
-alignment = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer" index="0"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="TextureRect" type="TextureRect" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer/VBoxContainer" index="0"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-texture = SubResource("AtlasTexture_6obml")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Happy" type="ProgressBar" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer/VBoxContainer" index="1"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_r54os")
-value = 50.0
-fill_mode = 3
-show_percentage = false
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer" index="1"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="TextureRect" type="TextureRect" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer/VBoxContainer2" index="0"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-texture = SubResource("AtlasTexture_jn4ui")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Hunger" type="ProgressBar" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer/VBoxContainer2" index="1"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_6obml")
-value = 50.0
-fill_mode = 3
-show_percentage = false
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer" index="2"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="TextureRect" type="TextureRect" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer/VBoxContainer3" index="0"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-texture = SubResource("AtlasTexture_0m6yi")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Energy" type="ProgressBar" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer/VBoxContainer3" index="1"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_7eo7q")
-value = 50.0
-fill_mode = 3
-show_percentage = false
-
-[node name="Likes3" type="TextureRect" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer" index="3"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("AtlasTexture_r54os")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Likes2" type="TextureRect" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer" index="4"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("AtlasTexture_r54os")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Likes1" type="TextureRect" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer" index="5"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("AtlasTexture_r54os")
-expand_mode = 1
-stretch_mode = 5
 
 [connection signal="pressed" from="Shape/ColorRect/x" to="." method="_on_x_pressed"]
 [connection signal="pressed" from="Shape/UI/Bug" to="." method="_on_bug_pressed"]

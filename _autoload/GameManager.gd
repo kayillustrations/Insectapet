@@ -17,9 +17,9 @@ var current_bug: BugInfo
 var isBugReleased = false
 
 func _ready() -> void:
-	var bug = BugInfo.new()
-	bug = TESTBUG
-	bug.stats = GameSave.
+	current_bug = BugInfo.new()
+	current_bug = TESTBUG
+	current_bug.stats = GameSave.DefaultBugStats
 
 func ReleaseBug(b:bool):
 	if b:

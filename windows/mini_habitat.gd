@@ -2,7 +2,7 @@ extends WindowBase
 
 var full_habitat_instance:WindowBase
 
-func _init() -> void:
+func _ready() -> void:
 	WindowManager.main_window = self
 
 func _on_hold():
