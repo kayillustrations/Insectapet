@@ -3,6 +3,9 @@ const TESTBUG = preload("res://resources/bugs/testbug.tres")
 #enum NeedType {WATER,UP,POTTY,BREAK}
 signal need_timeout(need_button)
 
+signal UpdateAll
+signal UpdateStats
+
 var need_queue:Array = []
 
 var default_times: Array[float]=[.1,65,95,115]
