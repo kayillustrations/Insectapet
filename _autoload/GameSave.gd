@@ -17,7 +17,7 @@ var newGame: bool = false
 var debug_mode:bool = true
 
 #--------Stats-------
-var BugStats: Dictionary = {
+var DefaultBugStats: Dictionary = {
 	"Energy" : 100,
 	"Hunger" : 100,
 	"Happiness" : 100,
@@ -25,7 +25,7 @@ var BugStats: Dictionary = {
 	"Stage" : 0,
 	"XP" : 0
 }
-var HabitatStats: Dictionary = {
+var DefaultHabitatStats: Dictionary = {
 	"isClean" : true,
 	"Hydration" : 100
 }
