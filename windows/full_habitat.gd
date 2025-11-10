@@ -3,6 +3,9 @@ extends WindowBase
 const INSECTAPET_LAMP = preload("res://art/insectapet_lamp.png")
 const INSECTAPET_LAMP_DARK = preload("res://art/insectapet_lamp_dark.png")
 
+@onready var screen_sprite: Sprite2D = $Shape/UI/Screen/ScreenSprite
+@onready var bug_info: Control = %BugInfo
+
 
 func _enter_tree() -> void:
 	%Bug.disabled = GameManager.isBugReleased
@@ -27,3 +30,7 @@ func _on_light_toggled(toggled_on: bool) -> void:
 		%Lamp.texture = INSECTAPET_LAMP_DARK
 		%Dark.visible = true
 	pass # Replace with function body.
+
+func ActivateScreen(screen,isOn:bool):
+	screen_sprite.visible = isOn
+	screen.visible = isOn

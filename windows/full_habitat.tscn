@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=48 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -12,8 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="9_jatif"]
 [ext_resource type="Theme" uid="uid://cvpq11fkdk36a" path="res://ui/style/universal_pixel_style.tres" id="10_jatif"]
 [ext_resource type="Texture2D" uid="uid://v43h4flqmnyi" path="res://art/buttons_normal.png" id="10_rd6cn"]
+[ext_resource type="Script" uid="uid://b78f5hlmt16b7" path="res://windows/buttons_main.gd" id="11_1np3n"]
 [ext_resource type="Texture2D" uid="uid://cfpr0f7tdqnry" path="res://art/buttons_pressed.png" id="11_r54os"]
 [ext_resource type="Texture2D" uid="uid://ded0tnv2xrop1" path="res://art/buttons_hover.png" id="12_6obml"]
+[ext_resource type="Shader" uid="uid://cfqt5vci8bwa" path="res://windows/ScreenSkew.gdshader" id="14_7eo7q"]
 [ext_resource type="Texture2D" uid="uid://d3p7oif4qbd6w" path="res://art/symbols.png" id="14_rd6cn"]
 [ext_resource type="Texture2D" uid="uid://b8lgmu251q3vw" path="res://art/icons.png" id="15_r54os"]
 
@@ -115,6 +117,17 @@ region = Rect2(1200, 0, 300, 300)
 atlas = ExtResource("12_6obml")
 region = Rect2(1200, 0, 300, 300)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1np3n"]
+shader = ExtResource("14_7eo7q")
+shader_parameter/up_left = Vector2(0, 0)
+shader_parameter/up_right = Vector2(1, 0)
+shader_parameter/down_right = Vector2(0.905, 1)
+shader_parameter/down_left = Vector2(0.08, 1)
+shader_parameter/plane_size = Vector2(0, 0)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6obml"]
+viewport_path = NodePath("ScreenViewport")
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6obml"]
 atlas = ExtResource("14_rd6cn")
 region = Rect2(997, 101, 106, 97)
@@ -194,7 +207,7 @@ anchor_bottom = 1.0
 offset_left = -604.0
 offset_top = -3.0
 offset_right = 48.0
-offset_bottom = 781.0
+offset_bottom = 776.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -306,11 +319,13 @@ grow_horizontal = 2
 grow_vertical = 0
 rotation = 0.00408702
 alignment = 1
+script = ExtResource("11_1np3n")
 
 [node name="Clean" type="TextureButton" parent="Shape/UI/MainButtons" index="0"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_7eo7q")
 texture_pressed = SubResource("AtlasTexture_1np3n")
 texture_hover = SubResource("AtlasTexture_r5got")
@@ -322,6 +337,7 @@ stretch_mode = 5
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_2gwyg")
 texture_pressed = SubResource("AtlasTexture_m80mg")
 texture_hover = SubResource("AtlasTexture_3oa1e")
@@ -333,6 +349,7 @@ stretch_mode = 5
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_7avne")
 texture_pressed = SubResource("AtlasTexture_gyogo")
 texture_hover = SubResource("AtlasTexture_xey8i")
@@ -344,6 +361,7 @@ stretch_mode = 5
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_07xw5")
 texture_pressed = SubResource("AtlasTexture_dn25v")
 texture_hover = SubResource("AtlasTexture_xjwgn")
@@ -355,6 +373,7 @@ stretch_mode = 5
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_nn6h2")
 texture_pressed = SubResource("AtlasTexture_frhdr")
 texture_hover = SubResource("AtlasTexture_lsfya")
@@ -363,22 +382,44 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Screen" type="Polygon2D" parent="Shape/UI" index="3"]
-visible = false
+clip_children = 1
 position = Vector2(-75, 10)
 scale = Vector2(1.2, 1.2)
-color = Color(0.2856, 0.51, 0.4165, 0.866667)
 polygon = PackedVector2Array(115, 300, 350, 310, 600, 300, 560, 575, 150, 575)
 
-[node name="Center" type="Control" parent="Shape/UI/Screen" index="0"]
+[node name="ScreenSprite" type="Sprite2D" parent="Shape/UI/Screen" index="0"]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_1np3n")
+position = Vector2(355, 438.333)
+texture = SubResource("ViewportTexture_6obml")
+
+[node name="ScreenViewport" type="SubViewport" parent="." index="1"]
+transparent_bg = true
+size = Vector2i(500, 300)
+
+[node name="ColorRect" type="ColorRect" parent="ScreenViewport" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3536, 0.52, 0.42848, 0.94902)
+
+[node name="BugInfo" type="Control" parent="ScreenViewport" index="1"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_left = 358.333
-offset_top = 442.5
-offset_right = 358.333
-offset_bottom = 442.5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Bug Info" type="Control" parent="Shape/UI/Screen/Center" index="0"]
+[node name="Bug Info" type="Control" parent="ScreenViewport/BugInfo" index="0"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -393,7 +434,7 @@ offset_bottom = 123.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Shape/UI/Screen/Center/Bug Info" index="0"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScreenViewport/BugInfo/Bug Info" index="0"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -402,7 +443,7 @@ grow_horizontal = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="CurrentSprite" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2" index="0"]
+[node name="CurrentSprite" type="TextureRect" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2" index="0"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
@@ -411,20 +452,20 @@ texture = ExtResource("8_eer6e")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2" index="1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2" index="1"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 2
 
-[node name="Name" type="Label" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2/VBoxContainer" index="0"]
+[node name="Name" type="Label" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2/VBoxContainer" index="0"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Common Name"
 horizontal_alignment = 1
 
-[node name="Scientific" type="Label" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2/VBoxContainer" index="1"]
+[node name="Scientific" type="Label" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2/VBoxContainer" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("10_jatif")
@@ -434,7 +475,7 @@ text = "Scientific Name"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Stage" type="Label" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2/VBoxContainer" index="2"]
+[node name="Stage" type="Label" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2/VBoxContainer" index="2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("10_jatif")
@@ -443,20 +484,20 @@ text = "Stage:"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2/VBoxContainer" index="3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2/VBoxContainer" index="3"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2/VBoxContainer/HBoxContainer" index="0"]
+[node name="Label" type="Label" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2/VBoxContainer/HBoxContainer" index="0"]
 layout_mode = 2
 text = "XP"
 
-[node name="XP" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer2/VBoxContainer/HBoxContainer" index="1"]
+[node name="XP" type="ProgressBar" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer2/VBoxContainer/HBoxContainer" index="1"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Shape/UI/Screen/Center/Bug Info" index="1"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScreenViewport/BugInfo/Bug Info" index="1"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
 anchors_preset = 12
@@ -470,18 +511,18 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="TextureRect" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer/VBoxContainer" index="0"]
+[node name="TextureRect" type="TextureRect" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer/VBoxContainer" index="0"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 texture = SubResource("AtlasTexture_6obml")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Happy" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer/VBoxContainer" index="1"]
+[node name="Happy" type="ProgressBar" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer/VBoxContainer" index="1"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
@@ -491,18 +532,18 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer" index="1"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer" index="1"]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="TextureRect" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer/VBoxContainer2" index="0"]
+[node name="TextureRect" type="TextureRect" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer/VBoxContainer2" index="0"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 texture = SubResource("AtlasTexture_jn4ui")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Hunger" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer/VBoxContainer2" index="1"]
+[node name="Hunger" type="ProgressBar" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer/VBoxContainer2" index="1"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
@@ -512,18 +553,18 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer" index="2"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer" index="2"]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="TextureRect" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer/VBoxContainer3" index="0"]
+[node name="TextureRect" type="TextureRect" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer/VBoxContainer3" index="0"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 texture = SubResource("AtlasTexture_0m6yi")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Energy" type="ProgressBar" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer/VBoxContainer3" index="1"]
+[node name="Energy" type="ProgressBar" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer/VBoxContainer3" index="1"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
@@ -533,21 +574,21 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
-[node name="Likes3" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer" index="3"]
+[node name="Likes3" type="TextureRect" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer" index="3"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_r54os")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Likes2" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer" index="4"]
+[node name="Likes2" type="TextureRect" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer" index="4"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_r54os")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Likes1" type="TextureRect" parent="Shape/UI/Screen/Center/Bug Info/HBoxContainer" index="5"]
+[node name="Likes1" type="TextureRect" parent="ScreenViewport/BugInfo/Bug Info/HBoxContainer" index="5"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_r54os")
@@ -557,3 +598,8 @@ stretch_mode = 5
 [connection signal="pressed" from="Shape/ColorRect/x" to="." method="_on_x_pressed"]
 [connection signal="pressed" from="Shape/UI/Bug" to="." method="_on_bug_pressed"]
 [connection signal="toggled" from="Shape/UI/Light" to="." method="_on_light_toggled"]
+[connection signal="toggled" from="Shape/UI/MainButtons/Clean" to="Shape/UI/MainButtons" method="_on_clean_toggled"]
+[connection signal="toggled" from="Shape/UI/MainButtons/Eat" to="Shape/UI/MainButtons" method="_on_eat_toggled"]
+[connection signal="toggled" from="Shape/UI/MainButtons/Info" to="Shape/UI/MainButtons" method="_on_info_toggled"]
+[connection signal="toggled" from="Shape/UI/MainButtons/Play" to="Shape/UI/MainButtons" method="_on_play_toggled"]
+[connection signal="toggled" from="Shape/UI/MainButtons/Shop" to="Shape/UI/MainButtons" method="_on_shop_toggled"]
