@@ -20,6 +20,7 @@ var debug_mode:bool = true
 var habitat_locations: Dictionary = {
 	"MiniHabitat": Vector2i.ZERO,
 	"FullHabitat": Vector2i.ZERO,
+	"Bug": Vector2i.ZERO
 }
 
 var DefaultBugStats: Dictionary = {

@@ -124,7 +124,7 @@ func _on_move_button_up() -> void:
 		GameSave.habitat_locations[self.name] = current_window_position
 		GameSave.SaveGame()
 	if move_panel != null:
-			move_panel.self_modulate = Color.TRANSPARENT
+		move_panel.self_modulate = Color.TRANSPARENT
 	isDragging = false
 	isHeld = false
 	if isBug && current_window_position.y < anchor_dict["BotL"].y-shape_offset.y:
@@ -141,7 +141,8 @@ func _on_move_button_up() -> void:
 		isFalling = false
 
 func add_window(window):
-	var window_instance = window.instantiate()
+	var window_instance = load(window).instantiate()
 	add_child(window_instance)
 	if window_instance.name == "FullHabitat":
 		return window_instance
+	else: WindowManager.bug = window_instance

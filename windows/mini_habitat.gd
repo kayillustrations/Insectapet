@@ -16,7 +16,7 @@ func _on_texture_button_toggled(toggled_on: bool) -> void:
 		move_button.button_pressed = false 
 		return
 	if toggled_on:
-		full_habitat_instance = add_window(WindowManager.FULL_HABITAT)
+		full_habitat_instance = add_window(WindowManager.FULL_HABITAT_PATH)
 		full_habitat_instance.HabitatChecks()
 	else: 
 		#GameSave.

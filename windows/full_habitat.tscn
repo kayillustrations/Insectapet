@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=52 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -9,28 +9,27 @@
 [ext_resource type="Texture2D" uid="uid://bqadrk65i1edp" path="res://art/insectapet_Middleground.png" id="5_sv7ce"]
 [ext_resource type="Texture2D" uid="uid://cwi7gfawen2ep" path="res://art/isectapet_dark.png" id="6_sv7ce"]
 [ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="8_eer6e"]
+[ext_resource type="Texture2D" uid="uid://bnps7kei871tp" path="res://art/fog.png" id="8_l4sxy"]
+[ext_resource type="Texture2D" uid="uid://ccxdshu7ac4wl" path="res://art/leaves_healthy.png" id="9_2gwyg"]
 [ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="9_jatif"]
 [ext_resource type="Texture2D" uid="uid://v43h4flqmnyi" path="res://art/buttons_normal.png" id="10_rd6cn"]
 [ext_resource type="Script" uid="uid://b78f5hlmt16b7" path="res://windows/buttons_main.gd" id="11_1np3n"]
-[ext_resource type="Texture2D" uid="uid://dip5wdyvhk3m3" path="res://art/buttons_normal_arrow.png" id="11_r5got"]
+[ext_resource type="Texture2D" uid="uid://bup77tacyx2eb" path="res://art/buttons_normal_misc.png" id="11_r5got"]
 [ext_resource type="Texture2D" uid="uid://cfpr0f7tdqnry" path="res://art/buttons_pressed.png" id="11_r54os"]
 [ext_resource type="Texture2D" uid="uid://ded0tnv2xrop1" path="res://art/buttons_hover.png" id="12_6obml"]
-[ext_resource type="Texture2D" uid="uid://bcfmw8umqhbfk" path="res://art/buttons_pressed_arrows.png" id="12_l4sxy"]
-[ext_resource type="Texture2D" uid="uid://cv7kx3w2ac5dp" path="res://art/buttons_hover_arrow.png" id="13_2gwyg"]
+[ext_resource type="Texture2D" uid="uid://dgllwmn5l5l1k" path="res://art/buttons_pressed_misc.png" id="12_l4sxy"]
+[ext_resource type="Texture2D" uid="uid://dr35nydt7hqe4" path="res://art/buttons_hover_misc.png" id="13_2gwyg"]
+[ext_resource type="Texture2D" uid="uid://b64lllghnybp1" path="res://art/lid_normal.png" id="13_7avne"]
 [ext_resource type="Shader" uid="uid://cfqt5vci8bwa" path="res://windows/ScreenSkew.gdshader" id="14_7eo7q"]
+[ext_resource type="Texture2D" uid="uid://bqc1pmnve3u5u" path="res://art/lid_pressed.png" id="14_gyogo"]
+[ext_resource type="Texture2D" uid="uid://c1gcbl6ihbflj" path="res://art/lid_hover.png" id="15_xey8i"]
 [ext_resource type="PackedScene" uid="uid://dxsgw62s81q8n" path="res://ui/bug_info.tscn" id="16_6obml"]
 
 [sub_resource type="Curve2D" id="Curve2D_r5got"]
 _data = {
-"points": PackedVector2Array(131.216, 34.6077, -131.216, -34.6077, 0, 0, 33.3918, 31.7222, -33.3918, -31.7222, -243.333, -43.3333, 247.677, 33.3737, -247.677, -33.3737, -453.333, -223.333, -161.859, 219.758, 161.859, -219.758, -656.667, -666.667, -312.126, -38.5457, 312.126, 38.5457, -370, -893.333, -112.895, -87.807, 112.895, 87.807, 26.6666, -803.333, -231.535, -25.7172, 231.535, 25.7172, 480, -616.667, 290.039, -21.3818, -290.039, 21.3818, 623.333, 60, 131.717, 34.1525, -131.717, -34.1525, 0, 0)
+"points": PackedVector2Array(313.747, 87.7916, -313.747, -87.7916, 0, 0, 247.677, 33.3737, -247.677, -33.3737, -453.333, -223.333, -161.859, 219.758, 161.859, -219.758, -656.667, -666.667, -312.126, -38.5457, 312.126, 38.5457, -370, -893.333, -112.895, -87.807, 112.895, 87.807, 26.6666, -803.333, -231.535, -25.7172, 231.535, 25.7172, 480, -616.667, 79.817, -55.604, -79.817, 55.604, 630, 26.6667, 131.717, 34.1525, -131.717, -34.1525, 0, 0)
 }
-point_count = 9
-
-[sub_resource type="Curve2D" id="Curve2D_l4sxy"]
-_data = {
-"points": PackedVector2Array(62.201, 24.8804, -62.201, -24.8804, 0, 0, 177.997, 22.1723, -177.997, -22.1723, -243.333, -40, 200.737, -5.85772, -200.737, 5.85772, -696.667, 60)
-}
-point_count = 3
+point_count = 8
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fombg"]
 animations = [{
@@ -45,6 +44,12 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Curve2D" id="Curve2D_l4sxy"]
+_data = {
+"points": PackedVector2Array(477.009, 138.117, -477.009, -138.117, 0, 0, 307.701, 9.65878, -307.701, -9.65878, -686.667, 60)
+}
+point_count = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5got"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -64,7 +69,7 @@ region = Rect2(724, 216, 128, 123)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jn4ui"]
 atlas = ExtResource("11_r5got")
-region = Rect2(300, 0, 300, 300)
+region = Rect2(600, 0, 300, 300)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0m6yi"]
 atlas = ExtResource("12_l4sxy")
@@ -72,7 +77,7 @@ region = Rect2(600, 0, 300, 300)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65vjh"]
 atlas = ExtResource("13_2gwyg")
-region = Rect2(300, 0, 300, 300)
+region = Rect2(600, 0, 300, 300)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7eo7q"]
 atlas = ExtResource("10_rd6cn")
@@ -171,37 +176,54 @@ texture = ExtResource("3_sv7ce")
 [node name="Base" type="Sprite2D" parent="Shape/Center Anchor" index="1"]
 texture = ExtResource("3_fnpmy")
 
-[node name="MainPath" type="Path2D" parent="Shape/Center Anchor" index="2"]
+[node name="Leaves" type="Sprite2D" parent="Shape/Center Anchor" index="2"]
+unique_name_in_owner = true
+texture = ExtResource("9_2gwyg")
+
+[node name="MainPath" type="Path2D" parent="Shape/Center Anchor" index="3"]
 position = Vector2(-16.6667, 813.333)
 curve = SubResource("Curve2D_r5got")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Shape/Center Anchor/MainPath" index="0"]
-rotation = -2.88372
+position = Vector2(-30.7581, -9.05972)
+rotation = -2.84072
+progress = 32.0625
 
-[node name="BurrowPath" type="Path2D" parent="Shape/Center Anchor" index="3"]
+[node name="Bug" type="AnimatedSprite2D" parent="Shape/Center Anchor/MainPath/PathFollow2D" index="0"]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_fombg")
+autoplay = "default"
+offset = Vector2(0, 50)
+flip_v = true
+
+[node name="BurrowPath" type="Path2D" parent="Shape/Center Anchor" index="4"]
 position = Vector2(-16.6667, 813.333)
 curve = SubResource("Curve2D_l4sxy")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Shape/Center Anchor/BurrowPath" index="0"]
-position = Vector2(-359.876, -34.8094)
-rotation = 2.92441
-progress = 364.715
+position = Vector2(-329.413, -42.4416)
+rotation = 2.97065
+progress = 334.738
 
 [node name="Bug" type="AnimatedSprite2D" parent="Shape/Center Anchor/BurrowPath/PathFollow2D" index="0"]
-unique_name_in_owner = true
-rotation = 2.97867
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_fombg")
 autoplay = "default"
-offset = Vector2(0, -50)
+offset = Vector2(0, 50)
+flip_v = true
 
-[node name="Mid" type="Sprite2D" parent="Shape/Center Anchor" index="4"]
+[node name="Mid" type="Sprite2D" parent="Shape/Center Anchor" index="5"]
 texture = ExtResource("5_sv7ce")
 
-[node name="Foreground" type="Sprite2D" parent="Shape/Center Anchor" index="5"]
+[node name="Foreground" type="Sprite2D" parent="Shape/Center Anchor" index="6"]
 texture = ExtResource("5_ifc8h")
 
-[node name="Dark" type="Sprite2D" parent="Shape/Center Anchor" index="6"]
+[node name="Fog" type="Sprite2D" parent="Shape/Center Anchor" index="7"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.713726)
+texture = ExtResource("8_l4sxy")
+
+[node name="Dark" type="Sprite2D" parent="Shape/Center Anchor" index="8"]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("6_sv7ce")
@@ -270,8 +292,9 @@ offset_right = 679.0
 offset_bottom = 700.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
-[node name="ReleaseBug" type="Button" parent="Shape/UI" index="0"]
+[node name="ReleaseBug" type="TextureButton" parent="Shape/UI" index="0"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -279,13 +302,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -77.0
-offset_top = -20.0
-offset_right = 77.0
+offset_left = -149.0
+offset_top = -180.0
+offset_right = 163.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Release the Bug"
+texture_normal = ExtResource("13_7avne")
+texture_pressed = ExtResource("14_gyogo")
+texture_hover = ExtResource("15_xey8i")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="LightButton" type="TextureButton" parent="Shape/UI" index="1"]
 unique_name_in_owner = true

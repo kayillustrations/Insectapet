@@ -1,12 +1,13 @@
 extends Node
 
-const BUG_WINDOW = preload("res://windows/bug_window.tscn")
-const FULL_HABITAT = preload("res://windows/full_habitat.tscn")
+const BUG_WINDOW_PATH = "res://windows/bug_window.tscn"
+const FULL_HABITAT_PATH = "res://windows/full_habitat.tscn"
 
 var screen_size
 
 var title_size: int = 40
 var main_window: WindowBase
+var bug:WindowBase
 
 var anchor_dict: Dictionary = {
 	"TopL" : Vector2.ZERO,

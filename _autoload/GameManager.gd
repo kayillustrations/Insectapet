@@ -24,6 +24,8 @@ func _ready() -> void:
 	habitat_stats = GameSave.DefaultHabitatStats
 
 func ReleaseBug(b:bool):
+	isBugReleased = b
 	if b:
-		WindowManager.main_window.add_window(WindowManager.BUG_WINDOW)
-	else: WindowManager.main_window.find_child("Window").queue_free()
+		WindowManager.main_window.add_window(WindowManager.BUG_WINDOW_PATH)
+	else: 
+		WindowManager.main_window.find_child("Window").queue_free()
