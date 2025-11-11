@@ -30,9 +30,11 @@ var fall_pos
 func _enter_tree() -> void:
 	shape = find_child("Shape")
 	color_rect = shape.find_child("ColorRect")
+	move_panel = move_button.find_parent("Panel")
 	shape_size = shape.polygon[2]
 	shape_offset = shape.position
 	WindowSize()
+	_on_move_button_up()
 
 func WindowSize():
 	if isFullScreen:
@@ -110,9 +112,8 @@ func _on_move_button_down() -> void:
 	isHeld = true
 	await temp.timeout
 	if isHeld:
-		move_panel = move_button.find_child("Panel")
 		if move_panel != null:
-			move_panel.visible = true
+			move_panel.self_modulate = Color.WHITE
 		isDragging = true
 		starting_mouse_position = color_rect.get_global_mouse_position()
 		starting_window_position = current_window_position
@@ -123,7 +124,7 @@ func _on_move_button_up() -> void:
 		GameSave.habitat_locations[self.name] = current_window_position
 		GameSave.SaveGame()
 	if move_panel != null:
-		move_panel.visible = false
+			move_panel.self_modulate = Color.TRANSPARENT
 	isDragging = false
 	isHeld = false
 	if isBug && current_window_position.y < anchor_dict["BotL"].y-shape_offset.y:

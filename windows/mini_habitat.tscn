@@ -18,9 +18,10 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="MiniHabitat" node_paths=PackedStringArray("move_button") instance=ExtResource("1_jples")]
+size = Vector2i(110, 110)
 script = ExtResource("2_l2vge")
 anchor_position = "BotR"
-move_button = NodePath("Shape/ColorRect/MarginContainer/TextureButton")
+move_button = NodePath("Shape/ColorRect/MarginContainer/Panel/TextureButton")
 
 [node name="Shape" parent="." index="0"]
 polygon = PackedVector2Array(0, 0, 0, 100, 100, 100, 100, 0)
@@ -36,6 +37,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 3.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 5
@@ -43,23 +46,28 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="TextureButton" type="TextureButton" parent="Shape/ColorRect/MarginContainer" index="0"]
+[node name="Panel" type="Panel" parent="Shape/ColorRect/MarginContainer" index="0"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l2vge")
+
+[node name="TextureButton" type="TextureButton" parent="Shape/ColorRect/MarginContainer/Panel" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.5
+offset_top = -44.5
+offset_right = 44.5
+offset_bottom = 44.5
+grow_horizontal = 2
+grow_vertical = 2
 toggle_mode = true
 texture_normal = ExtResource("2_sxag7")
 texture_hover = ExtResource("3_do3m4")
 ignore_texture_size = true
 stretch_mode = 5
-
-[node name="Panel" type="Panel" parent="Shape/ColorRect/MarginContainer/TextureButton" index="0"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_l2vge")
 
 [node name="Node" type="Node" parent="." index="1"]
 
@@ -75,7 +83,7 @@ autostart = true
 unique_name_in_owner = true
 autostart = true
 
-[connection signal="toggled" from="Shape/ColorRect/MarginContainer/TextureButton" to="." method="_on_texture_button_toggled"]
+[connection signal="toggled" from="Shape/ColorRect/MarginContainer/Panel/TextureButton" to="." method="_on_texture_button_toggled"]
 [connection signal="timeout" from="Node/Happiness" to="." method="_on_happiness_timeout"]
 [connection signal="timeout" from="Node/Hunger" to="." method="_on_hunger_timeout"]
 [connection signal="timeout" from="Node/Energy" to="." method="_on_energy_timeout"]

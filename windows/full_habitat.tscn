@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=47 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -20,25 +20,17 @@
 [ext_resource type="Shader" uid="uid://cfqt5vci8bwa" path="res://windows/ScreenSkew.gdshader" id="14_7eo7q"]
 [ext_resource type="PackedScene" uid="uid://dxsgw62s81q8n" path="res://ui/bug_info.tscn" id="16_6obml"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_12veu"]
-atlas = ExtResource("3_6obml")
-region = Rect2(724, 36, 128, 123)
+[sub_resource type="Curve2D" id="Curve2D_r5got"]
+_data = {
+"points": PackedVector2Array(131.216, 34.6077, -131.216, -34.6077, 0, 0, 33.3918, 31.7222, -33.3918, -31.7222, -243.333, -43.3333, 247.677, 33.3737, -247.677, -33.3737, -453.333, -223.333, -161.859, 219.758, 161.859, -219.758, -656.667, -666.667, -312.126, -38.5457, 312.126, 38.5457, -370, -893.333, -112.895, -87.807, 112.895, 87.807, 26.6666, -803.333, -231.535, -25.7172, 231.535, 25.7172, 480, -616.667, 290.039, -21.3818, -290.039, 21.3818, 623.333, 60, 131.717, 34.1525, -131.717, -34.1525, 0, 0)
+}
+point_count = 9
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qoooe"]
-atlas = ExtResource("3_6obml")
-region = Rect2(724, 216, 128, 123)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2cyu"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.808121, 0.413835, 0.351751, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="Curve2D" id="Curve2D_l4sxy"]
+_data = {
+"points": PackedVector2Array(62.201, 24.8804, -62.201, -24.8804, 0, 0, 177.997, 22.1723, -177.997, -22.1723, -243.333, -40, 200.737, -5.85772, -200.737, 5.85772, -696.667, 60)
+}
+point_count = 3
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fombg"]
 animations = [{
@@ -53,6 +45,22 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5got"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.464, 0.464, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12veu"]
+atlas = ExtResource("3_6obml")
+region = Rect2(724, 36, 128, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoooe"]
+atlas = ExtResource("3_6obml")
+region = Rect2(724, 216, 128, 123)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jn4ui"]
 atlas = ExtResource("11_r5got")
@@ -146,80 +154,14 @@ title = "Center"
 size = Vector2i(750, 850)
 script = ExtResource("2_i2cyu")
 anchor_position = "Center"
-move_button = NodePath("Shape/ColorRect/Move")
+move_button = NodePath("Shape/ColorRect/Panel/Move")
 move_buffer = 0.1
 
 [node name="Shape" parent="." index="0"]
-position = Vector2(-20, 8)
-polygon = PackedVector2Array(25, 336.904, 25, 825, 698.438, 825, 698.605, 286.707, 550.243, 60.171, 382.319, -6.52227)
+polygon = PackedVector2Array(0, 321, 0, 825, 675, 825, 675, 291, 550.243, 60.171, 360, -7)
 
-[node name="ColorRect" type="ColorRect" parent="Shape" index="0"]
-offset_right = 700.0
-offset_bottom = 800.0
-color = Color(0.14902, 0.0392157, 0.027451, 0)
-
-[node name="Move" type="TextureButton" parent="Shape/ColorRect" index="0"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -56.0
-offset_top = 720.0
-offset_right = -16.0
-offset_bottom = 760.0
-grow_horizontal = 0
-size_flags_vertical = 0
-texture_normal = SubResource("AtlasTexture_12veu")
-texture_pressed = SubResource("AtlasTexture_qoooe")
-texture_hover = SubResource("AtlasTexture_qoooe")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="ColorRect" type="ColorRect" parent="Shape/ColorRect/Move" index="0"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -595.0
-offset_top = -42.0
-offset_right = 21.43
-offset_bottom = 83.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.27, 0.18009, 0.1701, 0)
-
-[node name="Panel" type="Panel" parent="Shape/ColorRect/Move/ColorRect" index="0"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i2cyu")
-
-[node name="x" type="Button" parent="Shape/ColorRect" index="1"]
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -56.0
-offset_top = 771.0
-offset_right = -17.0
-offset_bottom = 813.0
-grow_horizontal = 0
-size_flags_horizontal = 8
-size_flags_vertical = 0
-text = "x"
-
-[node name="Center Anchor" type="Node2D" parent="Shape" index="1"]
-position = Vector2(366, 415)
+[node name="Center Anchor" type="Node2D" parent="Shape" index="0"]
+position = Vector2(345, 415)
 scale = Vector2(0.3, 0.3)
 
 [node name="Lamp" type="Sprite2D" parent="Shape/Center Anchor" index="0"]
@@ -229,31 +171,107 @@ texture = ExtResource("3_sv7ce")
 [node name="Base" type="Sprite2D" parent="Shape/Center Anchor" index="1"]
 texture = ExtResource("3_fnpmy")
 
-[node name="Bug" type="AnimatedSprite2D" parent="Shape/Center Anchor" index="2"]
-position = Vector2(64, 704)
+[node name="MainPath" type="Path2D" parent="Shape/Center Anchor" index="2"]
+position = Vector2(-16.6667, 813.333)
+curve = SubResource("Curve2D_r5got")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Shape/Center Anchor/MainPath" index="0"]
+rotation = -2.88372
+
+[node name="BurrowPath" type="Path2D" parent="Shape/Center Anchor" index="3"]
+position = Vector2(-16.6667, 813.333)
+curve = SubResource("Curve2D_l4sxy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Shape/Center Anchor/BurrowPath" index="0"]
+position = Vector2(-359.876, -34.8094)
+rotation = 2.92441
+progress = 364.715
+
+[node name="Bug" type="AnimatedSprite2D" parent="Shape/Center Anchor/BurrowPath/PathFollow2D" index="0"]
+unique_name_in_owner = true
+rotation = 2.97867
+scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_fombg")
 autoplay = "default"
+offset = Vector2(0, -50)
 
-[node name="Mid" type="Sprite2D" parent="Shape/Center Anchor" index="3"]
+[node name="Mid" type="Sprite2D" parent="Shape/Center Anchor" index="4"]
 texture = ExtResource("5_sv7ce")
 
-[node name="Foreground" type="Sprite2D" parent="Shape/Center Anchor" index="4"]
+[node name="Foreground" type="Sprite2D" parent="Shape/Center Anchor" index="5"]
 texture = ExtResource("5_ifc8h")
 
-[node name="Dark" type="Sprite2D" parent="Shape/Center Anchor" index="5"]
+[node name="Dark" type="Sprite2D" parent="Shape/Center Anchor" index="6"]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("6_sv7ce")
 
+[node name="ColorRect" type="ColorRect" parent="Shape" index="1"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.14902, 0.0392157, 0.027451, 0)
+
+[node name="Panel" type="Panel" parent="Shape/ColorRect" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 367.0
+offset_right = 669.0
+offset_bottom = 825.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r5got")
+
+[node name="Move" type="TextureButton" parent="Shape/ColorRect/Panel" index="0"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -656.0
+offset_top = 411.0
+offset_right = -616.0
+offset_bottom = 451.0
+grow_horizontal = 0
+size_flags_vertical = 0
+texture_normal = SubResource("AtlasTexture_12veu")
+texture_pressed = SubResource("AtlasTexture_qoooe")
+texture_hover = SubResource("AtlasTexture_qoooe")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="x" type="Button" parent="Shape/ColorRect" index="1"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 624.0
+offset_top = 777.0
+offset_right = 663.0
+offset_bottom = 819.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "x"
+
 [node name="UI" type="Control" parent="Shape" index="2"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 700.0
+offset_left = -21.0
+offset_right = 679.0
 offset_bottom = 700.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Bug" type="Button" parent="Shape/UI" index="0"]
+[node name="ReleaseBug" type="Button" parent="Shape/UI" index="0"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -356,6 +374,7 @@ stretch_mode = 5
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
+disabled = true
 toggle_mode = true
 texture_normal = SubResource("AtlasTexture_nn6h2")
 texture_pressed = SubResource("AtlasTexture_frhdr")
@@ -372,6 +391,7 @@ polygon = PackedVector2Array(115, 300, 350, 310, 600, 300, 560, 575, 150, 575)
 
 [node name="ScreenSprite" type="Sprite2D" parent="Shape/UI/Screen" index="0"]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_1np3n")
 position = Vector2(355, 438.333)
 texture = SubResource("ViewportTexture_6obml")
@@ -393,7 +413,7 @@ unique_name_in_owner = true
 layout_mode = 1
 
 [connection signal="pressed" from="Shape/ColorRect/x" to="." method="_on_x_pressed"]
-[connection signal="pressed" from="Shape/UI/Bug" to="." method="_on_bug_pressed"]
+[connection signal="pressed" from="Shape/UI/ReleaseBug" to="." method="_on_bug_pressed"]
 [connection signal="toggled" from="Shape/UI/LightButton" to="." method="_on_light_toggled"]
 [connection signal="toggled" from="Shape/UI/MainButtons/Clean" to="Shape/UI/MainButtons" method="_on_clean_toggled"]
 [connection signal="toggled" from="Shape/UI/MainButtons/Eat" to="Shape/UI/MainButtons" method="_on_eat_toggled"]

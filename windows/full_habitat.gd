@@ -19,7 +19,7 @@ func _ready() -> void:
 
 func HabitatChecks():
 	_on_light_toggled(GameManager.habitat_stats["isLampOn"])
-	%Bug.disabled = GameManager.isBugReleased
+	%ReleaseBug.disabled = GameManager.isBugReleased
 
 func _on_x_pressed() -> void:
 	WindowManager.main_window._on_texture_button_toggled(false)
@@ -27,7 +27,7 @@ func _on_x_pressed() -> void:
 
 func _on_bug_pressed() -> void:
 	GameManager.ReleaseBug(true)
-	%Bug.disabled = true
+	%ReleaseBug.disabled = true
 	pass # Replace with function body.
 
 func _on_light_toggled(toggled_on: bool) -> void:
