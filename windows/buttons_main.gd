@@ -17,7 +17,7 @@ func _on_clean_toggled(toggled_on: bool) -> void:
 func _on_eat_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		UnToggleAllOthers(eat)
-		ActivateScreen(null)
+		ActivateScreen(%Feeding)
 	else:
 		ActivateScreen(null)
 	pass # Replace with function body.

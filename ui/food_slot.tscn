@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq6or58tsts18"]
+
+[ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://windows/icon.svg" id="1_1tgy2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1tgy2"]
+
+[node name="Food Slot" type="Panel"]
+custom_minimum_size = Vector2(100, 130)
+offset_right = 100.0
+offset_bottom = 125.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1tgy2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_1tgy2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cost" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "$$"
+horizontal_alignment = 1
