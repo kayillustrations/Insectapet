@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_jples"]
 [ext_resource type="Script" uid="uid://berrvbqxg880d" path="res://windows/mini_habitat.gd" id="2_l2vge"]
-[ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="2_sxag7"]
+[ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://windows/icon.svg" id="2_sxag7"]
 [ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="3_do3m4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2vge"]

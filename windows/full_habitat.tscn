@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=54 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bpuiaif4mrt6w" path="res://art/insectapet_foreground.png" id="5_ifc8h"]
 [ext_resource type="Texture2D" uid="uid://bqadrk65i1edp" path="res://art/insectapet_Middleground.png" id="5_sv7ce"]
 [ext_resource type="Texture2D" uid="uid://cwi7gfawen2ep" path="res://art/isectapet_dark.png" id="6_sv7ce"]
-[ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="8_eer6e"]
+[ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://windows/icon.svg" id="8_eer6e"]
 [ext_resource type="Texture2D" uid="uid://bnps7kei871tp" path="res://art/fog.png" id="8_l4sxy"]
 [ext_resource type="Texture2D" uid="uid://ccxdshu7ac4wl" path="res://art/leaves_healthy.png" id="9_2gwyg"]
 [ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="9_jatif"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://bqc1pmnve3u5u" path="res://art/lid_pressed.png" id="14_gyogo"]
 [ext_resource type="Texture2D" uid="uid://c1gcbl6ihbflj" path="res://art/lid_hover.png" id="15_xey8i"]
 [ext_resource type="PackedScene" uid="uid://dxsgw62s81q8n" path="res://ui/bug_info.tscn" id="16_6obml"]
+[ext_resource type="PackedScene" uid="uid://c4eqmbf8bloh" path="res://ui/cleaning.tscn" id="24_gyogo"]
 
 [sub_resource type="Curve2D" id="Curve2D_r5got"]
 _data = {
@@ -152,7 +153,15 @@ shader_parameter/down_left = Vector2(0.08, 1)
 shader_parameter/plane_size = Vector2(0, 0)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6obml"]
-viewport_path = NodePath("ScreenViewport")
+viewport_path = NodePath("SubViewportContainer/ScreenViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gyogo"]
+shader = ExtResource("14_7eo7q")
+shader_parameter/up_left = Vector2(-0.065, 0)
+shader_parameter/up_right = Vector2(1.065, 0)
+shader_parameter/down_right = Vector2(1, 1.07)
+shader_parameter/down_left = Vector2(0, 1.065)
+shader_parameter/plane_size = Vector2(0, 0)
 
 [node name="FullHabitat" node_paths=PackedStringArray("move_button") instance=ExtResource("1_bigu7")]
 title = "Center"
@@ -160,7 +169,7 @@ size = Vector2i(750, 850)
 script = ExtResource("2_i2cyu")
 anchor_position = "Center"
 move_button = NodePath("Shape/ColorRect/Panel/Move")
-move_buffer = 0.1
+move_buffer = 0.01
 
 [node name="Shape" parent="." index="0"]
 polygon = PackedVector2Array(0, 321, 0, 825, 675, 825, 675, 291, 550.243, 60.171, 360, -7)
@@ -185,7 +194,7 @@ position = Vector2(-16.6667, 813.333)
 curve = SubResource("Curve2D_r5got")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Shape/Center Anchor/MainPath" index="0"]
-position = Vector2(-30.7581, -9.05972)
+position = Vector2(-30.7581, -9.05973)
 rotation = -2.84072
 progress = 32.0625
 
@@ -201,7 +210,7 @@ position = Vector2(-16.6667, 813.333)
 curve = SubResource("Curve2D_l4sxy")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Shape/Center Anchor/BurrowPath" index="0"]
-position = Vector2(-329.413, -42.4416)
+position = Vector2(-329.413, -42.4417)
 rotation = 2.97065
 progress = 334.738
 
@@ -411,23 +420,34 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Screen" type="Polygon2D" parent="Shape/UI" index="3"]
+visible = false
 clip_children = 1
 position = Vector2(-75, 10)
 scale = Vector2(1.2, 1.2)
 polygon = PackedVector2Array(115, 300, 350, 310, 600, 300, 560, 575, 150, 575)
 
 [node name="ScreenSprite" type="Sprite2D" parent="Shape/UI/Screen" index="0"]
-unique_name_in_owner = true
 visible = false
 material = SubResource("ShaderMaterial_1np3n")
 position = Vector2(355, 438.333)
 texture = SubResource("ViewportTexture_6obml")
 
-[node name="ScreenViewport" type="SubViewport" parent="." index="1"]
-transparent_bg = true
-size = Vector2i(500, 300)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." index="1"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_gyogo")
+offset_left = 57.0
+offset_top = 387.0
+offset_right = 599.0
+offset_bottom = 714.0
 
-[node name="ColorRect" type="ColorRect" parent="ScreenViewport" index="0"]
+[node name="ScreenViewport" type="SubViewport" parent="SubViewportContainer" index="0"]
+transparent_bg = true
+handle_input_locally = false
+gui_embed_subwindows = true
+size = Vector2i(500, 300)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/ScreenViewport" index="0"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -435,8 +455,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.3536, 0.52, 0.42848, 0.94902)
 
-[node name="BugInfo" parent="ScreenViewport/ColorRect" index="0" instance=ExtResource("16_6obml")]
+[node name="Cleaning" parent="SubViewportContainer/ScreenViewport/ColorRect" index="0" instance=ExtResource("24_gyogo")]
 unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="BugInfo" parent="SubViewportContainer/ScreenViewport/ColorRect" index="1" instance=ExtResource("16_6obml")]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="Shape/ColorRect/x" to="." method="_on_x_pressed"]

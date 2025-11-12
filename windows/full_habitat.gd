@@ -3,16 +3,14 @@ extends WindowBase
 const INSECTAPET_LAMP = preload("res://art/insectapet_lamp.png")
 const INSECTAPET_LAMP_DARK = preload("res://art/insectapet_lamp_dark.png")
 
-@onready var screen_sprite: Sprite2D = $Shape/UI/Screen/ScreenSprite
-@onready var all_screens: Array = $ScreenViewport/ColorRect.get_children()
+@onready var all_screens: Array = $SubViewportContainer/ScreenViewport/ColorRect.get_children()
 @onready var bug_info: Control = %BugInfo
-
 
 func _ready() -> void:
 	#screens set
-	%ScreenSprite.visible = false
+	%SubViewportContainer.visible = false
 	for i in all_screens.size():
-		ActivateScreen(all_screens[i],false)
+		all_screens[i].visible = false
 	
 	HabitatChecks()
 	pass
@@ -40,7 +38,3 @@ func _on_light_toggled(toggled_on: bool) -> void:
 	GameManager.habitat_stats["isLampOn"] = !toggled_on
 	%LightButton.button_pressed = toggled_on
 	pass # Replace with function body.
-
-func ActivateScreen(screen,isOn:bool):
-	screen_sprite.visible = isOn
-	screen.visible = isOn

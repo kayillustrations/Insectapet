@@ -7,18 +7,53 @@ extends HabitatButtons
 @onready var shop: TextureButton = $Shop
 
 func _on_clean_toggled(toggled_on: bool) -> void:
-	
+	if toggled_on:
+		UnToggleAllOthers(clean)
+		ActivateScreen(%Cleaning)
+	else:
+		ActivateScreen(null)
 	pass # Replace with function body.
 
 func _on_eat_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		UnToggleAllOthers(eat)
+		ActivateScreen(null)
+	else:
+		ActivateScreen(null)
 	pass # Replace with function body.
 
 func _on_info_toggled(toggled_on: bool) -> void:
-	%ScreenSprite.visible = toggled_on
-	%BugInfo.visible = toggled_on
+	if toggled_on:
+		UnToggleAllOthers(info)
+		ActivateScreen(%BugInfo)
+	else:
+		ActivateScreen(null)
 
 func _on_play_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		UnToggleAllOthers(play)
+		ActivateScreen(null)
+	else:
+		ActivateScreen(null)
 	pass # Replace with function body.
 
 func _on_shop_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		UnToggleAllOthers(shop)
+		ActivateScreen(null)
+	else:
+		ActivateScreen(null)
 	pass # Replace with function body.
+
+func ActivateScreen(screen):
+	if current_panel != null: 
+		current_panel.visible = false
+		current_panel = null
+	if screen != null:
+		screen.visible = true
+		current_panel = screen
+	
+	if current_panel == null:
+		%SubViewportContainer.visible = false
+	else: 
+		%SubViewportContainer.visible = true
