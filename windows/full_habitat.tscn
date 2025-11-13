@@ -154,103 +154,113 @@ shader_parameter/down_left = Vector2(0, 1)
 shader_parameter/plane_size = Vector2(250, 0)
 
 [node name="FullHabitat" node_paths=PackedStringArray("move_button") instance=ExtResource("1_bigu7")]
-title = "Center"
-size = Vector2i(750, 850)
+sdf_scale = 0
+size = Vector2i(800, 915)
 script = ExtResource("2_i2cyu")
 anchor_position = "Center"
-move_button = NodePath("Shape/ColorRect/Panel/Move")
+move_button = NodePath("Shape/Control/ColorRect/Panel/Move")
 move_buffer = 0.01
 
 [node name="Shape" parent="." index="0"]
-polygon = PackedVector2Array(0, 321, 0, 825, 675, 825, 675, 291, 550.243, 60.171, 360, -7)
+polygon = PackedVector2Array(0, 321, 0, 910, 750, 910, 750, 324, 547, 53, 411.228, 0)
 
-[node name="Center Anchor" type="Node2D" parent="Shape" index="0"]
+[node name="Control" type="Control" parent="Shape" index="0"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.1, 1.1)
+
+[node name="Center Anchor" type="Node2D" parent="Shape/Control" index="0"]
 position = Vector2(345, 415)
 scale = Vector2(0.3, 0.3)
 
-[node name="Lamp" type="Sprite2D" parent="Shape/Center Anchor" index="0"]
+[node name="Lamp" type="Sprite2D" parent="Shape/Control/Center Anchor" index="0"]
 unique_name_in_owner = true
 texture = ExtResource("3_sv7ce")
 
-[node name="Base" type="Sprite2D" parent="Shape/Center Anchor" index="1"]
+[node name="Base" type="Sprite2D" parent="Shape/Control/Center Anchor" index="1"]
 texture = ExtResource("3_fnpmy")
 
-[node name="Leaves" type="Sprite2D" parent="Shape/Center Anchor" index="2"]
+[node name="Leaves" type="Sprite2D" parent="Shape/Control/Center Anchor" index="2"]
 unique_name_in_owner = true
 texture = ExtResource("9_2gwyg")
 
-[node name="MainPath" type="Path2D" parent="Shape/Center Anchor" index="3"]
+[node name="MainPath" type="Path2D" parent="Shape/Control/Center Anchor" index="3"]
 position = Vector2(-16.6667, 813.333)
 curve = SubResource("Curve2D_r5got")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Shape/Center Anchor/MainPath" index="0"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Shape/Control/Center Anchor/MainPath" index="0"]
 position = Vector2(-30.7581, -9.05973)
 rotation = -2.84072
 progress = 32.0625
 
-[node name="Bug" type="AnimatedSprite2D" parent="Shape/Center Anchor/MainPath/PathFollow2D" index="0"]
+[node name="Bug" type="AnimatedSprite2D" parent="Shape/Control/Center Anchor/MainPath/PathFollow2D" index="0"]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_fombg")
 autoplay = "default"
 offset = Vector2(0, 50)
 flip_v = true
 
-[node name="BurrowPath" type="Path2D" parent="Shape/Center Anchor" index="4"]
+[node name="BurrowPath" type="Path2D" parent="Shape/Control/Center Anchor" index="4"]
 position = Vector2(-16.6667, 813.333)
 curve = SubResource("Curve2D_l4sxy")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Shape/Center Anchor/BurrowPath" index="0"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Shape/Control/Center Anchor/BurrowPath" index="0"]
 position = Vector2(-329.413, -42.4417)
 rotation = 2.97065
 progress = 334.738
 
-[node name="Bug" type="AnimatedSprite2D" parent="Shape/Center Anchor/BurrowPath/PathFollow2D" index="0"]
+[node name="Bug" type="AnimatedSprite2D" parent="Shape/Control/Center Anchor/BurrowPath/PathFollow2D" index="0"]
 sprite_frames = SubResource("SpriteFrames_fombg")
 autoplay = "default"
 offset = Vector2(0, 50)
 flip_v = true
 
-[node name="Mid" type="Sprite2D" parent="Shape/Center Anchor" index="5"]
+[node name="Mid" type="Sprite2D" parent="Shape/Control/Center Anchor" index="5"]
 texture = ExtResource("5_sv7ce")
 
-[node name="Foreground" type="Sprite2D" parent="Shape/Center Anchor" index="6"]
+[node name="Foreground" type="Sprite2D" parent="Shape/Control/Center Anchor" index="6"]
 texture = ExtResource("5_ifc8h")
 
-[node name="Fog" type="Sprite2D" parent="Shape/Center Anchor" index="7"]
+[node name="Fog" type="Sprite2D" parent="Shape/Control/Center Anchor" index="7"]
 unique_name_in_owner = true
 visible = false
 modulate = Color(1, 1, 1, 0.713726)
 texture = ExtResource("8_l4sxy")
 
-[node name="Dark" type="Sprite2D" parent="Shape/Center Anchor" index="8"]
+[node name="Dark" type="Sprite2D" parent="Shape/Control/Center Anchor" index="8"]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("6_sv7ce")
 
-[node name="ColorRect" type="ColorRect" parent="Shape" index="1"]
+[node name="ColorRect" type="ColorRect" parent="Shape/Control" index="1"]
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -40.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.14902, 0.0392157, 0.027451, 0)
 
-[node name="Panel" type="Panel" parent="Shape/ColorRect" index="0"]
+[node name="Panel" type="Panel" parent="Shape/Control/ColorRect" index="0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
 offset_top = 367.0
-offset_right = 669.0
+offset_right = 635.0
 offset_bottom = 825.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_r5got")
 
-[node name="Move" type="TextureButton" parent="Shape/ColorRect/Panel" index="0"]
+[node name="Move" type="TextureButton" parent="Shape/Control/ColorRect/Panel" index="0"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = 1
@@ -268,22 +278,22 @@ texture_hover = SubResource("AtlasTexture_qoooe")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="x" type="Button" parent="Shape/ColorRect" index="1"]
+[node name="x" type="Button" parent="Shape/Control/ColorRect" index="1"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 624.0
+offset_left = 589.091
 offset_top = 777.0
-offset_right = 663.0
+offset_right = 628.091
 offset_bottom = 819.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "x"
 
-[node name="UI" type="Control" parent="Shape" index="2"]
+[node name="UI" type="Control" parent="Shape/Control" index="2"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -21.0
@@ -291,9 +301,8 @@ offset_right = 679.0
 offset_bottom = 700.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
 
-[node name="ReleaseBug" type="TextureButton" parent="Shape/UI" index="0"]
+[node name="ReleaseBug" type="TextureButton" parent="Shape/Control/UI" index="0"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -313,7 +322,7 @@ texture_hover = ExtResource("15_xey8i")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="LightButton" type="TextureButton" parent="Shape/UI" index="1"]
+[node name="LightButton" type="TextureButton" parent="Shape/Control/UI" index="1"]
 unique_name_in_owner = true
 layout_mode = 1
 offset_left = 507.0
@@ -330,7 +339,7 @@ texture_disabled = SubResource("AtlasTexture_0m6yi")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="MainButtons" type="HBoxContainer" parent="Shape/UI" index="2"]
+[node name="MainButtons" type="HBoxContainer" parent="Shape/Control/UI" index="2"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -348,7 +357,7 @@ rotation = 0.00408702
 alignment = 1
 script = ExtResource("11_1np3n")
 
-[node name="Clean" type="TextureButton" parent="Shape/UI/MainButtons" index="0"]
+[node name="Clean" type="TextureButton" parent="Shape/Control/UI/MainButtons" index="0"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -360,7 +369,7 @@ texture_disabled = SubResource("AtlasTexture_l4sxy")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Eat" type="TextureButton" parent="Shape/UI/MainButtons" index="1"]
+[node name="Eat" type="TextureButton" parent="Shape/Control/UI/MainButtons" index="1"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -372,7 +381,7 @@ texture_disabled = SubResource("AtlasTexture_m80mg")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Info" type="TextureButton" parent="Shape/UI/MainButtons" index="2"]
+[node name="Info" type="TextureButton" parent="Shape/Control/UI/MainButtons" index="2"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -384,7 +393,7 @@ texture_disabled = SubResource("AtlasTexture_gyogo")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Play" type="TextureButton" parent="Shape/UI/MainButtons" index="3"]
+[node name="Play" type="TextureButton" parent="Shape/Control/UI/MainButtons" index="3"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -396,7 +405,7 @@ texture_disabled = SubResource("AtlasTexture_dn25v")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Shop" type="TextureButton" parent="Shape/UI/MainButtons" index="4"]
+[node name="Shop" type="TextureButton" parent="Shape/Control/UI/MainButtons" index="4"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -412,17 +421,17 @@ stretch_mode = 5
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." index="1"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_gyogo")
-offset_left = 74.0
-offset_top = 393.0
-offset_right = 574.0
-offset_bottom = 693.0
+offset_left = 82.0
+offset_top = 429.0
+offset_right = 632.0
+offset_bottom = 759.0
 scale = Vector2(1.05, 1.05)
 
 [node name="ScreenViewport" type="SubViewport" parent="SubViewportContainer" index="0"]
 transparent_bg = true
 handle_input_locally = false
 gui_embed_subwindows = true
-size = Vector2i(500, 300)
+size = Vector2i(550, 330)
 render_target_update_mode = 4
 
 [node name="ColorRect" type="ColorRect" parent="SubViewportContainer/ScreenViewport" index="0"]
@@ -446,11 +455,11 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="Shape/ColorRect/x" to="." method="_on_x_pressed"]
-[connection signal="pressed" from="Shape/UI/ReleaseBug" to="." method="_on_bug_pressed"]
-[connection signal="toggled" from="Shape/UI/LightButton" to="." method="_on_light_toggled"]
-[connection signal="toggled" from="Shape/UI/MainButtons/Clean" to="Shape/UI/MainButtons" method="_on_clean_toggled"]
-[connection signal="toggled" from="Shape/UI/MainButtons/Eat" to="Shape/UI/MainButtons" method="_on_eat_toggled"]
-[connection signal="toggled" from="Shape/UI/MainButtons/Info" to="Shape/UI/MainButtons" method="_on_info_toggled"]
-[connection signal="toggled" from="Shape/UI/MainButtons/Play" to="Shape/UI/MainButtons" method="_on_play_toggled"]
-[connection signal="toggled" from="Shape/UI/MainButtons/Shop" to="Shape/UI/MainButtons" method="_on_shop_toggled"]
+[connection signal="pressed" from="Shape/Control/ColorRect/x" to="." method="_on_x_pressed"]
+[connection signal="pressed" from="Shape/Control/UI/ReleaseBug" to="." method="_on_bug_pressed"]
+[connection signal="toggled" from="Shape/Control/UI/LightButton" to="." method="_on_light_toggled"]
+[connection signal="toggled" from="Shape/Control/UI/MainButtons/Clean" to="Shape/Control/UI/MainButtons" method="_on_clean_toggled"]
+[connection signal="toggled" from="Shape/Control/UI/MainButtons/Eat" to="Shape/Control/UI/MainButtons" method="_on_eat_toggled"]
+[connection signal="toggled" from="Shape/Control/UI/MainButtons/Info" to="Shape/Control/UI/MainButtons" method="_on_info_toggled"]
+[connection signal="toggled" from="Shape/Control/UI/MainButtons/Play" to="Shape/Control/UI/MainButtons" method="_on_play_toggled"]
+[connection signal="toggled" from="Shape/Control/UI/MainButtons/Shop" to="Shape/Control/UI/MainButtons" method="_on_shop_toggled"]

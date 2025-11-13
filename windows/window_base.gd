@@ -31,7 +31,7 @@ func _enter_tree() -> void:
 	shape = find_child("Shape")
 	color_rect = shape.find_child("ColorRect")
 	move_panel = move_button.find_parent("Panel")
-	shape_size = shape.polygon[2]
+	shape_size = shape.polygon[2]*shape.scale
 	shape_offset = shape.position
 	WindowSize()
 	_on_move_button_up()
@@ -47,8 +47,9 @@ func WindowSize():
 		shape_size = shape.polygon[2]
 		shape_offset = Vector2(shape_offset.x,WindowManager.title_size+shape_offset.y)
 		$Shape/ColorRect.size = shape_size
-	
-	size = shape_size + shape_offset
+	print("shape:",shape_size)
+	print("window:",shape_size)
+	size = (shape_size * shape.scale) + shape_offset
 	anchor_dict = WindowManager.getScreenAnchors(
 		WindowManager.screen_size,shape_size,shape_offset)
 	Config()
