@@ -225,20 +225,19 @@ texture = ExtResource("5_sv7ce")
 [node name="Foreground" type="Sprite2D" parent="Shape/Control/Center Anchor" index="6"]
 texture = ExtResource("5_ifc8h")
 
-[node name="Fog" type="Sprite2D" parent="Shape/Control/Center Anchor" index="7"]
-unique_name_in_owner = true
-clip_children = 2
-scale = Vector2(1, 1)
-texture = ExtResource("8_l4sxy")
-
-[node name="Node2D" type="Node2D" parent="Shape/Control/Center Anchor/Fog" index="0"]
-modulate = Color(1, 1, 1, 0.733333)
-script = ExtResource("11_07xw5")
-
-[node name="Dark" type="Sprite2D" parent="Shape/Control/Center Anchor" index="8"]
+[node name="Dark" type="Sprite2D" parent="Shape/Control/Center Anchor" index="7"]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("6_sv7ce")
+
+[node name="Node2D" type="Sprite2D" parent="Shape/Control/Center Anchor" index="8"]
+clip_children = 1
+scale = Vector2(1, 1)
+script = ExtResource("11_07xw5")
+
+[node name="Fog" type="Sprite2D" parent="Shape/Control/Center Anchor/Node2D" index="0"]
+texture = ExtResource("8_l4sxy")
+region_rect = Rect2(264, 1276, 1969, 1049)
 
 [node name="ColorRect" type="ColorRect" parent="Shape/Control" index="1"]
 layout_mode = 1
