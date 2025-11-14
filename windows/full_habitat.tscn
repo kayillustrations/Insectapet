@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=54 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="9_jatif"]
 [ext_resource type="Texture2D" uid="uid://v43h4flqmnyi" path="res://art/buttons_normal.png" id="10_rd6cn"]
 [ext_resource type="Script" uid="uid://b78f5hlmt16b7" path="res://windows/buttons_main.gd" id="11_1np3n"]
+[ext_resource type="Script" uid="uid://y2dpanvlfvyu" path="res://windows/clean.gd" id="11_07xw5"]
 [ext_resource type="Texture2D" uid="uid://bup77tacyx2eb" path="res://art/buttons_normal_misc.png" id="11_r5got"]
 [ext_resource type="Texture2D" uid="uid://cfpr0f7tdqnry" path="res://art/buttons_pressed.png" id="11_r54os"]
 [ext_resource type="Texture2D" uid="uid://ded0tnv2xrop1" path="res://art/buttons_hover.png" id="12_6obml"]
@@ -165,6 +166,7 @@ move_buffer = 0.01
 polygon = PackedVector2Array(0, 321, 0, 910, 750, 910, 750, 324, 547, 53, 411.228, 0)
 
 [node name="Control" type="Control" parent="Shape" index="0"]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -225,9 +227,13 @@ texture = ExtResource("5_ifc8h")
 
 [node name="Fog" type="Sprite2D" parent="Shape/Control/Center Anchor" index="7"]
 unique_name_in_owner = true
-visible = false
-modulate = Color(1, 1, 1, 0.713726)
+clip_children = 2
+scale = Vector2(1, 1)
 texture = ExtResource("8_l4sxy")
+
+[node name="Node2D" type="Node2D" parent="Shape/Control/Center Anchor/Fog" index="0"]
+modulate = Color(1, 1, 1, 0.733333)
+script = ExtResource("11_07xw5")
 
 [node name="Dark" type="Sprite2D" parent="Shape/Control/Center Anchor" index="8"]
 unique_name_in_owner = true
@@ -245,6 +251,7 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.14902, 0.0392157, 0.027451, 0)
+metadata/_edit_lock_ = true
 
 [node name="Panel" type="Panel" parent="Shape/Control/ColorRect" index="0"]
 layout_mode = 1
@@ -420,19 +427,21 @@ stretch_mode = 5
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." index="1"]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_gyogo")
 offset_left = 82.0
 offset_top = 429.0
 offset_right = 632.0
 offset_bottom = 759.0
 scale = Vector2(1.05, 1.05)
+metadata/_edit_lock_ = true
 
 [node name="ScreenViewport" type="SubViewport" parent="SubViewportContainer" index="0"]
 transparent_bg = true
 handle_input_locally = false
 gui_embed_subwindows = true
 size = Vector2i(550, 330)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="ColorRect" type="ColorRect" parent="SubViewportContainer/ScreenViewport" index="0"]
 anchors_preset = 15
