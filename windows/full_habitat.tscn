@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=59 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -21,12 +21,15 @@
 [ext_resource type="Texture2D" uid="uid://dgllwmn5l5l1k" path="res://art/buttons_pressed_misc.png" id="12_l4sxy"]
 [ext_resource type="Texture2D" uid="uid://dr35nydt7hqe4" path="res://art/buttons_hover_misc.png" id="13_2gwyg"]
 [ext_resource type="Texture2D" uid="uid://b64lllghnybp1" path="res://art/lid_normal.png" id="13_7avne"]
+[ext_resource type="Script" uid="uid://bwg03j1rcoym0" path="res://windows/holding.gd" id="13_nn6h2"]
 [ext_resource type="Shader" uid="uid://cfqt5vci8bwa" path="res://windows/ScreenSkew.gdshader" id="14_7eo7q"]
 [ext_resource type="Texture2D" uid="uid://bqc1pmnve3u5u" path="res://art/lid_pressed.png" id="14_gyogo"]
 [ext_resource type="Texture2D" uid="uid://c1gcbl6ihbflj" path="res://art/lid_hover.png" id="15_xey8i"]
 [ext_resource type="PackedScene" uid="uid://dxsgw62s81q8n" path="res://ui/bug_info.tscn" id="16_6obml"]
 [ext_resource type="PackedScene" uid="uid://c4eqmbf8bloh" path="res://ui/cleaning.tscn" id="24_gyogo"]
 [ext_resource type="PackedScene" uid="uid://bjhjvbu7suk3a" path="res://ui/feeding.tscn" id="24_xey8i"]
+[ext_resource type="Script" uid="uid://fq6gp8qriii7" path="res://ui/cleaning.gd" id="27_dn25v"]
+[ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="28_xjwgn"]
 
 [sub_resource type="Curve2D" id="Curve2D_r5got"]
 _data = {
@@ -146,6 +149,14 @@ region = Rect2(1200, 0, 300, 300)
 atlas = ExtResource("12_6obml")
 region = Rect2(1200, 0, 300, 300)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ytqu"]
+atlas = ExtResource("28_xjwgn")
+region = Rect2(894.828, 30.347, 462.605, 1118.54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gug7"]
+atlas = ExtResource("28_xjwgn")
+region = Rect2(539, 31, 368.355, 325.353)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gyogo"]
 shader = ExtResource("14_7eo7q")
 shader_parameter/up_left = Vector2(-0.055, 0)
@@ -230,11 +241,11 @@ unique_name_in_owner = true
 visible = false
 texture = ExtResource("6_sv7ce")
 
-[node name="Node2D" type="Sprite2D" parent="Shape/Control/Center Anchor" index="8"]
+[node name="FogControl" type="Node2D" parent="Shape/Control/Center Anchor" index="8"]
+unique_name_in_owner = true
 script = ExtResource("11_07xw5")
 
-[node name="Fog" type="Sprite2D" parent="Shape/Control/Center Anchor/Node2D" index="0"]
-scale = Vector2(1, 1)
+[node name="Fog" type="Sprite2D" parent="Shape/Control/Center Anchor/FogControl" index="0"]
 texture = ExtResource("8_l4sxy")
 region_rect = Rect2(264, 1276, 1969, 1049)
 
@@ -324,6 +335,7 @@ grow_vertical = 2
 texture_normal = ExtResource("13_7avne")
 texture_pressed = ExtResource("14_gyogo")
 texture_hover = ExtResource("15_xey8i")
+texture_disabled = ExtResource("14_gyogo")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -423,6 +435,25 @@ texture_disabled = SubResource("AtlasTexture_frhdr")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="Bottle" type="Sprite2D" parent="Shape/Control/UI" index="3"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(366, 415)
+rotation = -0.84823
+scale = Vector2(0.3, 0.3)
+texture = SubResource("AtlasTexture_3ytqu")
+offset = Vector2(100, 400)
+flip_h = true
+script = ExtResource("13_nn6h2")
+
+[node name="Cotton" type="Sprite2D" parent="Shape/Control/UI" index="4"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(366, 415)
+scale = Vector2(0.3, 0.3)
+texture = SubResource("AtlasTexture_1gug7")
+script = ExtResource("13_nn6h2")
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." index="1"]
 unique_name_in_owner = true
 visible = false
@@ -456,6 +487,8 @@ layout_mode = 1
 [node name="Cleaning" parent="SubViewportContainer/ScreenViewport/ColorRect" index="1" instance=ExtResource("24_gyogo")]
 unique_name_in_owner = true
 layout_mode = 1
+script = ExtResource("27_dn25v")
+textures = Array[Texture2D]([SubResource("AtlasTexture_3ytqu"), SubResource("AtlasTexture_1gug7")])
 
 [node name="BugInfo" parent="SubViewportContainer/ScreenViewport/ColorRect" index="2" instance=ExtResource("16_6obml")]
 unique_name_in_owner = true

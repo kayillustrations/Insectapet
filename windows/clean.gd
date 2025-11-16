@@ -1,21 +1,19 @@
-extends Sprite2D
+extends Node2D
 
-const PATH: String = "user://test.png"
 const SIZE = Vector2(2000,1050)
 
-var imageTexture : ImageTexture
-var image : Image
-var radius = 10.0
-var erase = Color(0.0, 0.0, 0.0, 0.0)
+@export var active: bool = false
 
 var click_pos: Array
 var dist_traveled
+
+var cleanliness_maths: float
 
 var prev_pos
 var current_pos
 
 func _input(event: InputEvent) -> void:
-	if !visible || not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if !active || not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		return
 	var mouse_pos = get_local_mouse_position()
 	if abs(mouse_pos.x) > SIZE.x/2:return
@@ -26,19 +24,24 @@ func _input(event: InputEvent) -> void:
 	current_pos = mouse_pos
 	dist_traveled += abs(current_pos - prev_pos)
 	prev_pos = current_pos
-	EditFog()
+	CleanFog()
 
-func EditFog():
+func CleanFog():
 	var min_value = min(dist_traveled.x,dist_traveled.y)
 	min_value *= .0002
-	print(min_value)
+	min_value += 1-cleanliness_maths
 	if min_value >= 1:
-		visible = false
 		print("CLEAN")
+		active = false
+		%MainButtons.ActivateAllButtons(true)
+		%MainButtons.clean.button_pressed = false
+		%Cleaning.currently_holding.visible = false
+		GameManager.habitat_stats["Cleanliness"] = 100
+		GameSave.SaveGame()
 		return
 	var tween:Tween = create_tween()
-	tween.tween_property(self,"modulate",Color(1,1,1,1-min_value),0)
+	tween.tween_property(self,"modulate",Color(1,1,1,cleanliness_maths-min_value),0)
 
-#func _draw() -> void:
-	#for point in click_pos:
-		#draw_circle(point/%Control.scale.x,100,Color.BLACK,true)
+func EditFog(cleanliness:int):
+	cleanliness_maths = (100-cleanliness)*.01
+	modulate =Color(1,1,1,cleanliness_maths)

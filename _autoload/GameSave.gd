@@ -32,9 +32,9 @@ var DefaultBugStats: Dictionary = {
 	"XP" : 0
 }
 var DefaultHabitatStats: Dictionary = {
-	"isClean" : true,
 	"isLampOn": true,
 	"isBugReleased": false,
+	"Cleanliness" : 50,
 	"Hydration" : 100
 }
 

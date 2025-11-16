@@ -43,13 +43,13 @@ grow_vertical = 2
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="Button" type="Button" parent="Top"]
+[node name="Bottle" type="Button" parent="Top"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_q6wrd")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_2iw7m")
 
-[node name="TextureRect" type="TextureRect" parent="Top/Button"]
+[node name="TextureRect" type="TextureRect" parent="Top/Bottle"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,13 +67,13 @@ texture = SubResource("AtlasTexture_fdtcv")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Button2" type="Button" parent="Top"]
+[node name="Cotton" type="Button" parent="Top"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_q6wrd")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_2iw7m")
 
-[node name="TextureRect2" type="TextureRect" parent="Top/Button2"]
+[node name="TextureRect2" type="TextureRect" parent="Top/Cotton"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 8
@@ -91,3 +91,6 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_palhm")
 expand_mode = 1
 stretch_mode = 5
+
+[connection signal="pressed" from="Top/Bottle" to="." method="_on_bottle_pressed"]
+[connection signal="pressed" from="Top/Cotton" to="." method="_on_cotton_pressed"]
