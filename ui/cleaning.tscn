@@ -3,11 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="1_q6wrd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6wrd"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2iw7m"]
 
@@ -26,10 +22,7 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -232.64
-offset_top = -122.98
-offset_right = 231.36
-offset_bottom = 127.02
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -44,7 +37,8 @@ theme_override_constants/separation = 25
 alignment = 1
 
 [node name="Bottle" type="Button" parent="Top"]
-custom_minimum_size = Vector2(125, 0)
+self_modulate = Color(1, 1, 1, 0.392157)
+custom_minimum_size = Vector2(125, 275)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_q6wrd")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_2iw7m")
@@ -68,6 +62,7 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Cotton" type="Button" parent="Top"]
+self_modulate = Color(1, 1, 1, 0.392157)
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_q6wrd")

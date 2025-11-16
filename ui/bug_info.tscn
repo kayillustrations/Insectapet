@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://windows/icon.svg" id="2_rdjj6"]
 [ext_resource type="Theme" uid="uid://cvpq11fkdk36a" path="res://ui/style/universal_pixel_style.tres" id="3_vx5jr"]
 [ext_resource type="Texture2D" uid="uid://d3p7oif4qbd6w" path="res://art/symbols.png" id="4_ayacq"]
-[ext_resource type="Texture2D" uid="uid://b8lgmu251q3vw" path="res://art/icons.png" id="5_1jtxk"]
+[ext_resource type="Texture2D" uid="uid://b2xkyu7reerdy" path="res://art/icons_white.png" id="5_55fh1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6obml"]
 atlas = ExtResource("4_ayacq")
@@ -17,9 +17,9 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jn4ui"]
-atlas = ExtResource("5_1jtxk")
-region = Rect2(388, 218, 144, 106)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdjj6"]
+atlas = ExtResource("5_55fh1")
+region = Rect2(388, 106, 128, 95)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6obml"]
 bg_color = Color(0.7, 0.504, 0.504, 1)
@@ -50,24 +50,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -232.64
-offset_top = -122.98
-offset_right = 231.36
-offset_bottom = 127.02
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_55fh1")
 
-[node name="Top" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 130.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -120.0
+offset_right = 200.0
+offset_bottom = 120.0
 grow_horizontal = 2
-theme_override_constants/separation = 0
+grow_vertical = 2
+
+[node name="Top" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
 alignment = 1
 
-[node name="CurrentSprite" type="TextureRect" parent="Top"]
+[node name="CurrentSprite" type="TextureRect" parent="VBoxContainer/Top"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
@@ -76,20 +83,26 @@ texture = ExtResource("2_rdjj6")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Top"]
-custom_minimum_size = Vector2(300, 0)
+[node name="Label" type="Label" parent="VBoxContainer/Top"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "XP"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Top"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 2
+alignment = 1
 
-[node name="Name" type="Label" parent="Top/VBoxContainer"]
+[node name="Name" type="Label" parent="VBoxContainer/Top/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Common Name"
 horizontal_alignment = 1
 
-[node name="Scientific" type="Label" parent="Top/VBoxContainer"]
+[node name="Scientific" type="Label" parent="VBoxContainer/Top/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("3_vx5jr")
@@ -99,7 +112,7 @@ text = "Scientific Name"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Stage" type="Label" parent="Top/VBoxContainer"]
+[node name="Stage" type="Label" parent="VBoxContainer/Top/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("3_vx5jr")
@@ -108,44 +121,33 @@ text = "Stage:"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Top/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Top/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Top/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "XP"
-
-[node name="XP" type="ProgressBar" parent="Top/VBoxContainer/HBoxContainer"]
+[node name="XP" type="ProgressBar" parent="VBoxContainer/Top/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="Bot" type="HBoxContainer" parent="."]
+[node name="Bot" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 19.0
-offset_top = -100.0
-grow_horizontal = 2
-grow_vertical = 0
+layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Bot"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Bot"]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="TextureRect" type="TextureRect" parent="Bot/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Bot/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 texture = SubResource("AtlasTexture_6obml")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Happiness" type="ProgressBar" parent="Bot/VBoxContainer"]
+[node name="Happiness" type="ProgressBar" parent="VBoxContainer/Bot/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
@@ -155,18 +157,18 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Bot"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Bot"]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="TextureRect" type="TextureRect" parent="Bot/VBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Bot/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-texture = SubResource("AtlasTexture_jn4ui")
+texture = SubResource("AtlasTexture_rdjj6")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Hunger" type="ProgressBar" parent="Bot/VBoxContainer2"]
+[node name="Hunger" type="ProgressBar" parent="VBoxContainer/Bot/VBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
@@ -176,18 +178,18 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="Bot"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/Bot"]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="TextureRect" type="TextureRect" parent="Bot/VBoxContainer3"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Bot/VBoxContainer3"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 texture = SubResource("AtlasTexture_0m6yi")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Energy" type="ProgressBar" parent="Bot/VBoxContainer3"]
+[node name="Energy" type="ProgressBar" parent="VBoxContainer/Bot/VBoxContainer3"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
@@ -197,21 +199,21 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
-[node name="Likes3" type="TextureRect" parent="Bot"]
+[node name="Likes3" type="TextureRect" parent="VBoxContainer/Bot"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_r54os")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Likes2" type="TextureRect" parent="Bot"]
+[node name="Likes2" type="TextureRect" parent="VBoxContainer/Bot"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_r54os")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Likes1" type="TextureRect" parent="Bot"]
+[node name="Likes1" type="TextureRect" parent="VBoxContainer/Bot"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_r54os")
