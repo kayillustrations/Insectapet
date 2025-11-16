@@ -231,11 +231,10 @@ visible = false
 texture = ExtResource("6_sv7ce")
 
 [node name="Node2D" type="Sprite2D" parent="Shape/Control/Center Anchor" index="8"]
-clip_children = 1
-scale = Vector2(1, 1)
 script = ExtResource("11_07xw5")
 
 [node name="Fog" type="Sprite2D" parent="Shape/Control/Center Anchor/Node2D" index="0"]
+scale = Vector2(1, 1)
 texture = ExtResource("8_l4sxy")
 region_rect = Rect2(264, 1276, 1969, 1049)
 
