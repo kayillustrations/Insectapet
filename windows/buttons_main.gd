@@ -30,10 +30,13 @@ func _on_info_toggled(toggled_on: bool) -> void:
 		ActivateScreen(null)
 
 func _on_play_toggled(toggled_on: bool) -> void:
-	UnToggleAllOthers(play)
+	if toggled_on:
+		UnToggleAllOthers(play)
+		ActivateScreen(%Game)
+	else:
+		ActivateScreen(null)
+		$Play.button_pressed = toggled_on
 	%Game.ActivateGame(toggled_on)
-	$Play.button_pressed = toggled_on
-	ActivateScreen(null)
 	pass # Replace with function body.
 
 func _on_shop_toggled(toggled_on: bool) -> void:
