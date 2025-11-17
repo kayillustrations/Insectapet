@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=67 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -57,6 +57,18 @@ _data = {
 "points": PackedVector2Array(477.009, 138.117, -477.009, -138.117, 0, 0, 307.701, 9.65878, -307.701, -9.65878, -686.667, 60)
 }
 point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gug7"]
+atlas = ExtResource("28_xjwgn")
+region = Rect2(1510, 198, 936, 191)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sutye"]
+atlas = ExtResource("28_xjwgn")
+region = Rect2(2190, 372, 212, 174)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncixy"]
+atlas = ExtResource("28_xjwgn")
+region = Rect2(1519, 9, 983, 171)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5got"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -167,10 +179,6 @@ region = Rect2(898.689, 31.4511, 458.744, 1117.44)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsfya"]
 bg_color = Color(0.450926, 0.636702, 0.673982, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1gug7"]
-atlas = ExtResource("28_xjwgn")
-region = Rect2(539, 31, 368.355, 325.353)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gyogo"]
 shader = ExtResource("14_7eo7q")
 shader_parameter/up_left = Vector2(-0.055, 0)
@@ -247,15 +255,66 @@ flip_v = true
 [node name="Mid" type="Sprite2D" parent="Shape/Control/Center Anchor" index="5"]
 texture = ExtResource("5_sv7ce")
 
-[node name="Foreground" type="Sprite2D" parent="Shape/Control/Center Anchor" index="6"]
+[node name="ReleaseBug" type="TextureButton" parent="Shape/Control/Center Anchor" index="6"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.909
+offset_top = -813.636
+offset_right = -228.909
+offset_bottom = -613.636
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.275, 3.275)
+texture_normal = ExtResource("13_7avne")
+texture_pressed = ExtResource("14_gyogo")
+texture_hover = ExtResource("15_xey8i")
+texture_disabled = ExtResource("14_gyogo")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Feed" type="Sprite2D" parent="Shape/Control/Center Anchor" index="7"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(77.2728, 1.51514)
+rotation = 0.523598
+scale = Vector2(1, 1)
+script = ExtResource("13_nn6h2")
+
+[node name="Back" type="Sprite2D" parent="Shape/Control/Center Anchor/Feed" index="0"]
+unique_name_in_owner = true
+position = Vector2(-319.943, -232.887)
+rotation = -2.54675
+scale = Vector2(1, 1)
+texture = SubResource("AtlasTexture_1gug7")
+
+[node name="Food" type="Sprite2D" parent="Shape/Control/Center Anchor/Feed" index="1"]
+unique_name_in_owner = true
+position = Vector2(15.5315, 16.6666)
+rotation = -2.54675
+scale = Vector2(1, 1)
+texture = SubResource("AtlasTexture_sutye")
+
+[node name="Front" type="Sprite2D" parent="Shape/Control/Center Anchor/Feed" index="2"]
+unique_name_in_owner = true
+position = Vector2(-720.832, -407.576)
+rotation = -2.54371
+scale = Vector2(1, 1)
+texture = SubResource("AtlasTexture_ncixy")
+offset = Vector2(-400, -15)
+
+[node name="Foreground" type="Sprite2D" parent="Shape/Control/Center Anchor" index="8"]
 texture = ExtResource("5_ifc8h")
 
-[node name="Dark" type="Sprite2D" parent="Shape/Control/Center Anchor" index="7"]
+[node name="Dark" type="Sprite2D" parent="Shape/Control/Center Anchor" index="9"]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("6_sv7ce")
 
-[node name="FogControl" type="Node2D" parent="Shape/Control/Center Anchor" index="8"]
+[node name="FogControl" type="Node2D" parent="Shape/Control/Center Anchor" index="10"]
 unique_name_in_owner = true
 script = ExtResource("11_07xw5")
 
@@ -332,29 +391,7 @@ offset_bottom = 700.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ReleaseBug" type="TextureButton" parent="Shape/Control/UI" index="0"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -149.0
-offset_top = -180.0
-offset_right = 163.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("13_7avne")
-texture_pressed = ExtResource("14_gyogo")
-texture_hover = ExtResource("15_xey8i")
-texture_disabled = ExtResource("14_gyogo")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="LightButton" type="TextureButton" parent="Shape/Control/UI" index="1"]
+[node name="LightButton" type="TextureButton" parent="Shape/Control/UI" index="0"]
 unique_name_in_owner = true
 layout_mode = 1
 offset_left = 507.0
@@ -371,7 +408,7 @@ texture_disabled = SubResource("AtlasTexture_0m6yi")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="MainButtons" type="HBoxContainer" parent="Shape/Control/UI" index="2"]
+[node name="MainButtons" type="HBoxContainer" parent="Shape/Control/UI" index="1"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -449,7 +486,7 @@ texture_disabled = SubResource("AtlasTexture_frhdr")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="SprayHere" type="Polygon2D" parent="Shape/Control/UI" index="3"]
+[node name="SprayHere" type="Polygon2D" parent="Shape/Control/UI" index="2"]
 unique_name_in_owner = true
 visible = false
 clip_children = 1
@@ -465,7 +502,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_nn6h2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_nn6h2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_frhdr")
 
-[node name="Bottle" type="Sprite2D" parent="Shape/Control/UI" index="4"]
+[node name="Bottle" type="Sprite2D" parent="Shape/Control/UI" index="3"]
 unique_name_in_owner = true
 visible = false
 position = Vector2(366, 415)
@@ -490,7 +527,7 @@ value = 3.0
 fill_mode = 2
 show_percentage = false
 
-[node name="Cotton" type="Sprite2D" parent="Shape/Control/UI" index="5"]
+[node name="Cotton" type="Sprite2D" parent="Shape/Control/UI" index="4"]
 unique_name_in_owner = true
 visible = false
 position = Vector2(366, 415)
@@ -548,8 +585,8 @@ visible = false
 layout_mode = 1
 scale = Vector2(1.1, 1.1)
 
+[connection signal="pressed" from="Shape/Control/Center Anchor/ReleaseBug" to="." method="_on_bug_pressed"]
 [connection signal="pressed" from="Shape/Control/ColorRect/x" to="." method="_on_x_pressed"]
-[connection signal="pressed" from="Shape/Control/UI/ReleaseBug" to="." method="_on_bug_pressed"]
 [connection signal="toggled" from="Shape/Control/UI/LightButton" to="." method="_on_light_toggled"]
 [connection signal="toggled" from="Shape/Control/UI/MainButtons/Clean" to="Shape/Control/UI/MainButtons" method="_on_clean_toggled"]
 [connection signal="toggled" from="Shape/Control/UI/MainButtons/Eat" to="Shape/Control/UI/MainButtons" method="_on_eat_toggled"]

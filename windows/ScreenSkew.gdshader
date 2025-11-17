@@ -11,14 +11,14 @@ varying mat3 trans_inv;
 varying vec2 trans_scale;
 varying vec2 trans_offset;
 
-mat3 perspective_transform(vec2[4] poly) { 
+mat3 perspective_transform(vec2[4] poly) {
 	float dx1 = poly[1].x - poly[2].x;
 	float dx2 = poly[3].x - poly[2].x;
 	float dx3 = poly[0].x - poly[1].x + poly[2].x - poly[3].x;
 	float dy1 = poly[1].y - poly[2].y;
 	float dy2 = poly[3].y - poly[2].y;
 	float dy3 = poly[0].y - poly[1].y + poly[2].y - poly[3].y;
- 
+
 	float a13 = (dx3 * dy2 - dy3 * dx2) / (dx1 * dy2 - dy1 * dx2);
 	float a23 = (dx1 * dy3 - dy1 * dx3) / (dx1 * dy2 - dy1 * dx2);
 	float a11 = poly[1].x - poly[0].x + a13 * poly[1].x;
@@ -27,13 +27,13 @@ mat3 perspective_transform(vec2[4] poly) {
 	float a12 = poly[1].y - poly[0].y + a13 * poly[1].y;
 	float a22 = poly[3].y - poly[0].y + a23 * poly[3].y;
 	float a32 = poly[0].y;
- 
+
 	mat3 transform_mat = mat3(
 		vec3(a11, a12, a13),
 		vec3(a21, a22, a23),
 		vec3(a31, a32, 1)
 	);
-	
+
 	return inverse(transform_mat);
 }
 

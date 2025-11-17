@@ -2,7 +2,6 @@ extends HoldingItem
 
 var active: bool = false
 
-
 func Clean():
 	print("CLEAN")
 	active = false
