@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=65 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://dxsgw62s81q8n" path="res://ui/bug_info.tscn" id="16_6obml"]
 [ext_resource type="PackedScene" uid="uid://c4eqmbf8bloh" path="res://ui/cleaning.tscn" id="24_gyogo"]
 [ext_resource type="PackedScene" uid="uid://bjhjvbu7suk3a" path="res://ui/feeding.tscn" id="24_xey8i"]
+[ext_resource type="Script" uid="uid://dp33urdhxu5iu" path="res://windows/bottle.gd" id="25_frhdr"]
 [ext_resource type="Script" uid="uid://fq6gp8qriii7" path="res://ui/cleaning.gd" id="27_dn25v"]
 [ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="28_xjwgn"]
 
@@ -149,9 +150,22 @@ region = Rect2(1200, 0, 300, 300)
 atlas = ExtResource("12_6obml")
 region = Rect2(1200, 0, 300, 300)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nn6h2"]
+bg_color = Color(0.810317, 0.89003, 0.883647, 0.556863)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nn6h2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frhdr"]
+bg_color = Color(0.8497, 0.87, 0.6264, 0.623529)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ytqu"]
 atlas = ExtResource("28_xjwgn")
-region = Rect2(894.828, 30.347, 462.605, 1118.54)
+region = Rect2(898.689, 31.4511, 458.744, 1117.44)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_frhdr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsfya"]
+bg_color = Color(0.450926, 0.636702, 0.673982, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1gug7"]
 atlas = ExtResource("28_xjwgn")
@@ -320,6 +334,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ReleaseBug" type="TextureButton" parent="Shape/Control/UI" index="0"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -434,7 +449,23 @@ texture_disabled = SubResource("AtlasTexture_frhdr")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Bottle" type="Sprite2D" parent="Shape/Control/UI" index="3"]
+[node name="SprayHere" type="Polygon2D" parent="Shape/Control/UI" index="3"]
+unique_name_in_owner = true
+visible = false
+clip_children = 1
+polygon = PackedVector2Array(222.818, 341.818, 253.727, 306.364, 466.455, 308.182, 484.636, 342.727, 406.455, 345.455, 354.636, 344.545, 286.455, 346.364)
+uv = PackedVector2Array(316.12, 341.827)
+
+[node name="Button" type="Button" parent="Shape/Control/UI/SprayHere" index="0"]
+offset_left = 217.0
+offset_top = 305.0
+offset_right = 488.0
+offset_bottom = 360.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_nn6h2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nn6h2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_frhdr")
+
+[node name="Bottle" type="Sprite2D" parent="Shape/Control/UI" index="4"]
 unique_name_in_owner = true
 visible = false
 position = Vector2(366, 415)
@@ -443,9 +474,23 @@ scale = Vector2(0.3, 0.3)
 texture = SubResource("AtlasTexture_3ytqu")
 offset = Vector2(100, 400)
 flip_h = true
-script = ExtResource("13_nn6h2")
+script = ExtResource("25_frhdr")
 
-[node name="Cotton" type="Sprite2D" parent="Shape/Control/UI" index="4"]
+[node name="ProgressBar" type="ProgressBar" parent="Shape/Control/UI/Bottle" index="0"]
+offset_left = 89.5062
+offset_top = 112.98
+offset_right = 124.506
+offset_bottom = 858.98
+rotation = -0.0418879
+theme_override_styles/background = SubResource("StyleBoxEmpty_frhdr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lsfya")
+max_value = 3.0
+step = 1.0
+value = 3.0
+fill_mode = 2
+show_percentage = false
+
+[node name="Cotton" type="Sprite2D" parent="Shape/Control/UI" index="5"]
 unique_name_in_owner = true
 visible = false
 position = Vector2(366, 415)
@@ -455,6 +500,7 @@ script = ExtResource("13_nn6h2")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." index="1"]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_gyogo")
 offset_left = 82.0
 offset_top = 429.0
@@ -468,7 +514,7 @@ transparent_bg = true
 handle_input_locally = false
 gui_embed_subwindows = true
 size = Vector2i(550, 330)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="ColorRect" type="ColorRect" parent="SubViewportContainer/ScreenViewport" index="0"]
 anchors_preset = 15
@@ -510,3 +556,5 @@ scale = Vector2(1.1, 1.1)
 [connection signal="toggled" from="Shape/Control/UI/MainButtons/Info" to="Shape/Control/UI/MainButtons" method="_on_info_toggled"]
 [connection signal="toggled" from="Shape/Control/UI/MainButtons/Play" to="Shape/Control/UI/MainButtons" method="_on_play_toggled"]
 [connection signal="toggled" from="Shape/Control/UI/MainButtons/Shop" to="Shape/Control/UI/MainButtons" method="_on_shop_toggled"]
+[connection signal="pressed" from="Shape/Control/UI/SprayHere/Button" to="Shape/Control/UI/Bottle" method="_on_button_pressed"]
+[connection signal="visibility_changed" from="Shape/Control/UI/Bottle" to="Shape/Control/UI/Bottle" method="_on_visibility_changed"]

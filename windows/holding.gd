@@ -1,4 +1,5 @@
 extends Sprite2D
+class_name HoldingItem
 
 func _process(delta: float) -> void:
 	if visible:

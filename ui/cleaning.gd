@@ -7,7 +7,9 @@ var currently_holding
 func _on_bottle_pressed() -> void:
 	currently_holding = %Bottle
 	%ReleaseBug.disabled = true
+	%Bottle.active = true
 	SharedActions()
+	%SprayHere.visible = true
 	pass # Replace with function body.
 	
 func _on_cotton_pressed() -> void:
