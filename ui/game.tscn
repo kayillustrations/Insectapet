@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3q7scku7fkcl"]
+
+[ext_resource type="Script" uid="uid://p85t021wdi0b" path="res://ui/game_inputs.gd" id="1_h517a"]
+
+[node name="Game" type="ColorRect"]
+custom_minimum_size = Vector2(550, 330)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 549.0
+offset_bottom = 329.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.521141, 0.521141, 0.521141, 1)
+script = ExtResource("1_h517a")

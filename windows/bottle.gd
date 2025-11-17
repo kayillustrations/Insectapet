@@ -4,10 +4,13 @@ var active: bool = false
 
 func Clean():
 	print("CLEAN")
+	%SprayHere.visible = false
 	active = false
+	await get_tree().create_timer(1).timeout
 	%MainButtons.ActivateAllButtons(true)
 	%MainButtons.clean.button_pressed = false
 	%Cleaning.currently_holding.visible = false
+	%ReleaseBug.disabled = false
 	GameManager.habitat_stats["Hydration"] = 100
 	GameSave.SaveGame()
 

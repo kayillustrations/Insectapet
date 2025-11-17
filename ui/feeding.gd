@@ -32,6 +32,7 @@ var food_dict:Dictionary = {
 var current_food_id: int
 
 func _ready():
+	%Feed.visible = false
 	ConfigFood()
 
 func ConfigFood():
@@ -50,7 +51,15 @@ func LockSlot(slot,doLock:bool):
 
 func StartFeed(food_id:int):
 	current_food_id = food_id
-	%MainButtons._on_eat_toggled(false)
-	%MainButtons.ActivateAllButtons(false)
+	Feeding(true)
 	print(food_dict[str(food_id)]["Name"])
+	await get_tree().create_timer(1).timeout
+	Feeding(false)
+	%MainButtons.eat.button_pressed = false
 	pass
+
+func Feeding(b:bool):
+	%MainButtons.ActivateAllButtons(!b)
+	%MainButtons._on_eat_toggled(!b)
+	%ReleaseBug.disabled = b
+	%Feed.visible = b

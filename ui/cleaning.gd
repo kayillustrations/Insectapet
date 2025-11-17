@@ -19,7 +19,7 @@ func _on_cotton_pressed() -> void:
 	pass # Replace with function body.
 
 func SharedActions():
-	%MainButtons._on_clean_toggled(false)
 	%MainButtons.ActivateAllButtons(false)
+	%MainButtons.clean.button_pressed = false
 	currently_holding.visible = true
 	pass
