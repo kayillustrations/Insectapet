@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0es7iy1tspwf"]
+
+[ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="1_h5q06"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrhib"]
+atlas = ExtResource("1_h5q06")
+region = Rect2(1858, 567, 204, 231)
+
+[node name="Locked" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = -4.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3182, 0.43, 0.349877, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.5002, 0.61, 0.56425, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_jrhib")
+expand_mode = 1

@@ -20,6 +20,7 @@ config/icon="res://windows/icon.svg"
 WindowManager="*res://_autoload/WindowManager.gd"
 GameManager="*res://_autoload/GameManager.gd"
 GameSave="*res://_autoload/GameSave.gd"
+Exports="*res://_autoload/exports.tscn"
 
 [display]
 

@@ -1,12 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqqjtahenh6gc"]
+[gd_scene load_steps=3 format=3 uid="uid://dqqjtahenh6gc"]
 
 [ext_resource type="Script" uid="uid://b6m6vguxabaj7" path="res://ui/feeding.gd" id="1_2v8nf"]
-[ext_resource type="PackedScene" uid="uid://bq6or58tsts18" path="res://ui/food_slot.tscn" id="2_1slnd"]
-[ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="3_1slnd"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e4u7y"]
-atlas = ExtResource("3_1slnd")
-region = Rect2(1815, 466, 235, 279)
+[ext_resource type="PackedScene" uid="uid://c0es7iy1tspwf" path="res://ui/locked.tscn" id="2_2v8nf"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -41,56 +36,9 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 4
 
-[node name="Food Slot" parent="GridContainer" instance=ExtResource("2_1slnd")]
-layout_mode = 2
-
-[node name="Food Slot2" parent="GridContainer" instance=ExtResource("2_1slnd")]
-layout_mode = 2
-
-[node name="Food Slot3" parent="GridContainer" instance=ExtResource("2_1slnd")]
-layout_mode = 2
-
-[node name="Food Slot4" parent="GridContainer" instance=ExtResource("2_1slnd")]
-layout_mode = 2
-
-[node name="Food Slot5" parent="GridContainer" instance=ExtResource("2_1slnd")]
-layout_mode = 2
-
-[node name="Food Slot6" parent="GridContainer" instance=ExtResource("2_1slnd")]
-layout_mode = 2
-
-[node name="Food Slot7" parent="GridContainer" instance=ExtResource("2_1slnd")]
-layout_mode = 2
-
-[node name="Food Slot8" parent="GridContainer" instance=ExtResource("2_1slnd")]
-layout_mode = 2
-
-[node name="Locked" type="ColorRect" parent="."]
+[node name="Locked" parent="." instance=ExtResource("2_2v8nf")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -14.0
-offset_top = -23.0
-offset_right = 14.0
-offset_bottom = 22.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.3182, 0.43, 0.349877, 1)
-
-[node name="TextureRect" type="TextureRect" parent="Locked"]
-modulate = Color(0.5002, 0.61, 0.56425, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_e4u7y")
-expand_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0

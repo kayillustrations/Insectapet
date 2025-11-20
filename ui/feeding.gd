@@ -4,28 +4,32 @@ extends Control
 @onready var slots: Array = $GridContainer.get_children()
 
 var food_dict:Dictionary = {
-	"0": 
+	0: 
 		{"Name": "Leaf",
-		"Cost" : 1},
-	"1": 
+		"Cost" : 1
+		},
+	1: 
 		{"Name": "Flower",
-		"Cost" : 2},
-	"2": 
+		"Cost" : 2
+		},
+	2: 
 		{"Name": "Veggie Slice",
-		"Cost" : 3},
-	"3": 
+		"Cost" : 3
+		},
+	3: 
 		{"Name": "Fruit Wedge",
-		"Cost" : 4},
-	"4": 
+		"Cost" : 4
+		},
+	4: 
 		{"Name": "Berries",
 		"Cost" : 0},
-	"5": 
+	5: 
 		{"Name": "Aphid",
 		"Cost" : 0},
-	"6": 
+	6: 
 		{"Name": "Dead Prey",
 		"Cost" : 0},
-	"7": 
+	7: 
 		{"Name": "Live Prey",
 		"Cost" : 0},
 	}
@@ -37,12 +41,13 @@ func _ready():
 
 func ConfigFood():
 	for i in slots.size():
-		if food_dict[str(i)]["Cost"] == 0:
+		if food_dict[i]["Cost"] == 0:
 			LockSlot(slots[i],true)
 		else: 
 			LockSlot(slots[i],false)
-			slots[i].find_child("Label").text = food_dict[str(i)]["Name"]
-			slots[i].find_child("Cost").text = str(food_dict[str(i)]["Cost"])
+			slots[i].find_child("Label").text = food_dict[i]["Name"]
+			slots[i].find_child("Cost").text = str(food_dict[i]["Cost"])
+			slots[i].find_child("TextureRect").texture =  Exports.food_textures[i]
 			slots[i].find_child("Button").connect("pressed",StartFeed.bind(i))
 
 func LockSlot(slot,doLock:bool):
@@ -52,7 +57,6 @@ func LockSlot(slot,doLock:bool):
 func StartFeed(food_id:int):
 	current_food_id = food_id
 	Feeding(true)
-	print(food_dict[str(food_id)]["Name"])
 	await get_tree().create_timer(1).timeout
 	Feeding(false)
 	%MainButtons.eat.button_pressed = false
@@ -62,4 +66,5 @@ func Feeding(b:bool):
 	%MainButtons.ActivateAllButtons(!b)
 	%MainButtons._on_eat_toggled(!b)
 	%ReleaseBug.disabled = b
+	%Feed.find_child("Food").texture = Exports.food_textures[current_food_id]
 	%Feed.visible = b

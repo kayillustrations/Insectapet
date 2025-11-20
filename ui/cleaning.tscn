@@ -9,11 +9,11 @@ bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fdtcv"]
 atlas = ExtResource("1_q6wrd")
-region = Rect2(73, 31, 449, 1122)
+region = Rect2(895, 31, 455, 1122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_palhm"]
 atlas = ExtResource("1_q6wrd")
-region = Rect2(539, 31, 362.107, 348.597)
+region = Rect2(510, 56, 359, 295)
 
 [node name="Cleaning" type="Control"]
 layout_mode = 3

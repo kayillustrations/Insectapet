@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://lu36lgbqel"]
+[gd_scene load_steps=7 format=3 uid="uid://lu36lgbqel"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_jples"]
 [ext_resource type="Script" uid="uid://berrvbqxg880d" path="res://windows/mini_habitat.gd" id="2_l2vge"]
-[ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://windows/icon.svg" id="2_sxag7"]
-[ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="3_do3m4"]
+[ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="3_do3m4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2vge"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -16,6 +15,14 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2vge"]
+atlas = ExtResource("3_do3m4")
+region = Rect2(61, 2300, 580, 533)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ingp8"]
+atlas = ExtResource("3_do3m4")
+region = Rect2(61, 1720, 580, 533)
 
 [node name="MiniHabitat" node_paths=PackedStringArray("move_button") instance=ExtResource("1_jples")]
 size = Vector2i(110, 110)
@@ -64,8 +71,8 @@ offset_bottom = 44.5
 grow_horizontal = 2
 grow_vertical = 2
 toggle_mode = true
-texture_normal = ExtResource("2_sxag7")
-texture_hover = ExtResource("3_do3m4")
+texture_normal = SubResource("AtlasTexture_l2vge")
+texture_hover = SubResource("AtlasTexture_ingp8")
 ignore_texture_size = true
 stretch_mode = 5
 

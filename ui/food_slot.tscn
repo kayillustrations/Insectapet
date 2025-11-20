@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bq6or58tsts18"]
+[gd_scene load_steps=7 format=3 uid="uid://bq6or58tsts18"]
 
 [ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://windows/icon.svg" id="1_1tgy2"]
 [ext_resource type="Theme" uid="uid://cvpq11fkdk36a" path="res://ui/style/universal_pixel_style.tres" id="2_knl6h"]
-[ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="3_l0lnd"]
+[ext_resource type="PackedScene" uid="uid://c0es7iy1tspwf" path="res://ui/locked.tscn" id="3_l0lnd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0lnd"]
 bg_color = Color(0.2244, 0.33, 0.23144, 1)
@@ -11,10 +11,6 @@ bg_color = Color(0.2244, 0.33, 0.23144, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrhib"]
 bg_color = Color(0.4275, 0.57, 0.529625, 0.392157)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jrhib"]
-atlas = ExtResource("3_l0lnd")
-region = Rect2(1815, 466, 235, 279)
 
 [node name="Food Slot" type="Panel"]
 custom_minimum_size = Vector2(100, 130)
@@ -84,33 +80,9 @@ horizontal_alignment = 2
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Locked" type="ColorRect" parent="."]
-visible = false
+[node name="Locked" parent="." instance=ExtResource("3_l0lnd")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 3.0
-offset_right = -4.0
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.3182, 0.43, 0.349877, 1)
-
-[node name="TextureRect" type="TextureRect" parent="Locked"]
-modulate = Color(0.5002, 0.61, 0.56425, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_jrhib")
-expand_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0

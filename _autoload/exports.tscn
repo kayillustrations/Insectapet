@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8kt3ewa4tirl"]
+
+[ext_resource type="Script" uid="uid://bjqpnqcklnfjg" path="res://_autoload/exports.gd" id="1_tlivv"]
+[ext_resource type="Texture2D" uid="uid://djsdlarwla0uc" path="res://art/food2.png" id="2_5pgxl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awbga"]
+atlas = ExtResource("2_5pgxl")
+region = Rect2(0, 0, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50euf"]
+atlas = ExtResource("2_5pgxl")
+region = Rect2(600, 0, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysw2g"]
+atlas = ExtResource("2_5pgxl")
+region = Rect2(1200, 0, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgidw"]
+atlas = ExtResource("2_5pgxl")
+region = Rect2(1800, 0, 600, 600)
+
+[node name="Exports" type="Node"]
+script = ExtResource("1_tlivv")
+food_textures = Array[AtlasTexture]([SubResource("AtlasTexture_awbga"), SubResource("AtlasTexture_50euf"), SubResource("AtlasTexture_ysw2g"), SubResource("AtlasTexture_rgidw")])
