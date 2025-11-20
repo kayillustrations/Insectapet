@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rnaohe7rrv7b"
-path="res://.godot/imported/stick_nymph.png-3c8beff971e23d38f8e63d58ad78e364.ctex"
+uid="uid://bup77tacyx2eb"
+path="res://.godot/imported/buttons_normal_misc.png-acc30858ebfe6dbc42ff425a39cb2105.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/stick_nymph.png"
-dest_files=["res://.godot/imported/stick_nymph.png-3c8beff971e23d38f8e63d58ad78e364.ctex"]
+source_file="res://art/buttons/buttons_normal_misc.png"
+dest_files=["res://.godot/imported/buttons_normal_misc.png-acc30858ebfe6dbc42ff425a39cb2105.ctex"]
 
 [params]
 

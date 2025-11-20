@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1gcbl6ihbflj"
-path="res://.godot/imported/lid_hover.png-21b73ab19e3e0f007d2a18ef668f446e.ctex"
+uid="uid://bpuiaif4mrt6w"
+path="res://.godot/imported/insectapet_foreground.png-374b0280a092764a56ca9afe36a8e158.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/lid_hover.png"
-dest_files=["res://.godot/imported/lid_hover.png-21b73ab19e3e0f007d2a18ef668f446e.ctex"]
+source_file="res://art/habitat/insectapet_foreground.png"
+dest_files=["res://.godot/imported/insectapet_foreground.png-374b0280a092764a56ca9afe36a8e158.ctex"]
 
 [params]
 

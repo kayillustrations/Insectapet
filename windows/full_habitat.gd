@@ -1,7 +1,7 @@
 extends WindowBase
 
-const INSECTAPET_LAMP = preload("res://art/insectapet_lamp.png")
-const INSECTAPET_LAMP_DARK = preload("res://art/insectapet_lamp_dark.png")
+const INSECTAPET_LAMP = preload("res://art/habitat/insectapet_lamp.png")
+const INSECTAPET_LAMP_DARK = preload("res://art/habitat/insectapet_lamp_dark.png")
 
 @onready var all_screens: Array = %Screens.get_children()
 @onready var bug_info: Control = %BugInfo

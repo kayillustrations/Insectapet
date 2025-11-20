@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b64lllghnybp1"
-path="res://.godot/imported/lid_normal.png-896a3df6ac451bbb65b4a7a11e1965c0.ctex"
+uid="uid://4ofpda5myddv"
+path="res://.godot/imported/insectapet_lamp_dark.png-81baf3c4e384a9d8048b1ef0e83aa74b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/lid_normal.png"
-dest_files=["res://.godot/imported/lid_normal.png-896a3df6ac451bbb65b4a7a11e1965c0.ctex"]
+source_file="res://art/habitat/insectapet_lamp_dark.png"
+dest_files=["res://.godot/imported/insectapet_lamp_dark.png-81baf3c4e384a9d8048b1ef0e83aa74b.ctex"]
 
 [params]
 

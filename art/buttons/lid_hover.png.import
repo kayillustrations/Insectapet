@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcfmw8umqhbfk"
-path="res://.godot/imported/buttons_pressed_arrows.png-0ee5bf7839ab441b1b388ff1575624d0.ctex"
+uid="uid://c1gcbl6ihbflj"
+path="res://.godot/imported/lid_hover.png-44774a78d59f69ed725f28f4af363db3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/buttons_pressed_arrows.png"
-dest_files=["res://.godot/imported/buttons_pressed_arrows.png-0ee5bf7839ab441b1b388ff1575624d0.ctex"]
+source_file="res://art/buttons/lid_hover.png"
+dest_files=["res://.godot/imported/lid_hover.png-44774a78d59f69ed725f28f4af363db3.ctex"]
 
 [params]
 

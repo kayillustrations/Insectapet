@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bq6or58tsts18"]
 
-[ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://windows/icon.svg" id="1_1tgy2"]
+[ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="1_1tgy2"]
 [ext_resource type="Theme" uid="uid://cvpq11fkdk36a" path="res://ui/style/universal_pixel_style.tres" id="2_knl6h"]
 [ext_resource type="PackedScene" uid="uid://c0es7iy1tspwf" path="res://ui/locked.tscn" id="3_l0lnd"]
 

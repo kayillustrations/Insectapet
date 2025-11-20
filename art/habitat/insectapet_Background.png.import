@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccv6ryx87ktff"
-path="res://.godot/imported/icon.svg-ec173d35278d065e3899dd93033d4158.ctex"
+uid="uid://dhjifoj8pstd0"
+path="res://.godot/imported/insectapet_Background.png-2fafcb8be2d6a6ec047b8b2f00477173.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://windows/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-ec173d35278d065e3899dd93033d4158.ctex"]
+source_file="res://art/habitat/insectapet_Background.png"
+dest_files=["res://.godot/imported/insectapet_Background.png-2fafcb8be2d6a6ec047b8b2f00477173.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

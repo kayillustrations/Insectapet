@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfpr0f7tdqnry"
-path="res://.godot/imported/buttons_pressed.png-ac42536b62b7b70828d98878976b642f.ctex"
+uid="uid://cj8yrglqyjj6x"
+path="res://.godot/imported/stick_YA.png-1522b94d4c7f3fe32bb0f1abe18c3a1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/buttons_pressed.png"
-dest_files=["res://.godot/imported/buttons_pressed.png-ac42536b62b7b70828d98878976b642f.ctex"]
+source_file="res://art/bugs/stick_YA.png"
+dest_files=["res://.godot/imported/stick_YA.png-1522b94d4c7f3fe32bb0f1abe18c3a1a.ctex"]
 
 [params]
 

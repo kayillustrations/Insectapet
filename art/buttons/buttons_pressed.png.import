@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwi7gfawen2ep"
-path="res://.godot/imported/isectapet_dark.png-5c4e6ecec6e8378722e172a93fe5d3d9.ctex"
+uid="uid://cfpr0f7tdqnry"
+path="res://.godot/imported/buttons_pressed.png-612c52d00f4259f4ef21ed0b91c604c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/isectapet_dark.png"
-dest_files=["res://.godot/imported/isectapet_dark.png-5c4e6ecec6e8378722e172a93fe5d3d9.ctex"]
+source_file="res://art/buttons/buttons_pressed.png"
+dest_files=["res://.godot/imported/buttons_pressed.png-612c52d00f4259f4ef21ed0b91c604c4.ctex"]
 
 [params]
 

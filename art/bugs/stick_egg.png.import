@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dip5wdyvhk3m3"
-path="res://.godot/imported/buttons_normal_arrow.png-fb795bb914d4eb4eb6626c9ecae70895.ctex"
+uid="uid://b2i78dg533naj"
+path="res://.godot/imported/stick_egg.png-f46e5f5fa433916b171d84d9619f5d6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/buttons_normal_arrow.png"
-dest_files=["res://.godot/imported/buttons_normal_arrow.png-fb795bb914d4eb4eb6626c9ecae70895.ctex"]
+source_file="res://art/bugs/stick_egg.png"
+dest_files=["res://.godot/imported/stick_egg.png-f46e5f5fa433916b171d84d9619f5d6b.ctex"]
 
 [params]
 
