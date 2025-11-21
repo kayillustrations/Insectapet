@@ -1,0 +1,169 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvl3aq3ig4k2t"]
+
+[ext_resource type="Texture2D" uid="uid://rnaohe7rrv7b" path="res://art/bugs/stick_nymph.png" id="1_jgouw"]
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_jgouw"]
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_imi0m"]
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DCCDIK_jgouw")
+
+[node name="Stick_Nymph" type="Node2D"]
+
+[node name="Polygons" type="Node2D" parent="."]
+
+[node name="Torso" type="Polygon2D" parent="Polygons"]
+position = Vector2(-308.966, -500)
+texture = ExtResource("1_jgouw")
+polygon = PackedVector2Array(219.133, 394.439, 210.605, 408.493, 219.087, 419.288, 372.533, 415.047, 375.232, 401.167, 366.365, 391.529, 294.177, 405.35)
+uv = PackedVector2Array(219.133, 394.439, 210.605, 408.493, 219.087, 419.288, 372.533, 415.047, 375.232, 401.167, 366.365, 391.529, 294.177, 405.35)
+polygons = [PackedInt32Array(6, 0, 5), PackedInt32Array(4, 6, 5), PackedInt32Array(4, 3, 6), PackedInt32Array(6, 3, 2), PackedInt32Array(2, 1, 6), PackedInt32Array(6, 0, 1)]
+internal_vertex_count = 1
+
+[node name="Tail" type="Polygon2D" parent="Polygons"]
+position = Vector2(-289.966, -503)
+texture = ExtResource("1_jgouw")
+polygon = PackedVector2Array(216.033, 397.993, 207.609, 421.16, 126.173, 387.111, 119.966, 364.197, 138.229, 363.772)
+uv = PackedVector2Array(216.033, 397.993, 207.609, 421.16, 126.173, 387.111, 119.966, 364.197, 138.229, 363.772)
+polygons = [PackedInt32Array(4, 0, 1, 2, 3)]
+
+[node name="Head" type="Polygon2D" parent="Polygons"]
+position = Vector2(-354.966, -506)
+texture = ExtResource("1_jgouw")
+polygon = PackedVector2Array(396.786, 383.465, 429.49, 378.368, 443.506, 407.25, 404.006, 416.169)
+uv = PackedVector2Array(396.786, 383.465, 429.49, 378.368, 443.506, 407.25, 404.006, 416.169)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="AntennaL" type="Polygon2D" parent="Polygons"]
+position = Vector2(-336.404, -485.225)
+texture = ExtResource("1_jgouw")
+polygon = PackedVector2Array(386.438, 370.536, 402.884, 373.62, 447.081, 289.851, 435.261, 285.225, 398.772, 322.742, 410.079, 329.423)
+uv = PackedVector2Array(386.438, 370.536, 402.884, 373.62, 447.081, 289.851, 435.261, 285.225, 398.772, 322.742, 410.079, 329.423)
+polygons = [PackedInt32Array(5, 3, 4), PackedInt32Array(5, 0, 4), PackedInt32Array(5, 0, 1), PackedInt32Array(5, 1, 2), PackedInt32Array(5, 2, 3)]
+internal_vertex_count = 1
+
+[node name="AntennaR" type="Polygon2D" parent="Polygons"]
+position = Vector2(-364.966, -484)
+texture = ExtResource("1_jgouw")
+polygon = PackedVector2Array(425.709, 366.575, 438.837, 371.98, 495.982, 319.855, 485.171, 311.746, 449.648, 337.616, 455.826, 342.25)
+uv = PackedVector2Array(425.709, 366.575, 438.837, 371.98, 495.982, 319.855, 485.171, 311.746, 449.648, 337.616, 455.826, 342.25)
+polygons = [PackedInt32Array(5, 3, 4), PackedInt32Array(5, 4, 0), PackedInt32Array(5, 0, 1), PackedInt32Array(5, 1, 2), PackedInt32Array(5, 2, 3)]
+internal_vertex_count = 1
+
+[node name="ThighL" type="Polygon2D" parent="Polygons"]
+position = Vector2(-299.966, -517)
+texture = ExtResource("1_jgouw")
+polygon = PackedVector2Array(218.081, 418.961, 234.993, 422.471, 232.76, 439.384, 184.894, 462.04, 168.301, 459.168, 170.215, 447.361)
+uv = PackedVector2Array(218.081, 418.961, 234.993, 422.471, 232.76, 439.384, 184.894, 462.04, 168.301, 459.168, 170.215, 447.361)
+polygons = [PackedInt32Array(0, 5, 4, 3, 2, 1)]
+
+[node name="ThighM" type="Polygon2D" parent="Polygons"]
+position = Vector2(-317.966, -516)
+texture = ExtResource("1_jgouw")
+polygon = PackedVector2Array(304.969, 416.461, 293.382, 425.44, 313.369, 462.807, 327.273, 466.283, 332.487, 452.379, 316.845, 418.488)
+uv = PackedVector2Array(304.969, 416.461, 293.382, 425.44, 313.369, 462.807, 327.273, 466.283, 332.487, 452.379, 316.845, 418.488)
+polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5)]
+
+[node name="ThighR" type="Polygon2D" parent="Polygons"]
+position = Vector2(-327.966, -516)
+texture = ExtResource("1_jgouw")
+polygon = PackedVector2Array(373.82, 413.958, 362.236, 429.789, 400.076, 449.094, 440.618, 450.639, 443.707, 437.897)
+uv = PackedVector2Array(373.82, 413.958, 362.236, 429.789, 400.076, 449.094, 440.618, 450.639, 443.707, 437.897)
+polygons = [PackedInt32Array(0, 1, 2, 3, 4)]
+
+[node name="LegL" type="Polygon2D" parent="Polygons"]
+position = Vector2(-301, -534)
+texture = ExtResource("1_jgouw")
+polygon = PackedVector2Array(171.601, 461.347, 198.171, 463.043, 190.822, 543.317, 173.863, 542.187)
+uv = PackedVector2Array(171.601, 461.347, 198.171, 463.043, 190.822, 543.317, 173.863, 542.187)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="LegM" type="Polygon2D" parent="Polygons"]
+position = Vector2(-313.966, -531)
+texture = ExtResource("1_jgouw")
+polygon = PackedVector2Array(306.662, 464.187, 330.023, 465.462, 324.501, 539.364, 307.087, 540.214)
+uv = PackedVector2Array(306.662, 464.187, 330.023, 465.462, 324.501, 539.364, 307.087, 540.214)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="LegR" type="Polygon2D" parent="Polygons"]
+position = Vector2(-336.966, -529)
+texture = ExtResource("1_jgouw")
+polygon = PackedVector2Array(433.614, 450.929, 455.713, 451.957, 427.447, 537.781, 411.002, 533.67)
+uv = PackedVector2Array(433.614, 450.929, 455.713, 451.957, 427.447, 537.781, 411.002, 533.67)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+modification_stack = SubResource("SkeletonModificationStack2D_imi0m")
+
+[node name="Torso" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(-15, -97)
+rest = Transform2D(1, 0, 0, 1, -15, -97)
+
+[node name="Head" type="Bone2D" parent="Skeleton2D/Torso"]
+position = Vector2(73, -5)
+rotation = -0.806804
+rest = Transform2D(0.69181, -0.72208, 0.72208, 0.69181, 73, -5)
+
+[node name="AntennaL" type="Bone2D" parent="Skeleton2D/Torso/Head"]
+position = Vector2(16.517, -11.67)
+rotation = -0.299946
+rest = Transform2D(0.955352, -0.295469, 0.295469, 0.955352, 16.517, -11.67)
+auto_calculate_length_and_angle = false
+length = 71.297
+bone_angle = 0.0
+
+[node name="AntennaL2" type="Bone2D" parent="Skeleton2D/Torso/Head"]
+position = Vector2(23.4049, -3.03527)
+rotation = 0.449998
+rest = Transform2D(0.900448, 0.434964, -0.434964, 0.900448, 23.4049, -3.03527)
+auto_calculate_length_and_angle = false
+length = 61.342
+bone_angle = -20.8618
+
+[node name="Tail" type="Bone2D" parent="Skeleton2D/Torso"]
+position = Vector2(-70, 1)
+rotation = -2.73344
+scale = Vector2(1, 1)
+rest = Transform2D(-0.917855, -0.396916, 0.396916, -0.917855, -70, 1)
+auto_calculate_length_and_angle = false
+length = 80.514
+bone_angle = 0.0
+
+[node name="ThighL" type="Bone2D" parent="Skeleton2D/Torso"]
+position = Vector2(-63, 8)
+rotation = 2.58597
+rest = Transform2D(-0.849574, 0.52747, -0.52747, -0.849574, -63, 8)
+
+[node name="LegL" type="Bone2D" parent="Skeleton2D/Torso/ThighL"]
+position = Vector2(48.5467, -0.462656)
+rotation = -0.997677
+rest = Transform2D(0.542256, -0.840213, 0.840213, 0.542256, 48.5467, -0.462656)
+auto_calculate_length_and_angle = false
+length = 62.081
+bone_angle = 0.0
+
+[node name="ThighM" type="Bone2D" parent="Skeleton2D/Torso"]
+position = Vector2(4, 4)
+rotation = 0.00960016
+rest = Transform2D(0.999954, 0.00960002, -0.00960002, 0.999954, 4, 4)
+
+[node name="LegM" type="Bone2D" parent="Skeleton2D/Torso/ThighM"]
+position = Vector2(15.3065, 31.8545)
+rotation = 2.56843
+rest = Transform2D(-0.840192, 0.542289, -0.542289, -0.840192, 15.3065, 31.8545)
+auto_calculate_length_and_angle = false
+length = 62.081
+bone_angle = -55.9208
+
+[node name="ThighR" type="Bone2D" parent="Skeleton2D/Torso"]
+position = Vector2(67, 6)
+rotation = 0.319185
+rest = Transform2D(0.949492, 0.313793, -0.313793, 0.949492, 67, 6)
+
+[node name="LegR" type="Bone2D" parent="Skeleton2D/Torso/ThighR"]
+position = Vector2(57.2346, 1.09554)
+rotation = 1.53586
+rest = Transform2D(0.0349338, 0.99939, -0.99939, 0.0349338, 57.2346, 1.09554)
+auto_calculate_length_and_angle = false
+length = 73.406
+bone_angle = 0.0
