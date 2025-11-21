@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=90 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cax7ubmkjqyq3" path="res://art/habitat/insectapet_lamp.png" id="3_sv7ce"]
 [ext_resource type="Texture2D" uid="uid://bpuiaif4mrt6w" path="res://art/habitat/insectapet_foreground.png" id="5_ifc8h"]
 [ext_resource type="Texture2D" uid="uid://bqadrk65i1edp" path="res://art/habitat/insectapet_Middleground.png" id="5_sv7ce"]
+[ext_resource type="PackedScene" uid="uid://bvl3aq3ig4k2t" path="res://bugs/stick_nymph.tscn" id="6_3ytqu"]
 [ext_resource type="Texture2D" uid="uid://cwi7gfawen2ep" path="res://art/habitat/isectapet_dark.png" id="6_sv7ce"]
 [ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="8_eer6e"]
 [ext_resource type="Texture2D" uid="uid://bnps7kei871tp" path="res://art/fog.png" id="8_l4sxy"]
@@ -44,6 +45,12 @@ _data = {
 }
 point_count = 8
 
+[sub_resource type="Curve2D" id="Curve2D_l4sxy"]
+_data = {
+"points": PackedVector2Array(477.009, 138.117, -477.009, -138.117, 0, 0, 307.701, 9.65878, -307.701, -9.65878, -686.667, 60)
+}
+point_count = 2
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_fombg"]
 animations = [{
 "frames": [{
@@ -57,12 +64,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="Curve2D" id="Curve2D_l4sxy"]
-_data = {
-"points": PackedVector2Array(477.009, 138.117, -477.009, -138.117, 0, 0, 307.701, 9.65878, -307.701, -9.65878, -686.667, 60)
-}
-point_count = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1gug7"]
 atlas = ExtResource("28_xjwgn")
@@ -300,13 +301,11 @@ position = Vector2(-30.7581, -9.05973)
 rotation = -2.84072
 progress = 32.0625
 
-[node name="Bug" type="AnimatedSprite2D" parent="Shape/Control/Center Anchor/MainPath/PathFollow2D" index="0"]
+[node name="Bug" type="Node2D" parent="Shape/Control/Center Anchor/MainPath/PathFollow2D" index="0"]
 unique_name_in_owner = true
-visible = false
-sprite_frames = SubResource("SpriteFrames_fombg")
-autoplay = "default"
-offset = Vector2(0, 50)
-flip_v = true
+rotation = 3.14159
+
+[node name="Stick_Nymph" parent="Shape/Control/Center Anchor/MainPath/PathFollow2D/Bug" index="0" instance=ExtResource("6_3ytqu")]
 
 [node name="BurrowPath" type="Path2D" parent="Shape/Control/Center Anchor" index="4"]
 position = Vector2(-16.6667, 813.333)
