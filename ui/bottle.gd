@@ -6,7 +6,8 @@ func Clean():
 	print("CLEAN")
 	%SprayHere.visible = false
 	active = false
-	await get_tree().create_timer(1).timeout
+	%Sparkles.emitting = true
+	await %Sparkles.finished
 	%MainButtons.ActivateAllButtons(true)
 	%MainButtons.clean.button_pressed = false
 	%Cleaning.currently_holding.visible = false

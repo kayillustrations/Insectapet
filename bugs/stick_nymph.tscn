@@ -756,13 +756,13 @@ tracks/30/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_imi0m"]
-resource_name = "new_animation"
+resource_name = "Crouch"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xqwpa"]
 _data = {
+&"Crouch": SubResource("Animation_imi0m"),
 &"RESET": SubResource("Animation_xqwpa"),
-&"idle": SubResource("Animation_jgouw"),
-&"new_animation": SubResource("Animation_imi0m")
+&"idle": SubResource("Animation_jgouw")
 }
 
 [node name="Stick_Nymph" type="Node2D"]
@@ -861,7 +861,6 @@ bones = ["Torso", PackedFloat32Array(0, 0, 0, 0), "Torso/Thorax", PackedFloat32A
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
 
 [node name="Torso" type="Bone2D" parent="Skeleton2D"]
-visible = false
 position = Vector2(-15, -97)
 rest = Transform2D(1, 0, 0, 1, -15, -97)
 

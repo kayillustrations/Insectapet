@@ -34,8 +34,8 @@ func CleanFog():
 	if min_value >= 1:
 		print("CLEAN")
 		active = false
-		$Sparkles.emitting = true
-		await $Sparkles.finished
+		%Sparkles.emitting = true
+		await %Sparkles.finished
 		%MainButtons.ActivateAllButtons(true)
 		%MainButtons.clean.button_pressed = false
 		%Cleaning.currently_holding.visible = false
@@ -47,4 +47,4 @@ func CleanFog():
 
 func EditFog(cleanliness:int):
 	cleanliness_maths = (100-cleanliness)*.01
-	#$Fog.modulate =Color(1,1,1,cleanliness_maths)
+	$Fog.modulate =Color(1,1,1,cleanliness_maths)

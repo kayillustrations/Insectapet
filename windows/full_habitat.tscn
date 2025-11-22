@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=95 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -45,6 +45,10 @@ _data = {
 "points": PackedVector2Array(313.747, 87.7916, -313.747, -87.7916, 0, 0, 247.677, 33.3737, -247.677, -33.3737, -453.333, -223.333, -161.859, 219.758, 161.859, -219.758, -656.667, -666.667, -312.126, -38.5457, 312.126, 38.5457, -370, -893.333, -112.895, -87.807, 112.895, 87.807, 26.6666, -803.333, -231.535, -25.7172, 231.535, 25.7172, 480, -616.667, 79.817, -55.604, -79.817, 55.604, 630, 26.6667, 131.717, 34.1525, -131.717, -34.1525, 0, 0)
 }
 point_count = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sutye"]
+atlas = ExtResource("28_xjwgn")
+region = Rect2(2357, 677, 124, 119)
 
 [sub_resource type="Curve2D" id="Curve2D_l4sxy"]
 _data = {
@@ -397,6 +401,7 @@ shader_parameter/plane_size = Vector2(250, 0)
 sdf_scale = 0
 size = Vector2i(800, 915)
 script = ExtResource("2_i2cyu")
+current_state = 0
 anchor_position = "Center"
 move_button = NodePath("Shape/Control/ColorRect/Panel/Move")
 move_buffer = 0.01
@@ -437,9 +442,24 @@ position = Vector2(-16.6667, 813.333)
 curve = SubResource("Curve2D_r5got")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Shape/Control/Center Anchor/MainPath" index="0"]
+unique_name_in_owner = true
 rotation = -2.86875
 
-[node name="Bug" type="Node2D" parent="Shape/Control/Center Anchor/MainPath/PathFollow2D" index="0"]
+[node name="Heart" parent="Shape/Control/Center Anchor/MainPath/PathFollow2D" index="0" instance=ExtResource("32_1gug7")]
+position = Vector2(0.34668, 226.15)
+scale = Vector2(3.0303, -3.0303)
+amount = 1
+texture = SubResource("AtlasTexture_sutye")
+lifetime = 2.0
+local_coords = true
+emission_shape = 0
+gravity = Vector2(0, 0)
+initial_velocity_min = 0.0
+initial_velocity_max = 0.0
+scale_amount_max = 0.75
+color_initial_ramp = null
+
+[node name="Bug" type="Node2D" parent="Shape/Control/Center Anchor/MainPath/PathFollow2D" index="1"]
 unique_name_in_owner = true
 rotation = 3.14159
 scale = Vector2(-1, 1)
@@ -520,15 +540,16 @@ unique_name_in_owner = true
 visible = false
 texture = ExtResource("6_sv7ce")
 
-[node name="FogControl" type="Node2D" parent="Shape/Control/Center Anchor" index="11"]
+[node name="Sparkles" parent="Shape/Control/Center Anchor" index="11" instance=ExtResource("32_1gug7")]
+unique_name_in_owner = true
+position = Vector2(-31.8181, 350)
+scale = Vector2(3.0303, 3.0303)
+
+[node name="FogControl" type="Node2D" parent="Shape/Control/Center Anchor" index="12"]
 unique_name_in_owner = true
 script = ExtResource("11_07xw5")
 
-[node name="Sparkles" parent="Shape/Control/Center Anchor/FogControl" index="0" instance=ExtResource("32_1gug7")]
-position = Vector2(-31.8182, 350)
-scale = Vector2(3.0303, 3.0303)
-
-[node name="Fog" type="Sprite2D" parent="Shape/Control/Center Anchor/FogControl" index="1"]
+[node name="Fog" type="Sprite2D" parent="Shape/Control/Center Anchor/FogControl" index="0"]
 texture = ExtResource("8_l4sxy")
 region_rect = Rect2(264, 1276, 1969, 1049)
 
@@ -885,6 +906,11 @@ layout_mode = 1
 unique_name_in_owner = true
 visible = false
 
+[node name="State Timer" type="Timer" parent="." index="2"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [connection signal="pressed" from="Shape/Control/Center Anchor/ReleaseBug" to="." method="_on_bug_pressed"]
 [connection signal="pressed" from="Shape/Control/ColorRect/x" to="." method="_on_x_pressed"]
 [connection signal="toggled" from="Shape/Control/UI/LightButton" to="." method="_on_light_toggled"]
@@ -895,3 +921,4 @@ visible = false
 [connection signal="toggled" from="Shape/Control/UI/MainButtons/Shop" to="Shape/Control/UI/MainButtons" method="_on_shop_toggled"]
 [connection signal="pressed" from="Shape/Control/UI/SprayHere/Button" to="Shape/Control/UI/Bottle" method="_on_button_pressed"]
 [connection signal="visibility_changed" from="Shape/Control/UI/Bottle" to="Shape/Control/UI/Bottle" method="_on_visibility_changed"]
+[connection signal="timeout" from="State Timer" to="." method="_on_state_timer_timeout"]
