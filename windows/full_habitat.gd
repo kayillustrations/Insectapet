@@ -3,6 +3,9 @@ extends WindowBase
 const INSECTAPET_LAMP = preload("res://art/habitat/insectapet_lamp.png")
 const INSECTAPET_LAMP_DARK = preload("res://art/habitat/insectapet_lamp_dark.png")
 
+const LEAVES_DRY = preload("res://art/leaves_dry.png")
+const LEAVES_HEALTHY = preload("res://art/leaves_healthy.png")
+
 @onready var all_screens: Array = %Screens.get_children()
 @onready var bug_info: Control = %BugInfo
 
@@ -20,6 +23,10 @@ func HabitatChecks():
 	%ReleaseBug.disabled = GameManager.isBugReleased
 	%FogControl.EditFog(GameManager.habitat_stats["Cleanliness"])
 	%FoodIn.texture = GameManager.food_given
+	if GameManager.habitat_stats["Hydration"] < 50: 
+		%Leaves.texture = LEAVES_DRY
+	else: 
+		%Leaves.texture = LEAVES_HEALTHY
 	
 func _on_x_pressed() -> void:
 	WindowManager.main_window._on_texture_button_toggled(false)

@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Utils="*res://_autoload/0.Utils.gd"
 WindowManager="*res://_autoload/WindowManager.gd"
 GameManager="*res://_autoload/GameManager.gd"
 GameSave="*res://_autoload/GameSave.gd"

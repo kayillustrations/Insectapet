@@ -46,7 +46,7 @@ func EditHabitat(stat:String, amount:int):
 		printerr(stat+" Full")
 	else:
 		GameManager.habitat_stats[stat] -= amount
-	GameManager.UpdateHabitat.emit()
+	#GameManager.UpdateHabitat.emit()
 	GameSave.SaveGame()
 	pass
 
