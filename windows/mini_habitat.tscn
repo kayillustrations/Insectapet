@@ -90,7 +90,22 @@ autostart = true
 unique_name_in_owner = true
 autostart = true
 
+[node name="Cleanliness" type="Timer" parent="Node" index="3"]
+unique_name_in_owner = true
+autostart = true
+
+[node name="Hydration" type="Timer" parent="Node" index="4"]
+unique_name_in_owner = true
+autostart = true
+
+[node name="FoodLife" type="Timer" parent="Node" index="5"]
+unique_name_in_owner = true
+autostart = true
+
 [connection signal="toggled" from="Shape/ColorRect/MarginContainer/Panel/TextureButton" to="." method="_on_texture_button_toggled"]
 [connection signal="timeout" from="Node/Happiness" to="." method="_on_happiness_timeout"]
 [connection signal="timeout" from="Node/Hunger" to="." method="_on_hunger_timeout"]
 [connection signal="timeout" from="Node/Energy" to="." method="_on_energy_timeout"]
+[connection signal="timeout" from="Node/Cleanliness" to="." method="_on_cleanliness_timeout"]
+[connection signal="timeout" from="Node/Hydration" to="." method="_on_hydration_timeout"]
+[connection signal="timeout" from="Node/FoodLife" to="." method="_on_food_life_timeout"]

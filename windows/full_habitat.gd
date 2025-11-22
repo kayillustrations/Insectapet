@@ -19,7 +19,8 @@ func HabitatChecks():
 	_on_light_toggled(GameManager.habitat_stats["isLampOn"])
 	%ReleaseBug.disabled = GameManager.isBugReleased
 	%FogControl.EditFog(GameManager.habitat_stats["Cleanliness"])
-
+	%FoodIn.texture = GameManager.food_given
+	
 func _on_x_pressed() -> void:
 	WindowManager.main_window._on_texture_button_toggled(false)
 	pass # Replace with function body.

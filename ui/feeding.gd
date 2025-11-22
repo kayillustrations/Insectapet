@@ -55,11 +55,20 @@ func LockSlot(slot,doLock:bool):
 	slot.find_child("Button").disabled = doLock
 
 func StartFeed(food_id:int):
+	if GameManager.food_given:
+		printerr("FoodAlreadyGiven")
+		return
 	current_food_id = food_id
 	Feeding(true)
-	await get_tree().create_timer(1).timeout
+	await %Feed.find_child("AnimationPlayer").animation_finished
 	Feeding(false)
 	%MainButtons.eat.button_pressed = false
+	pass
+
+func GetFed():
+	%FoodIn.texture = %Food.texture
+	%Food.texture = null
+	GameManager.food_given = %FoodIn.texture
 	pass
 
 func Feeding(b:bool):
@@ -67,4 +76,5 @@ func Feeding(b:bool):
 	%MainButtons._on_eat_toggled(!b)
 	%ReleaseBug.disabled = b
 	%Feed.find_child("Food").texture = Exports.food_textures[current_food_id]
+	%Feed.find_child("AnimationPlayer").current_animation = "feed"
 	%Feed.visible = b

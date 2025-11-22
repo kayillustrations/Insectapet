@@ -6,8 +6,9 @@ signal need_timeout(need_button)
 
 signal UpdateAll
 signal UpdateStats
+signal UpdateHabitat
 
-var default_times: Array[float]=[20,60,120]
+var default_times: Array[float]=[20,60,120,60,60,120]
 
 var snooze_time: float = 2
 var current_window_position: Vector2
@@ -16,6 +17,7 @@ var current_bug: BugInfo
 var current_stats: Dictionary
 var habitat_stats: Dictionary
 var isBugReleased = false
+var food_given: Texture2D = null
 
 func _ready() -> void:
 	current_bug = BugInfo.new()
