@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvl3aq3ig4k2t"]
+[gd_scene load_steps=8 format=3 uid="uid://bvl3aq3ig4k2t"]
 
 [ext_resource type="Texture2D" uid="uid://rnaohe7rrv7b" path="res://art/bugs/stick_nymph.png" id="1_jgouw"]
 
@@ -756,13 +756,21 @@ tracks/30/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_imi0m"]
-resource_name = "Crouch"
+resource_name = "crouch"
+
+[sub_resource type="Animation" id="Animation_5n2on"]
+resource_name = "move"
+
+[sub_resource type="Animation" id="Animation_lr640"]
+resource_name = "jump"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xqwpa"]
 _data = {
-&"Crouch": SubResource("Animation_imi0m"),
 &"RESET": SubResource("Animation_xqwpa"),
-&"idle": SubResource("Animation_jgouw")
+&"crouch": SubResource("Animation_imi0m"),
+&"idle": SubResource("Animation_jgouw"),
+&"jump": SubResource("Animation_lr640"),
+&"move": SubResource("Animation_5n2on")
 }
 
 [node name="Stick_Nymph" type="Node2D"]

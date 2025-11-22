@@ -1,50 +1,53 @@
-extends Node
+extends Node2D
 
-const BUG_START_POS
-const CAM_START_POS
+const BUG_START_POS = Vector2i(90,300)
+const CAM_START_POS = Vector2i.ZERO
 const SPEED_START = 10
 const SPEED_MAX = 25
 
 @onready var bug = $Bug
-@onready var score_label = $HUD.find_child("Score")
-@onready var highscore_label = $HUD.find_child("Highscore")
+@onready var HUD = $"../HUD"
+@onready var score_label = HUD.find_child("Score")
+@onready var highscore_label = HUD.find_child("Highscore")
+@onready var start_label = HUD.find_child("Start")
 
-var score:int
+var score:int = 0
+var highschore:int = 0
 var speed:float
 
-var screen_size: Vector2i
-var game_running = false
+var game_started:bool = false
 
 func _ready():
-    pass
+	
+	new_game()
+	pass
 
 func new_game():
-    #reset variables
-    score = 0
-
-    #reset nodes
-    bug.position = BUG_START_POS
-    bug.velocity = Vector2i.ZERO
-    $Camera2D.position = CAM_START_POS
-    $Ground.position = Vector2i.ZERO
-    
-    game_running = false
-    #HUD.find_node("Start").visible = true
+	#reset variables
+	score = 0
+	#highscore = GameManage
+	#reset nodes
+	bug.position = BUG_START_POS
+	bug.velocity = Vector2i.ZERO
+	$Camera2D.position = CAM_START_POS
+	
+	game_started = false
+	start_label.visible = true
 
 func _process(delta):
-    if !game_running:
-        #if any button pressed
-            #HUD.find_node("Start").visible = false
-        return
-    speed = SPEED_START
+	if !game_started:
+		if Input.is_anything_pressed():
+			start_label.visible = false
+		return
+	speed = SPEED_START
 
-    bug.position.x += speed
-    $Camera2D.position.x += speed
+	bug.position.x += speed
+	$Camera2D.position.x += speed
 
-    score += 1
-    update_score()
+	score += 1
+	UpdateScore()
 
-func update_score():
-    score.text = "Distance: ",str(score)
-    if score > highscore:
-        highscore_label.text = str(score)
+func UpdateScore():
+	score_label.text = "Distance: "
+	if score > highschore:
+		highscore_label.text = str(score)
