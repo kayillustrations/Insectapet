@@ -13,6 +13,7 @@ func _on_bottle_pressed() -> void:
 	pass # Replace with function body.
 	
 func _on_cotton_pressed() -> void:
+	%FogControl.EditFog(GameManager.habitat_stats["Cleanliness"])
 	currently_holding = %Cotton
 	SharedActions()
 	%FogControl.active = true

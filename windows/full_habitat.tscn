@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=94 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://cv7kx3w2ac5dp" path="res://art/buttons/buttons_hover_arrow.png" id="27_3ytqu"]
 [ext_resource type="Script" uid="uid://fq6gp8qriii7" path="res://ui/cleaning.gd" id="27_dn25v"]
 [ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="28_xjwgn"]
+[ext_resource type="PackedScene" uid="uid://bfysejrtg1gp3" path="res://ui/sparkles.tscn" id="32_1gug7"]
 [ext_resource type="PackedScene" uid="uid://dqqjtahenh6gc" path="res://ui/shop.tscn" id="32_lsfya"]
 [ext_resource type="PackedScene" uid="uid://d3q7scku7fkcl" path="res://ui/game.tscn" id="36_1gug7"]
 
@@ -521,10 +522,13 @@ texture = ExtResource("6_sv7ce")
 
 [node name="FogControl" type="Node2D" parent="Shape/Control/Center Anchor" index="11"]
 unique_name_in_owner = true
-visible = false
 script = ExtResource("11_07xw5")
 
-[node name="Fog" type="Sprite2D" parent="Shape/Control/Center Anchor/FogControl" index="0"]
+[node name="Sparkles" parent="Shape/Control/Center Anchor/FogControl" index="0" instance=ExtResource("32_1gug7")]
+position = Vector2(-31.8182, 350)
+scale = Vector2(3.0303, 3.0303)
+
+[node name="Fog" type="Sprite2D" parent="Shape/Control/Center Anchor/FogControl" index="1"]
 texture = ExtResource("8_l4sxy")
 region_rect = Rect2(264, 1276, 1969, 1049)
 

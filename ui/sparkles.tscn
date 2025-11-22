@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfysejrtg1gp3"]
+
+[ext_resource type="Texture2D" uid="uid://cuym72k4taqt6" path="res://art/placeholders/sparkles.png" id="1_tj3eg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fuaj"]
+atlas = ExtResource("1_tj3eg")
+region = Rect2(124, 19, 57, 90)
+
+[sub_resource type="Curve" id="Curve_gila2"]
+_data = [Vector2(0.0434783, 0), 0.0, 3.93309, 0, 0, Vector2(0.983696, 0), -2.69331, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_kgpv4"]
+offsets = PackedFloat32Array(0, 0.0972222, 0.916667, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_o2ula"]
+colors = PackedColorArray(1, 0.901961, 0.929412, 1, 0.964706, 0.882353, 0.768627, 0.392157)
+
+[node name="Sparkles" type="CPUParticles2D"]
+emitting = false
+amount = 10
+texture = SubResource("AtlasTexture_4fuaj")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 180.0
+gravity = Vector2(0, 50)
+initial_velocity_min = 50.0
+initial_velocity_max = 500.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_gila2")
+color_ramp = SubResource("Gradient_kgpv4")
+color_initial_ramp = SubResource("Gradient_o2ula")
