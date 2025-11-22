@@ -30,7 +30,7 @@ func CleanFog():
 	var min_value = min(dist_traveled.x,dist_traveled.y)
 	min_value *= .0002
 	min_value += 1-cleanliness_maths
-	print(cleanliness_maths-min_value)
+	print(min_value)
 	if min_value >= 1:
 		print("CLEAN")
 		active = false
@@ -43,7 +43,7 @@ func CleanFog():
 		GameSave.SaveGame()
 		return
 	var tween:Tween = create_tween()
-	tween.tween_property($Fog,"modulate",Color(1,1,1,cleanliness_maths-min_value),0)
+	tween.tween_property($Fog,"modulate",Color(1,1,1,1-min_value),0)
 
 func EditFog(cleanliness:int):
 	cleanliness_maths = (100-cleanliness)*.01
