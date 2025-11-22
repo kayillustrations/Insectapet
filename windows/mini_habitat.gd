@@ -5,6 +5,7 @@ var full_habitat_instance:WindowBase
 
 func _ready() -> void:
 	WindowManager.main_window = self
+	#GameManager.UpdateHabitat.connect(FoodLife)
 	for i in timers.size():
 		timers[i].start(GameManager.default_times[i])
 
@@ -46,9 +47,10 @@ func EditHabitat(stat:String, amount:int):
 		printerr(stat+" Full")
 	else:
 		GameManager.habitat_stats[stat] -= amount
-	#GameManager.UpdateHabitat.emit()
+	GameManager.UpdateHabitat.emit()
 	GameSave.SaveGame()
 	pass
+
 
 func _on_happiness_timeout() -> void:
 	EditStat("Happiness",1)
@@ -71,5 +73,5 @@ func _on_hydration_timeout() -> void:
 	pass # Replace with function body.
 
 func _on_food_life_timeout() -> void:
-	GameManager.food_given = null
+	EditHabitat("food_life",10)
 	pass # Replace with function body.

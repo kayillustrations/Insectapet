@@ -56,7 +56,7 @@ func LockSlot(slot,doLock:bool):
 
 func StartFeed(food_id:int):
 	if GameManager.food_given:
-		printerr("FoodAlreadyGiven")
+		Utils.Error(self,"FoodAlreadyGiven")
 		return
 	current_food_id = food_id
 	Feeding(true)
@@ -69,6 +69,8 @@ func GetFed():
 	%FoodIn.texture = %Food.texture
 	%Food.texture = null
 	GameManager.food_given = %FoodIn.texture
+	GameManager.UpdateHabitat.emit()
+	GameSave.SaveGame()
 	pass
 
 func Feeding(b:bool):

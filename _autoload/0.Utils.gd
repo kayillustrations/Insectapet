@@ -88,9 +88,9 @@ func GetChildrenType(parent:Node, type_name:String):
 			children_type.append(children[i])
 	return children_type
 
-func Error(message:String):
-	var spawn_location = SceneLoader.get_global_mouse_position()
+func Error(window, message:String):
+	var spawn_location = window.get_global_mouse_position()
 	var temp_popup = ERROR_POPUP.instantiate()
-	SceneLoader.ui_parent.add_child(temp_popup)
+	window.add_child(temp_popup)
 	temp_popup.global_position = spawn_location
 	temp_popup.label.text = message

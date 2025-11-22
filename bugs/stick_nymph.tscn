@@ -876,7 +876,6 @@ rest = Transform2D(0.691809, -0.72208, 0.72208, 0.691809, 73, -5)
 [node name="AntennaL" type="Bone2D" parent="Skeleton2D/Torso/Head"]
 position = Vector2(16.517, -11.67)
 rotation = -0.299946
-scale = Vector2(1, 1)
 rest = Transform2D(0.955352, -0.295469, 0.295469, 0.955352, 16.517, -11.67)
 auto_calculate_length_and_angle = false
 length = 71.297

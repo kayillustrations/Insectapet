@@ -14,12 +14,12 @@ func _ready() -> void:
 	%SubViewportContainer.visible = false
 	for i in all_screens.size():
 		all_screens[i].visible = false
-	
+	_on_light_toggled(GameManager.habitat_stats["isLampOn"])
+	GameManager.UpdateHabitat.connect(HabitatChecks)
 	HabitatChecks()
 	pass
 
 func HabitatChecks():
-	_on_light_toggled(GameManager.habitat_stats["isLampOn"])
 	%ReleaseBug.disabled = GameManager.isBugReleased
 	%FogControl.EditFog(GameManager.habitat_stats["Cleanliness"])
 	%FoodIn.texture = GameManager.food_given
@@ -44,6 +44,7 @@ func _on_light_toggled(toggled_on: bool) -> void:
 	else:
 		%Lamp.texture = INSECTAPET_LAMP_DARK
 		%Dark.visible = true
-	GameManager.habitat_stats["isLampOn"] = !toggled_on
+	GameManager.habitat_stats["isLampOn"] = toggled_on
 	%LightButton.button_pressed = toggled_on
+	GameSave.SaveGame()
 	pass # Replace with function body.
