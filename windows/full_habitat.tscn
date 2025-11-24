@@ -120,7 +120,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("%Feeding")
+tracks/3/path = NodePath("../../../../SubViewportContainer/ScreenViewport/CanvasLayer/Screens/Feeding")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -183,7 +183,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("%Feeding")
+tracks/3/path = NodePath("../../../../SubViewportContainer/ScreenViewport/CanvasLayer/Screens/Feeding")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -857,7 +857,6 @@ script = ExtResource("13_nn6h2")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." index="1"]
 unique_name_in_owner = true
-visible = false
 material = SubResource("ShaderMaterial_gyogo")
 offset_left = 82.0
 offset_top = 429.0
@@ -870,9 +869,12 @@ transparent_bg = true
 handle_input_locally = false
 gui_embed_subwindows = true
 size = Vector2i(550, 330)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
-[node name="Screens" type="ColorRect" parent="SubViewportContainer/ScreenViewport" index="0"]
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/ScreenViewport" index="0"]
+layer = -1
+
+[node name="Screens" type="ColorRect" parent="SubViewportContainer/ScreenViewport/CanvasLayer" index="0"]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -881,7 +883,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.3536, 0.52, 0.42848, 0.94902)
 
-[node name="Feeding" parent="SubViewportContainer/ScreenViewport/Screens" index="0" instance=ExtResource("24_xey8i")]
+[node name="Feeding" parent="SubViewportContainer/ScreenViewport/CanvasLayer/Screens" index="0" instance=ExtResource("24_xey8i")]
 unique_name_in_owner = true
 layout_mode = 1
 offset_left = 0.0
@@ -890,7 +892,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 scale = Vector2(1.1, 1.1)
 
-[node name="Cleaning" parent="SubViewportContainer/ScreenViewport/Screens" index="1" instance=ExtResource("24_gyogo")]
+[node name="Cleaning" parent="SubViewportContainer/ScreenViewport/CanvasLayer/Screens" index="1" instance=ExtResource("24_gyogo")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -899,18 +901,19 @@ scale = Vector2(1.1, 1.1)
 script = ExtResource("27_dn25v")
 textures = Array[Texture2D]([SubResource("AtlasTexture_3ytqu"), SubResource("AtlasTexture_1gug7")])
 
-[node name="BugInfo" parent="SubViewportContainer/ScreenViewport/Screens" index="2" instance=ExtResource("16_6obml")]
+[node name="BugInfo" parent="SubViewportContainer/ScreenViewport/CanvasLayer/Screens" index="2" instance=ExtResource("16_6obml")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
 scale = Vector2(1.1, 1.1)
 
-[node name="Shop" parent="SubViewportContainer/ScreenViewport/Screens" index="3" instance=ExtResource("32_lsfya")]
+[node name="Shop" parent="SubViewportContainer/ScreenViewport/CanvasLayer/Screens" index="3" instance=ExtResource("32_lsfya")]
 unique_name_in_owner = true
 layout_mode = 1
 
-[node name="Game" parent="SubViewportContainer/ScreenViewport" index="1" instance=ExtResource("36_1gug7")]
+[node name="Game" parent="SubViewportContainer/ScreenViewport/CanvasLayer" index="1" instance=ExtResource("36_1gug7")]
 unique_name_in_owner = true
+z_index = 1
 
 [node name="State Timer" type="Timer" parent="." index="2"]
 wait_time = 5.0

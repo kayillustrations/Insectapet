@@ -11,7 +11,7 @@ var last_obs
 var air_heights: Array
 
 #VARS
-const BUG_START_POS = Vector2i(90,300)
+const BUG_START_POS = Vector2i(-200,0)
 const CAM_START_POS = Vector2i.ZERO
 const SPEED_START = 10
 const SPEED_MAX = 25
@@ -21,7 +21,7 @@ var bug
 var HUD
 var score_label: Label
 var highscore_label: Label
-var start_label: Label
+var start_label: RichTextLabel
 
 var score:int = 0
 var highschore:int = 0
@@ -29,6 +29,9 @@ var speed:float
 
 var has_been_config = false
 var game_started:bool = false
+
+func _ready() -> void:
+	$ParallaxBackground.visible = false
 
 func Activated():
 	if !has_been_config:
@@ -38,6 +41,8 @@ func Activated():
 		highscore_label = HUD.find_child("Highscore")
 		start_label = HUD.find_child("Start")
 		has_been_config = true
+	visible = true
+	$ParallaxBackground.visible = true
 	new_game()
 
 func new_game():
@@ -53,9 +58,11 @@ func new_game():
 	
 	game_started = false
 	start_label.visible = true
-	Generate_Obj()
+	#Generate_Obj()
 
 func _process(delta):
+	if !visible:
+		return
 	if !game_started:
 		if Input.is_anything_pressed():
 			start_label.visible = false

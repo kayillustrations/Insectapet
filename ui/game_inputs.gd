@@ -1,13 +1,14 @@
 extends ColorRect
 
-const DINO_GAME = preload("res://games/dino_game.tscn")
-
+@onready var dino_game = $DinoGame
 var current_game
 
 func _ready() -> void:
 	for i in %GameButtons.children.size():
 		%GameButtons.children[i].connect("pressed",PressedButton.bind(%GameButtons.children[i].name))
-	visible=false
+	$HUD.visible = false
+	dino_game.visible = false
+	#snake_game.visible = false
 	pass
 
 func ActivateGame(b:bool):
@@ -15,10 +16,11 @@ func ActivateGame(b:bool):
 	visible = b
 	%MainButtons.visible = !b
 	%GameButtons.visible = b
-	if b == true:
-		var temp_game = DINO_GAME.instantiate()
-		add_child(temp_game)
-		current_game = temp_game #TODO: depending on bug category in future
+	if GameManager.current_bug.category == 0:
+		dino_game.Activated()
+	elif GameManager.current_bug.category == 1:
+		#snake
+		pass
 	#else: 
 		#current_game.queue_free()
 	pass

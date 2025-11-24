@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3q7scku7fkcl"]
+[gd_scene load_steps=3 format=3 uid="uid://d3q7scku7fkcl"]
 
 [ext_resource type="Script" uid="uid://p85t021wdi0b" path="res://ui/game_inputs.gd" id="1_h517a"]
+[ext_resource type="PackedScene" uid="uid://cje31o0utwy5y" path="res://games/dino_game.tscn" id="2_rg8gd"]
 
 [node name="Game" type="ColorRect"]
 custom_minimum_size = Vector2(550, 330)
@@ -11,25 +12,16 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-color = Color(0.521141, 0.521141, 0.521141, 1)
+color = Color(0.52, 0.52, 0.52, 0)
 script = ExtResource("1_h517a")
 
-[node name="HUD" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 12.0
-offset_right = -15.0
-offset_bottom = -9.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
-layout_mode = 1
-offset_right = 198.0
-offset_bottom = 34.0
+offset_left = 19.0
+offset_top = 17.0
+offset_right = 217.0
+offset_bottom = 51.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
@@ -44,12 +36,13 @@ theme_override_font_sizes/font_size = 30
 text = "####"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HUD"]
-layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -264.0
-offset_bottom = 34.0
+offset_left = -271.0
+offset_top = 17.0
+offset_right = -7.0
+offset_bottom = 51.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -65,7 +58,6 @@ theme_override_font_sizes/font_size = 30
 text = "####"
 
 [node name="Start" type="RichTextLabel" parent="HUD"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -81,3 +73,6 @@ theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[pulse freq=1.0 color=#ffffff40 ease=-2.0]Press Any Button[/pulse]"
 horizontal_alignment = 1
+
+[node name="DinoGame" parent="." instance=ExtResource("2_rg8gd")]
+top_level = true

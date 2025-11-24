@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cje31o0utwy5y"]
+[gd_scene load_steps=8 format=3 uid="uid://cje31o0utwy5y"]
 
 [ext_resource type="Script" uid="uid://cmrfc2wr3gbfe" path="res://games/dino_game.gd" id="1_yuern"]
 [ext_resource type="PackedScene" uid="uid://bay2nhhvjeb7h" path="res://games/dino_bug.tscn" id="2_2eidp"]
+[ext_resource type="Texture2D" uid="uid://hvglhqegi230" path="res://art/placeholders/menu_buttons.png" id="2_v78br"]
 [ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="3_v78br"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p50ye"]
@@ -18,23 +19,34 @@ size = Vector2(1126, 59)
 [node name="DinoGame" type="Node2D"]
 script = ExtResource("1_yuern")
 
-[node name="Ground2" type="StaticBody2D" parent="."]
-position = Vector2(285, 293)
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+follow_viewport_enabled = true
 
-[node name="Under" type="Sprite2D" parent="Ground2"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("2_v78br")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Under" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(0, 42)
 texture = SubResource("AtlasTexture_p50ye")
 flip_v = true
 
-[node name="Line" type="Sprite2D" parent="Ground2"]
+[node name="Line" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 scale = Vector2(1, 0.47)
 texture = SubResource("AtlasTexture_uu7im")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(0, 38.5)
 shape = SubResource("RectangleShape2D_1ya7t")
 
 [node name="Bug" parent="." instance=ExtResource("2_2eidp")]
-position = Vector2(90, 300)
+position = Vector2(-100, 7)
+slide_on_ceiling = false
 
 [node name="Camera2D" type="Camera2D" parent="."]

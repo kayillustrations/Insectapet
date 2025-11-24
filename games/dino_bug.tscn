@@ -1,30 +1,64 @@
-[gd_scene load_steps=5 format=3 uid="uid://bay2nhhvjeb7h"]
+[gd_scene load_steps=7 format=3 uid="uid://bay2nhhvjeb7h"]
 
 [ext_resource type="Script" uid="uid://bgaevh8fhtmsk" path="res://games/dino_bug.gd" id="1_78cuh"]
-[ext_resource type="PackedScene" uid="uid://bvl3aq3ig4k2t" path="res://bugs/stick_nymph.tscn" id="2_qy61d"]
+[ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="2_d11tc"]
+[ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="3_gveve"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mffq0"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d11tc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gveve")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qy61d"]
 radius = 19.0
-height = 82.0
+height = 40.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d11tc"]
 radius = 11.0
-height = 82.0
+height = 36.0
 
 [node name="Bug" type="CharacterBody2D"]
 script = ExtResource("1_78cuh")
 
 [node name="BugModel" type="Node2D" parent="."]
+position = Vector2(0, -19)
 scale = Vector2(0.3, 0.3)
 
-[node name="Stick_Nymph" parent="BugModel" instance=ExtResource("2_qy61d")]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BugModel"]
+sprite_frames = SubResource("SpriteFrames_mffq0")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="RunCollider" type="CollisionShape2D" parent="."]
-position = Vector2(-4, -18)
+position = Vector2(0, -19)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_qy61d")
 
 [node name="CrouchCollider" type="CollisionShape2D" parent="."]
-position = Vector2(-5, -10)
+position = Vector2(0, -11)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_d11tc")
