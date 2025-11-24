@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8kt3ewa4tirl"]
+[gd_scene load_steps=12 format=3 uid="uid://c8kt3ewa4tirl"]
 
 [ext_resource type="Script" uid="uid://bjqpnqcklnfjg" path="res://_autoload/exports.gd" id="1_tlivv"]
 [ext_resource type="Texture2D" uid="uid://djsdlarwla0uc" path="res://art/food2.png" id="2_5pgxl"]
+[ext_resource type="Texture2D" uid="uid://b2i78dg533naj" path="res://art/bugs/stick_egg.png" id="3_awbga"]
+[ext_resource type="Texture2D" uid="uid://bckuyabco1vmy" path="res://art/bugs/stickbug.png" id="4_50euf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_awbga"]
 atlas = ExtResource("2_5pgxl")
@@ -19,8 +21,24 @@ region = Rect2(1200, 0, 600, 600)
 atlas = ExtResource("2_5pgxl")
 region = Rect2(1800, 0, 600, 600)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pceno"]
+atlas = ExtResource("3_awbga")
+region = Rect2(262, 433, 73, 96)
+margin = Rect2(150, 200, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1wph"]
+atlas = ExtResource("4_50euf")
+region = Rect2(152, 375, 291, 194)
+margin = Rect2(100, 150, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s2jl"]
+atlas = ExtResource("4_50euf")
+region = Rect2(75, 29, 453, 285)
+margin = Rect2(100, 150, 200, 200)
+
 [node name="Exports" type="Node"]
 script = ExtResource("1_tlivv")
 food_textures = Array[AtlasTexture]([SubResource("AtlasTexture_awbga"), SubResource("AtlasTexture_50euf"), SubResource("AtlasTexture_ysw2g"), SubResource("AtlasTexture_rgidw")])
 colors_green = Array[Color]([Color(0.392, 0.56, 0.5208, 1), Color(0.4352, 0.68, 0.54944, 1), Color(0.59859, 0.81, 0.5751, 1), Color(0.727467, 0.8, 0.544, 1)])
 colors_orange = Array[Color]([Color(0.81, 0.77598, 0.5184, 1), Color(0.81, 0.70308, 0.5184, 1), Color(0.81, 0.6156, 0.5184, 1), Color(0.81, 0.57672, 0.5184, 1)])
+stickbug_textures = Array[Texture2D]([SubResource("AtlasTexture_pceno"), SubResource("AtlasTexture_w1wph"), SubResource("AtlasTexture_1s2jl")])

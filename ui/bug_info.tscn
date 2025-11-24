@@ -1,10 +1,23 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxsgw62s81q8n"]
+[gd_scene load_steps=15 format=3 uid="uid://dxsgw62s81q8n"]
 
 [ext_resource type="Script" uid="uid://d24h6d76pcw85" path="res://ui/bug_info_ui.gd" id="1_55fh1"]
 [ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="2_rdjj6"]
 [ext_resource type="Theme" uid="uid://cvpq11fkdk36a" path="res://ui/style/universal_pixel_style.tres" id="3_vx5jr"]
 [ext_resource type="Texture2D" uid="uid://d3p7oif4qbd6w" path="res://art/symbols.png" id="4_ayacq"]
 [ext_resource type="Texture2D" uid="uid://b2xkyu7reerdy" path="res://art/icons_white.png" id="5_55fh1"]
+[ext_resource type="PackedScene" uid="uid://c0es7iy1tspwf" path="res://ui/locked.tscn" id="6_rdjj6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55fh1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 0.196078)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6obml"]
 atlas = ExtResource("4_ayacq")
@@ -76,17 +89,27 @@ alignment = 1
 
 [node name="CurrentSprite" type="TextureRect" parent="VBoxContainer/Top"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("2_rdjj6")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Panel" type="Panel" parent="VBoxContainer/Top/CurrentSprite"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_55fh1")
+
 [node name="Label" type="Label" parent="VBoxContainer/Top"]
 layout_mode = 2
 size_flags_vertical = 8
-text = "XP"
+text = " XP"
 horizontal_alignment = 2
 vertical_alignment = 2
 
@@ -200,22 +223,49 @@ fill_mode = 3
 show_percentage = false
 
 [node name="Likes3" type="TextureRect" parent="VBoxContainer/Bot"]
+self_modulate = Color(0.6055, 0.7, 0.574, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_r54os")
 expand_mode = 1
-stretch_mode = 5
 
-[node name="Likes2" type="TextureRect" parent="VBoxContainer/Bot"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("AtlasTexture_r54os")
-expand_mode = 1
-stretch_mode = 5
+[node name="Locked" parent="VBoxContainer/Bot/Likes3" instance=ExtResource("6_rdjj6")]
+modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+color = Color(0.3182, 0.43, 0.349877, 0)
 
 [node name="Likes1" type="TextureRect" parent="VBoxContainer/Bot"]
+self_modulate = Color(0.6055, 0.7, 0.574, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_r54os")
 expand_mode = 1
-stretch_mode = 5
+
+[node name="Locked" parent="VBoxContainer/Bot/Likes1" instance=ExtResource("6_rdjj6")]
+modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+color = Color(0.3182, 0.43, 0.349877, 0)
+
+[node name="Likes2" type="TextureRect" parent="VBoxContainer/Bot"]
+self_modulate = Color(0.6055, 0.7, 0.574, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_r54os")
+expand_mode = 1
+
+[node name="Locked" parent="VBoxContainer/Bot/Likes2" instance=ExtResource("6_rdjj6")]
+modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+color = Color(0.3182, 0.43, 0.349877, 0)

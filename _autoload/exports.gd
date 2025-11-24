@@ -4,3 +4,5 @@ extends Node
 
 @export var colors_green: Array[Color]
 @export var colors_orange: Array[Color]
+
+@export var stickbug_textures: Array[Texture2D]

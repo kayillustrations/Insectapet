@@ -26,6 +26,8 @@ func UpdateStage():
 			else: %Stage.text = "Nymph"
 		3:
 			%Stage.text = "Adult"
+	%CurrentSprite.texture = GameManager.current_bug.icons[GameManager.current_stats["Stage"]]
+	%CurrentSprite.self_modulate = GameSave.bug_color
 
 func UpdateStats():
 	#progress bars

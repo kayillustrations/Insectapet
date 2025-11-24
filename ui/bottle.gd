@@ -13,6 +13,7 @@ func Clean():
 	%Cleaning.currently_holding.visible = false
 	%ReleaseBug.disabled = false
 	GameManager.habitat_stats["Hydration"] = 100
+	GameManager.UpdateHabitat.emit()
 	GameSave.SaveGame()
 
 func EditWater():
