@@ -36,7 +36,6 @@ var DefaultHabitatStats: Dictionary = {
 	"isBugReleased": false,
 	"Cleanliness" : 50,
 	"Hydration" : 100,
-	"food_life": 100
 }
 
 func _ready() -> void:
@@ -53,9 +52,10 @@ func SaveGame(): #may be able to add multiple loads/saves in the future
 	game_config.set_value("0","current_stats",GameManager.current_stats)
 	game_config.set_value("0","habitat_stats",GameManager.habitat_stats)
 	game_config.set_value("0","food_given",GameManager.food_given)
+	game_config.set_value("0","current_path_location",GameManager.current_path_location)
 	
 	game_config.save(SCENE_SAVE_FOLDER+"save.cfg")
-	print("Save")
+	#print(GameManager.habitat_stats)
 	pass
 
 func LoadGame():
@@ -66,6 +66,7 @@ func LoadGame():
 		GameManager.current_stats = game_config.get_value("0","current_stats")
 		GameManager.habitat_stats = game_config.get_value("0","habitat_stats")
 		GameManager.food_given = game_config.get_value("0","food_given")
+		GameManager.current_path_location = game_config.get_value("0","current_path_location")
 		pass
 	print("Load")
 	#ConfigInventory()

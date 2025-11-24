@@ -24,7 +24,7 @@ func _init() -> void:
 
 func getScreenAnchors(screen_size,toolbar_size,toolbar_offset):
 	var temp_dict:Dictionary = {
-		"TopL" : Vector2 (0,title_size),
+		"TopL" : Vector2 (0,title_size-toolbar_offset.y),
 		"TopR" : Vector2 (screen_size.x-toolbar_size.x,title_size) - toolbar_offset,
 		"MidL" : Vector2 (0,screen_size.y/2 - 100),
 		"MidR" : Vector2 (screen_size.x-toolbar_size.x,screen_size.y/2 - 100) - toolbar_offset,

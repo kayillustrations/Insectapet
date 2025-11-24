@@ -18,7 +18,6 @@ func _on_texture_button_toggled(toggled_on: bool) -> void:
 		return
 	if toggled_on:
 		full_habitat_instance = add_window(WindowManager.FULL_HABITAT_PATH)
-		full_habitat_instance.HabitatChecks()
 	else: 
 		#GameSave.
 		full_habitat_instance.queue_free()
@@ -33,6 +32,8 @@ func EditStat(stat:String,amount:int):
 	elif GameManager.current_stats[stat] - amount > 100:
 		GameManager.current_stats[stat] = 100
 		printerr(stat+" Full")
+		if stat == "Hunger": 
+			GameManager.food_given = null
 	else:
 		GameManager.current_stats[stat] -= amount
 	GameManager.UpdateStats.emit()
@@ -56,7 +57,9 @@ func _on_happiness_timeout() -> void:
 	EditStat("Happiness",1)
 
 func _on_hunger_timeout() -> void:
-	EditStat("Hunger",1)
+	if GameManager.food_given != null:
+		EditStat("Hunger",-5)
+	else: EditStat("Hunger",1)
 
 func _on_energy_timeout() -> void:
 	if GameManager.habitat_stats["isLampOn"] == true:
@@ -65,13 +68,9 @@ func _on_energy_timeout() -> void:
 	pass # Replace with function body.
 
 func _on_cleanliness_timeout() -> void:
-	EditHabitat("Cleanliness", 5)
+	EditHabitat("Cleanliness", 1)
 	pass # Replace with function body.
 
 func _on_hydration_timeout() -> void:
-	EditHabitat("Hydration", 5)
-	pass # Replace with function body.
-
-func _on_food_life_timeout() -> void:
-	EditHabitat("food_life",10)
+	EditHabitat("Hydration", 1)
 	pass # Replace with function body.

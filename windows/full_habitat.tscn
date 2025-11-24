@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=96 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dhjifoj8pstd0" path="res://art/habitat/insectapet_Background.png" id="3_fnpmy"]
 [ext_resource type="Texture2D" uid="uid://cax7ubmkjqyq3" path="res://art/habitat/insectapet_lamp.png" id="3_sv7ce"]
 [ext_resource type="Texture2D" uid="uid://bpuiaif4mrt6w" path="res://art/habitat/insectapet_foreground.png" id="5_ifc8h"]
+[ext_resource type="Texture2D" uid="uid://crplygrwnwsi" path="res://art/leaves_dry.png" id="5_ncixy"]
 [ext_resource type="Texture2D" uid="uid://bqadrk65i1edp" path="res://art/habitat/insectapet_Middleground.png" id="5_sv7ce"]
 [ext_resource type="PackedScene" uid="uid://bvl3aq3ig4k2t" path="res://bugs/stick_nymph.tscn" id="6_3ytqu"]
 [ext_resource type="Texture2D" uid="uid://cwi7gfawen2ep" path="res://art/habitat/isectapet_dark.png" id="6_sv7ce"]
@@ -42,7 +43,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_r5got"]
 _data = {
-"points": PackedVector2Array(313.747, 87.7916, -313.747, -87.7916, 0, 0, 247.677, 33.3737, -247.677, -33.3737, -453.333, -223.333, -161.859, 219.758, 161.859, -219.758, -656.667, -666.667, -312.126, -38.5457, 312.126, 38.5457, -370, -893.333, -112.895, -87.807, 112.895, 87.807, 26.6666, -803.333, -231.535, -25.7172, 231.535, 25.7172, 480, -616.667, 79.817, -55.604, -79.817, 55.604, 630, 26.6667, 131.717, 34.1525, -131.717, -34.1525, 0, 0)
+"points": PackedVector2Array(313.747, 87.7916, -313.747, -87.7916, 0, 0, 247.677, 33.3737, -247.677, -33.3737, -453.333, -223.333, -161.859, 219.758, 161.859, -219.758, -656.667, -666.667, -59.5481, -3.34565, 59.5481, 3.34565, -370, -893.333, -112.895, -87.807, 112.895, 87.807, 26.6666, -803.333, -231.535, -25.7172, 231.535, 25.7172, 480, -616.667, 140.954, -81.4216, -140.954, 81.4216, 621.212, 33.6365, 131.717, 34.1525, -131.717, -34.1525, 0, 0)
 }
 point_count = 8
 
@@ -404,7 +405,7 @@ script = ExtResource("2_i2cyu")
 current_state = 0
 anchor_position = "Center"
 move_button = NodePath("Shape/Control/ColorRect/Panel/Move")
-move_buffer = 0.01
+move_buffer = 0.15
 
 [node name="Shape" parent="." index="0"]
 polygon = PackedVector2Array(0, 321, 0, 910, 750, 910, 750, 324, 547, 53, 411.228, 0)
@@ -428,16 +429,23 @@ texture = ExtResource("3_sv7ce")
 [node name="Base" type="Sprite2D" parent="Shape/Control/Center Anchor" index="1"]
 texture = ExtResource("3_fnpmy")
 
-[node name="Leaves" type="Sprite2D" parent="Shape/Control/Center Anchor" index="2"]
+[node name="DryLeaves" type="Sprite2D" parent="Shape/Control/Center Anchor" index="2"]
 unique_name_in_owner = true
+visible = false
+texture = ExtResource("5_ncixy")
+
+[node name="Healthy Leaves" type="Sprite2D" parent="Shape/Control/Center Anchor" index="3"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 0.5, 1)
+self_modulate = Color(0.75, 1, 1, 1)
 texture = ExtResource("9_2gwyg")
 
-[node name="FoodIn" type="Sprite2D" parent="Shape/Control/Center Anchor" index="3"]
+[node name="FoodIn" type="Sprite2D" parent="Shape/Control/Center Anchor" index="4"]
 unique_name_in_owner = true
 position = Vector2(292.424, 750)
 rotation = 0.161106
 
-[node name="MainPath" type="Path2D" parent="Shape/Control/Center Anchor" index="4"]
+[node name="MainPath" type="Path2D" parent="Shape/Control/Center Anchor" index="5"]
 position = Vector2(-16.6667, 813.333)
 curve = SubResource("Curve2D_r5got")
 
@@ -466,7 +474,7 @@ scale = Vector2(-1, 1)
 
 [node name="Stick_Nymph" parent="Shape/Control/Center Anchor/MainPath/PathFollow2D/Bug" index="0" instance=ExtResource("6_3ytqu")]
 
-[node name="BurrowPath" type="Path2D" parent="Shape/Control/Center Anchor" index="5"]
+[node name="BurrowPath" type="Path2D" parent="Shape/Control/Center Anchor" index="6"]
 position = Vector2(-16.6667, 813.333)
 curve = SubResource("Curve2D_l4sxy")
 
@@ -482,10 +490,10 @@ autoplay = "default"
 offset = Vector2(0, 50)
 flip_v = true
 
-[node name="Mid" type="Sprite2D" parent="Shape/Control/Center Anchor" index="6"]
+[node name="Mid" type="Sprite2D" parent="Shape/Control/Center Anchor" index="7"]
 texture = ExtResource("5_sv7ce")
 
-[node name="ReleaseBug" type="TextureButton" parent="Shape/Control/Center Anchor" index="7"]
+[node name="ReleaseBug" type="TextureButton" parent="Shape/Control/Center Anchor" index="8"]
 unique_name_in_owner = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -506,7 +514,7 @@ texture_disabled = ExtResource("14_gyogo")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Feed" type="Node2D" parent="Shape/Control/Center Anchor" index="8"]
+[node name="Feed" type="Node2D" parent="Shape/Control/Center Anchor" index="9"]
 unique_name_in_owner = true
 rotation = 0.523598
 
@@ -532,37 +540,36 @@ libraries = {
 &"": SubResource("AnimationLibrary_ncixy")
 }
 
-[node name="Foreground" type="Sprite2D" parent="Shape/Control/Center Anchor" index="9"]
+[node name="Foreground" type="Sprite2D" parent="Shape/Control/Center Anchor" index="10"]
 texture = ExtResource("5_ifc8h")
 
-[node name="Dark" type="Sprite2D" parent="Shape/Control/Center Anchor" index="10"]
+[node name="Dark" type="Sprite2D" parent="Shape/Control/Center Anchor" index="11"]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("6_sv7ce")
 
-[node name="Sparkles" parent="Shape/Control/Center Anchor" index="11" instance=ExtResource("32_1gug7")]
+[node name="Sparkles" parent="Shape/Control/Center Anchor" index="12" instance=ExtResource("32_1gug7")]
 unique_name_in_owner = true
 position = Vector2(-31.8181, 350)
 scale = Vector2(3.0303, 3.0303)
 
-[node name="FogControl" type="Node2D" parent="Shape/Control/Center Anchor" index="12"]
+[node name="FogControl" type="Node2D" parent="Shape/Control/Center Anchor" index="13"]
 unique_name_in_owner = true
 script = ExtResource("11_07xw5")
 
 [node name="Fog" type="Sprite2D" parent="Shape/Control/Center Anchor/FogControl" index="0"]
+modulate = Color(1, 1, 1, 0)
 texture = ExtResource("8_l4sxy")
 region_rect = Rect2(264, 1276, 1969, 1049)
 
 [node name="ColorRect" type="ColorRect" parent="Shape/Control" index="1"]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
 offset_bottom = -40.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 color = Color(0.14902, 0.0392157, 0.027451, 0)
 metadata/_edit_lock_ = true
 
@@ -849,20 +856,20 @@ script = ExtResource("13_nn6h2")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." index="1"]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_gyogo")
 offset_left = 82.0
 offset_top = 429.0
 offset_right = 632.0
 offset_bottom = 759.0
 scale = Vector2(1.05, 1.05)
-metadata/_edit_lock_ = true
 
 [node name="ScreenViewport" type="SubViewport" parent="SubViewportContainer" index="0"]
 transparent_bg = true
 handle_input_locally = false
 gui_embed_subwindows = true
 size = Vector2i(550, 330)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Screens" type="ColorRect" parent="SubViewportContainer/ScreenViewport" index="0"]
 unique_name_in_owner = true

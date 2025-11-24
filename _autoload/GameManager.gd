@@ -8,7 +8,7 @@ signal UpdateAll
 signal UpdateStats
 signal UpdateHabitat
 
-var default_times: Array[float]=[20,60,120,60,60,120]
+var default_times: Array[float]=[60,40,80,30,20]
 
 var snooze_time: float = 2
 var current_window_position: Vector2
@@ -18,6 +18,7 @@ var current_stats: Dictionary
 var habitat_stats: Dictionary
 var isBugReleased = false
 var food_given: Texture2D = null
+var current_path_location: float
 
 func _ready() -> void:
 	current_bug = BugInfo.new()

@@ -1,11 +1,11 @@
 extends Node2D
 
 #PRELOADS
-var ground_obs1 = preload()
-var ground_obs2 = preload()
-var ground_obs3 = preload()
-var air_obs = preload()
-var obstacles_ground := [ground_obs1,ground_obs2,ground_obs3]
+#var ground_obs1 = preload()
+#var ground_obs2 = preload()
+#var ground_obs3 = preload()
+#var air_obs = preload()
+var obstacles_ground: Array = []
 var obstacles_generated: Array
 var last_obs
 var air_heights: Array
@@ -82,8 +82,5 @@ func Generate_Obj():
 		var obs = chosen.instantiate()
 		last_obs = obs
 		obstacles_generated.append(obs)
-
 	#air obs
-
-
 	pass

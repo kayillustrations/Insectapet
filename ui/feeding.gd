@@ -1,6 +1,5 @@
 extends Control
 
-@export var textures: Array[Texture2D]
 @onready var slots: Array = $GridContainer.get_children()
 
 var food_dict:Dictionary = {
@@ -13,11 +12,11 @@ var food_dict:Dictionary = {
 		"Cost" : 2
 		},
 	2: 
-		{"Name": "Veggie Slice",
+		{"Name": "Fruit Wedge",
 		"Cost" : 3
 		},
 	3: 
-		{"Name": "Fruit Wedge",
+		{"Name": "Veggie Slice",
 		"Cost" : 4
 		},
 	4: 

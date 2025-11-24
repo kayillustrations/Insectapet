@@ -53,6 +53,7 @@ func WindowSize():
 	anchor_dict = WindowManager.getScreenAnchors(
 		WindowManager.screen_size,shape_size,shape_offset)
 	Config()
+	print(anchor_dict)
 	color_rect.size -= shape_offset
 	if move_button != null:
 		move_button.button_down.connect(_on_move_button_down)
@@ -61,9 +62,7 @@ func WindowSize():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	get_window().mouse_passthrough_polygon = shape.polygon
-	pass
-
-func _physics_process(delta: float) -> void:
+	
 	if isFalling:
 		WindowManager.setWindowPosition(self,fall_pos)
 	if !isDragging: return
@@ -147,3 +146,4 @@ func add_window(window):
 	if window_instance.name == "FullHabitat":
 		return window_instance
 	else: WindowManager.bug = window_instance
+	WindowManager.bug = window_instance

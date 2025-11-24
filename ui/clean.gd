@@ -35,10 +35,10 @@ func CleanFog():
 		print("CLEAN")
 		active = false
 		%Sparkles.emitting = true
+		%Cleaning.currently_holding.visible = false
 		await %Sparkles.finished
 		%MainButtons.ActivateAllButtons(true)
 		%MainButtons.clean.button_pressed = false
-		%Cleaning.currently_holding.visible = false
 		GameManager.habitat_stats["Cleanliness"] = 100
 		GameSave.SaveGame()
 		return
