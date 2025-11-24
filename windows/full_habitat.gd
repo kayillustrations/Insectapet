@@ -19,13 +19,12 @@ var target_direction:int
 
 func _ready() -> void:
 	#screens set
-	current_state = 0
 	%SubViewportContainer.visible = false
 	for i in all_screens.size():
 		all_screens[i].visible = false
 	GameManager.UpdateHabitat.connect(HabitatChecks)
 	HabitatChecks()
-	%PathFollow2D.progress_ratio = GameManager.current_path_location
+	ConfigBug()
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -37,6 +36,12 @@ func _physics_process(delta: float) -> void:
 			GameManager.current_path_location = target_location
 			GameSave.SaveGame()
 		else: %PathFollow2D.progress_ratio += .01*target_direction*delta
+
+func ConfigBug():
+	current_state = 0
+	%PathFollow2D.progress_ratio = GameManager.current_path_location
+	$%Bug.get_child(0).modulate = GameSave.bug_color
+	pass
 
 func HabitatChecks():
 	if !GameManager.habitat_stats["isLampOn"]:

@@ -30,7 +30,7 @@ func CleanFog():
 	var min_value = min(dist_traveled.x,dist_traveled.y)
 	min_value *= .0002
 	min_value += 1-cleanliness_maths
-	print(min_value)
+	#print(min_value)
 	if min_value >= 1:
 		print("CLEAN")
 		active = false

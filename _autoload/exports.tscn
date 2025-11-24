@@ -22,3 +22,5 @@ region = Rect2(1800, 0, 600, 600)
 [node name="Exports" type="Node"]
 script = ExtResource("1_tlivv")
 food_textures = Array[AtlasTexture]([SubResource("AtlasTexture_awbga"), SubResource("AtlasTexture_50euf"), SubResource("AtlasTexture_ysw2g"), SubResource("AtlasTexture_rgidw")])
+colors_green = Array[Color]([Color(0.392, 0.56, 0.5208, 1), Color(0.4352, 0.68, 0.54944, 1), Color(0.59859, 0.81, 0.5751, 1), Color(0.727467, 0.8, 0.544, 1)])
+colors_orange = Array[Color]([Color(0.81, 0.77598, 0.5184, 1), Color(0.81, 0.70308, 0.5184, 1), Color(0.81, 0.6156, 0.5184, 1), Color(0.81, 0.57672, 0.5184, 1)])

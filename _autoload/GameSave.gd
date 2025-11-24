@@ -23,6 +23,8 @@ var habitat_locations: Dictionary = {
 	"Bug": Vector2i.ZERO
 }
 
+var bug_color
+
 var DefaultBugStats: Dictionary = {
 	"Energy" : 100,
 	"Hunger" : 75,
@@ -30,7 +32,7 @@ var DefaultBugStats: Dictionary = {
 	"isHealthy" : true,
 	"Stage" : 0,
 	"XP" : 0
-}
+	}
 var DefaultHabitatStats: Dictionary = {
 	"isLampOn": true,
 	"isBugReleased": false,
@@ -42,6 +44,8 @@ func _ready() -> void:
 	if !CheckSaveFolder("settings"): #if no settings, make file
 		SaveSettings()
 	if !CheckSaveFolder("save"): #if no game save(s), disable load
+		bug_color =[Exports.colors_green,Exports.colors_orange].pick_random()
+		bug_color = bug_color.pick_random()
 		SaveGame()
 	else: LoadGame()
 	LoadSettings()
@@ -52,6 +56,7 @@ func SaveGame(): #may be able to add multiple loads/saves in the future
 	game_config.set_value("0","current_stats",GameManager.current_stats)
 	game_config.set_value("0","habitat_stats",GameManager.habitat_stats)
 	game_config.set_value("0","food_given",GameManager.food_given)
+	game_config.set_value("0","bug_color",GameSave.bug_color)
 	game_config.set_value("0","current_path_location",GameManager.current_path_location)
 	
 	game_config.save(SCENE_SAVE_FOLDER+"save.cfg")
@@ -66,6 +71,7 @@ func LoadGame():
 		GameManager.current_stats = game_config.get_value("0","current_stats")
 		GameManager.habitat_stats = game_config.get_value("0","habitat_stats")
 		GameManager.food_given = game_config.get_value("0","food_given")
+		GameSave.bug_color = game_config.get_value("0","bug_color")
 		GameManager.current_path_location = game_config.get_value("0","current_path_location")
 		pass
 	print("Load")

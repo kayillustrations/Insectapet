@@ -14,11 +14,12 @@ var snooze_time: float = 2
 var current_window_position: Vector2
 
 var current_bug: BugInfo
+var bug_color: Color
 var current_stats: Dictionary
 var habitat_stats: Dictionary
 var isBugReleased = false
 var food_given: Texture2D = null
-var current_path_location: float
+var current_path_location: float = 0
 
 func _ready() -> void:
 	current_bug = BugInfo.new()

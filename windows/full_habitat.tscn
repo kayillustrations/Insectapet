@@ -432,11 +432,12 @@ texture = ExtResource("3_fnpmy")
 [node name="DryLeaves" type="Sprite2D" parent="Shape/Control/Center Anchor" index="2"]
 unique_name_in_owner = true
 visible = false
+modulate = Color(1, 0.754, 0.64, 1)
 texture = ExtResource("5_ncixy")
 
 [node name="Healthy Leaves" type="Sprite2D" parent="Shape/Control/Center Anchor" index="3"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 0.5, 1)
+modulate = Color(1, 0.741176, 0.392157, 1)
 self_modulate = Color(0.75, 1, 1, 1)
 texture = ExtResource("9_2gwyg")
 
