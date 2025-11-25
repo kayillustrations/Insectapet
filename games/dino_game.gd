@@ -11,7 +11,7 @@ var last_obs
 var air_heights: Array
 
 #VARS
-const BUG_START_POS = Vector2i(-200,0)
+const BUG_START_POS = Vector2i(150,280)
 const CAM_START_POS = Vector2i.ZERO
 const SPEED_START = 10
 const SPEED_MAX = 25
@@ -30,8 +30,6 @@ var speed:float
 var has_been_config = false
 var game_started:bool = false
 
-func _ready() -> void:
-	$ParallaxBackground.visible = false
 
 func Activated():
 	if !has_been_config:
@@ -42,7 +40,6 @@ func Activated():
 		start_label = HUD.find_child("Start")
 		has_been_config = true
 	visible = true
-	$ParallaxBackground.visible = true
 	new_game()
 
 func new_game():

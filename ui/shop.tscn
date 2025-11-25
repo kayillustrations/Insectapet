@@ -17,7 +17,6 @@ offset_bottom = 127.02
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2v8nf")
-textures = Array[Texture2D]([null, null, null, null, null, null, null, null])
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1

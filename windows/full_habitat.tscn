@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=97 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -39,7 +39,8 @@
 [ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="28_xjwgn"]
 [ext_resource type="PackedScene" uid="uid://bfysejrtg1gp3" path="res://ui/sparkles.tscn" id="32_1gug7"]
 [ext_resource type="PackedScene" uid="uid://dqqjtahenh6gc" path="res://ui/shop.tscn" id="32_lsfya"]
-[ext_resource type="PackedScene" uid="uid://d3q7scku7fkcl" path="res://ui/game.tscn" id="36_1gug7"]
+[ext_resource type="PackedScene" uid="uid://dpur22kqa7fty" path="res://games/game.tscn" id="40_ncixy"]
+[ext_resource type="PackedScene" uid="uid://cje31o0utwy5y" path="res://games/dino_game.tscn" id="41_sutye"]
 
 [sub_resource type="Curve2D" id="Curve2D_r5got"]
 _data = {
@@ -885,6 +886,7 @@ color = Color(0.3536, 0.52, 0.42848, 0.94902)
 
 [node name="Feeding" parent="SubViewportContainer/ScreenViewport/CanvasLayer/Screens" index="0" instance=ExtResource("24_xey8i")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
@@ -909,11 +911,14 @@ scale = Vector2(1.1, 1.1)
 
 [node name="Shop" parent="SubViewportContainer/ScreenViewport/CanvasLayer/Screens" index="3" instance=ExtResource("32_lsfya")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 
-[node name="Game" parent="SubViewportContainer/ScreenViewport/CanvasLayer" index="1" instance=ExtResource("36_1gug7")]
+[node name="Game" parent="SubViewportContainer/ScreenViewport/CanvasLayer/Screens" index="4" instance=ExtResource("40_ncixy")]
 unique_name_in_owner = true
-z_index = 1
+layout_mode = 1
+
+[node name="DinoGame" parent="SubViewportContainer/ScreenViewport/CanvasLayer/Screens/Game" index="1" instance=ExtResource("41_sutye")]
 
 [node name="State Timer" type="Timer" parent="." index="2"]
 wait_time = 5.0

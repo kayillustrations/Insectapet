@@ -74,3 +74,7 @@ func _on_cleanliness_timeout() -> void:
 func _on_hydration_timeout() -> void:
 	EditHabitat("Hydration", 1)
 	pass # Replace with function body.
+
+func _on_life_span_timeout() -> void:
+	
+	pass # Replace with function body.

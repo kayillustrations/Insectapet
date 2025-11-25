@@ -1,4 +1,4 @@
-extends ColorRect
+extends Control
 
 @onready var dino_game = $DinoGame
 var current_game
@@ -6,7 +6,6 @@ var current_game
 func _ready() -> void:
 	for i in %GameButtons.children.size():
 		%GameButtons.children[i].connect("pressed",PressedButton.bind(%GameButtons.children[i].name))
-	$HUD.visible = false
 	dino_game.visible = false
 	#snake_game.visible = false
 	pass
