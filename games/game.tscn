@@ -76,5 +76,5 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "[pulse freq=1.0 color=#ffffff40 ease=-2.0]Press Any Button[/pulse]"
+text = "[pulse freq=1.0 color=#ffffff40 ease=-2.0]Jump to Start[/pulse]"
 horizontal_alignment = 1

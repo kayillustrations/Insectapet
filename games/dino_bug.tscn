@@ -6,7 +6,13 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mffq0"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d11tc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gveve")
+}],
 "loop": true,
 "name": &"crouch",
 "speed": 5.0
@@ -22,24 +28,34 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d11tc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gveve")
+}],
 "loop": true,
 "name": &"jump",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d11tc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gveve")
+}],
 "loop": true,
 "name": &"move",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qy61d"]
-radius = 19.0
-height = 40.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d11tc"]
+size = Vector2(38.0001, 37.9999)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d11tc"]
-radius = 11.0
-height = 36.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gveve"]
+size = Vector2(19, 38)
 
 [node name="Bug" type="CharacterBody2D"]
 script = ExtResource("1_78cuh")
@@ -50,15 +66,25 @@ scale = Vector2(0.3, 0.3)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BugModel"]
 sprite_frames = SubResource("SpriteFrames_mffq0")
-animation = &"idle"
+animation = &"jump"
+autoplay = "idle"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BugModel/AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_mffq0")
+animation = &"jump"
+autoplay = "idle"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BugModel/AnimatedSprite2D/AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_mffq0")
+animation = &"move"
 autoplay = "idle"
 
 [node name="RunCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -19)
 rotation = -1.5708
-shape = SubResource("CapsuleShape2D_qy61d")
+shape = SubResource("RectangleShape2D_d11tc")
 
 [node name="CrouchCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -11)
+position = Vector2(-1.81e-06, -11.5)
 rotation = -1.5708
-shape = SubResource("CapsuleShape2D_d11tc")
+shape = SubResource("RectangleShape2D_gveve")

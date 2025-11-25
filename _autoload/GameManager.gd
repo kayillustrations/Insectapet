@@ -8,7 +8,7 @@ signal UpdateAll
 signal UpdateStats
 signal UpdateHabitat
 
-var default_times: Array[float]=[60,40,80,30,20]
+var default_times: Array[float]=[60,40,80,30,20,50]
 
 var snooze_time: float = 2
 var current_window_position: Vector2

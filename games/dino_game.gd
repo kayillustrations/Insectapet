@@ -11,13 +11,12 @@ var last_obs
 var air_heights: Array
 
 #VARS
-const BUG_START_POS = Vector2i(150,280)
-const CAM_START_POS = Vector2i.ZERO
 const SPEED_START = 10
 const SPEED_MAX = 25
 const SPEED_MOD = 5000
 
-var bug
+var bug: CharacterBody2D
+var bug_start_pos = Vector2i(150,280)
 var HUD
 var score_label: Label
 var highscore_label: Label
@@ -30,17 +29,23 @@ var speed:float
 var has_been_config = false
 var game_started:bool = false
 
+var up:bool = false
+var down:bool = false
+var left:bool = false
+var right:bool = false
 
-func Activated():
+func Activated(b: bool):
 	if !has_been_config:
 		bug = $Bug
 		HUD = $"../HUD"
+		bug_start_pos = bug.position
 		score_label = HUD.find_child("Score")
 		highscore_label = HUD.find_child("Highscore")
 		start_label = HUD.find_child("Start")
 		has_been_config = true
-	visible = true
+	visible = b
 	new_game()
+	
 
 func new_game():
 	#reset variables
@@ -48,34 +53,34 @@ func new_game():
 	#highscore = GameManager
 	
 	#reset nodes
-	bug.position = BUG_START_POS
 	bug.velocity = Vector2i.ZERO
+	bug.position = bug_start_pos
 	speed = SPEED_START
-	$Camera2D.position = CAM_START_POS
 	
+	$GroundParallax.autoscroll = Vector2.ZERO
 	game_started = false
 	start_label.visible = true
 	#Generate_Obj()
 
 func _process(delta):
 	if !visible:
+		$GroundParallax.autoscroll = Vector2.ZERO
 		return
 	if !game_started:
-		if Input.is_anything_pressed():
+		if up || Input.is_action_pressed("Up"):
 			start_label.visible = false
+			game_started = true
 		return
 	speed = SPEED_START + (score/SPEED_MOD)
 	if speed > SPEED_MAX:
 		speed = SPEED_MAX
 
-	bug.position.x += speed
-	$Camera2D.position.x += speed
-
+	$GroundParallax.autoscroll = Vector2(-10*speed,0)
 	score += 1
 	UpdateScore()
 
 func UpdateScore():
-	score_label.text = "Distance: "
+	score_label.text = str(score)
 	if score > highschore:
 		highscore_label.text = str(score)
 

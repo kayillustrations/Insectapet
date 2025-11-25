@@ -4,28 +4,38 @@ const GRAVITY: int = 4000
 const JUMP_SPEED: int = -1000
 @onready var animated_sprite : AnimatedSprite2D = self.find_child("AnimatedSprite2D")
 
-func _physics_process(delta):
-	if !get_parent().game_started:
-		return
-	velocity.y += GRAVITY * delta
-	if is_on_floor():
-		$RunCollider.disabled = false
-		if Input.is_action_just_pressed("Up"):
-			Up()
-		elif Input.is_action_just_pressed("Down"):
-			Down()
-		else:
-			animated_sprite.animation = "move"
+@onready var parent = get_parent()
 
+var isJumping:bool = false
+
+func _physics_process(delta):
+	velocity.y += GRAVITY * delta
+	$RunCollider.disabled = false
+	if !parent.game_started:
+		return
+	if parent.up || Input.is_action_pressed("Up"):
+		Up()
+	elif parent.down || Input.is_action_pressed("Down"):
+		Down()
+	else:
+		animated_sprite.animation = "move"
+		$"../Label".text = "Move"
+	
 	move_and_slide()
 
 func Up():
-	velocity.y = JUMP_SPEED
-	#play jump sound
-	animated_sprite.animation = "jump"
+	if is_on_floor():
+		parent.up = false
+		velocity.y = JUMP_SPEED
+		#play jump sound
+		animated_sprite.animation = "jump"
+		$"../Label".text = "Jump"
+	else: 
+		animated_sprite.animation = "move"
 
 func Down():
+	velocity.y += 50
 	animated_sprite.animation = "crouch"
+	$"../Label".text = "Crouch"
 	$RunCollider.disabled = true
-	$CrouchCollider.disabled = false
 	pass
