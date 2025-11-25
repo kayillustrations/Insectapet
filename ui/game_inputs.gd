@@ -40,7 +40,6 @@ func PressedButton(button_name:String,b:bool):
 			pass
 		"Down":
 			current_game.down = b
-			current_game.bug.Down()
 			pass
 		"Pause":
 			dino_game.Activated(false)

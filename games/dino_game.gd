@@ -36,7 +36,7 @@ var delete_spawned:Marker2D
 
 var score:int = 0
 var difficulty:int
-var highschore:int = 0
+var highscore:int = 0
 var speed:float
 
 var has_been_config = false
@@ -59,6 +59,7 @@ func Activated(b: bool):
 		ground_spawn = $Stick
 		delete_spawned = $Delete
 		has_been_config = true
+		highscore = GameSave.highscores["Dino"]
 	visible = b
 	new_game()
 	
@@ -67,12 +68,13 @@ func new_game():
 	#reset variables
 	score = 0
 	difficulty = 0
-	#highscore = GameManager
 	
 	#reset nodes
 	bug.velocity = Vector2i.ZERO
 	bug.position = bug_start_pos
 	speed = SPEED_START
+	for i in obstacles_generated.size():
+		obstacles_generated[i].queue_free()
 	obstacles_generated.clear()
 	
 	game_started = false
@@ -110,12 +112,14 @@ func _process(delta):
 	if bug.position.x-50 <= delete_spawned.position.x:
 		game_started = false
 		print("gameover")
+		GameSave.highscores["Dino"] = highscore
+		GameSave.SaveGame()
 	
 	UpdateScore()
 
 func UpdateScore():
 	score_label.text = str(score)
-	if score > highschore:
+	if score > highscore:
 		highscore_label.text = str(score)
 
 func Generate_Obj():

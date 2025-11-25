@@ -25,6 +25,10 @@ var habitat_locations: Dictionary = {
 
 var bug_color
 
+var highscores: Dictionary = {
+	"Dino" : 0,
+	"Snake" : 0
+}
 var DefaultBugStats: Dictionary = {
 	"Energy" : 100,
 	"Hunger" : 75,
@@ -57,6 +61,7 @@ func SaveGame(): #may be able to add multiple loads/saves in the future
 	game_config.set_value("0","habitat_stats",GameManager.habitat_stats)
 	game_config.set_value("0","food_given",GameManager.food_given)
 	game_config.set_value("0","bug_color",GameSave.bug_color)
+	game_config.set_value("0","highscores",GameSave.highscores)
 	game_config.set_value("0","current_path_location",GameManager.current_path_location)
 	
 	game_config.save(SCENE_SAVE_FOLDER+"save.cfg")
@@ -72,6 +77,7 @@ func LoadGame():
 		GameManager.habitat_stats = game_config.get_value("0","habitat_stats")
 		GameManager.food_given = game_config.get_value("0","food_given")
 		GameSave.bug_color = game_config.get_value("0","bug_color")
+		GameSave.highscores = game_config.get_value("0","highscores")
 		GameManager.current_path_location = game_config.get_value("0","current_path_location")
 		pass
 	print("Load")
