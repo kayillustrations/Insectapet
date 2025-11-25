@@ -11,6 +11,8 @@ func _ready() -> void:
 	#snake_game.visible = false
 	if GameManager.current_bug.category == 0:
 		current_game = dino_game
+		%GameButtons.find_child("Left").disabled = true
+		%GameButtons.find_child("Right").disabled = true
 	elif GameManager.current_bug.category == 1:
 		pass
 		#snake
@@ -22,6 +24,7 @@ func ActivateGame(b:bool):
 	%MainButtons.visible = !b
 	%GameButtons.visible = b
 	current_game.Activated(b)
+	current_game.new_game()
 
 func PressedButton(button_name:String,b:bool):
 	print(button_name)

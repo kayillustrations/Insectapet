@@ -36,20 +36,21 @@ text = "Score:"
 [node name="Score" type="Label" parent="HUD/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "####"
+text = "0"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HUD"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -270.0
+offset_left = -285.0
 offset_top = 15.0
-offset_right = -6.0
+offset_right = -21.0
 offset_bottom = 57.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
+alignment = 2
 
 [node name="Label" type="Label" parent="HUD/HBoxContainer2"]
 layout_mode = 2
@@ -59,7 +60,7 @@ text = "Highscore:"
 [node name="Highscore" type="Label" parent="HUD/HBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "####"
+text = "0"
 
 [node name="Start" type="RichTextLabel" parent="HUD"]
 layout_mode = 1

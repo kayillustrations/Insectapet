@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxpo612wsdr0y"]
+
+[ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="1_4o2ir"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgv8y"]
+atlas = ExtResource("1_4o2ir")
+region = Rect2(1607, 1966, 149, 296)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_mos8s"]
+points = PackedVector2Array(-3, -166, 79, -9, 80, 32, 4, 155, -69, 35, -83, -42)
+
+[node name="Leaf2" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 115)
+texture = SubResource("AtlasTexture_vgv8y")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 115)
+shape = SubResource("ConvexPolygonShape2D_mos8s")

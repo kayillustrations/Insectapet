@@ -919,6 +919,7 @@ unique_name_in_owner = true
 layout_mode = 1
 
 [node name="DinoGame" parent="SubViewportContainer/ScreenViewport/CanvasLayer/Screens/Game" index="1" instance=ExtResource("41_sutye")]
+show_behind_parent = true
 
 [node name="State Timer" type="Timer" parent="." index="2"]
 wait_time = 5.0
