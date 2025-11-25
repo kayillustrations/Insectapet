@@ -33,9 +33,6 @@ func PressedButton(button_name:String,b:bool):
 			current_game.right = b
 			pass
 		"Up":
-			if !current_game.game_started:
-				current_game.start_label.visible = false
-				current_game.game_started = true
 			current_game.up = b
 			pass
 		"Down":

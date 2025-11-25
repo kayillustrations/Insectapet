@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const GRAVITY: int = 4000
-const JUMP_SPEED: int = -1000
+const JUMP_SPEED: int = -1100
 @onready var animated_sprite : AnimatedSprite2D = self.find_child("AnimatedSprite2D")
 
 @onready var parent = get_parent()

@@ -21,7 +21,6 @@ script = ExtResource("1_yuern")
 [node name="GroundParallax" type="Parallax2D" parent="."]
 scroll_offset = Vector2(0, 325)
 repeat_size = Vector2(1124, 0)
-autoscroll = Vector2(-10, 0)
 repeat_times = 3
 
 [node name="Under" type="Sprite2D" parent="GroundParallax"]
@@ -42,9 +41,8 @@ position = Vector2(-280.5, 47)
 shape = SubResource("RectangleShape2D_yuern")
 
 [node name="Bug" parent="." instance=ExtResource("2_2eidp")]
-position = Vector2(135, 290)
-
-[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(76, 290)
+scale = Vector2(2, 2)
 
 [node name="Label" type="Label" parent="."]
 offset_right = 79.0

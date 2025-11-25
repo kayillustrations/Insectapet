@@ -57,25 +57,27 @@ func new_game():
 	bug.position = bug_start_pos
 	speed = SPEED_START
 	
-	$GroundParallax.autoscroll = Vector2.ZERO
 	game_started = false
 	start_label.visible = true
 	#Generate_Obj()
 
 func _process(delta):
 	if !visible:
-		$GroundParallax.autoscroll = Vector2.ZERO
 		return
 	if !game_started:
+		$GroundParallax.autoscroll = Vector2.ZERO
 		if up || Input.is_action_pressed("Up"):
 			start_label.visible = false
 			game_started = true
+
 		return
+	
 	speed = SPEED_START + (score/SPEED_MOD)
 	if speed > SPEED_MAX:
 		speed = SPEED_MAX
 
-	$GroundParallax.autoscroll = Vector2(-10*speed,0)
+	$GroundParallax.autoscroll.x = speed * -20
+	
 	score += 1
 	UpdateScore()
 
