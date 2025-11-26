@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=102 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -34,7 +34,6 @@
 [ext_resource type="Texture2D" uid="uid://dip5wdyvhk3m3" path="res://art/buttons/buttons_normal_arrow.png" id="25_qoooe"]
 [ext_resource type="Texture2D" uid="uid://bcfmw8umqhbfk" path="res://art/buttons/buttons_pressed_arrows.png" id="26_65vjh"]
 [ext_resource type="Texture2D" uid="uid://cv7kx3w2ac5dp" path="res://art/buttons/buttons_hover_arrow.png" id="27_3ytqu"]
-[ext_resource type="Script" uid="uid://fq6gp8qriii7" path="res://ui/cleaning.gd" id="27_dn25v"]
 [ext_resource type="PackedScene" uid="uid://tda8t8wa0gt3" path="res://ui/warning.tscn" id="28_a5fvd"]
 [ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="28_xjwgn"]
 [ext_resource type="Texture2D" uid="uid://d3p7oif4qbd6w" path="res://art/symbols.png" id="29_65bei"]
@@ -755,14 +754,17 @@ stretch_mode = 5
 visible = false
 clip_children = 2
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -20.8328
-offset_top = -213.757
-offset_right = 19.1672
-offset_bottom = -173.757
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -273.0
+offset_right = 18.0
+offset_bottom = -219.0
 grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sutye")
 
@@ -780,9 +782,12 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Oh?" type="Button" parent="Shape/Control/UI/MainButtons/Info/Evolve" index="1"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_iihxg")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yyvkg")
 
@@ -1000,7 +1005,6 @@ visible = false
 layout_mode = 1
 offset_right = 0.0
 scale = Vector2(1.1, 1.1)
-script = ExtResource("27_dn25v")
 textures = Array[Texture2D]([SubResource("AtlasTexture_3ytqu"), SubResource("AtlasTexture_1gug7")])
 
 [node name="BugInfo" parent="SubViewportContainer/ScreenViewport/Screens" index="2" instance=ExtResource("16_6obml")]

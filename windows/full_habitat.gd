@@ -45,8 +45,15 @@ func ConfigBug():
 	%Bug.add_child(GameManager.current_bug.stages[GameManager.current_stats["Stage"]].instantiate())
 	bug_animator = %Bug.get_child(0).find_child("AnimationPlayer")
 	ChangeState(0)
-	$%Bug.get_child(0).modulate = GameSave.bug_color
+	%Bug.get_child(0).modulate = GameSave.bug_color
 	$"State Timer".start(5)
+	if GameManager.current_stats["Stage"] < 3:
+		%Cleaning.find_child("Jar").disabled = true
+	else:
+		%Cleaning.find_child("Jar").disabled = false
+	if GameManager.current_stats["XP"] == 100 && GameManager.current_stats["Stage"] < 3:
+		StatWarning("XP",true)
+	Exports.LifeSpanTimer()
 	GameSave.SaveGame()
 	pass
 
@@ -165,9 +172,8 @@ func _on_oh_pressed() -> void:
 	GameSave.SaveGame()
 	%MainButtons/Info/Evolve.visible = false
 	GameManager.current_stats["Stage"] += 1
-	if GameManager.current_stats["Stage"] > 1:
-		Exports.find_child("LifeSpan").stop()
-	else: GameManager.current_stats["XP"] = 0
+	if GameManager.current_stats["Stage"] < 3:
+		GameManager.current_stats["XP"] = 0
 	print(GameManager.current_stats["Stage"])
 	%Bug.get_child(0).queue_free()
 	ConfigBug()

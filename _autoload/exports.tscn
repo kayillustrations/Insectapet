@@ -88,7 +88,6 @@ ignore_time_scale = true
 
 [node name="LifeSpan" type="Timer" parent="."]
 one_shot = true
-autostart = true
 ignore_time_scale = true
 
 [connection signal="timeout" from="Happiness" to="." method="_on_happiness_timeout"]

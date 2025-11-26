@@ -19,8 +19,12 @@ extends Node
 @onready var timers: Array = get_children()
 
 func _ready() -> void:
-	for i in timers.size():
+	for i in timers.size()-1:
 		timers[i].start(GameManager.default_times[i])
+
+func LifeSpanTimer():
+	if GameManager.current_stats["Stage"] == 3: return
+	$LifeSpan.start(GameManager.life_times[GameManager.current_stats["Stage"]])
 
 func _on_happiness_timeout() -> void:
 	GameManager.EditStat("Happiness",1)
@@ -45,6 +49,6 @@ func _on_hydration_timeout() -> void:
 	pass # Replace with function body.
 
 func _on_life_span_timeout() -> void:
+	if GameManager.current_stats["Stage"] == 3: return
 	GameManager.EditStat("XP",-5)
-	$LifeSpan.start(GameManager.life_times[GameManager.current_stats["Stage"]])
 	pass # Replace with function body.

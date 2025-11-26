@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4eqmbf8bloh"]
+[gd_scene load_steps=9 format=3 uid="uid://c4eqmbf8bloh"]
 
+[ext_resource type="Script" uid="uid://fq6gp8qriii7" path="res://ui/cleaning.gd" id="1_2iw7m"]
 [ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="1_q6wrd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6wrd"]
@@ -15,6 +16,14 @@ region = Rect2(895, 31, 455, 1122)
 atlas = ExtResource("1_q6wrd")
 region = Rect2(510, 56, 359, 295)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6wrd"]
+atlas = ExtResource("1_q6wrd")
+region = Rect2(1686, 1026, 510, 776)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2iw7m"]
+atlas = ExtResource("1_q6wrd")
+region = Rect2(917, 1300, 539, 287)
+
 [node name="Cleaning" type="Control"]
 layout_mode = 3
 anchors_preset = 8
@@ -25,6 +34,7 @@ anchor_bottom = 0.5
 offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2iw7m")
 
 [node name="Top" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -38,6 +48,7 @@ alignment = 1
 
 [node name="Bottle" type="Button" parent="Top"]
 self_modulate = Color(1, 1, 1, 0.392157)
+clip_children = 1
 custom_minimum_size = Vector2(125, 275)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_q6wrd")
@@ -63,6 +74,7 @@ stretch_mode = 5
 
 [node name="Cotton" type="Button" parent="Top"]
 self_modulate = Color(1, 1, 1, 0.392157)
+clip_children = 1
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_q6wrd")
@@ -87,5 +99,55 @@ texture = SubResource("AtlasTexture_palhm")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Jar" type="Button" parent="Top"]
+self_modulate = Color(1, 1, 1, 0.392157)
+clip_children = 1
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_q6wrd")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2iw7m")
+disabled = true
+
+[node name="TextureRect2" type="TextureRect" parent="Top/Jar"]
+show_behind_parent = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -125.0
+offset_right = 50.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_q6wrd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="Top/Jar"]
+show_behind_parent = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -185.0
+offset_right = 50.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_2iw7m")
+expand_mode = 1
+stretch_mode = 5
+
 [connection signal="pressed" from="Top/Bottle" to="." method="_on_bottle_pressed"]
 [connection signal="pressed" from="Top/Cotton" to="." method="_on_cotton_pressed"]
+[connection signal="pressed" from="Top/Jar" to="." method="_on_jar_pressed"]

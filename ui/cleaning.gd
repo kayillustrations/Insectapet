@@ -24,3 +24,8 @@ func SharedActions():
 	%MainButtons.clean.button_pressed = false
 	currently_holding.visible = true
 	pass
+
+
+func _on_jar_pressed() -> void:
+	print("Release")
+	pass # Replace with function body.

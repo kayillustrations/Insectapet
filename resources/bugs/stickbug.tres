@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BugInfo" load_steps=10 format=3 uid="uid://wrrgqib7e3s"]
+[gd_resource type="Resource" script_class="BugInfo" load_steps=12 format=3 uid="uid://wrrgqib7e3s"]
 
 [ext_resource type="Texture2D" uid="uid://b2i78dg533naj" path="res://art/bugs/stick_egg.png" id="1_7p7rv"]
 [ext_resource type="Texture2D" uid="uid://bckuyabco1vmy" path="res://art/bugs/stickbug.png" id="2_tlstg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://nq7ngtqp0kix" path="res://bugs/stick_egg.tscn" id="4_kgy08"]
 [ext_resource type="PackedScene" uid="uid://bvl3aq3ig4k2t" path="res://bugs/stick_nymph.tscn" id="5_7lurl"]
 [ext_resource type="PackedScene" uid="uid://csoq2gvurohh3" path="res://bugs/stick_YA.tscn" id="6_7lurl"]
+[ext_resource type="PackedScene" uid="uid://ber8n0korq1jn" path="res://bugs/stick_Adult.tscn" id="7_57pbe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pceno"]
 atlas = ExtResource("1_7p7rv")
@@ -17,16 +18,21 @@ atlas = ExtResource("2_tlstg")
 region = Rect2(152, 375, 291, 194)
 margin = Rect2(100, 150, 200, 200)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_57pbe"]
+atlas = ExtResource("2_tlstg")
+region = Rect2(152, 375, 291, 194)
+margin = Rect2(50, 50, 100, 100)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1s2jl"]
 atlas = ExtResource("2_tlstg")
 region = Rect2(75, 29, 453, 285)
-margin = Rect2(100, 150, 200, 200)
+margin = Rect2(50, 50, 100, 100)
 
 [resource]
 script = ExtResource("3_kgy08")
 name = "Stick Bug"
 scientific = "Phasmatodea"
 category = 0
-icons = Array[Texture2D]([SubResource("AtlasTexture_pceno"), SubResource("AtlasTexture_w1wph"), SubResource("AtlasTexture_1s2jl")])
-stages = Array[PackedScene]([ExtResource("4_kgy08"), ExtResource("5_7lurl"), ExtResource("6_7lurl")])
+icons = Array[Texture2D]([SubResource("AtlasTexture_pceno"), SubResource("AtlasTexture_w1wph"), SubResource("AtlasTexture_57pbe"), SubResource("AtlasTexture_1s2jl")])
+stages = Array[PackedScene]([ExtResource("4_kgy08"), ExtResource("5_7lurl"), ExtResource("6_7lurl"), ExtResource("7_57pbe")])
 metadata/_custom_type_script = "uid://c3o6pbwowutks"

@@ -10,7 +10,7 @@ signal BugEmote(emote:Texture)
 signal StatWarning(stat:String, activate:bool)
 
 var default_times: Array[float]=[60,40,80,30,20,50]
-var life_times: Array[float] = [10,60,30] #seconds * 20
+var life_times: Array[float] = [10,60,60] #seconds * 20 (3.3 min, 20 min, 20 min)
 
 var snooze_time: float = 2
 var current_window_position: Vector2
@@ -51,7 +51,7 @@ func EditStat(stat:String,amount:int):
 	else:
 		current_stats[stat] -= amount
 	
-	if stat == "XP" && current_stats[stat] == 100:
+	if stat == "XP" && current_stats[stat] == 100 && GameManager.current_stats["Stage"] < 3:
 			#Emote(Exports.emote_dictionary["Oh?"])
 			StatWarning.emit("XP",true)
 	elif current_stats[stat] < 25:
