@@ -50,7 +50,7 @@ func HabitatChecks():
 	if !GameManager.habitat_stats["isLampOn"]:
 		_on_light_toggled(true)
 	%FogControl.EditFog(GameManager.habitat_stats["Cleanliness"])
-	%FoodIn.texture = GameManager.food_given
+	%Feeding.UpdateFood()
 	var temp_hydration = GameManager.habitat_stats["Hydration"]-50
 	if temp_hydration < 25: 
 		%"Healthy Leaves".self_modulate.r = 1 - temp_hydration/100
@@ -63,6 +63,7 @@ func HabitatChecks():
 		%"Healthy Leaves".self_modulate = LEAF_SELFMODULATE
 		%"Healthy Leaves".visible = true
 		%"DryLeaves".visible = false
+	
 
 func ChangeState(new_state):
 	if current_state == 2: #uncrouch

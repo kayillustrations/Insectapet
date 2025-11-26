@@ -1,6 +1,10 @@
 extends Control
 
 @onready var slots: Array = $GridContainer.get_children()
+var eaten_textures: Array = [
+	
+]
+var food_time = 60
 
 var food_dict:Dictionary = {
 	0: 
@@ -65,7 +69,9 @@ func StartFeed(food_id:int):
 	pass
 
 func GetFed():
-	%FoodIn.texture = %Food.texture
+	#%FoodIn.texture = eaten_textures[0]
+	$FoodLife.start()
+	%FoodIn.get_child(0).texture = %Food.texture
 	%Food.texture = null
 	GameManager.food_given = %FoodIn.texture
 	GameManager.UpdateHabitat.emit()
@@ -79,3 +85,17 @@ func Feeding(b:bool):
 	%Feed.find_child("Food").texture = Exports.food_textures[current_food_id]
 	%Feed.find_child("AnimationPlayer").current_animation = "feed"
 	%Feed.visible = b
+
+func UpdateFood():
+	if GameManager.food_given == null:
+		return
+	$FoodLife.start(food_time)
+	%FoodIn.get_child(0).texture = %Food.texture
+	#%FoodIn.texture = eaten_textures[0]
+
+func _on_food_life_timeout() -> void:
+	GameManager.food_life -= 10
+	if GameManager.food_life <= 0:
+		GameManager.food_given = null
+	GameManager.UpdateHabitat.emit()
+	pass # Replace with function body.

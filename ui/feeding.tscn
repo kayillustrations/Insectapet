@@ -58,3 +58,9 @@ layout_mode = 2
 
 [node name="Food Slot8" parent="GridContainer" instance=ExtResource("1_xcusg")]
 layout_mode = 2
+
+[node name="FoodLife" type="Timer" parent="."]
+one_shot = true
+ignore_time_scale = true
+
+[connection signal="timeout" from="FoodLife" to="." method="_on_food_life_timeout"]

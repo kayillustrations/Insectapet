@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=98 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://bcfmw8umqhbfk" path="res://art/buttons/buttons_pressed_arrows.png" id="26_65vjh"]
 [ext_resource type="Texture2D" uid="uid://cv7kx3w2ac5dp" path="res://art/buttons/buttons_hover_arrow.png" id="27_3ytqu"]
 [ext_resource type="Script" uid="uid://fq6gp8qriii7" path="res://ui/cleaning.gd" id="27_dn25v"]
+[ext_resource type="PackedScene" uid="uid://tda8t8wa0gt3" path="res://ui/warning.tscn" id="28_a5fvd"]
 [ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="28_xjwgn"]
 [ext_resource type="PackedScene" uid="uid://bfysejrtg1gp3" path="res://ui/sparkles.tscn" id="32_1gug7"]
 [ext_resource type="PackedScene" uid="uid://dqqjtahenh6gc" path="res://ui/shop.tscn" id="32_lsfya"]
@@ -447,6 +448,8 @@ unique_name_in_owner = true
 position = Vector2(292.424, 750)
 rotation = 0.161106
 
+[node name="Food" type="Sprite2D" parent="Shape/Control/Center Anchor/FoodIn" index="0"]
+
 [node name="MainPath" type="Path2D" parent="Shape/Control/Center Anchor" index="5"]
 position = Vector2(-16.6667, 813.333)
 curve = SubResource("Curve2D_r5got")
@@ -648,6 +651,15 @@ texture_disabled = SubResource("AtlasTexture_0m6yi")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="Warning" parent="Shape/Control/UI/LightButton" index="0" instance=ExtResource("28_a5fvd")]
+layout_mode = 1
+offset_left = 13.1754
+offset_top = -6.07633
+offset_right = 53.1754
+offset_bottom = 33.9237
+rotation = -3.97761
+scale = Vector2(0.5, 0.5)
+
 [node name="MainButtons" type="HBoxContainer" parent="Shape/Control/UI" index="1"]
 unique_name_in_owner = true
 layout_mode = 1
@@ -678,7 +690,12 @@ texture_disabled = SubResource("AtlasTexture_l4sxy")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Eat" type="TextureButton" parent="Shape/Control/UI/MainButtons" index="1"]
+[node name="Warning" parent="Shape/Control/UI/MainButtons/Clean" index="0" instance=ExtResource("28_a5fvd")]
+layout_mode = 1
+offset_top = -10.0
+offset_bottom = 30.0
+
+[node name="Hunger" type="TextureButton" parent="Shape/Control/UI/MainButtons" index="1"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -689,6 +706,11 @@ texture_hover = SubResource("AtlasTexture_3oa1e")
 texture_disabled = SubResource("AtlasTexture_m80mg")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="Warning" parent="Shape/Control/UI/MainButtons/Hunger" index="0" instance=ExtResource("28_a5fvd")]
+layout_mode = 1
+offset_top = -10.0
+offset_bottom = 30.0
 
 [node name="Info" type="TextureButton" parent="Shape/Control/UI/MainButtons" index="2"]
 custom_minimum_size = Vector2(75, 75)
@@ -702,7 +724,7 @@ texture_disabled = SubResource("AtlasTexture_gyogo")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Play" type="TextureButton" parent="Shape/Control/UI/MainButtons" index="3"]
+[node name="Happiness" type="TextureButton" parent="Shape/Control/UI/MainButtons" index="3"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -713,6 +735,11 @@ texture_hover = SubResource("AtlasTexture_xjwgn")
 texture_disabled = SubResource("AtlasTexture_dn25v")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="Warning" parent="Shape/Control/UI/MainButtons/Happiness" index="0" instance=ExtResource("28_a5fvd")]
+layout_mode = 1
+offset_top = -10.0
+offset_bottom = 30.0
 
 [node name="Shop" type="TextureButton" parent="Shape/Control/UI/MainButtons" index="4"]
 custom_minimum_size = Vector2(75, 75)
@@ -858,6 +885,7 @@ script = ExtResource("13_nn6h2")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." index="1"]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_gyogo")
 offset_left = 82.0
 offset_top = 429.0
@@ -870,7 +898,7 @@ transparent_bg = true
 handle_input_locally = false
 gui_embed_subwindows = true
 size = Vector2i(550, 330)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/ScreenViewport" index="0"]
 layer = -1
@@ -940,9 +968,9 @@ autostart = true
 [connection signal="pressed" from="Shape/Control/ColorRect/x" to="." method="_on_x_pressed"]
 [connection signal="toggled" from="Shape/Control/UI/LightButton" to="." method="_on_light_toggled"]
 [connection signal="toggled" from="Shape/Control/UI/MainButtons/Clean" to="Shape/Control/UI/MainButtons" method="_on_clean_toggled"]
-[connection signal="toggled" from="Shape/Control/UI/MainButtons/Eat" to="Shape/Control/UI/MainButtons" method="_on_eat_toggled"]
+[connection signal="toggled" from="Shape/Control/UI/MainButtons/Hunger" to="Shape/Control/UI/MainButtons" method="_on_eat_toggled"]
 [connection signal="toggled" from="Shape/Control/UI/MainButtons/Info" to="Shape/Control/UI/MainButtons" method="_on_info_toggled"]
-[connection signal="toggled" from="Shape/Control/UI/MainButtons/Play" to="Shape/Control/UI/MainButtons" method="_on_play_toggled"]
+[connection signal="toggled" from="Shape/Control/UI/MainButtons/Happiness" to="Shape/Control/UI/MainButtons" method="_on_play_toggled"]
 [connection signal="toggled" from="Shape/Control/UI/MainButtons/Shop" to="Shape/Control/UI/MainButtons" method="_on_shop_toggled"]
 [connection signal="pressed" from="Shape/Control/UI/SprayHere/Button" to="Shape/Control/UI/Bottle" method="_on_button_pressed"]
 [connection signal="visibility_changed" from="Shape/Control/UI/Bottle" to="Shape/Control/UI/Bottle" method="_on_visibility_changed"]

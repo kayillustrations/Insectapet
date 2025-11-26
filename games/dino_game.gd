@@ -13,7 +13,7 @@ var obstacles_air: Array = [
 	preload("res://games/leaf_3.tscn"),
 	preload("res://games/web.tscn"),
 ]
-var obstacle_spider = preload("res://games/spider.tscn")
+var obstacle_spider = [preload("res://games/spider.tscn")]
 var obstacles_generated: Array
 var last_obs
 var air_heights: Array
@@ -104,7 +104,7 @@ func _process(delta):
 	
 	speed = SPEED_START + difficulty
 
-	$GroundParallax.autoscroll.x = speed * -20
+	$GroundParallax.autoscroll.x = speed * -25
 	Generate_Obj()
 	score += 1
 	
@@ -136,11 +136,14 @@ func Generate_Obj():
 			last_obs.rotation = -randf_range(0,.5)
 			last_obs.scale.x = randf_range(.5,.75)
 			last_obs.scale.y = last_obs.scale.x
+		elif last_obs == obstacle_spider[0]:
+			air_spawn.add_child(last_obs)
+			last_obs.modulate = Color.DARK_SLATE_GRAY
 		else:
 			air_spawn.add_child(last_obs)
 			last_obs.rotation = randf_range(0,.5)
-			last_obs.scale.x = randf_range(.5,.6)
-			last_obs.scale.y = randf_range(.5,.6)
+			last_obs.scale.x = randf_range(.5,.75)
+			last_obs.scale.y = randf_range(.5,.75)
 			last_obs.modulate = Exports.colors_green.pick_random()
 		
 		obstacles_generated.append(last_obs)
@@ -158,8 +161,5 @@ func ChooseObs():
 		chosen = type.pick_random()
 	else: 
 		type = [obstacles_ground,obstacles_air,obstacle_spider].pick_random()
-		if type == obstacle_spider:
-			chosen = obstacle_spider
-		else:
-			chosen = type.pick_random()
+		chosen = type.pick_random()
 	return [chosen,type]

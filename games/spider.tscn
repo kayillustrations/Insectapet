@@ -12,9 +12,11 @@ points = PackedVector2Array(14, 88, 102, 254, 106, 349, 39, 439, -52, 447, -120,
 [node name="Spider" type="StaticBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 256)
+position = Vector2(-2, 110.25)
+scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_aurny")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 106)
+position = Vector2(0, 0.25)
+scale = Vector2(0.75, 0.75)
 shape = SubResource("ConvexPolygonShape2D_lwkdf")

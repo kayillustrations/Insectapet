@@ -52,7 +52,7 @@ animations = [{
 size = Vector2(38.0001, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gveve"]
-size = Vector2(24, 38)
+size = Vector2(19, 42)
 
 [node name="Bug" type="CharacterBody2D"]
 script = ExtResource("1_78cuh")
@@ -75,7 +75,7 @@ rotation = -1.5708
 shape = SubResource("RectangleShape2D_d11tc")
 
 [node name="CrouchCollider" type="CollisionShape2D" parent="."]
-position = Vector2(-7.23998e-06, -12)
+position = Vector2(-1.19209e-07, -9.5)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_gveve")
 

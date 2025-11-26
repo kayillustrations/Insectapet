@@ -12,10 +12,10 @@ points = PackedVector2Array(-11, -149, 54, -64, 75, 103, 14, 134, -52, 88, -75, 
 [node name="Leaf3" type="StaticBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 71)
+position = Vector2(7.5, 112)
 texture = SubResource("AtlasTexture_s00vq")
 flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 71)
+position = Vector2(7.5, 112)
 shape = SubResource("ConvexPolygonShape2D_bnbun")

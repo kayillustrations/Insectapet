@@ -1,12 +1,12 @@
 extends Node
 
-const TESTBUG = preload("res://resources/bugs/testbug.tres")
-#enum NeedType {WATER,UP,POTTY,BREAK}
+const TESTBUG = preload("res://resources/bugs/stickbug.tres")
 signal need_timeout(need_button)
 
 signal UpdateAll
 signal UpdateStats
 signal UpdateHabitat
+signal BugEmote(emote:Texture)
 
 var default_times: Array[float]=[60,40,80,30,20,50]
 
@@ -17,9 +17,14 @@ var current_bug: BugInfo
 var bug_color: Color
 var current_stats: Dictionary
 var habitat_stats: Dictionary
-var isBugReleased = false
-var food_given: Texture2D = null
 var current_path_location: float = 0
+var isBugReleased = false
+
+var food_given: Texture2D = null
+var food_life: float
+
+var stat_warning: String = ""
+var habitat_warning: String = ""
 
 func _ready() -> void:
 	current_bug = BugInfo.new()
@@ -42,10 +47,11 @@ func EditStat(stat:String,amount:int):
 	elif current_stats[stat] - amount > 100:
 		current_stats[stat] = 100
 		printerr(stat+" Full")
-		if stat == "Hunger": 
-			food_given = null
 	else:
 		current_stats[stat] -= amount
+	if current_stats[stat] < 25 || stat != "XP":
+		stat_warning = stat
+	else: stat_warning = ""
 	UpdateStats.emit()
 	GameSave.SaveGame()
 
@@ -58,6 +64,12 @@ func EditHabitat(stat:String, amount:int):
 		printerr(stat+" Full")
 	else:
 		habitat_stats[stat] -= amount
+	if current_stats[stat] < 25:
+		habitat_warning = stat
+	else: habitat_warning = ""
 	UpdateHabitat.emit()
 	GameSave.SaveGame()
+	pass
+
+func Emote(stat:String):
 	pass

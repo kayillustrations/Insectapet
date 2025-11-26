@@ -10,11 +10,14 @@ region = Rect2(2254, 1989, 274, 506)
 points = PackedVector2Array(132, -116, 148, -83, 122, 422, -78, 185, -156, 166, 79, -106)
 
 [node name="Web" type="StaticBody2D"]
+position = Vector2(0, -16)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-110, 204)
+position = Vector2(9.75, 179.75)
+scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_bnbun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-110, 54)
+position = Vector2(11.75, 61.75)
+scale = Vector2(0.75, 0.75)
 shape = SubResource("ConvexPolygonShape2D_aurny")

@@ -33,9 +33,8 @@ var DefaultBugStats: Dictionary = {
 	"Energy" : 100,
 	"Hunger" : 75,
 	"Happiness" : 50,
-	"isHealthy" : true,
-	"Stage" : 0,
-	"XP" : 0
+	"XP" : 0,
+	"Stage" : 0
 	}
 var DefaultHabitatStats: Dictionary = {
 	"isLampOn": true,
@@ -57,12 +56,13 @@ func _ready() -> void:
 func SaveGame(): #may be able to add multiple loads/saves in the future
 	##SAVE: game_config.set_value("category",variable", variable)
 	game_config.set_value("0","habitat_locations",habitat_locations)
+	game_config.set_value("0","current_path_location",GameManager.current_path_location)
 	game_config.set_value("0","current_stats",GameManager.current_stats)
 	game_config.set_value("0","habitat_stats",GameManager.habitat_stats)
 	game_config.set_value("0","food_given",GameManager.food_given)
+	game_config.set_value("0","food_life",GameManager.food_life)
 	game_config.set_value("0","bug_color",GameSave.bug_color)
 	game_config.set_value("0","highscores",GameSave.highscores)
-	game_config.set_value("0","current_path_location",GameManager.current_path_location)
 	
 	game_config.save(SCENE_SAVE_FOLDER+"save.cfg")
 	#print(GameManager.habitat_stats)
@@ -73,12 +73,13 @@ func LoadGame():
 	if err == OK:
 		##LOAD: variable = config.get_value("category","variable")
 		habitat_locations = game_config.get_value("0","habitat_locations")
+		GameManager.current_path_location = game_config.get_value("0","current_path_location")
 		GameManager.current_stats = game_config.get_value("0","current_stats")
 		GameManager.habitat_stats = game_config.get_value("0","habitat_stats")
 		GameManager.food_given = game_config.get_value("0","food_given")
+		GameManager.food_life = game_config.get_value("0","food_life")
 		GameSave.bug_color = game_config.get_value("0","bug_color")
 		GameSave.highscores = game_config.get_value("0","highscores")
-		GameManager.current_path_location = game_config.get_value("0","current_path_location")
 		pass
 	print("Load")
 	#ConfigInventory()

@@ -1,28 +1,28 @@
 [gd_resource type="Resource" script_class="BugInfo" load_steps=7 format=3 uid="uid://wrrgqib7e3s"]
 
-[ext_resource type="Texture2D" uid="uid://b2i78dg533naj" path="res://art/bugs/stick_egg.png" id="1_8nqpl"]
-[ext_resource type="Script" uid="uid://c3o6pbwowutks" path="res://resources/bugs/buginfo_resource.gd" id="2_8nqpl"]
-[ext_resource type="Texture2D" uid="uid://bckuyabco1vmy" path="res://art/bugs/stickbug.png" id="2_cgrjd"]
+[ext_resource type="Texture2D" uid="uid://b2i78dg533naj" path="res://art/bugs/stick_egg.png" id="1_7p7rv"]
+[ext_resource type="Texture2D" uid="uid://bckuyabco1vmy" path="res://art/bugs/stickbug.png" id="2_tlstg"]
+[ext_resource type="Script" uid="uid://c3o6pbwowutks" path="res://resources/bugs/buginfo_resource.gd" id="3_kgy08"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pceno"]
-atlas = ExtResource("1_8nqpl")
+atlas = ExtResource("1_7p7rv")
 region = Rect2(262, 433, 73, 96)
 margin = Rect2(150, 200, 300, 300)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w1wph"]
-atlas = ExtResource("2_cgrjd")
+atlas = ExtResource("2_tlstg")
 region = Rect2(152, 375, 291, 194)
 margin = Rect2(100, 150, 200, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1s2jl"]
-atlas = ExtResource("2_cgrjd")
+atlas = ExtResource("2_tlstg")
 region = Rect2(75, 29, 453, 285)
 margin = Rect2(100, 150, 200, 200)
 
 [resource]
-script = ExtResource("2_8nqpl")
-name = "Test"
-scientific = "TestTest"
+script = ExtResource("3_kgy08")
+name = "Stick Bug"
+scientific = "Phasmatodea"
 category = 0
 icons = Array[Texture2D]([SubResource("AtlasTexture_pceno"), SubResource("AtlasTexture_w1wph"), SubResource("AtlasTexture_1s2jl")])
 metadata/_custom_type_script = "uid://c3o6pbwowutks"

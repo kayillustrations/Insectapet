@@ -1,9 +1,9 @@
 extends HabitatButtons
 
 @onready var clean: TextureButton = $Clean
-@onready var eat: TextureButton = $Eat
+@onready var eat: TextureButton = $Hunger
 @onready var info: TextureButton = $Info
-@onready var play: TextureButton = $Play
+@onready var play: TextureButton = $Happiness
 @onready var shop: TextureButton = $Shop
 
 func _on_clean_toggled(toggled_on: bool) -> void:
