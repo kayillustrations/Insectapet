@@ -12,7 +12,7 @@ const LEAF_SELFMODULATE = Color (.75,1,1,1)
 @export_enum("IDLE","MOVING","CROUCHING","JUMPING") var current_state:int = 0
 @onready var current_spot:float = %PathFollow2D.progress_ratio
 
-@onready var bug_animator: AnimationPlayer = %Bug.get_child(0).find_child("AnimationPlayer")
+var bug_animator: AnimationPlayer
 var isMoving = false
 var target_location:float
 var target_direction:int
@@ -32,9 +32,6 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	if GameManager.current_stats["Stage"] == 0:
-		%PathFollow2D.progress_ratio = 0
-		return
 	if isMoving:
 		if target_location == snappedf(%PathFollow2D.progress_ratio,.01):
 			bug_animator.play("idle")
@@ -45,9 +42,11 @@ func _physics_process(delta: float) -> void:
 		else: %PathFollow2D.progress_ratio += .01*target_direction*delta
 
 func ConfigBug():
-	bug_animator.play("idle")
-	%PathFollow2D.progress_ratio = GameManager.current_path_location
+	%Bug.add_child(GameManager.current_bug.stages[GameManager.current_stats["Stage"]].instantiate())
+	bug_animator = %Bug.get_child(0).find_child("AnimationPlayer")
+	ChangeState(0)
 	$%Bug.get_child(0).modulate = GameSave.bug_color
+	$"State Timer".start(5)
 	GameSave.SaveGame()
 	pass
 
@@ -79,12 +78,18 @@ func StatWarning(stat:String,activate:bool):
 	pass
 
 func ChangeState(new_state):
+	if GameManager.current_stats["Stage"] == 0:
+		%PathFollow2D.progress_ratio = 0
+		$"State Timer".stop()
+		bug_animator.current_animation = "idle"
+		return
 	if current_state == 2: #uncrouch
 		bug_animator.play("crouch",-1,-1,true)
 		await bug_animator.animation_finished
 
 	match new_state:
 		0:#idle
+			GameManager.current_path_location = %PathFollow2D.progress_ratio
 			print("idle")
 			bug_animator.play("idle")
 			$"State Timer".start(5)
@@ -156,11 +161,14 @@ func PlayButtonAudio(pressed:bool):
 	else:$ButtonUnClick.play()
 
 func _on_oh_pressed() -> void:
-	print("Evolve")
 	#evolve bug animation
+	GameSave.SaveGame()
+	%MainButtons/Info/Evolve.visible = false
 	GameManager.current_stats["Stage"] += 1
 	if GameManager.current_stats["Stage"] > 1:
 		Exports.find_child("LifeSpan").stop()
 	else: GameManager.current_stats["XP"] = 0
+	print(GameManager.current_stats["Stage"])
+	%Bug.get_child(0).queue_free()
 	ConfigBug()
 	pass # Replace with function body.

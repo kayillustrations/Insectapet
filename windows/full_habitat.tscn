@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=103 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bpuiaif4mrt6w" path="res://art/habitat/insectapet_foreground.png" id="5_ifc8h"]
 [ext_resource type="Texture2D" uid="uid://crplygrwnwsi" path="res://art/leaves_dry.png" id="5_ncixy"]
 [ext_resource type="Texture2D" uid="uid://bqadrk65i1edp" path="res://art/habitat/insectapet_Middleground.png" id="5_sv7ce"]
-[ext_resource type="PackedScene" uid="uid://bvl3aq3ig4k2t" path="res://bugs/stick_nymph.tscn" id="6_3ytqu"]
 [ext_resource type="Texture2D" uid="uid://cwi7gfawen2ep" path="res://art/habitat/isectapet_dark.png" id="6_sv7ce"]
 [ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="8_eer6e"]
 [ext_resource type="Texture2D" uid="uid://bnps7kei871tp" path="res://art/fog.png" id="8_l4sxy"]
@@ -504,8 +503,6 @@ unique_name_in_owner = true
 rotation = 3.14159
 scale = Vector2(-1, 1)
 
-[node name="Stick_Nymph" parent="Shape/Control/Center Anchor/MainPath/PathFollow2D/Bug" index="0" instance=ExtResource("6_3ytqu")]
-
 [node name="BurrowPath" type="Path2D" parent="Shape/Control/Center Anchor" index="6"]
 position = Vector2(-16.6667, 813.333)
 curve = SubResource("Curve2D_l4sxy")
@@ -755,6 +752,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Evolve" type="Panel" parent="Shape/Control/UI/MainButtons/Info" index="0"]
+visible = false
 clip_children = 2
 layout_mode = 1
 anchors_preset = 5

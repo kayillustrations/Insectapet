@@ -41,7 +41,6 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sutye")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,11 +53,13 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Evolve" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/hover = SubResource("StyleBoxFlat_iihxg")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yyvkg")
+disabled = true
 
 [node name="TextureRect2" type="TextureRect" parent="Evolve"]
 layout_mode = 1

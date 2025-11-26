@@ -46,4 +46,5 @@ func _on_hydration_timeout() -> void:
 
 func _on_life_span_timeout() -> void:
 	GameManager.EditStat("XP",-5)
+	$LifeSpan.start(GameManager.life_times[GameManager.current_stats["Stage"]])
 	pass # Replace with function body.

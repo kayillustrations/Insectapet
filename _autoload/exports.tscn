@@ -67,32 +67,27 @@ colors_orange = Array[Color]([Color(0.81, 0.77598, 0.5184, 1), Color(0.81, 0.703
 stickbug_textures = Array[Texture2D]([SubResource("AtlasTexture_pceno"), SubResource("AtlasTexture_w1wph"), SubResource("AtlasTexture_1s2jl")])
 
 [node name="Happiness" type="Timer" parent="."]
-unique_name_in_owner = true
 autostart = true
 ignore_time_scale = true
 
 [node name="Hunger" type="Timer" parent="."]
-unique_name_in_owner = true
 autostart = true
 ignore_time_scale = true
 
 [node name="Energy" type="Timer" parent="."]
-unique_name_in_owner = true
 autostart = true
 ignore_time_scale = true
 
 [node name="Cleanliness" type="Timer" parent="."]
-unique_name_in_owner = true
 autostart = true
 ignore_time_scale = true
 
 [node name="Hydration" type="Timer" parent="."]
-unique_name_in_owner = true
 autostart = true
 ignore_time_scale = true
 
 [node name="LifeSpan" type="Timer" parent="."]
-unique_name_in_owner = true
+one_shot = true
 autostart = true
 ignore_time_scale = true
 

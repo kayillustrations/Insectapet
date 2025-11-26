@@ -10,7 +10,7 @@ signal BugEmote(emote:Texture)
 signal StatWarning(stat:String, activate:bool)
 
 var default_times: Array[float]=[60,40,80,30,20,50]
-var life_times: Array[float] = [60,600,300]
+var life_times: Array[float] = [10,60,30] #seconds * 20
 
 var snooze_time: float = 2
 var current_window_position: Vector2
