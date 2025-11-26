@@ -48,6 +48,7 @@ scale = Vector2(2, 2)
 slide_on_ceiling = false
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_right = 79.0
 offset_bottom = 34.0
 text = "Test"

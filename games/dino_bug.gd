@@ -6,7 +6,6 @@ const JUMP_SPEED: int = -800
 
 @onready var parent = get_parent()
 
-var isJumping:bool = false
 var isCrouching:bool = false
 
 func _physics_process(delta):
@@ -20,23 +19,25 @@ func _physics_process(delta):
 	elif parent.down || Input.is_action_pressed("Down"):
 		Down()
 	else:
-		animated_sprite.animation = "move"
-		$"../Label".text = "Move"
+		if is_on_floor() && animated_sprite.animation != "move":
+			animated_sprite.play("move")
+			$"../Label".text = "Move"
 	
-	if !is_on_floor():
+	if !is_on_floor() && animated_sprite.animation != "jump":
 		$"../Label".text = "Jump"
-		animated_sprite.animation = "jump"
+		animated_sprite.play("jump")
+
 	move_and_slide()
 
 func Up():
 	if is_on_floor():
 		parent.up = false
 		velocity.y = JUMP_SPEED
-		#play jump sound
+		$Jump.play()
 
 func Down():
 	velocity.y += 50
-	animated_sprite.animation = "crouch"
+	animated_sprite.play("crouch")
 	$"../Label".text = "Crouch"
 	$RunCollider.disabled = true
 	pass

@@ -23,8 +23,11 @@ func _ready() -> void:
 	for i in all_screens.size():
 		all_screens[i].visible = false
 	GameManager.UpdateHabitat.connect(HabitatChecks)
+	%ReleaseBug.disabled = GameManager.isBugReleased
+	
 	HabitatChecks()
 	ConfigBug()
+	ButtonConfig()
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -46,7 +49,6 @@ func ConfigBug():
 func HabitatChecks():
 	if !GameManager.habitat_stats["isLampOn"]:
 		_on_light_toggled(true)
-	%ReleaseBug.disabled = GameManager.isBugReleased
 	%FogControl.EditFog(GameManager.habitat_stats["Cleanliness"])
 	%FoodIn.texture = GameManager.food_given
 	var temp_hydration = GameManager.habitat_stats["Hydration"]-50
@@ -126,3 +128,15 @@ func _on_state_timer_timeout() -> void:
 		ChangeState(temp_state)
 	else:
 		$"State Timer".start(5)
+
+func ButtonConfig():
+	var buttons = find_children("","TextureButton",true)
+	if buttons[0].button_down.is_connected(PlayButtonAudio):
+		return
+	
+	for i in buttons.size():
+		buttons[i].connect("button_down",PlayButtonAudio.bind(true))
+
+func PlayButtonAudio(pressed:bool):
+	if pressed:$ButtonClick.play()
+	else:$ButtonUnClick.play()

@@ -41,6 +41,7 @@ var speed:float
 
 var has_been_config = false
 var game_started:bool = false
+var isPaused: bool = false
 
 var up:bool = false
 var down:bool = false
@@ -72,11 +73,12 @@ func new_game():
 	#reset nodes
 	bug.velocity = Vector2i.ZERO
 	bug.position = bug_start_pos
+	bug.animated_sprite.play("idle")
 	speed = SPEED_START
 	for i in obstacles_generated.size():
 		obstacles_generated[i].queue_free()
 	obstacles_generated.clear()
-	
+	isPaused = false
 	game_started = false
 	start_label.visible = true
 	UpdateScore()
@@ -90,6 +92,10 @@ func _process(delta):
 			start_label.visible = false
 			game_started = true
 			Generate_Obj()
+		return
+	if isPaused: 
+		$GroundParallax.autoscroll = Vector2.ZERO
+		$Bug.animated_sprite.play("idle")
 		return
 	
 	difficulty = score/SPEED_MOD
@@ -111,9 +117,7 @@ func _process(delta):
 	
 	if bug.position.x-50 <= delete_spawned.position.x:
 		game_started = false
-		print("gameover")
-		GameSave.highscores["Dino"] = highscore
-		GameSave.SaveGame()
+		get_parent().GameOver(score,highscore)
 	
 	UpdateScore()
 

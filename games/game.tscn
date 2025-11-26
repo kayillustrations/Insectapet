@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpur22kqa7fty"]
+[gd_scene load_steps=3 format=3 uid="uid://dpur22kqa7fty"]
 
 [ext_resource type="Script" uid="uid://p85t021wdi0b" path="res://ui/game_inputs.gd" id="1_qhkc2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhvnf"]
+bg_color = Color(0.1872, 0.24, 0.21184, 0.784314)
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -79,3 +82,128 @@ theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[pulse freq=1.0 color=#ffffff40 ease=-2.0]Jump to Start[/pulse]"
 horizontal_alignment = 1
+
+[node name="Pause Screen" type="MarginContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 25
+
+[node name="Panel" type="Panel" parent="HUD/Pause Screen"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yhvnf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Pause Screen/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 24.0
+offset_right = -26.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HUD/Pause Screen/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Pause Screen/Panel/VBoxContainer"]
+modulate = Color(0.560784, 1, 0.772549, 1)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Resume" type="Button" parent="HUD/Pause Screen/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resume"
+
+[node name="Exit" type="Button" parent="HUD/Pause Screen/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exit Game"
+
+[node name="GameOver" type="MarginContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 25
+
+[node name="Panel" type="Panel" parent="HUD/GameOver"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yhvnf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/GameOver/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 24.0
+offset_right = -26.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HUD/GameOver/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HUD/GameOver/Panel/VBoxContainer"]
+modulate = Color(0.560784, 1, 0.772549, 1)
+layout_mode = 2
+
+[node name="Happiness" type="Label" parent="HUD/GameOver/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"HeaderSmall"
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Energy" type="Label" parent="HUD/GameOver/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"HeaderSmall"
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/GameOver/Panel/VBoxContainer"]
+modulate = Color(0.560784, 1, 0.772549, 1)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Restart" type="Button" parent="HUD/GameOver/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Restart"
+
+[node name="Exit" type="Button" parent="HUD/GameOver/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exit Game"
+
+[connection signal="pressed" from="HUD/Pause Screen/Panel/VBoxContainer/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="HUD/Pause Screen/Panel/VBoxContainer/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="HUD/GameOver/Panel/VBoxContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="HUD/GameOver/Panel/VBoxContainer/HBoxContainer/Exit" to="." method="_on_exit_pressed"]

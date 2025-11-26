@@ -926,6 +926,16 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="ButtonClick" type="AudioStreamPlayer" parent="." index="3"]
+
+[node name="ButtonUnclick" type="AudioStreamPlayer" parent="." index="4"]
+
+[node name="Spray" type="AudioStreamPlayer" parent="." index="5"]
+
+[node name="Clean" type="AudioStreamPlayer" parent="." index="6"]
+
+[node name="PlaceFood" type="AudioStreamPlayer" parent="." index="7"]
+
 [connection signal="pressed" from="Shape/Control/Center Anchor/ReleaseBug" to="." method="_on_bug_pressed"]
 [connection signal="pressed" from="Shape/Control/ColorRect/x" to="." method="_on_x_pressed"]
 [connection signal="toggled" from="Shape/Control/UI/LightButton" to="." method="_on_light_toggled"]

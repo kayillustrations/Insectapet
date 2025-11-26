@@ -29,6 +29,8 @@ func _on_visibility_changed() -> void:
 
 func _on_button_pressed() -> void:
 	$ProgressBar.value -= 1
+	GameManager.habitat_stats["Hydration"] += (100 - GameManager.habitat_stats["Hydration"])/3
+	GameManager.UpdateHabitat.emit()
 	if $ProgressBar.value == 0:
 		Clean()
 	pass # Replace with function body.

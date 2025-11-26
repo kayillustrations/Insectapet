@@ -33,3 +33,31 @@ func ReleaseBug(b:bool):
 		WindowManager.main_window.add_window(WindowManager.BUG_WINDOW_PATH)
 	else: 
 		WindowManager.main_window.find_child("Window").queue_free()
+
+
+func EditStat(stat:String,amount:int):
+	if current_stats[stat] - amount <= 0:
+		current_stats[stat] = 0
+		printerr(stat+" Empty")
+	elif current_stats[stat] - amount > 100:
+		current_stats[stat] = 100
+		printerr(stat+" Full")
+		if stat == "Hunger": 
+			food_given = null
+	else:
+		current_stats[stat] -= amount
+	UpdateStats.emit()
+	GameSave.SaveGame()
+
+func EditHabitat(stat:String, amount:int):
+	if habitat_stats[stat] - amount <= 0:
+		habitat_stats[stat] = 0
+		printerr(stat+" Empty")
+	elif habitat_stats[stat] - amount > 100:
+		habitat_stats[stat] = 100
+		printerr(stat+" Full")
+	else:
+		habitat_stats[stat] -= amount
+	UpdateHabitat.emit()
+	GameSave.SaveGame()
+	pass

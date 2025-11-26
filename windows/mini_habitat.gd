@@ -25,54 +25,26 @@ func _on_texture_button_toggled(toggled_on: bool) -> void:
 		full_habitat_instance = null
 	pass # Replace with function body.
 
-func EditStat(stat:String,amount:int):
-	if GameManager.current_stats[stat] - amount <= 0:
-		GameManager.current_stats[stat] = 0
-		printerr(stat+" Empty")
-	elif GameManager.current_stats[stat] - amount > 100:
-		GameManager.current_stats[stat] = 100
-		printerr(stat+" Full")
-		if stat == "Hunger": 
-			GameManager.food_given = null
-	else:
-		GameManager.current_stats[stat] -= amount
-	GameManager.UpdateStats.emit()
-	GameSave.SaveGame()
-
-func EditHabitat(stat:String, amount:int):
-	if GameManager.habitat_stats[stat] - amount <= 0:
-		GameManager.habitat_stats[stat] = 0
-		printerr(stat+" Empty")
-	elif GameManager.habitat_stats[stat] - amount > 100:
-		GameManager.habitat_stats[stat] = 100
-		printerr(stat+" Full")
-	else:
-		GameManager.habitat_stats[stat] -= amount
-	GameManager.UpdateHabitat.emit()
-	GameSave.SaveGame()
-	pass
-
-
 func _on_happiness_timeout() -> void:
-	EditStat("Happiness",1)
+	GameManager.EditStat("Happiness",1)
 
 func _on_hunger_timeout() -> void:
 	if GameManager.food_given != null:
-		EditStat("Hunger",-5)
-	else: EditStat("Hunger",1)
+		GameManager.EditStat("Hunger",-5)
+	else: GameManager.EditStat("Hunger",1)
 
 func _on_energy_timeout() -> void:
 	if GameManager.habitat_stats["isLampOn"] == true:
-		EditStat("Energy",1)
-	else: EditStat("Energy",-5)
+		GameManager.EditStat("Energy",1)
+	else: GameManager.EditStat("Energy",-5)
 	pass # Replace with function body.
 
 func _on_cleanliness_timeout() -> void:
-	EditHabitat("Cleanliness", 1)
+	GameManager.EditHabitat("Cleanliness", 1)
 	pass # Replace with function body.
 
 func _on_hydration_timeout() -> void:
-	EditHabitat("Hydration", 1)
+	GameManager.EditHabitat("Hydration", 1)
 	pass # Replace with function body.
 
 func _on_life_span_timeout() -> void:

@@ -1,12 +1,18 @@
 extends Control
 
 @onready var dino_game = $DinoGame
+@onready var happiness: Label = $HUD/GameOver/Panel/VBoxContainer/Happiness
+@onready var energy: Label = $HUD/GameOver/Panel/VBoxContainer/Energy
+
 var current_game
 
 func _ready() -> void:
 	for i in %GameButtons.children.size():
 		%GameButtons.children[i].connect("button_down",PressedButton.bind(%GameButtons.children[i].name,true))
 		%GameButtons.children[i].connect("button_up",PressedButton.bind(%GameButtons.children[i].name,false))
+	
+	$"HUD/Pause Screen".visible = false
+	$HUD/GameOver.visible = false
 	dino_game.visible = false
 	#snake_game.visible = false
 	if GameManager.current_bug.category == 0:
@@ -26,8 +32,16 @@ func ActivateGame(b:bool):
 	current_game.Activated(b)
 	current_game.new_game()
 
+func GameOver(score,highscore):
+	$HUD/GameOver.visible = true
+	happiness.text = "Happiness Earned = " + str(score/100)
+	energy.text = "Energy Lost = " + str(score/500)
+	GameManager.EditStat("Happiness",-score/100)
+	GameManager.EditStat("Energy",score/500)
+	GameSave.highscores["Dino"] = highscore
+	GameSave.SaveGame()
+
 func PressedButton(button_name:String,b:bool):
-	print(button_name)
 	match button_name:
 		"Left":
 			current_game.left = b
@@ -42,6 +56,24 @@ func PressedButton(button_name:String,b:bool):
 			current_game.down = b
 			pass
 		"Pause":
-			dino_game.Activated(false)
-			%MainButtons._on_play_toggled(false)
+			if b:
+				$"HUD/Pause Screen".visible = !$"HUD/Pause Screen".visible
+				current_game.isPaused = $"HUD/Pause Screen".visible
 	pass
+
+func _on_resume_pressed() -> void:
+	$"HUD/Pause Screen".visible = false
+	current_game.isPaused = !$"HUD/Pause Screen".visible
+	pass # Replace with function body.
+
+func _on_exit_pressed() -> void:
+	dino_game.Activated(false)
+	%MainButtons._on_play_toggled(false)
+	$HUD/GameOver.visible = false
+	$"HUD/Pause Screen".visible = false
+	pass # Replace with function body.
+
+func _on_restart_pressed() -> void:
+	$HUD/GameOver.visible = false
+	current_game.new_game()
+	pass # Replace with function body.

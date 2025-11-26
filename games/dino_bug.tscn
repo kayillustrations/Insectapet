@@ -1,17 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://bay2nhhvjeb7h"]
+[gd_scene load_steps=10 format=3 uid="uid://bay2nhhvjeb7h"]
 
 [ext_resource type="Script" uid="uid://bgaevh8fhtmsk" path="res://games/dino_bug.gd" id="1_78cuh"]
-[ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="2_d11tc"]
-[ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="3_gveve"]
+[ext_resource type="Texture2D" uid="uid://d3vo8g7taii17" path="res://games/bug_crouch.png" id="2_03p5q"]
+[ext_resource type="Texture2D" uid="uid://b4aq75syhq12q" path="res://games/bug_jump.png" id="4_gveve"]
+[ext_resource type="Texture2D" uid="uid://bmy4e5kq6bgxa" path="res://games/bug_run1.png" id="4_xkap6"]
+[ext_resource type="Texture2D" uid="uid://bc5i0u8s16agj" path="res://games/bug_run2.png" id="5_ill8k"]
+[ext_resource type="Texture2D" uid="uid://uiybl6h4rgfg" path="res://games/bug_run3.png" id="6_8phxm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mffq0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_d11tc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_gveve")
+"texture": ExtResource("2_03p5q")
 }],
 "loop": true,
 "name": &"crouch",
@@ -19,10 +19,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_d11tc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_gveve")
+"texture": ExtResource("4_gveve")
 }],
 "loop": true,
 "name": &"idle",
@@ -30,21 +27,21 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_d11tc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_gveve")
+"texture": ExtResource("4_gveve")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_d11tc")
+"texture": ExtResource("4_xkap6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_gveve")
+"texture": ExtResource("5_ill8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8phxm")
 }],
 "loop": true,
 "name": &"move",
@@ -52,10 +49,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d11tc"]
-size = Vector2(38.0001, 37.9999)
+size = Vector2(38.0001, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gveve"]
-size = Vector2(19, 38)
+size = Vector2(24, 38)
 
 [node name="Bug" type="CharacterBody2D"]
 script = ExtResource("1_78cuh")
@@ -65,19 +62,12 @@ position = Vector2(0, -19)
 scale = Vector2(0.3, 0.3)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BugModel"]
+position = Vector2(0, 3.33333)
+scale = Vector2(0.58, 0.58)
 sprite_frames = SubResource("SpriteFrames_mffq0")
 animation = &"jump"
 autoplay = "idle"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BugModel/AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_mffq0")
-animation = &"jump"
-autoplay = "idle"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BugModel/AnimatedSprite2D/AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_mffq0")
-animation = &"move"
-autoplay = "idle"
+frame_progress = 1.0
 
 [node name="RunCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -19)
@@ -85,6 +75,8 @@ rotation = -1.5708
 shape = SubResource("RectangleShape2D_d11tc")
 
 [node name="CrouchCollider" type="CollisionShape2D" parent="."]
-position = Vector2(-1.81e-06, -11.5)
+position = Vector2(-7.23998e-06, -12)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_gveve")
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
