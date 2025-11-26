@@ -23,6 +23,7 @@ func _ready() -> void:
 	for i in all_screens.size():
 		all_screens[i].visible = false
 	GameManager.UpdateHabitat.connect(HabitatChecks)
+	GameManager.StatWarning.connect(StatWarning)
 	%ReleaseBug.disabled = GameManager.isBugReleased
 	
 	HabitatChecks()
@@ -31,6 +32,9 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	if GameManager.current_stats["Stage"] == 0:
+		%PathFollow2D.progress_ratio = 0
+		return
 	if isMoving:
 		if target_location == snappedf(%PathFollow2D.progress_ratio,.01):
 			bug_animator.play("idle")
@@ -41,9 +45,10 @@ func _physics_process(delta: float) -> void:
 		else: %PathFollow2D.progress_ratio += .01*target_direction*delta
 
 func ConfigBug():
-	current_state = 0
+	bug_animator.play("idle")
 	%PathFollow2D.progress_ratio = GameManager.current_path_location
 	$%Bug.get_child(0).modulate = GameSave.bug_color
+	GameSave.SaveGame()
 	pass
 
 func HabitatChecks():
@@ -63,7 +68,15 @@ func HabitatChecks():
 		%"Healthy Leaves".self_modulate = LEAF_SELFMODULATE
 		%"Healthy Leaves".visible = true
 		%"DryLeaves".visible = false
-	
+	$Shape/Control/UI/MainButtons/Clean/Warning.visible = GameManager.habitat_warning
+
+func StatWarning(stat:String,activate:bool):
+	match stat:
+		"Happiness": %MainButtons/Happiness/Warning.visible = activate
+		"Hunger":%MainButtons/Hunger/Warning.visible = activate
+		"Energy":%LightButton/Warning.visible = activate
+		"XP":%MainButtons/Info/Evolve.visible = activate
+	pass
 
 func ChangeState(new_state):
 	if current_state == 2: #uncrouch
@@ -141,3 +154,13 @@ func ButtonConfig():
 func PlayButtonAudio(pressed:bool):
 	if pressed:$ButtonClick.play()
 	else:$ButtonUnClick.play()
+
+func _on_oh_pressed() -> void:
+	print("Evolve")
+	#evolve bug animation
+	GameManager.current_stats["Stage"] += 1
+	if GameManager.current_stats["Stage"] > 1:
+		Exports.find_child("LifeSpan").stop()
+	else: GameManager.current_stats["XP"] = 0
+	ConfigBug()
+	pass # Replace with function body.

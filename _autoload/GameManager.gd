@@ -7,8 +7,10 @@ signal UpdateAll
 signal UpdateStats
 signal UpdateHabitat
 signal BugEmote(emote:Texture)
+signal StatWarning(stat:String, activate:bool)
 
 var default_times: Array[float]=[60,40,80,30,20,50]
+var life_times: Array[float] = [60,600,300]
 
 var snooze_time: float = 2
 var current_window_position: Vector2
@@ -23,8 +25,7 @@ var isBugReleased = false
 var food_given: Texture2D = null
 var food_life: float
 
-var stat_warning: String = ""
-var habitat_warning: String = ""
+var habitat_warning: bool = false
 
 func _ready() -> void:
 	current_bug = BugInfo.new()
@@ -49,9 +50,14 @@ func EditStat(stat:String,amount:int):
 		printerr(stat+" Full")
 	else:
 		current_stats[stat] -= amount
-	if current_stats[stat] < 25 || stat != "XP":
-		stat_warning = stat
-	else: stat_warning = ""
+	
+	if stat == "XP" && current_stats[stat] == 100:
+			#Emote(Exports.emote_dictionary["Oh?"])
+			StatWarning.emit("XP",true)
+	elif current_stats[stat] < 25:
+		StatWarning.emit(stat,true)
+	else: StatWarning.emit(stat,false)
+	
 	UpdateStats.emit()
 	GameSave.SaveGame()
 
@@ -64,9 +70,9 @@ func EditHabitat(stat:String, amount:int):
 		printerr(stat+" Full")
 	else:
 		habitat_stats[stat] -= amount
-	if current_stats[stat] < 25:
-		habitat_warning = stat
-	else: habitat_warning = ""
+	if habitat_stats[stat] < 25:
+		habitat_warning = true
+	else: habitat_warning = false
 	UpdateHabitat.emit()
 	GameSave.SaveGame()
 	pass

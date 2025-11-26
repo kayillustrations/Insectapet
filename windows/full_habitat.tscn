@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=104 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -38,6 +38,7 @@
 [ext_resource type="Script" uid="uid://fq6gp8qriii7" path="res://ui/cleaning.gd" id="27_dn25v"]
 [ext_resource type="PackedScene" uid="uid://tda8t8wa0gt3" path="res://ui/warning.tscn" id="28_a5fvd"]
 [ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="28_xjwgn"]
+[ext_resource type="Texture2D" uid="uid://d3p7oif4qbd6w" path="res://art/symbols.png" id="29_65bei"]
 [ext_resource type="PackedScene" uid="uid://bfysejrtg1gp3" path="res://ui/sparkles.tscn" id="32_1gug7"]
 [ext_resource type="PackedScene" uid="uid://dqqjtahenh6gc" path="res://ui/shop.tscn" id="32_lsfya"]
 [ext_resource type="PackedScene" uid="uid://dpur22kqa7fty" path="res://games/game.tscn" id="40_ncixy"]
@@ -122,7 +123,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../../../../SubViewportContainer/ScreenViewport/CanvasLayer/Screens/Feeding")
+tracks/3/path = NodePath("../../../../SubViewportContainer/ScreenViewport/Screens/Feeding")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -185,7 +186,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../../../../SubViewportContainer/ScreenViewport/CanvasLayer/Screens/Feeding")
+tracks/3/path = NodePath("../../../../SubViewportContainer/ScreenViewport/Screens/Feeding")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -282,6 +283,31 @@ region = Rect2(600, 0, 300, 300)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xey8i"]
 atlas = ExtResource("12_6obml")
 region = Rect2(600, 0, 300, 300)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sutye"]
+bg_color = Color(0.1702, 0.1702, 0.23, 0.784314)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0.588235)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kktmu"]
+atlas = ExtResource("28_xjwgn")
+region = Rect2(2157.25, 640.127, 101.463, 218.646)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iihxg"]
+bg_color = Color(0.6, 0.6, 0.6, 0.392157)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yyvkg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38uui"]
+atlas = ExtResource("29_65bei")
+region = Rect2(0, 0, 300, 300)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_07xw5"]
 atlas = ExtResource("10_rd6cn")
@@ -419,6 +445,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(1.1, 1.1)
+metadata/_edit_lock_ = true
 
 [node name="Center Anchor" type="Node2D" parent="Shape/Control" index="0"]
 position = Vector2(345, 415)
@@ -652,6 +679,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Warning" parent="Shape/Control/UI/LightButton" index="0" instance=ExtResource("28_a5fvd")]
+visible = false
 layout_mode = 1
 offset_left = 13.1754
 offset_top = -6.07633
@@ -691,6 +719,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Warning" parent="Shape/Control/UI/MainButtons/Clean" index="0" instance=ExtResource("28_a5fvd")]
+visible = false
 layout_mode = 1
 offset_top = -10.0
 offset_bottom = 30.0
@@ -708,6 +737,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Warning" parent="Shape/Control/UI/MainButtons/Hunger" index="0" instance=ExtResource("28_a5fvd")]
+visible = false
 layout_mode = 1
 offset_top = -10.0
 offset_bottom = 30.0
@@ -724,6 +754,52 @@ texture_disabled = SubResource("AtlasTexture_gyogo")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="Evolve" type="Panel" parent="Shape/Control/UI/MainButtons/Info" index="0"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.8328
+offset_top = -213.757
+offset_right = 19.1672
+offset_bottom = -173.757
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sutye")
+
+[node name="TextureRect" type="TextureRect" parent="Shape/Control/UI/MainButtons/Info/Evolve" index="0"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_kktmu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Oh?" type="Button" parent="Shape/Control/UI/MainButtons/Info/Evolve" index="1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_iihxg")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yyvkg")
+
+[node name="TextureRect2" type="TextureRect" parent="Shape/Control/UI/MainButtons/Info/Evolve/Oh?" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_38uui")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="Happiness" type="TextureButton" parent="Shape/Control/UI/MainButtons" index="3"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
@@ -737,6 +813,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Warning" parent="Shape/Control/UI/MainButtons/Happiness" index="0" instance=ExtResource("28_a5fvd")]
+visible = false
 layout_mode = 1
 offset_top = -10.0
 offset_bottom = 30.0
@@ -900,10 +977,7 @@ gui_embed_subwindows = true
 size = Vector2i(550, 330)
 render_target_update_mode = 0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/ScreenViewport" index="0"]
-layer = -1
-
-[node name="Screens" type="ColorRect" parent="SubViewportContainer/ScreenViewport/CanvasLayer" index="0"]
+[node name="Screens" type="ColorRect" parent="SubViewportContainer/ScreenViewport" index="0"]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -912,7 +986,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.3536, 0.52, 0.42848, 0.94902)
 
-[node name="Feeding" parent="SubViewportContainer/ScreenViewport/CanvasLayer/Screens" index="0" instance=ExtResource("24_xey8i")]
+[node name="Feeding" parent="SubViewportContainer/ScreenViewport/Screens" index="0" instance=ExtResource("24_xey8i")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -922,7 +996,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 scale = Vector2(1.1, 1.1)
 
-[node name="Cleaning" parent="SubViewportContainer/ScreenViewport/CanvasLayer/Screens" index="1" instance=ExtResource("24_gyogo")]
+[node name="Cleaning" parent="SubViewportContainer/ScreenViewport/Screens" index="1" instance=ExtResource("24_gyogo")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -931,22 +1005,22 @@ scale = Vector2(1.1, 1.1)
 script = ExtResource("27_dn25v")
 textures = Array[Texture2D]([SubResource("AtlasTexture_3ytqu"), SubResource("AtlasTexture_1gug7")])
 
-[node name="BugInfo" parent="SubViewportContainer/ScreenViewport/CanvasLayer/Screens" index="2" instance=ExtResource("16_6obml")]
+[node name="BugInfo" parent="SubViewportContainer/ScreenViewport/Screens" index="2" instance=ExtResource("16_6obml")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 scale = Vector2(1.1, 1.1)
 
-[node name="Shop" parent="SubViewportContainer/ScreenViewport/CanvasLayer/Screens" index="3" instance=ExtResource("32_lsfya")]
+[node name="Shop" parent="SubViewportContainer/ScreenViewport/Screens" index="3" instance=ExtResource("32_lsfya")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[node name="Game" parent="SubViewportContainer/ScreenViewport/CanvasLayer/Screens" index="4" instance=ExtResource("40_ncixy")]
+[node name="Game" parent="SubViewportContainer/ScreenViewport/Screens" index="4" instance=ExtResource("40_ncixy")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 
-[node name="DinoGame" parent="SubViewportContainer/ScreenViewport/CanvasLayer/Screens/Game" index="1" instance=ExtResource("41_sutye")]
+[node name="DinoGame" parent="SubViewportContainer/ScreenViewport/Screens/Game" index="1" instance=ExtResource("41_sutye")]
 show_behind_parent = true
 
 [node name="State Timer" type="Timer" parent="." index="2"]
@@ -970,6 +1044,7 @@ autostart = true
 [connection signal="toggled" from="Shape/Control/UI/MainButtons/Clean" to="Shape/Control/UI/MainButtons" method="_on_clean_toggled"]
 [connection signal="toggled" from="Shape/Control/UI/MainButtons/Hunger" to="Shape/Control/UI/MainButtons" method="_on_eat_toggled"]
 [connection signal="toggled" from="Shape/Control/UI/MainButtons/Info" to="Shape/Control/UI/MainButtons" method="_on_info_toggled"]
+[connection signal="pressed" from="Shape/Control/UI/MainButtons/Info/Evolve/Oh?" to="." method="_on_oh_pressed"]
 [connection signal="toggled" from="Shape/Control/UI/MainButtons/Happiness" to="Shape/Control/UI/MainButtons" method="_on_play_toggled"]
 [connection signal="toggled" from="Shape/Control/UI/MainButtons/Shop" to="Shape/Control/UI/MainButtons" method="_on_shop_toggled"]
 [connection signal="pressed" from="Shape/Control/UI/SprayHere/Button" to="Shape/Control/UI/Bottle" method="_on_button_pressed"]

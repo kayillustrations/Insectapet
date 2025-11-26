@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://tda8t8wa0gt3"]
+[gd_scene load_steps=8 format=3 uid="uid://tda8t8wa0gt3"]
 
 [ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="1_4yqua"]
+[ext_resource type="Texture2D" uid="uid://d3p7oif4qbd6w" path="res://art/symbols.png" id="2_mb44p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sutye"]
 bg_color = Color(0.1702, 0.1702, 0.23, 0.784314)
@@ -18,7 +19,17 @@ corner_radius_bottom_left = 10
 atlas = ExtResource("1_4yqua")
 region = Rect2(2157.25, 640.127, 101.463, 218.646)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iihxg"]
+bg_color = Color(0.6, 0.6, 0.6, 0.392157)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yyvkg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38uui"]
+atlas = ExtResource("2_mb44p")
+region = Rect2(0, 0, 300, 300)
+
 [node name="Warning" type="Panel"]
+clip_children = 2
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -30,6 +41,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sutye")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,5 +50,24 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_kktmu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Evolve" type="Button" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_iihxg")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yyvkg")
+
+[node name="TextureRect2" type="TextureRect" parent="Evolve"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_38uui")
 expand_mode = 1
 stretch_mode = 5
