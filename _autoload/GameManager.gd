@@ -1,6 +1,6 @@
 extends Node
 
-const TESTBUG = preload("res://resources/bugs/stickbug.tres")
+const STICKBUG = preload("res://resources/bugs/stickbug.tres")
 signal need_timeout(need_button)
 
 signal UpdateAll
@@ -16,6 +16,8 @@ var snooze_time: float = 2
 var current_window_position: Vector2
 
 var current_bug: BugInfo
+var isNewGame:bool = false
+
 var bug_color: Color
 var current_stats: Dictionary
 var habitat_stats: Dictionary
@@ -29,9 +31,18 @@ var habitat_warning: bool = false
 
 func _ready() -> void:
 	current_bug = BugInfo.new()
-	current_bug = TESTBUG
 	current_stats = GameSave.DefaultBugStats
 	habitat_stats = GameSave.DefaultHabitatStats
+
+func isNewBug(b:bool):
+	if b:
+		current_bug = STICKBUG
+		GameSave.bug_info["bug_resource_name"] = "stickbug"
+	else:
+		var load_bug = load("res://resources/bugs/" + str(GameSave.bug_info["bug_resource_name"]) + ".tres")
+		current_bug = load_bug
+		pass
+	
 
 func ReleaseBug(b:bool):
 	isBugReleased = b

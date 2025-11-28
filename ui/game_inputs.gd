@@ -15,6 +15,8 @@ func _ready() -> void:
 	$HUD/GameOver.visible = false
 	dino_game.visible = false
 	#snake_game.visible = false
+
+func DecideGame():
 	if GameManager.current_bug.category == 0:
 		current_game = dino_game
 		%GameButtons.find_child("Left").disabled = true
@@ -22,7 +24,6 @@ func _ready() -> void:
 	elif GameManager.current_bug.category == 1:
 		pass
 		#snake
-	pass
 
 func ActivateGame(b:bool):
 	%SubViewportContainer.visible = b

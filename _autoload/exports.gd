@@ -3,6 +3,12 @@ extends Node
 @export var food_textures: Array[AtlasTexture]
 @export var emote_textures: Array[AtlasTexture]
 
+@export var colors_green: Array[Color]
+@export var colors_orange: Array[Color]
+
+@export var stickbug_textures: Array[Texture2D]
+
+@onready var timers: Array = get_children()
 @onready var emote_dictionary: Dictionary ={
 	"Happy": emote_textures[0],
 	"UnHappy": emote_textures[1],
@@ -10,14 +16,6 @@ extends Node
 	"Love": emote_textures[3],
 	"Oh?": emote_textures[4]
 }
-
-@export var colors_green: Array[Color]
-@export var colors_orange: Array[Color]
-
-@export var stickbug_textures: Array[Texture2D]
-
-@onready var timers: Array = get_children()
-
 func _ready() -> void:
 	for i in timers.size()-1:
 		timers[i].start(GameManager.default_times[i])

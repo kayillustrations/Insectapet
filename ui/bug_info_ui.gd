@@ -5,8 +5,6 @@ func _ready():
 	GameManager.UpdateStats.connect(UpdateStats)
 	GameManager.UpdateAll.connect(ConfigInfo)
 
-	ConfigInfo()
-
 func ConfigInfo():    
 	%Name.text = GameManager.current_bug.name
 	%Scientific.text = GameManager.current_bug.scientific
@@ -27,7 +25,7 @@ func UpdateStage():
 		3:
 			%Stage.text = "Adult"
 	%CurrentSprite.texture = GameManager.current_bug.icons[GameManager.current_stats["Stage"]]
-	%CurrentSprite.self_modulate = GameSave.bug_color
+	%CurrentSprite.self_modulate = GameSave.bug_info["bug_color"]
 
 func UpdateStats():
 	#progress bars
