@@ -1,12 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://cb315uw5l1fgu"]
+[gd_scene load_steps=22 format=3 uid="uid://cb315uw5l1fgu"]
 
+[ext_resource type="Script" uid="uid://cflxhw2is76g" path="res://ui/gain_bug.gd" id="1_srixo"]
 [ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="1_u8qgy"]
+[ext_resource type="PackedScene" uid="uid://cyx8uk88ii8wd" path="res://ui/jar.tscn" id="2_mg0mn"]
 [ext_resource type="Texture2D" uid="uid://d3p7oif4qbd6w" path="res://art/symbols.png" id="2_srixo"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1slnd"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qtt0h"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e4u7y"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mg0mn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_srixo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xmfjb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_weuw4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dlomn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r62jc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t603m"]
 atlas = ExtResource("1_u8qgy")
@@ -19,6 +30,104 @@ region = Rect2(917, 1300, 539, 287)
 [sub_resource type="AtlasTexture" id="AtlasTexture_e4u7y"]
 atlas = ExtResource("2_srixo")
 region = Rect2(150, 36, 110, 138)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p5m0v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n4y0s"]
+
+[sub_resource type="Gradient" id="Gradient_srixo"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mg0mn"]
+gradient = SubResource("Gradient_srixo")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Animation" id="Animation_mg0mn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Center:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(212, 105)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Center:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Center:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_srixo"]
+resource_name = "tilt"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Center:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(212, 105), Vector2(147, 165)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Center:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.774864]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Center:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.105, 1.105)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mg0mn"]
+_data = {
+&"RESET": SubResource("Animation_mg0mn"),
+&"tilt": SubResource("Animation_srixo")
+}
 
 [node name="GainBug" type="Control"]
 layout_mode = 3
@@ -33,6 +142,7 @@ offset_right = 232.0
 offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_srixo")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -49,82 +159,45 @@ alignment = 1
 
 [node name="Jar" type="Button" parent="HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.392157)
-clip_children = 1
-custom_minimum_size = Vector2(125, 0)
+custom_minimum_size = Vector2(100, 200)
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxFlat_1slnd")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_e4u7y")
+size_flags_horizontal = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qtt0h")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mg0mn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_srixo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xmfjb")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_weuw4")
 
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/Jar"]
-show_behind_parent = true
-custom_minimum_size = Vector2(100, 100)
+[node name="Control" parent="HBoxContainer/Jar" instance=ExtResource("2_mg0mn")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -125.0
-offset_right = 50.0
-offset_bottom = 125.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = SubResource("AtlasTexture_t603m")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/Jar"]
-show_behind_parent = true
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -185.0
-offset_right = 50.0
-offset_bottom = 65.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = SubResource("AtlasTexture_67uj7")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="TextureRect4" type="TextureRect" parent="HBoxContainer/Jar"]
-show_behind_parent = true
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -25.86
-offset_top = -24.02
-offset_right = 74.14
-offset_bottom = 225.98
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-mouse_filter = 2
-texture = SubResource("AtlasTexture_e4u7y")
-expand_mode = 1
-stretch_mode = 2
 
 [node name="Jar2" type="Button" parent="HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.392157)
-clip_children = 1
-custom_minimum_size = Vector2(125, 0)
+custom_minimum_size = Vector2(100, 200)
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxFlat_1slnd")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_e4u7y")
+size_flags_horizontal = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qtt0h")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dlomn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_r62jc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xmfjb")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_weuw4")
 
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/Jar2"]
+[node name="Control" type="Control" parent="HBoxContainer/Jar2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Jar" type="TextureRect" parent="HBoxContainer/Jar2/Control"]
 show_behind_parent = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
@@ -144,7 +217,7 @@ texture = SubResource("AtlasTexture_t603m")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/Jar2"]
+[node name="Lid" type="TextureRect" parent="HBoxContainer/Jar2/Control"]
 show_behind_parent = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
@@ -164,7 +237,7 @@ texture = SubResource("AtlasTexture_67uj7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect4" type="TextureRect" parent="HBoxContainer/Jar2"]
+[node name="question" type="TextureRect" parent="HBoxContainer/Jar2/Control"]
 show_behind_parent = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
@@ -187,13 +260,31 @@ stretch_mode = 2
 
 [node name="Jar3" type="Button" parent="HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.392157)
-clip_children = 1
-custom_minimum_size = Vector2(125, 0)
+custom_minimum_size = Vector2(100, 200)
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxFlat_1slnd")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_e4u7y")
+size_flags_horizontal = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p5m0v")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dlomn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_r62jc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_n4y0s")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_weuw4")
 
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/Jar3"]
+[node name="Control" type="Control" parent="HBoxContainer/Jar3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Jar" type="TextureRect" parent="HBoxContainer/Jar3/Control"]
 show_behind_parent = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
@@ -213,7 +304,7 @@ texture = SubResource("AtlasTexture_t603m")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/Jar3"]
+[node name="Lid" type="TextureRect" parent="HBoxContainer/Jar3/Control"]
 show_behind_parent = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
@@ -233,7 +324,7 @@ texture = SubResource("AtlasTexture_67uj7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect4" type="TextureRect" parent="HBoxContainer/Jar3"]
+[node name="question" type="TextureRect" parent="HBoxContainer/Jar3/Control"]
 show_behind_parent = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
@@ -253,3 +344,34 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_e4u7y")
 expand_mode = 1
 stretch_mode = 2
+
+[node name="Center" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Glow" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_mg0mn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mg0mn")
+}

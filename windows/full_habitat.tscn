@@ -964,6 +964,12 @@ scale = Vector2(0.3, 0.3)
 texture = SubResource("AtlasTexture_a5fvd")
 script = ExtResource("13_nn6h2")
 
+[node name="GainBug" parent="Shape/Control/UI" index="6" instance=ExtResource("40_a5fvd")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_top = 51.8182
+offset_bottom = 301.818
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." index="1"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_gyogo")
@@ -972,6 +978,7 @@ offset_top = 429.0
 offset_right = 632.0
 offset_bottom = 759.0
 scale = Vector2(1.05, 1.05)
+mouse_filter = 2
 
 [node name="ScreenViewport" type="SubViewport" parent="SubViewportContainer" index="0"]
 transparent_bg = true
@@ -987,6 +994,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.3536, 0.52, 0.42848, 0.94902)
 
 [node name="Feeding" parent="SubViewportContainer/ScreenViewport/Screens" index="0" instance=ExtResource("24_xey8i")]
@@ -1018,12 +1026,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[node name="GainBug" parent="SubViewportContainer/ScreenViewport/Screens" index="4" instance=ExtResource("40_a5fvd")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-
-[node name="Game" parent="SubViewportContainer/ScreenViewport/Screens" index="5" instance=ExtResource("40_ncixy")]
+[node name="Game" parent="SubViewportContainer/ScreenViewport/Screens" index="4" instance=ExtResource("40_ncixy")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1

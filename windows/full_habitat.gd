@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		else: %PathFollow2D.progress_ratio += .01*target_direction*delta
 
 func NewBugScreen():
-	%MainButtons.ActivateScreen(%Shop)
+	%GainBug.visible
 	pass
 
 func ConfigBug():
