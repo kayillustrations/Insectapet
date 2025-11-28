@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqqjtahenh6gc"]
+[gd_scene load_steps=2 format=3 uid="uid://dqqjtahenh6gc"]
 
-[ext_resource type="Script" uid="uid://b6m6vguxabaj7" path="res://ui/feeding.gd" id="1_2v8nf"]
 [ext_resource type="PackedScene" uid="uid://c0es7iy1tspwf" path="res://ui/locked.tscn" id="2_2v8nf"]
 
 [node name="Shop" type="Control"]
@@ -10,13 +9,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -232.64
-offset_top = -122.98
-offset_right = 231.36
-offset_bottom = 127.02
+offset_left = -232.0
+offset_top = -125.0
+offset_right = 232.0
+offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2v8nf")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -25,15 +23,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -165.0
-offset_top = -105.0
-offset_right = 165.0
-offset_bottom = 105.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-columns = 4
 
 [node name="Locked" parent="." instance=ExtResource("2_2v8nf")]
 layout_mode = 1
@@ -41,3 +32,5 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

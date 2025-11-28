@@ -25,7 +25,7 @@ func _ready() -> void:
 	
 	GameManager.UpdateHabitat.connect(HabitatChecks)
 	GameManager.StatWarning.connect(StatWarning)
-	%ReleaseBug.disabled = GameManager.isBugReleased
+	%ActivateBug.disabled = GameManager.isBugWindow
 	
 	ConfigBug()
 	%BugInfo.ConfigInfo()
@@ -43,6 +43,10 @@ func _physics_process(delta: float) -> void:
 			GameManager.current_path_location = target_location
 			GameSave.SaveGame()
 		else: %PathFollow2D.progress_ratio += .01*target_direction*delta
+
+func NewBugScreen():
+	%MainButtons.ActivateScreen(%Shop)
+	pass
 
 func ConfigBug():
 	%Bug.add_child(GameManager.current_bug.stages[GameManager.current_stats["Stage"]].instantiate())
@@ -134,11 +138,11 @@ func _on_x_pressed() -> void:
 	WindowManager.main_window._on_texture_button_toggled(false)
 	pass # Replace with function body.
 
-func _on_bug_pressed() -> void:
+func _on_bug_window_pressed() -> void:
 	Utils.Error(%Control,"Coming Soon")
 	return
-	GameManager.ReleaseBug(true)
-	%ReleaseBug.disabled = true
+	GameManager.SpawnBugWindow(true)
+	%ActivateBug.disabled = true
 	pass # Replace with function body.
 
 func _on_light_toggled(toggled_on: bool) -> void:

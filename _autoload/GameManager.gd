@@ -22,7 +22,7 @@ var bug_color: Color
 var current_stats: Dictionary
 var habitat_stats: Dictionary
 var current_path_location: float = 0
-var isBugReleased = false
+var isBugWindow = false
 
 var food_given: Texture2D = null
 var food_life: float
@@ -38,12 +38,15 @@ func NewBug(newBugInfo:BugInfo):
 	GameSave.bug_info["bug_resource_name"] = newBugInfo.resource_name
 	current_bug = newBugInfo
 	current_stats = GameSave.DefaultBugStats
+	#Bug animation
 	GameSave.SaveGame()
 	pass
-	
 
-func ReleaseBug(b:bool):
-	isBugReleased = b
+func ReleaseBug():
+	pass
+
+func SpawnBugWindow(b:bool):
+	isBugWindow = b
 	if b:
 		WindowManager.main_window.add_window(WindowManager.BUG_WINDOW_PATH)
 	else: 

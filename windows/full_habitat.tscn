@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=103 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://d3p7oif4qbd6w" path="res://art/symbols.png" id="29_65bei"]
 [ext_resource type="PackedScene" uid="uid://bfysejrtg1gp3" path="res://ui/sparkles.tscn" id="32_1gug7"]
 [ext_resource type="PackedScene" uid="uid://dqqjtahenh6gc" path="res://ui/shop.tscn" id="32_lsfya"]
+[ext_resource type="PackedScene" uid="uid://cb315uw5l1fgu" path="res://ui/GainBug.tscn" id="40_a5fvd"]
 [ext_resource type="PackedScene" uid="uid://dpur22kqa7fty" path="res://games/game.tscn" id="40_ncixy"]
 [ext_resource type="PackedScene" uid="uid://cje31o0utwy5y" path="res://games/dino_game.tscn" id="41_sutye"]
 
@@ -521,7 +522,7 @@ flip_v = true
 [node name="Mid" type="Sprite2D" parent="Shape/Control/Center Anchor" index="7"]
 texture = ExtResource("5_sv7ce")
 
-[node name="ReleaseBug" type="TextureButton" parent="Shape/Control/Center Anchor" index="8"]
+[node name="ActivateBug" type="TextureButton" parent="Shape/Control/Center Anchor" index="8"]
 unique_name_in_owner = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -965,7 +966,6 @@ script = ExtResource("13_nn6h2")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." index="1"]
 unique_name_in_owner = true
-visible = false
 material = SubResource("ShaderMaterial_gyogo")
 offset_left = 82.0
 offset_top = 429.0
@@ -978,7 +978,7 @@ transparent_bg = true
 handle_input_locally = false
 gui_embed_subwindows = true
 size = Vector2i(550, 330)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="Screens" type="ColorRect" parent="SubViewportContainer/ScreenViewport" index="0"]
 unique_name_in_owner = true
@@ -1009,6 +1009,7 @@ textures = Array[Texture2D]([SubResource("AtlasTexture_3ytqu"), SubResource("Atl
 
 [node name="BugInfo" parent="SubViewportContainer/ScreenViewport/Screens" index="2" instance=ExtResource("16_6obml")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 scale = Vector2(1.1, 1.1)
 
@@ -1017,7 +1018,12 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[node name="Game" parent="SubViewportContainer/ScreenViewport/Screens" index="4" instance=ExtResource("40_ncixy")]
+[node name="GainBug" parent="SubViewportContainer/ScreenViewport/Screens" index="4" instance=ExtResource("40_a5fvd")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="Game" parent="SubViewportContainer/ScreenViewport/Screens" index="5" instance=ExtResource("40_ncixy")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -1040,7 +1046,7 @@ autostart = true
 
 [node name="PlaceFood" type="AudioStreamPlayer" parent="." index="7"]
 
-[connection signal="pressed" from="Shape/Control/Center Anchor/ReleaseBug" to="." method="_on_bug_pressed"]
+[connection signal="pressed" from="Shape/Control/Center Anchor/ActivateBug" to="." method="_on_bug_window_pressed"]
 [connection signal="pressed" from="Shape/Control/ColorRect/x" to="." method="_on_x_pressed"]
 [connection signal="toggled" from="Shape/Control/UI/LightButton" to="." method="_on_light_toggled"]
 [connection signal="toggled" from="Shape/Control/UI/MainButtons/Clean" to="Shape/Control/UI/MainButtons" method="_on_clean_toggled"]

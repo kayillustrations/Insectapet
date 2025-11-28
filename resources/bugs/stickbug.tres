@@ -29,10 +29,8 @@ region = Rect2(75, 29, 453, 285)
 margin = Rect2(50, 50, 100, 100)
 
 [resource]
-resource_name = "stickbug"
 script = ExtResource("3_kgy08")
 name = "Stick Bug"
-resource_name = "stickbug"
 scientific = "Phasmatodea"
 category = 0
 icons = Array[Texture2D]([SubResource("AtlasTexture_pceno"), SubResource("AtlasTexture_w1wph"), SubResource("AtlasTexture_57pbe"), SubResource("AtlasTexture_1s2jl")])
