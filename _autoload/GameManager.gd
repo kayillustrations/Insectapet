@@ -34,14 +34,12 @@ func _ready() -> void:
 	current_stats = GameSave.DefaultBugStats
 	habitat_stats = GameSave.DefaultHabitatStats
 
-func isNewBug(b:bool):
-	if b:
-		current_bug = STICKBUG
-		GameSave.bug_info["bug_resource_name"] = "stickbug"
-	else:
-		var load_bug = load("res://resources/bugs/" + str(GameSave.bug_info["bug_resource_name"]) + ".tres")
-		current_bug = load_bug
-		pass
+func NewBug(newBugInfo:BugInfo):
+	GameSave.bug_info["bug_resource_name"] = newBugInfo.resource_name
+	current_bug = newBugInfo
+	current_stats = GameSave.DefaultBugStats
+	GameSave.SaveGame()
+	pass
 	
 
 func ReleaseBug(b:bool):

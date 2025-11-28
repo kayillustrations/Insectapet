@@ -23,7 +23,7 @@ var habitat_locations: Dictionary = {
 	"Bug": Vector2i.ZERO
 }
 var bug_info: Dictionary = {
-	"bug_resource_name" : "",
+	"bug_resource_name" : "stickbug",
 	"bug_color" : Color.WHITE
 }
 
@@ -49,11 +49,12 @@ func _ready() -> void:
 	if !CheckSaveFolder("settings"): #if no settings, make file
 		SaveSettings()
 	if !CheckSaveFolder("save"): #if no game save(s), disable load
-		GameManager.isNewGame = true
+		GameManager.NewBug(GameManager.STICKBUG)
 		SaveGame()
 	else: 
 		LoadGame()
-		GameManager.isNewBug(false)
+		var loaded_info = load("res://resources/bugs/" + bug_info["bug_resource_name"]+ ".tres")
+		GameManager.current_bug = loaded_info
 	LoadSettings()
 
 func SaveGame(): #may be able to add multiple loads/saves in the future
@@ -64,7 +65,7 @@ func SaveGame(): #may be able to add multiple loads/saves in the future
 	game_config.set_value("0","habitat_stats",GameManager.habitat_stats)
 	game_config.set_value("0","food_given",GameManager.food_given)
 	game_config.set_value("0","food_life",GameManager.food_life)
-	game_config.set_value("0","bug_color",bug_info["bug_color"])
+	game_config.set_value("0","bug_info",bug_info)
 	game_config.set_value("0","highscores",GameSave.highscores)
 	
 	game_config.save(SCENE_SAVE_FOLDER+"save.cfg")
@@ -81,7 +82,7 @@ func LoadGame():
 		GameManager.habitat_stats = game_config.get_value("0","habitat_stats")
 		GameManager.food_given = game_config.get_value("0","food_given")
 		GameManager.food_life = game_config.get_value("0","food_life")
-		bug_info["bug_color"] = game_config.get_value("0","bug_color")
+		bug_info = game_config.get_value("0","bug_info")
 		GameSave.highscores = game_config.get_value("0","highscores")
 		pass
 	print("Load")

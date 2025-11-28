@@ -23,16 +23,14 @@ func _ready() -> void:
 	for i in all_screens.size():
 		all_screens[i].visible = false
 	
-	if GameManager.isNewGame:GameManager.isNewBug(true)
-	else: GameManager.isNewBug(false)
-	
 	GameManager.UpdateHabitat.connect(HabitatChecks)
 	GameManager.StatWarning.connect(StatWarning)
 	%ReleaseBug.disabled = GameManager.isBugReleased
+	
+	ConfigBug()
 	%BugInfo.ConfigInfo()
 	%Game.DecideGame()
 	HabitatChecks()
-	ConfigBug()
 	ButtonConfig()
 	pass
 
@@ -51,8 +49,8 @@ func ConfigBug():
 	bug_animator = %Bug.get_child(0).find_child("AnimationPlayer")
 	ChangeState(0)
 	if GameSave.bug_info["bug_color"] == Color.WHITE:
-		bug_info["bug_color"] =[Exports.colors_green,Exports.colors_orange].pick_random()
-		bug_info["bug_color"] = bug_info["bug_color"].pick_random()
+		var rand_color =[Exports.colors_green,Exports.colors_orange].pick_random()
+		GameSave.bug_info["bug_color"] = rand_color.pick_random()
 	%Bug.get_child(0).modulate = GameSave.bug_info["bug_color"]
 	$"State Timer".start(5)
 	if GameManager.current_stats["Stage"] < 3:
