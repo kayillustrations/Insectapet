@@ -1,5 +1,7 @@
 extends HoldingItem
 
+@onready var spray_audio: AudioStreamPlayer = $"../../../../Spray"
+
 var active: bool = false
 
 func Clean():
@@ -11,7 +13,7 @@ func Clean():
 	%MainButtons.ActivateAllButtons(true)
 	%MainButtons.clean.button_pressed = false
 	%Cleaning.currently_holding.visible = false
-	%ReleaseBug.disabled = false
+	%ActivateBug.disabled = false
 	GameManager.habitat_stats["Hydration"] = 100
 	GameManager.UpdateHabitat.emit()
 	GameSave.SaveGame()
@@ -29,6 +31,7 @@ func _on_visibility_changed() -> void:
 
 func _on_button_pressed() -> void:
 	$ProgressBar.value -= 1
+	spray_audio.play()
 	GameManager.habitat_stats["Hydration"] += (100 - GameManager.habitat_stats["Hydration"])/3
 	GameManager.UpdateHabitat.emit()
 	if $ProgressBar.value == 0:

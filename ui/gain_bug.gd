@@ -7,25 +7,27 @@ var jars: Array
 var default_control_transform
 
 func _ready() -> void:
+	jars = $HBoxContainer.get_children()
 	ConnectJars()
 
 func ConnectJars():
-	jars = $HBoxContainer.get_children()
 	for i in jars.size():
 		jars[i].disabled = false
 		jars[i].connect("mouse_entered",_on_mouse_hovered.bind(i,true))
 		jars[i].connect("mouse_exited",_on_mouse_hovered.bind(i,false))
-		jars[i].connect("pressed",ChosenJar.bind(jars[i]))
+		jars[i].connect("button_down",ChosenJar.bind(i))
 
 func _on_mouse_hovered(jar_int,isHovered:bool):
 	if jars[jar_int].disabled == true: return
 	if isHovered: 
 		jars[jar_int].get_child(0).scale = Vector2(1.25,1.25)
+		$Hover.play()
 	else: 
 		jars[jar_int].get_child(0).scale = Vector2(1,1)
 
-func ChosenJar(jar:Button):
-	var jar_control = jar.get_child(0)
+func ChosenJar(jar_int:int):
+	Utils.Error(self, "pressed")
+	var jar_control = jars[jar_int].get_child(0)
 	default_control_transform = jar_control.position
 	for i in jars.size():
 		jars[i].disabled = true
@@ -46,14 +48,14 @@ func ChosenJar(jar:Button):
 	tween_lid_rotation.tween_property(jar_control.find_child("Lid"),"rotation_degrees",-20,1)
 	var tween_glow:Tween = get_tree().create_tween()
 	tween_glow.tween_property($Glow,"modulate",Color.WHITE,1)
-	
+	$Reveal.play()
 	await tween_glow.finished
 	var tween_fade_all:Tween = get_tree().create_tween()
 	tween_fade_all.tween_property($".","modulate",Color.TRANSPARENT,1)
 	await tween_fade_all.finished
+	GameManager.habitat_window.NewBugScreen(false)
 	jar_control.queue_free()
 	ResetGainBug()
-	visible = false
 
 func ResetGainBug():
 	$Center.position = Vector2(212.0,105)
@@ -63,4 +65,4 @@ func ResetGainBug():
 	for i in jars.size():
 		if jars[i].get_child_count() == 0:
 			jars[i].add_child(JAR.instantiate())
-	ConnectJars()
+	jars = $HBoxContainer.get_children()

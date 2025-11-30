@@ -17,7 +17,11 @@ var isMoving = false
 var target_location:float
 var target_direction:int
 
+
 func _ready() -> void:
+	GameManager.habitat_window = self
+	#$ColorRect2.visible = isEmbed
+	$Shape/Control/ColorRect.visible = !GameManager.isEmbed
 	#screens set
 	%SubViewportContainer.visible = false
 	for i in all_screens.size():
@@ -31,7 +35,7 @@ func _ready() -> void:
 	%BugInfo.ConfigInfo()
 	%Game.DecideGame()
 	HabitatChecks()
-	ButtonConfig()
+	TextureButtonConfig()
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -44,8 +48,11 @@ func _physics_process(delta: float) -> void:
 			GameSave.SaveGame()
 		else: %PathFollow2D.progress_ratio += .01*target_direction*delta
 
-func NewBugScreen():
-	%GainBug.visible
+func NewBugScreen(activate:bool):
+	GameManager.isNewBug = activate
+	%Bug.visible = !activate
+	%GainBug.visible = activate
+	%MainButtons.ActivateAllButtons(!activate)
 	pass
 
 func ConfigBug():
@@ -55,6 +62,8 @@ func ConfigBug():
 	if GameSave.bug_info["bug_color"] == Color.WHITE:
 		var rand_color =[Exports.colors_green,Exports.colors_orange].pick_random()
 		GameSave.bug_info["bug_color"] = rand_color.pick_random()
+		NewBugScreen(true)
+	else: NewBugScreen(false)
 	%Bug.get_child(0).modulate = GameSave.bug_info["bug_color"]
 	$"State Timer".start(5)
 	if GameManager.current_stats["Stage"] < 3:
@@ -88,10 +97,16 @@ func HabitatChecks():
 
 func StatWarning(stat:String,activate:bool):
 	match stat:
-		"Happiness": %MainButtons/Happiness/Warning.visible = activate
-		"Hunger":%MainButtons/Hunger/Warning.visible = activate
-		"Energy":%LightButton/Warning.visible = activate
-		"XP":%MainButtons/Info/Evolve.visible = activate
+		"Happiness": 
+			%MainButtons/Happiness/Warning.visible = activate
+		"Hunger":
+			%MainButtons/Hunger/Warning.visible = activate
+		"Energy":
+			%LightButton/Warning.visible = activate
+		"XP":
+			%MainButtons/Info/Evolve.visible = activate
+			if activate:
+				$Evolve.play()
 	pass
 
 func ChangeState(new_state):
@@ -165,17 +180,16 @@ func _on_state_timer_timeout() -> void:
 	else:
 		$"State Timer".start(5)
 
-func ButtonConfig():
+func TextureButtonConfig():
 	var buttons = find_children("","TextureButton",true)
-	if buttons[0].button_down.is_connected(PlayButtonAudio):
+	if buttons[0].button_down.is_connected(PlayTextureButtonAudio):
 		return
-	
 	for i in buttons.size():
-		buttons[i].connect("button_down",PlayButtonAudio.bind(true))
+		buttons[i].connect("toggled",PlayTextureButtonAudio)
 
-func PlayButtonAudio(pressed:bool):
-	if pressed:$ButtonClick.play()
-	else:$ButtonUnClick.play()
+func PlayTextureButtonAudio(pressed:bool):
+	if pressed:$TextureButtonClick.play()
+	else:$TextureButtonUnClick.play()
 
 func _on_oh_pressed() -> void:
 	#evolve bug animation

@@ -19,6 +19,8 @@ extends Node
 func _ready() -> void:
 	for i in timers.size()-1:
 		timers[i].start(GameManager.default_times[i])
+		#if GameManager.habitat_window.isEmbed: 
+			#timers[i].ignore_time_scale = false
 
 func LifeSpanTimer():
 	if GameManager.current_stats["Stage"] == 3: return

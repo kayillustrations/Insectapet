@@ -35,7 +35,7 @@ func _on_play_toggled(toggled_on: bool) -> void:
 		ActivateScreen(%Game)
 	else:
 		ActivateScreen(null)
-		$Play.button_pressed = toggled_on
+		play.button_pressed = toggled_on
 	%Game.ActivateGame(toggled_on)
 	
 	pass # Replace with function body.

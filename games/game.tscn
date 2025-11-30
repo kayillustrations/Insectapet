@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpur22kqa7fty"]
+[gd_scene load_steps=5 format=3 uid="uid://dpur22kqa7fty"]
 
 [ext_resource type="Script" uid="uid://p85t021wdi0b" path="res://ui/game_inputs.gd" id="1_qhkc2"]
+[ext_resource type="AudioStream" uid="uid://dmo54xb6a351f" path="res://audio/jingles-pizzicato_05.ogg" id="2_qhkc2"]
+[ext_resource type="AudioStream" uid="uid://cl0i6ser51v66" path="res://audio/Cheerful Annoyance.ogg" id="3_ljnhf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhvnf"]
 bg_color = Color(0.1872, 0.24, 0.21184, 0.784314)
@@ -118,6 +120,14 @@ text = "Pause"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="MusicToggle" type="CheckButton" parent="HUD/Pause Screen/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Music"
+alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/Pause Screen/Panel/VBoxContainer"]
 modulate = Color(0.560784, 1, 0.772549, 1)
 layout_mode = 2
@@ -134,6 +144,7 @@ size_flags_horizontal = 3
 text = "Exit Game"
 
 [node name="GameOver" type="MarginContainer" parent="HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -203,6 +214,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Exit Game"
 
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qhkc2")
+volume_db = -10.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ljnhf")
+volume_db = -20.0
+
+[connection signal="toggled" from="HUD/Pause Screen/Panel/VBoxContainer/MusicToggle" to="." method="_on_music_toggle_toggled"]
 [connection signal="pressed" from="HUD/Pause Screen/Panel/VBoxContainer/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="HUD/Pause Screen/Panel/VBoxContainer/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="HUD/GameOver/Panel/VBoxContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]

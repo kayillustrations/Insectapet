@@ -16,18 +16,22 @@ var snooze_time: float = 2
 var current_window_position: Vector2
 
 var current_bug: BugInfo
-var isNewGame:bool = false
+var isNewBug:bool = false
 
+var habitat_window
 var bug_color: Color
 var current_stats: Dictionary
 var habitat_stats: Dictionary
 var current_path_location: float = 0
 var isBugWindow = false
 
-var food_given: Texture2D = null
-var food_life: float
+var isGameMusicOn: bool = true
+
+var food_given: Texture2D = Texture2D.new()
+var food_life: float = 100
 
 var habitat_warning: bool = false
+var isEmbed:bool = false
 
 func _ready() -> void:
 	current_bug = BugInfo.new()
@@ -38,6 +42,7 @@ func NewBug(newBugInfo:BugInfo):
 	GameSave.bug_info["bug_resource_name"] = newBugInfo.resource_name
 	current_bug = newBugInfo
 	current_stats = GameSave.DefaultBugStats
+	isNewBug = true
 	#Bug animation
 	GameSave.SaveGame()
 	pass
@@ -63,8 +68,8 @@ func EditStat(stat:String,amount:int):
 	else:
 		current_stats[stat] -= amount
 	
-	if stat == "XP" && current_stats[stat] == 100 && GameManager.current_stats["Stage"] < 3:
-			#Emote(Exports.emote_dictionary["Oh?"])
+	if stat == "XP" && GameManager.current_stats["Stage"] < 3:
+		if current_stats[stat] == 100:
 			StatWarning.emit("XP",true)
 	elif current_stats[stat] < 25:
 		StatWarning.emit(stat,true)

@@ -3,6 +3,8 @@ extends Control
 @onready var dino_game = $DinoGame
 @onready var happiness: Label = $HUD/GameOver/Panel/VBoxContainer/Happiness
 @onready var energy: Label = $HUD/GameOver/Panel/VBoxContainer/Energy
+@onready var game_over_audio: AudioStreamPlayer = $GameOver
+@onready var music_toggle: CheckButton = $"HUD/Pause Screen/Panel/VBoxContainer/MusicToggle"
 
 var current_game
 
@@ -14,6 +16,7 @@ func _ready() -> void:
 	$"HUD/Pause Screen".visible = false
 	$HUD/GameOver.visible = false
 	dino_game.visible = false
+	music_toggle.button_pressed = GameManager.isGameMusicOn
 	#snake_game.visible = false
 
 func DecideGame():
@@ -32,9 +35,13 @@ func ActivateGame(b:bool):
 	%GameButtons.visible = b
 	current_game.Activated(b)
 	current_game.new_game()
+	if b:
+		_on_music_toggle_toggled(GameManager.isGameMusicOn)
+	else: $Music.stop()
 
 func GameOver(score,highscore):
 	$HUD/GameOver.visible = true
+	game_over_audio.play()
 	happiness.text = "Happiness Earned = " + str(score/100)
 	energy.text = "Energy Lost = " + str(score/500)
 	GameManager.EditStat("Happiness",-score/100)
@@ -77,4 +84,11 @@ func _on_exit_pressed() -> void:
 func _on_restart_pressed() -> void:
 	$HUD/GameOver.visible = false
 	current_game.new_game()
+	pass # Replace with function body.
+
+
+func _on_music_toggle_toggled(toggled_on: bool) -> void:
+	if !visible: return
+	$Music.playing = toggled_on
+	GameManager.isGameMusicOn = toggled_on
 	pass # Replace with function body.

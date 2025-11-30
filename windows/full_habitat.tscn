@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://dlld10gm7v5qt"]
+[gd_scene load_steps=116 format=3 uid="uid://dlld10gm7v5qt"]
 
 [ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_bigu7"]
 [ext_resource type="Script" uid="uid://etpeqcodqstc" path="res://windows/full_habitat.gd" id="2_i2cyu"]
@@ -39,9 +39,19 @@
 [ext_resource type="Texture2D" uid="uid://d3p7oif4qbd6w" path="res://art/symbols.png" id="29_65bei"]
 [ext_resource type="PackedScene" uid="uid://bfysejrtg1gp3" path="res://ui/sparkles.tscn" id="32_1gug7"]
 [ext_resource type="PackedScene" uid="uid://dqqjtahenh6gc" path="res://ui/shop.tscn" id="32_lsfya"]
+[ext_resource type="Script" uid="uid://kb3drv4jxuoy" path="res://ui/screen.gd" id="37_wq0q5"]
 [ext_resource type="PackedScene" uid="uid://cb315uw5l1fgu" path="res://ui/GainBug.tscn" id="40_a5fvd"]
 [ext_resource type="PackedScene" uid="uid://dpur22kqa7fty" path="res://games/game.tscn" id="40_ncixy"]
 [ext_resource type="PackedScene" uid="uid://cje31o0utwy5y" path="res://games/dino_game.tscn" id="41_sutye"]
+[ext_resource type="AudioStream" uid="uid://dgabv5eet5hpl" path="res://audio/switch9.ogg" id="43_7in5t"]
+[ext_resource type="AudioStream" uid="uid://bqutwtmqp672c" path="res://audio/switch8.ogg" id="44_7kc2p"]
+[ext_resource type="AudioStream" uid="uid://cg47cl02fa1lj" path="res://audio/drawKnife1.ogg" id="45_6m37y"]
+[ext_resource type="AudioStream" uid="uid://dmnb3xnr5igru" path="res://audio/select_005.ogg" id="46_8xtm2"]
+[ext_resource type="AudioStream" uid="uid://dp0swcutipgbx" path="res://audio/drawKnife2.ogg" id="46_noi4t"]
+[ext_resource type="AudioStream" uid="uid://bemu4s6mmnd1x" path="res://audio/squeaky-window-cleaner-84613.mp3" id="47_4bi1g"]
+[ext_resource type="AudioStream" uid="uid://v2k786wifsup" path="res://audio/select_007.ogg" id="47_bh3wh"]
+[ext_resource type="AudioStream" uid="uid://cklcmd5q02xr5" path="res://audio/bookOpen.ogg" id="47_noi4t"]
+[ext_resource type="AudioStream" uid="uid://oxgi222qjg1t" path="res://audio/jingles-pizzicato_00.ogg" id="52_bh3wh"]
 
 [sub_resource type="Curve2D" id="Curve2D_r5got"]
 _data = {
@@ -72,6 +82,11 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxj5w"]
+atlas = ExtResource("15_xey8i")
+region = Rect2(0, 0, 1053, 655.626)
+margin = Rect2(0, 0, 0, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1gug7"]
 atlas = ExtResource("28_xjwgn")
@@ -146,6 +161,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_3ytqu"]
 resource_name = "feed"
 length = 2.0
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -189,9 +205,12 @@ tracks/3/path = NodePath("../../../../SubViewportContainer/ScreenViewport/Screen
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.06667),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.9, 1.06667),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"PlayAudio"
+}, {
 "args": [],
 "method": &"GetFed"
 }]
@@ -425,8 +444,18 @@ shader_parameter/down_right = Vector2(0.945, 1)
 shader_parameter/down_left = Vector2(0, 1)
 shader_parameter/plane_size = Vector2(250, 0)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4bi1g"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("45_6m37y")
+stream_1/stream = ExtResource("46_noi4t")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wq0q5"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("47_4bi1g")
+
 [node name="FullHabitat" node_paths=PackedStringArray("move_button") instance=ExtResource("1_bigu7")]
-sdf_scale = 0
 size = Vector2i(800, 915)
 script = ExtResource("2_i2cyu")
 current_state = 0
@@ -434,7 +463,20 @@ anchor_position = "Center"
 move_button = NodePath("Shape/Control/ColorRect/Panel/Move")
 move_buffer = 0.15
 
-[node name="Shape" parent="." index="0"]
+[node name="ColorRect2" type="ColorRect" parent="." index="0"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -6.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.501961, 0.54902, 0.329412, 1)
+
+[node name="Shape" parent="." index="1"]
 polygon = PackedVector2Array(0, 321, 0, 910, 750, 910, 750, 324, 547, 53, 411.228, 0)
 
 [node name="Control" type="Control" parent="Shape" index="0"]
@@ -538,7 +580,7 @@ grow_vertical = 2
 scale = Vector2(3.275, 3.275)
 texture_normal = ExtResource("13_7avne")
 texture_pressed = ExtResource("14_gyogo")
-texture_hover = ExtResource("15_xey8i")
+texture_hover = SubResource("AtlasTexture_pxj5w")
 texture_disabled = ExtResource("14_gyogo")
 ignore_texture_size = true
 stretch_mode = 5
@@ -596,7 +638,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.14902, 0.0392157, 0.027451, 0)
@@ -919,10 +960,13 @@ uv = PackedVector2Array(316.12, 341.827)
 offset_left = 217.0
 offset_top = 305.0
 offset_right = 488.0
-offset_bottom = 360.0
+offset_bottom = 349.0
+theme_override_colors/font_outline_color = Color(0.49, 0.383833, 0, 0.678431)
+theme_override_constants/outline_size = 9
 theme_override_styles/hover = SubResource("StyleBoxFlat_nn6h2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_nn6h2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_frhdr")
+text = "Spray Here!"
 
 [node name="Bottle" type="Sprite2D" parent="Shape/Control/UI" index="4"]
 unique_name_in_owner = true
@@ -966,11 +1010,13 @@ script = ExtResource("13_nn6h2")
 
 [node name="GainBug" parent="Shape/Control/UI" index="6" instance=ExtResource("40_a5fvd")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 offset_top = 51.8182
 offset_bottom = 301.818
+mouse_filter = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." index="1"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." index="2"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_gyogo")
 offset_left = 82.0
@@ -978,12 +1024,11 @@ offset_top = 429.0
 offset_right = 632.0
 offset_bottom = 759.0
 scale = Vector2(1.05, 1.05)
-mouse_filter = 2
+mouse_filter = 0
 
 [node name="ScreenViewport" type="SubViewport" parent="SubViewportContainer" index="0"]
 transparent_bg = true
 handle_input_locally = false
-gui_embed_subwindows = true
 size = Vector2i(550, 330)
 render_target_update_mode = 4
 
@@ -994,17 +1039,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 color = Color(0.3536, 0.52, 0.42848, 0.94902)
+script = ExtResource("37_wq0q5")
 
 [node name="Feeding" parent="SubViewportContainer/ScreenViewport/Screens" index="0" instance=ExtResource("24_xey8i")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
 scale = Vector2(1.1, 1.1)
 
 [node name="Cleaning" parent="SubViewportContainer/ScreenViewport/Screens" index="1" instance=ExtResource("24_gyogo")]
@@ -1034,20 +1075,42 @@ layout_mode = 1
 [node name="DinoGame" parent="SubViewportContainer/ScreenViewport/Screens/Game" index="1" instance=ExtResource("41_sutye")]
 show_behind_parent = true
 
-[node name="State Timer" type="Timer" parent="." index="2"]
+[node name="State Timer" type="Timer" parent="." index="3"]
 wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="ButtonClick" type="AudioStreamPlayer" parent="." index="3"]
+[node name="TextureButtonClick" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("43_7in5t")
 
-[node name="ButtonUnclick" type="AudioStreamPlayer" parent="." index="4"]
+[node name="TextureButtonUnClick" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("44_7kc2p")
 
-[node name="Spray" type="AudioStreamPlayer" parent="." index="5"]
+[node name="ButtonClick" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("46_8xtm2")
+volume_db = -10.0
 
-[node name="Clean" type="AudioStreamPlayer" parent="." index="6"]
+[node name="ButtonHover" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource("47_bh3wh")
+volume_db = -25.0
+pitch_scale = 0.9
 
-[node name="PlaceFood" type="AudioStreamPlayer" parent="." index="7"]
+[node name="Spray" type="AudioStreamPlayer" parent="." index="8"]
+stream = SubResource("AudioStreamRandomizer_4bi1g")
+
+[node name="Clean" type="AudioStreamPlayer" parent="." index="9"]
+stream = SubResource("AudioStreamRandomizer_wq0q5")
+volume_db = -13.164
+pitch_scale = 0.96
+
+[node name="PlaceFood" type="AudioStreamPlayer" parent="." index="10"]
+stream = ExtResource("47_noi4t")
+volume_db = -4.87
+pitch_scale = 0.47
+
+[node name="Evolve" type="AudioStreamPlayer" parent="." index="11"]
+stream = ExtResource("52_bh3wh")
+volume_db = -10.0
 
 [connection signal="pressed" from="Shape/Control/Center Anchor/ActivateBug" to="." method="_on_bug_window_pressed"]
 [connection signal="pressed" from="Shape/Control/ColorRect/x" to="." method="_on_x_pressed"]

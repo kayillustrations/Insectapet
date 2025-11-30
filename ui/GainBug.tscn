@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://cb315uw5l1fgu"]
+[gd_scene load_steps=24 format=3 uid="uid://cb315uw5l1fgu"]
 
 [ext_resource type="Script" uid="uid://cflxhw2is76g" path="res://ui/gain_bug.gd" id="1_srixo"]
 [ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="1_u8qgy"]
 [ext_resource type="PackedScene" uid="uid://cyx8uk88ii8wd" path="res://ui/jar.tscn" id="2_mg0mn"]
 [ext_resource type="Texture2D" uid="uid://d3p7oif4qbd6w" path="res://art/symbols.png" id="2_srixo"]
+[ext_resource type="AudioStream" uid="uid://ckf5688j64uut" path="res://audio/beltHandle1.ogg" id="5_dlomn"]
+[ext_resource type="AudioStream" uid="uid://oxgi222qjg1t" path="res://audio/jingles-pizzicato_00.ogg" id="6_r62jc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qtt0h"]
 
@@ -155,6 +157,7 @@ offset_left = -197.5
 offset_right = 197.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="Jar" type="Button" parent="HBoxContainer"]
@@ -162,6 +165,7 @@ self_modulate = Color(1, 1, 1, 0.392157)
 custom_minimum_size = Vector2(100, 200)
 layout_mode = 2
 size_flags_horizontal = 6
+mouse_force_pass_scroll_events = false
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qtt0h")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_mg0mn")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_srixo")
@@ -375,3 +379,12 @@ texture = SubResource("GradientTexture2D_mg0mn")
 libraries = {
 &"": SubResource("AnimationLibrary_mg0mn")
 }
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dlomn")
+volume_db = -20.0
+
+[node name="Reveal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_r62jc")
+volume_db = -10.0
+pitch_scale = 2.5
