@@ -68,6 +68,7 @@ func Activated(b: bool):
 func new_game():
 	#reset variables
 	score = 0
+	highscore_label.text = str(highscore)
 	difficulty = 0
 	
 	#reset nodes
@@ -125,6 +126,7 @@ func UpdateScore():
 	score_label.text = str(score)
 	if score > highscore:
 		highscore_label.text = str(score)
+		highscore = score
 
 func Generate_Obj():
 	#ground obs

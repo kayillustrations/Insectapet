@@ -6,7 +6,7 @@ extends Control
 var eaten_textures: Array = [
 	
 ]
-var food_time = 60
+var food_time = 5
 var current_food_id: int
 
 var food_dict:Dictionary = {
@@ -41,6 +41,7 @@ var food_dict:Dictionary = {
 	}
 
 func _ready():
+	if GameManager.isEmbed: food_time *= .5
 	%Feed.visible = false
 	ConfigFood()
 
@@ -60,7 +61,7 @@ func LockSlot(slot,doLock:bool):
 	slot.find_child("Button").disabled = doLock
 
 func StartFeed(food_id:int):
-	if GameManager.food_life == 0:
+	if GameManager.habitat_stats["hasFood"]:
 		Utils.Error(self,"FoodAlreadyGiven")
 		return
 	current_food_id = food_id
@@ -87,21 +88,31 @@ func Feeding(b:bool):
 		%Feed.find_child("AnimationPlayer").play("feed")
 		%Feed.find_child("Food").texture = Exports.food_textures[current_food_id]
 		GameManager.food_given = Exports.food_textures[current_food_id]
+		GameManager.habitat_stats["hasFood"] = true
 		GameManager.food_life = 100
 		GameSave.SaveGame()
 
 func UpdateFood():
-	if GameManager.food_life == 0: return
+	if !GameManager.habitat_stats["hasFood"]: return
 	$FoodLife.start(food_time)
+	MatchFoodLife()
 	%FoodIn.get_child(0).texture = GameManager.food_given
 	#%FoodIn.texture = eaten_textures[0]
 
 func _on_food_life_timeout() -> void:
-	GameManager.food_life -= 10
-	if GameManager.food_life <= 0:
+	print(GameManager.food_life)
+	GameManager.food_life = GameManager.food_life - 2.0
+	if GameManager.food_life <= 20:
+		GameManager.habitat_stats["hasFood"] = false
 		GameManager.food_given = Texture2D.new()
+		%FoodIn.get_child(0).texture = GameManager.food_given
+		%FoodIn.scale.y = 1
 	GameManager.UpdateHabitat.emit()
+	GameSave.SaveGame()
 	pass # Replace with function body.
+
+func MatchFoodLife():
+	%FoodIn.scale.y = GameManager.food_life / 100
 
 func PlayAudio():
 	place_food_audio.playing = true

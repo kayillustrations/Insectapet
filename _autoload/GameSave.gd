@@ -41,6 +41,7 @@ var DefaultBugStats: Dictionary = {
 var DefaultHabitatStats: Dictionary = {
 	"isLampOn": true,
 	"isBugReleased": false,
+	"hasFood": false,
 	"Cleanliness" : 50,
 	"Hydration" : 100,
 }

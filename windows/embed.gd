@@ -18,7 +18,7 @@ var target_direction:int
 
 func _ready() -> void:
 	GameManager.habitat_window = self
-	#$ColorRect2.visible = isEmbed
+	$ColorRect2.visible = GameManager.isEmbed
 	$Shape/Control/ColorRect.visible = !GameManager.isEmbed
 	#screens set
 	%SubViewportContainer.visible = false
@@ -61,8 +61,8 @@ func ConfigBug():
 		var rand_color =[Exports.colors_green,Exports.colors_orange].pick_random()
 		GameSave.bug_info["bug_color"] = rand_color.pick_random()
 		NewBugScreen(true)
-	else: NewBugScreen(false)
-	%Bug.get_child(0).modulate = GameSave.bug_info["bug_color"]
+	else: 
+		NewBugScreen(false)
 	$"State Timer".start(5)
 	if GameManager.current_stats["Stage"] < 3:
 		%Cleaning.find_child("Jar").disabled = true
@@ -70,6 +70,7 @@ func ConfigBug():
 		%Cleaning.find_child("Jar").disabled = false
 	if GameManager.current_stats["XP"] == 100 && GameManager.current_stats["Stage"] < 3:
 		StatWarning("XP",true)
+	%Bug.modulate = GameSave.bug_info["bug_color"]
 	Exports.LifeSpanTimer()
 	GameSave.SaveGame()
 	pass
@@ -81,7 +82,7 @@ func HabitatChecks():
 	%Feeding.UpdateFood()
 	var temp_hydration = GameManager.habitat_stats["Hydration"]-50
 	if temp_hydration < 25: 
-		%"Healthy Leaves".self_modulate.r = 1 - temp_hydration/100
+		%"Healthy Leaves".self_modulate.r = float(1- (temp_hydration*.01))
 		%"Healthy Leaves".visible = true
 		%"DryLeaves".visible = false
 	elif temp_hydration < 0: 

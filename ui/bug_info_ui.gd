@@ -33,4 +33,15 @@ func UpdateStats():
 	%Hunger.value = GameManager.current_stats["Hunger"]
 	%Happiness.value = GameManager.current_stats["Happiness"]
 	%Energy.value = GameManager.current_stats["Energy"]
+	Arrow(%Energy.get_child(0),!GameManager.habitat_stats["isLampOn"])
+	Arrow(%Hunger.get_child(0),GameManager.habitat_stats["hasFood"])
+	Arrow(%Happiness.get_child(0),false)
+
+func Arrow(arrow:TextureRect, isPositive:bool):
+	if isPositive:
+		arrow.flip_h = true
+		arrow.modulate = Color.GREEN_YELLOW
+	else:
+		arrow.flip_h = false
+		arrow.modulate = Color.INDIAN_RED
 	pass

@@ -520,6 +520,8 @@ position = Vector2(292.424, 750)
 rotation = 0.161106
 
 [node name="Food" type="Sprite2D" parent="Shape/Control/Center Anchor/FoodIn"]
+position = Vector2(-2.80054, 48.1045)
+offset = Vector2(2.80054, -48.1045)
 
 [node name="MainPath" type="Path2D" parent="Shape/Control/Center Anchor"]
 position = Vector2(-16.6667, 813.333)

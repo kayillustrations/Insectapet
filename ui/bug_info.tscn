@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dxsgw62s81q8n"]
+[gd_scene load_steps=18 format=3 uid="uid://dxsgw62s81q8n"]
 
 [ext_resource type="Script" uid="uid://d24h6d76pcw85" path="res://ui/bug_info_ui.gd" id="1_55fh1"]
 [ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="2_rdjj6"]
 [ext_resource type="Theme" uid="uid://cvpq11fkdk36a" path="res://ui/style/universal_pixel_style.tres" id="3_vx5jr"]
 [ext_resource type="Texture2D" uid="uid://d3p7oif4qbd6w" path="res://art/symbols.png" id="4_ayacq"]
 [ext_resource type="Texture2D" uid="uid://b2xkyu7reerdy" path="res://art/icons_white.png" id="5_55fh1"]
+[ext_resource type="Texture2D" uid="uid://b8lgmu251q3vw" path="res://art/icons.png" id="5_vx5jr"]
 [ext_resource type="PackedScene" uid="uid://c0es7iy1tspwf" path="res://ui/locked.tscn" id="6_rdjj6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55fh1"]
@@ -31,6 +32,10 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayacq"]
+atlas = ExtResource("5_vx5jr")
+region = Rect2(42, 1, 129, 111)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rdjj6"]
 atlas = ExtResource("5_55fh1")
@@ -187,6 +192,20 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
+[node name="Arrow" type="TextureRect" parent="VBoxContainer/Bot/VBoxContainer/Happiness"]
+custom_minimum_size = Vector2(20, 30)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+offset_right = 20.0
+grow_vertical = 0
+rotation = -1.5708
+texture = SubResource("AtlasTexture_ayacq")
+expand_mode = 5
+stretch_mode = 5
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Bot"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -208,6 +227,20 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
+[node name="Arrow" type="TextureRect" parent="VBoxContainer/Bot/VBoxContainer2/Hunger"]
+custom_minimum_size = Vector2(20, 30)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+offset_right = 20.0
+grow_vertical = 0
+rotation = -1.5708
+texture = SubResource("AtlasTexture_ayacq")
+expand_mode = 5
+stretch_mode = 5
+
 [node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/Bot"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -228,6 +261,20 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_7eo7q")
 value = 50.0
 fill_mode = 3
 show_percentage = false
+
+[node name="Arrow" type="TextureRect" parent="VBoxContainer/Bot/VBoxContainer3/Energy"]
+custom_minimum_size = Vector2(20, 30)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+offset_right = 20.0
+grow_vertical = 0
+rotation = -1.5708
+texture = SubResource("AtlasTexture_ayacq")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="Likes3" type="TextureRect" parent="VBoxContainer/Bot"]
 self_modulate = Color(0.6055, 0.7, 0.574, 1)

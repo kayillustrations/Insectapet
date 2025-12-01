@@ -68,27 +68,21 @@ stickbug_textures = Array[Texture2D]([SubResource("AtlasTexture_pceno"), SubReso
 
 [node name="Happiness" type="Timer" parent="."]
 autostart = true
-ignore_time_scale = true
 
 [node name="Hunger" type="Timer" parent="."]
 autostart = true
-ignore_time_scale = true
 
 [node name="Energy" type="Timer" parent="."]
 autostart = true
-ignore_time_scale = true
 
 [node name="Cleanliness" type="Timer" parent="."]
 autostart = true
-ignore_time_scale = true
 
 [node name="Hydration" type="Timer" parent="."]
 autostart = true
-ignore_time_scale = true
 
 [node name="LifeSpan" type="Timer" parent="."]
 one_shot = true
-ignore_time_scale = true
 
 [connection signal="timeout" from="Happiness" to="." method="_on_happiness_timeout"]
 [connection signal="timeout" from="Hunger" to="." method="_on_hunger_timeout"]

@@ -30,6 +30,7 @@ window/size/viewport_width=750
 window/size/viewport_height=915
 window/size/initial_position_type=0
 window/size/transparent=true
+window/size/no_focus=true
 window/stretch/mode="viewport"
 window/per_pixel_transparency/allowed=true
 

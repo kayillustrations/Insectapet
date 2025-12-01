@@ -168,6 +168,7 @@ func _on_light_toggled(toggled_on: bool) -> void:
 	%LightButton.button_pressed = toggled_on
 	GameManager.habitat_stats["isLampOn"] = !toggled_on
 	GameSave.SaveGame()
+	GameManager.UpdateStats.emit()
 	pass # Replace with function body.
 
 

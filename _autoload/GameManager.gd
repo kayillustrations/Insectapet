@@ -31,7 +31,16 @@ var food_given: Texture2D = Texture2D.new()
 var food_life: float = 100
 
 var habitat_warning: bool = false
+
 var isEmbed:bool = true
+
+func _init() -> void:
+	if ProjectSettings.get_setting("application/run/main_scene") == "uid://r2tsosqw2in3":
+		isEmbed = true
+		default_times = [30,20,40,15,10,25]
+		life_times = [5,30,30]
+	else: 
+		isEmbed = false
 
 func _ready() -> void:
 	current_bug = BugInfo.new()

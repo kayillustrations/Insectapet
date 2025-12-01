@@ -36,7 +36,9 @@ func ActivateGame(b:bool):
 	current_game.Activated(b)
 	current_game.new_game()
 	if b:
-		_on_music_toggle_toggled(GameManager.isGameMusicOn)
+		if GameManager.isEmbed: 
+			music_toggle.visible = false
+		else: _on_music_toggle_toggled(GameManager.isGameMusicOn)
 	else: $Music.stop()
 
 func GameOver(score,highscore):
@@ -85,7 +87,6 @@ func _on_restart_pressed() -> void:
 	$HUD/GameOver.visible = false
 	current_game.new_game()
 	pass # Replace with function body.
-
 
 func _on_music_toggle_toggled(toggled_on: bool) -> void:
 	if !visible: return
