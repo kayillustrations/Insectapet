@@ -31,7 +31,7 @@ var food_given: Texture2D = Texture2D.new()
 var food_life: float = 100
 
 var habitat_warning: bool = false
-var isEmbed:bool = false
+var isEmbed:bool = true
 
 func _ready() -> void:
 	current_bug = BugInfo.new()

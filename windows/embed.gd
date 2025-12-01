@@ -1,4 +1,4 @@
-extends WindowBase
+extends Node2D
 
 const INSECTAPET_LAMP = preload("res://art/habitat/insectapet_lamp.png")
 const INSECTAPET_LAMP_DARK = preload("res://art/habitat/insectapet_lamp_dark.png")

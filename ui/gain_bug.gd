@@ -26,7 +26,6 @@ func _on_mouse_hovered(jar_int,isHovered:bool):
 		jars[jar_int].get_child(0).scale = Vector2(1,1)
 
 func ChosenJar(jar_int:int):
-	Utils.Error(self, "pressed")
 	var jar_control = jars[jar_int].get_child(0)
 	default_control_transform = jar_control.position
 	for i in jars.size():

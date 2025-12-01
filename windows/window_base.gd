@@ -60,8 +60,6 @@ func WindowSize():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if GameManager.isEmbed: 
-		return
 	get_window().mouse_passthrough_polygon = shape.polygon
 	
 	if isFalling:
