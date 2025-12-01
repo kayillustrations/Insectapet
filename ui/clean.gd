@@ -48,6 +48,7 @@ func CleanFog():
 		%MainButtons.ActivateAllButtons(true)
 		%MainButtons.clean.button_pressed = false
 		GameManager.habitat_stats["Cleanliness"] = 100
+		GameManager.UpdateHabitat.emit()
 		GameSave.SaveGame()
 		return
 	var tween:Tween = create_tween()

@@ -29,6 +29,7 @@ var HUD
 var score_label: Label
 var highscore_label: Label
 var start_label: RichTextLabel
+var energy_label: RichTextLabel
 
 var ground_spawn:Marker2D
 var air_spawn:Marker2D
@@ -56,6 +57,7 @@ func Activated(b: bool):
 		score_label = HUD.find_child("Score")
 		highscore_label = HUD.find_child("Highscore")
 		start_label = HUD.find_child("Start")
+		energy_label = HUD.find_child("Energy")
 		air_spawn = $Air
 		ground_spawn = $Stick
 		delete_spawned = $Delete
@@ -81,7 +83,13 @@ func new_game():
 	obstacles_generated.clear()
 	isPaused = false
 	game_started = false
-	start_label.visible = true
+	if GameManager.current_stats["Energy"] < 10:
+		start_label.visible = false
+		energy_label.visible = true
+	else:
+		start_label.visible = true
+		energy_label.visible = false
+	
 	UpdateScore()
 
 func _process(delta):
@@ -135,15 +143,16 @@ func Generate_Obj():
 		last_obs = chosen_and_type[0].instantiate()
 		if chosen_and_type[1]==obstacles_ground:
 			ground_spawn.add_child(last_obs)
-			last_obs.rotation = -randf_range(0,.5)
+			last_obs.rotation_degrees = randf_range(-15,0)
 			last_obs.scale.x = randf_range(.5,.75)
 			last_obs.scale.y = last_obs.scale.x
 		elif last_obs == obstacle_spider[0]:
 			air_spawn.add_child(last_obs)
+			last_obs.rotation_degrees = 0
 			last_obs.modulate = Color.DARK_SLATE_GRAY
 		else:
 			air_spawn.add_child(last_obs)
-			last_obs.rotation = randf_range(0,.5)
+			last_obs.rotation_degrees = randf_range(-15,0)
 			last_obs.scale.x = randf_range(.5,.75)
 			last_obs.scale.y = randf_range(.5,.75)
 			last_obs.modulate = Exports.colors_green.pick_random()
@@ -155,7 +164,7 @@ func Generate_Obj():
 func ChooseObs():
 	var type
 	var chosen
-	if difficulty < 3:
+	if difficulty < 3: 
 		type = [obstacles_ground,obstacles_air].pick_random()
 		chosen = type[randi() % 3]
 	elif difficulty < 6:
@@ -164,4 +173,7 @@ func ChooseObs():
 	else: 
 		type = [obstacles_ground,obstacles_air,obstacle_spider].pick_random()
 		chosen = type.pick_random()
+	
+	#type = obstacle_spider
+	#chosen = obstacle_spider[0]
 	return [chosen,type]

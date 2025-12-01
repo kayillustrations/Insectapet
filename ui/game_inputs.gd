@@ -45,9 +45,9 @@ func GameOver(score,highscore):
 	$HUD/GameOver.visible = true
 	game_over_audio.play()
 	happiness.text = "Happiness Earned = " + str(score/100)
-	energy.text = "Energy Lost = " + str(score/500)
+	energy.text = "Energy Lost = " + str(score/200)
 	GameManager.EditStat("Happiness",-score/100)
-	GameManager.EditStat("Energy",score/500)
+	GameManager.EditStat("Energy",roundi(score/200))
 	GameSave.highscores["Dino"] = highscore
 	GameSave.SaveGame()
 

@@ -101,7 +101,7 @@ func UpdateFood():
 
 func _on_food_life_timeout() -> void:
 	print(GameManager.food_life)
-	GameManager.food_life = GameManager.food_life - 2.0
+	GameManager.food_life = GameManager.food_life - 3.0
 	if GameManager.food_life <= 20:
 		GameManager.habitat_stats["hasFood"] = false
 		GameManager.food_given = Texture2D.new()
