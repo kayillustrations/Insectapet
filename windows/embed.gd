@@ -30,7 +30,6 @@ func _ready() -> void:
 	%ActivateBug.disabled = GameManager.isBugWindow
 	
 	ConfigBug()
-	%BugInfo.ConfigInfo()
 	%Game.DecideGame()
 	HabitatChecks()
 	TextureButtonConfig()
@@ -39,8 +38,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if isMoving:
 		if target_location == snappedf(%PathFollow2D.progress_ratio,.01):
-			bug_animator.play("idle")
-			$"State Timer".start(5)
+			ChangeState(0)
 			isMoving = false
 			GameManager.current_path_location = target_location
 			GameSave.SaveGame()
@@ -56,14 +54,13 @@ func NewBugScreen(activate:bool):
 func ConfigBug():
 	%Bug.add_child(GameManager.current_bug.stages[GameManager.current_stats["Stage"]].instantiate())
 	bug_animator = %Bug.get_child(0).find_child("AnimationPlayer")
-	ChangeState(0)
 	if GameSave.bug_info["bug_color"] == Color.WHITE:
 		var rand_color =[Exports.colors_green,Exports.colors_orange].pick_random()
 		GameSave.bug_info["bug_color"] = rand_color.pick_random()
 		NewBugScreen(true)
 	else: 
 		NewBugScreen(false)
-	$"State Timer".start(5)
+	ChangeState(1)
 	#if GameManager.current_stats["Stage"] < 3:
 		#%Cleaning.find_child("Jar").disabled = true
 	#else:
@@ -73,6 +70,7 @@ func ConfigBug():
 	%Bug.modulate = GameSave.bug_info["bug_color"]
 	Exports.LifeSpanTimer()
 	GameSave.SaveGame()
+	%BugInfo.ConfigInfo()
 	pass
 
 func HabitatChecks():
@@ -112,7 +110,7 @@ func ChangeState(new_state):
 	if GameManager.current_stats["Stage"] == 0:
 		%PathFollow2D.progress_ratio = 0
 		$"State Timer".stop()
-		bug_animator.current_animation = "idle"
+		bug_animator.play("idle")
 		return
 	if current_state == 2: #uncrouch
 		bug_animator.play("crouch",-1,-1,true)
@@ -197,7 +195,7 @@ func _on_oh_pressed() -> void:
 	GameManager.current_stats["Stage"] += 1
 	if GameManager.current_stats["Stage"] < 3:
 		GameManager.current_stats["XP"] = 0
-		$Yay.play
+		$Reveal.play()
 	print(GameManager.current_stats["Stage"])
 	%Bug.get_child(0).queue_free()
 	ConfigBug()

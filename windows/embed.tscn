@@ -1084,7 +1084,6 @@ show_behind_parent = true
 [node name="State Timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
-autostart = true
 
 [node name="TextureButtonClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("42_qom1s")
@@ -1118,9 +1117,10 @@ pitch_scale = 0.47
 stream = ExtResource("50_yxdds")
 volume_db = -10.0
 
-[node name="Yay" type="AudioStreamPlayer" parent="."]
+[node name="Reveal" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("50_yxdds")
 volume_db = -10.0
+pitch_scale = 2.5
 
 [connection signal="pressed" from="Shape/Control/Center Anchor/ActivateBug" to="." method="_on_bug_window_pressed"]
 [connection signal="toggled" from="Shape/Control/UI/LightButton" to="." method="_on_light_toggled"]
