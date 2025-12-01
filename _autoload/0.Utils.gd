@@ -92,5 +92,6 @@ func Error(window, message:String):
 	var spawn_location = window.get_global_mouse_position()
 	var temp_popup = ERROR_POPUP.instantiate()
 	window.add_child(temp_popup)
-	temp_popup.global_position = spawn_location
 	temp_popup.label.text = message
+	temp_popup.size = temp_popup.label.size
+	temp_popup.global_position = spawn_location - temp_popup.size/2

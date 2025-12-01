@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://posbw3a6ln4f"]
 
-[ext_resource type="Script" path="res://_autoload/error_popup.gd" id="1_pr0eu"]
+[ext_resource type="Script" uid="uid://fy27hpbcru8f" path="res://_autoload/error_popup.gd" id="1_pr0eu"]
 
 [sub_resource type="Animation" id="Animation_1qck3"]
 length = 0.001
@@ -52,28 +52,23 @@ offset_right = 50.0
 offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 script = ExtResource("1_pr0eu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
 color = Color(0.35, 0.2415, 0.2415, 0.784314)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

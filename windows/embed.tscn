@@ -1106,7 +1106,7 @@ stream = SubResource("AudioStreamRandomizer_d8ioa")
 
 [node name="Clean" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_7lsfo")
-volume_db = -13.164
+volume_db = -15.0
 pitch_scale = 0.96
 
 [node name="PlaceFood" type="AudioStreamPlayer" parent="."]
@@ -1115,6 +1115,10 @@ volume_db = -4.87
 pitch_scale = 0.47
 
 [node name="Evolve" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("50_yxdds")
+volume_db = -10.0
+
+[node name="Yay" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("50_yxdds")
 volume_db = -10.0
 

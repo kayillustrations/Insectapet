@@ -64,10 +64,10 @@ func ConfigBug():
 	else: 
 		NewBugScreen(false)
 	$"State Timer".start(5)
-	if GameManager.current_stats["Stage"] < 3:
-		%Cleaning.find_child("Jar").disabled = true
-	else:
-		%Cleaning.find_child("Jar").disabled = false
+	#if GameManager.current_stats["Stage"] < 3:
+		#%Cleaning.find_child("Jar").disabled = true
+	#else:
+		#%Cleaning.find_child("Jar").disabled = false
 	if GameManager.current_stats["XP"] == 100 && GameManager.current_stats["Stage"] < 3:
 		StatWarning("XP",true)
 	%Bug.modulate = GameSave.bug_info["bug_color"]
@@ -197,6 +197,7 @@ func _on_oh_pressed() -> void:
 	GameManager.current_stats["Stage"] += 1
 	if GameManager.current_stats["Stage"] < 3:
 		GameManager.current_stats["XP"] = 0
+		$Yay.play
 	print(GameManager.current_stats["Stage"])
 	%Bug.get_child(0).queue_free()
 	ConfigBug()

@@ -27,5 +27,9 @@ func SharedActions():
 
 
 func _on_jar_pressed() -> void:
-	print("Release")
+	if GameManager.current_stats["Stage"] < 3:
+		Utils.Error(self,"Cannot Release Yet")
+	else:
+		Utils.Error(self,"Coming Soon")
+		print("Release")
 	pass # Replace with function body.

@@ -3,6 +3,7 @@ extends Node2D
 const SIZE = Vector2(2000,1050)
 
 @export var active: bool = false
+
 @onready var clean_sound: AudioStreamPlayer = $"../../../../Clean"
 
 
@@ -16,9 +17,8 @@ var current_pos
 
 func _input(event: InputEvent) -> void:
 	if !active || not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		clean_sound.playing = false
 		return
-	if clean_sound.playing == false:
-		clean_sound.play()
 	var mouse_pos = get_local_mouse_position()
 	if abs(mouse_pos.x) > SIZE.x/2:return
 	if abs(mouse_pos.y) > SIZE.y/2 + get_parent().position.y:return #TODO RETURN HERE
@@ -26,21 +26,20 @@ func _input(event: InputEvent) -> void:
 		prev_pos = mouse_pos
 		dist_traveled = Vector2.ZERO
 	current_pos = mouse_pos
-	if prev_pos == current_pos:
-		clean_sound.stream_paused = true
-	else:clean_sound.stream_paused = false
 	dist_traveled += abs(current_pos - prev_pos)
 	prev_pos = current_pos
 	CleanFog()
 
 func CleanFog():
+	if clean_sound.playing == false:
+		clean_sound.playing = true
+	print(clean_sound.playing)
 	var min_value = min(dist_traveled.x,dist_traveled.y)
 	min_value *= .0002
 	min_value += 1-cleanliness_maths
 	#print(min_value)
 	if min_value >= 1:
 		print("CLEAN")
-		clean_sound.stop()
 		active = false
 		%Sparkles.emitting = true
 		%Cleaning.currently_holding.visible = false
@@ -55,5 +54,6 @@ func CleanFog():
 	tween.tween_property($Fog,"modulate",Color(1,1,1,1-min_value),0)
 
 func EditFog(cleanliness:int):
+	if cleanliness == 100: $Fog.modulate = Color.TRANSPARENT
 	cleanliness_maths = (100-cleanliness)*.01
 	$Fog.modulate =Color(1,1,1,cleanliness_maths)

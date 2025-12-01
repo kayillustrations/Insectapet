@@ -1,7 +1,7 @@
 extends MarginContainer
 
 @onready var color_rect: ColorRect = $ColorRect
-@onready var label: Label = $MarginContainer/Label
+@onready var label: Label = $Label
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var timer: Timer = $Timer

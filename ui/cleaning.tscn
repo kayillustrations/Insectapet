@@ -106,9 +106,9 @@ custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_q6wrd")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_2iw7m")
-disabled = true
 
 [node name="TextureRect2" type="TextureRect" parent="Top/Jar"]
+modulate = Color(1, 1, 1, 0.733333)
 show_behind_parent = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
