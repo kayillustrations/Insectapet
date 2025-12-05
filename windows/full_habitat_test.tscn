@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm3pnuhn5feb4"]
+
+[ext_resource type="PackedScene" uid="uid://p100dnqto4hp" path="res://windows/window_base.tscn" id="1_s7jqh"]
+[ext_resource type="PackedScene" uid="uid://r2tsosqw2in3" path="res://windows/embed.tscn" id="3_453gf"]
+
+[node name="FullHabitatTest" instance=ExtResource("1_s7jqh")]
+size = Vector2i(800, 915)
+
+[node name="ColorRect2" type="ColorRect" parent="." index="0"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -6.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.501961, 0.54902, 0.329412, 1)
+
+[node name="Shape" parent="." index="1"]
+polygon = PackedVector2Array(0, 321, 0, 910, 750, 910, 750, 324, 547, 53, 411.228, 0)
+
+[node name="Embed" parent="Shape" index="0" instance=ExtResource("3_453gf")]
+position = Vector2(-8, -8)
+
+[node name="PathFollow2D" parent="Shape/Embed/Control/Center Anchor/BurrowPath" index="0"]
+position = Vector2(-329.413, -42.4417)
+
+[editable path="Shape/Embed"]

@@ -1,7 +1,7 @@
 extends Node
 
-@onready var button_click: AudioStreamPlayer = $"../../../ButtonClick"
-@onready var button_hover: AudioStreamPlayer = $"../../../ButtonHover"
+@onready var button_click: AudioStreamPlayer = %Audio/ButtonClick
+@onready var button_hover: AudioStreamPlayer = %Audio/ButtonHover
 
 
 var all_buttons

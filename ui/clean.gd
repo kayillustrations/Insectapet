@@ -4,7 +4,7 @@ const SIZE = Vector2(2000,1050)
 
 @export var active: bool = false
 
-@onready var clean_sound: AudioStreamPlayer = $"../../../../Clean"
+@onready var clean_sound: AudioStreamPlayer = %Audio/Clean
 
 
 var click_pos: Array

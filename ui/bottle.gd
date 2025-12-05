@@ -1,6 +1,6 @@
 extends HoldingItem
 
-@onready var spray_audio: AudioStreamPlayer = $"../../../../Spray"
+@onready var spray_audio: AudioStreamPlayer = %Audio/Spray
 
 var active: bool = false
 

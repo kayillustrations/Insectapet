@@ -133,24 +133,13 @@ tracks/2/keys = {
 "update": 0,
 "values": [-2.54371]
 }
-tracks/3/type = "method"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../../../../SubViewportContainer/ScreenViewport/Screens/Feeding")
+tracks/3/path = NodePath("Back:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Back:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -197,13 +186,25 @@ tracks/2/keys = {
 "update": 0,
 "values": [-2.54371, -2.54371, -2.19802, -2.54371]
 }
-tracks/3/type = "method"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../../../../SubViewportContainer/ScreenViewport/Screens/Feeding")
+tracks/3/path = NodePath("Back:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.2, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-2.54675, -2.54675, -2.70617, -2.54675]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%Feeding")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0.9, 1.06667),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -213,18 +214,6 @@ tracks/3/keys = {
 "args": [],
 "method": &"GetFed"
 }]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Back:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.8, 1.2, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [-2.54675, -2.54675, -2.70617, -2.54675]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ncixy"]
@@ -477,61 +466,58 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.501961, 0.54902, 0.329412, 1)
 
-[node name="Shape" type="Polygon2D" parent="."]
-position = Vector2(8, 8)
-color = Color(1, 1, 1, 0)
-polygon = PackedVector2Array(0, 321, 0, 910, 750, 910, 750, 324, 547, 53, 411.228, 0)
-
-[node name="Control" type="Control" parent="Shape"]
+[node name="Control" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 48.0
 scale = Vector2(1.1, 1.1)
 metadata/_edit_lock_ = true
 
-[node name="Center Anchor" type="Node2D" parent="Shape/Control"]
+[node name="Center Anchor" type="Node2D" parent="Control"]
 position = Vector2(345, 415)
 scale = Vector2(0.3, 0.3)
 
-[node name="Lamp" type="Sprite2D" parent="Shape/Control/Center Anchor"]
+[node name="Lamp" type="Sprite2D" parent="Control/Center Anchor"]
 unique_name_in_owner = true
 texture = ExtResource("1_64mru")
 
-[node name="Base" type="Sprite2D" parent="Shape/Control/Center Anchor"]
+[node name="Base" type="Sprite2D" parent="Control/Center Anchor"]
 texture = ExtResource("2_0wmug")
 
-[node name="DryLeaves" type="Sprite2D" parent="Shape/Control/Center Anchor"]
+[node name="DryLeaves" type="Sprite2D" parent="Control/Center Anchor"]
 unique_name_in_owner = true
 visible = false
 modulate = Color(1, 0.754, 0.64, 1)
 texture = ExtResource("3_jliwc")
 
-[node name="Healthy Leaves" type="Sprite2D" parent="Shape/Control/Center Anchor"]
+[node name="Healthy Leaves" type="Sprite2D" parent="Control/Center Anchor"]
 unique_name_in_owner = true
 modulate = Color(1, 0.741176, 0.392157, 1)
 self_modulate = Color(0.75, 1, 1, 1)
 texture = ExtResource("4_6acf7")
 
-[node name="FoodIn" type="Sprite2D" parent="Shape/Control/Center Anchor"]
+[node name="FoodIn" type="Sprite2D" parent="Control/Center Anchor"]
 unique_name_in_owner = true
 position = Vector2(292.424, 750)
 rotation = 0.161106
 
-[node name="Food" type="Sprite2D" parent="Shape/Control/Center Anchor/FoodIn"]
+[node name="Food" type="Sprite2D" parent="Control/Center Anchor/FoodIn"]
 position = Vector2(-2.80054, 48.1045)
 offset = Vector2(2.80054, -48.1045)
 
-[node name="MainPath" type="Path2D" parent="Shape/Control/Center Anchor"]
+[node name="MainPath" type="Path2D" parent="Control/Center Anchor"]
 position = Vector2(-16.6667, 813.333)
 curve = SubResource("Curve2D_dsxa4")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Shape/Control/Center Anchor/MainPath"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Control/Center Anchor/MainPath"]
 unique_name_in_owner = true
 rotation = -2.86875
 
-[node name="Heart" parent="Shape/Control/Center Anchor/MainPath/PathFollow2D" instance=ExtResource("5_ea2n3")]
+[node name="Heart" parent="Control/Center Anchor/MainPath/PathFollow2D" instance=ExtResource("5_ea2n3")]
 position = Vector2(0.34668, 226.15)
 scale = Vector2(3.0303, -3.0303)
 amount = 1
@@ -545,31 +531,31 @@ initial_velocity_max = 0.0
 scale_amount_max = 0.75
 color_initial_ramp = null
 
-[node name="Bug" type="Node2D" parent="Shape/Control/Center Anchor/MainPath/PathFollow2D"]
+[node name="Bug" type="Node2D" parent="Control/Center Anchor/MainPath/PathFollow2D"]
 unique_name_in_owner = true
 rotation = 3.14159
 scale = Vector2(-1, 1)
 
-[node name="BurrowPath" type="Path2D" parent="Shape/Control/Center Anchor"]
+[node name="BurrowPath" type="Path2D" parent="Control/Center Anchor"]
 position = Vector2(-16.6667, 813.333)
 curve = SubResource("Curve2D_ped76")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Shape/Control/Center Anchor/BurrowPath"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Control/Center Anchor/BurrowPath"]
 position = Vector2(-329.413, -42.4417)
 rotation = 2.97065
 progress = 334.738
 
-[node name="Bug" type="AnimatedSprite2D" parent="Shape/Control/Center Anchor/BurrowPath/PathFollow2D"]
+[node name="Bug" type="AnimatedSprite2D" parent="Control/Center Anchor/BurrowPath/PathFollow2D"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_7i201")
 autoplay = "default"
 offset = Vector2(0, 50)
 flip_v = true
 
-[node name="Mid" type="Sprite2D" parent="Shape/Control/Center Anchor"]
+[node name="Mid" type="Sprite2D" parent="Control/Center Anchor"]
 texture = ExtResource("9_idh22")
 
-[node name="ActivateBug" type="TextureButton" parent="Shape/Control/Center Anchor"]
+[node name="ActivateBug" type="TextureButton" parent="Control/Center Anchor"]
 unique_name_in_owner = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -590,55 +576,55 @@ texture_disabled = ExtResource("11_6ae3f")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Feed" type="Node2D" parent="Shape/Control/Center Anchor"]
+[node name="Feed" type="Node2D" parent="Control/Center Anchor"]
 unique_name_in_owner = true
 rotation = 0.523598
 
-[node name="Back" type="Sprite2D" parent="Shape/Control/Center Anchor/Feed"]
+[node name="Back" type="Sprite2D" parent="Control/Center Anchor/Feed"]
 position = Vector2(-707.234, -379.619)
 rotation = -2.54675
 texture = SubResource("AtlasTexture_tmvir")
 offset = Vector2(-402.994, 95.5003)
 
-[node name="Food" type="Sprite2D" parent="Shape/Control/Center Anchor/Feed"]
+[node name="Food" type="Sprite2D" parent="Control/Center Anchor/Feed"]
 unique_name_in_owner = true
 position = Vector2(-62.6865, 18.6965)
 rotation = -0.523599
 
-[node name="Front" type="Sprite2D" parent="Shape/Control/Center Anchor/Feed"]
+[node name="Front" type="Sprite2D" parent="Control/Center Anchor/Feed"]
 position = Vector2(-720.832, -407.576)
 rotation = -2.54371
 texture = SubResource("AtlasTexture_lbemt")
 offset = Vector2(-400, -15)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Shape/Control/Center Anchor/Feed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Center Anchor/Feed"]
 libraries = {
 &"": SubResource("AnimationLibrary_ncixy")
 }
 
-[node name="Foreground" type="Sprite2D" parent="Shape/Control/Center Anchor"]
+[node name="Foreground" type="Sprite2D" parent="Control/Center Anchor"]
 texture = ExtResource("13_hynr3")
 
-[node name="Dark" type="Sprite2D" parent="Shape/Control/Center Anchor"]
+[node name="Dark" type="Sprite2D" parent="Control/Center Anchor"]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("14_g0728")
 
-[node name="Sparkles" parent="Shape/Control/Center Anchor" instance=ExtResource("5_ea2n3")]
+[node name="Sparkles" parent="Control/Center Anchor" instance=ExtResource("5_ea2n3")]
 unique_name_in_owner = true
 position = Vector2(-31.8181, 350)
 scale = Vector2(3.0303, 3.0303)
 
-[node name="FogControl" type="Node2D" parent="Shape/Control/Center Anchor"]
+[node name="FogControl" type="Node2D" parent="Control/Center Anchor"]
 unique_name_in_owner = true
 script = ExtResource("15_p30x6")
 
-[node name="Fog" type="Sprite2D" parent="Shape/Control/Center Anchor/FogControl"]
+[node name="Fog" type="Sprite2D" parent="Control/Center Anchor/FogControl"]
 modulate = Color(1, 1, 1, 0)
 texture = ExtResource("16_utmc8")
 region_rect = Rect2(264, 1276, 1969, 1049)
 
-[node name="ColorRect" type="ColorRect" parent="Shape/Control"]
+[node name="ColorRect" type="ColorRect" parent="Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -649,7 +635,7 @@ grow_vertical = 2
 color = Color(0.14902, 0.0392157, 0.027451, 0)
 metadata/_edit_lock_ = true
 
-[node name="Panel" type="Panel" parent="Shape/Control/ColorRect"]
+[node name="Panel" type="Panel" parent="Control/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -663,7 +649,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_57nh6")
 
-[node name="Move" type="TextureButton" parent="Shape/Control/ColorRect/Panel"]
+[node name="Move" type="TextureButton" parent="Control/ColorRect/Panel"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = 1
@@ -681,7 +667,7 @@ texture_hover = SubResource("AtlasTexture_wbi84")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="x" type="Button" parent="Shape/Control/ColorRect"]
+[node name="x" type="Button" parent="Control/ColorRect"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 1
 anchors_preset = 1
@@ -696,7 +682,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "x"
 
-[node name="UI" type="Control" parent="Shape/Control"]
+[node name="UI" type="Control" parent="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -21.0
@@ -705,7 +691,7 @@ offset_bottom = 700.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="LightButton" type="TextureButton" parent="Shape/Control/UI"]
+[node name="LightButton" type="TextureButton" parent="Control/UI"]
 unique_name_in_owner = true
 layout_mode = 1
 offset_left = 507.0
@@ -722,7 +708,7 @@ texture_disabled = SubResource("AtlasTexture_625cw")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Warning" parent="Shape/Control/UI/LightButton" instance=ExtResource("21_rhmaq")]
+[node name="Warning" parent="Control/UI/LightButton" instance=ExtResource("21_rhmaq")]
 visible = false
 layout_mode = 1
 offset_left = 13.1754
@@ -732,7 +718,7 @@ offset_bottom = 33.9237
 rotation = -3.97761
 scale = Vector2(0.5, 0.5)
 
-[node name="MainButtons" type="HBoxContainer" parent="Shape/Control/UI"]
+[node name="MainButtons" type="HBoxContainer" parent="Control/UI"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -750,7 +736,7 @@ rotation = 0.00408702
 alignment = 1
 script = ExtResource("22_n7ywt")
 
-[node name="Clean" type="TextureButton" parent="Shape/Control/UI/MainButtons"]
+[node name="Clean" type="TextureButton" parent="Control/UI/MainButtons"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -762,13 +748,13 @@ texture_disabled = SubResource("AtlasTexture_fe1vl")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Warning" parent="Shape/Control/UI/MainButtons/Clean" instance=ExtResource("21_rhmaq")]
+[node name="Warning" parent="Control/UI/MainButtons/Clean" instance=ExtResource("21_rhmaq")]
 visible = false
 layout_mode = 1
 offset_top = -10.0
 offset_bottom = 30.0
 
-[node name="Hunger" type="TextureButton" parent="Shape/Control/UI/MainButtons"]
+[node name="Hunger" type="TextureButton" parent="Control/UI/MainButtons"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -780,13 +766,13 @@ texture_disabled = SubResource("AtlasTexture_dl4cb")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Warning" parent="Shape/Control/UI/MainButtons/Hunger" instance=ExtResource("21_rhmaq")]
+[node name="Warning" parent="Control/UI/MainButtons/Hunger" instance=ExtResource("21_rhmaq")]
 visible = false
 layout_mode = 1
 offset_top = -10.0
 offset_bottom = 30.0
 
-[node name="Info" type="TextureButton" parent="Shape/Control/UI/MainButtons"]
+[node name="Info" type="TextureButton" parent="Control/UI/MainButtons"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -798,7 +784,7 @@ texture_disabled = SubResource("AtlasTexture_pko34")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Evolve" type="Panel" parent="Shape/Control/UI/MainButtons/Info"]
+[node name="Evolve" type="Panel" parent="Control/UI/MainButtons/Info"]
 visible = false
 clip_children = 2
 layout_mode = 1
@@ -816,7 +802,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jx6fc")
 
-[node name="TextureRect" type="TextureRect" parent="Shape/Control/UI/MainButtons/Info/Evolve"]
+[node name="TextureRect" type="TextureRect" parent="Control/UI/MainButtons/Info/Evolve"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -829,7 +815,7 @@ texture = SubResource("AtlasTexture_k28o1")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Oh?" type="Button" parent="Shape/Control/UI/MainButtons/Info/Evolve"]
+[node name="Oh?" type="Button" parent="Control/UI/MainButtons/Info/Evolve"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -839,7 +825,7 @@ grow_vertical = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_oaf2n")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8lhx8")
 
-[node name="TextureRect2" type="TextureRect" parent="Shape/Control/UI/MainButtons/Info/Evolve/Oh?"]
+[node name="TextureRect2" type="TextureRect" parent="Control/UI/MainButtons/Info/Evolve/Oh?"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -851,7 +837,7 @@ texture = SubResource("AtlasTexture_t6on4")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Happiness" type="TextureButton" parent="Shape/Control/UI/MainButtons"]
+[node name="Happiness" type="TextureButton" parent="Control/UI/MainButtons"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -863,13 +849,13 @@ texture_disabled = SubResource("AtlasTexture_8e4xd")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Warning" parent="Shape/Control/UI/MainButtons/Happiness" instance=ExtResource("21_rhmaq")]
+[node name="Warning" parent="Control/UI/MainButtons/Happiness" instance=ExtResource("21_rhmaq")]
 visible = false
 layout_mode = 1
 offset_top = -10.0
 offset_bottom = 30.0
 
-[node name="Shop" type="TextureButton" parent="Shape/Control/UI/MainButtons"]
+[node name="Shop" type="TextureButton" parent="Control/UI/MainButtons"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -881,7 +867,7 @@ texture_disabled = SubResource("AtlasTexture_qems3")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="GameButtons" type="HBoxContainer" parent="Shape/Control/UI"]
+[node name="GameButtons" type="HBoxContainer" parent="Control/UI"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -900,7 +886,7 @@ rotation = 0.00408702
 alignment = 1
 script = ExtResource("27_2c0v2")
 
-[node name="Left" type="TextureButton" parent="Shape/Control/UI/GameButtons"]
+[node name="Left" type="TextureButton" parent="Control/UI/GameButtons"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -911,7 +897,7 @@ texture_disabled = SubResource("AtlasTexture_t5ad1")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Down" type="TextureButton" parent="Shape/Control/UI/GameButtons"]
+[node name="Down" type="TextureButton" parent="Control/UI/GameButtons"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -922,7 +908,7 @@ texture_disabled = SubResource("AtlasTexture_ttd58")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Up" type="TextureButton" parent="Shape/Control/UI/GameButtons"]
+[node name="Up" type="TextureButton" parent="Control/UI/GameButtons"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -933,7 +919,7 @@ texture_disabled = SubResource("AtlasTexture_sshrl")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Right" type="TextureButton" parent="Shape/Control/UI/GameButtons"]
+[node name="Right" type="TextureButton" parent="Control/UI/GameButtons"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -944,7 +930,7 @@ texture_disabled = SubResource("AtlasTexture_fy0mf")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Pause" type="TextureButton" parent="Shape/Control/UI/GameButtons"]
+[node name="Pause" type="TextureButton" parent="Control/UI/GameButtons"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -955,14 +941,14 @@ texture_disabled = SubResource("AtlasTexture_1m4dn")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="SprayHere" type="Polygon2D" parent="Shape/Control/UI"]
+[node name="SprayHere" type="Polygon2D" parent="Control/UI"]
 unique_name_in_owner = true
 visible = false
 clip_children = 1
 polygon = PackedVector2Array(222.818, 341.818, 253.727, 306.364, 466.455, 308.182, 484.636, 342.727, 406.455, 345.455, 354.636, 344.545, 286.455, 346.364)
 uv = PackedVector2Array(316.12, 341.827)
 
-[node name="Button" type="Button" parent="Shape/Control/UI/SprayHere"]
+[node name="Button" type="Button" parent="Control/UI/SprayHere"]
 offset_left = 217.0
 offset_top = 305.0
 offset_right = 488.0
@@ -974,7 +960,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_gvvo2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_q0ahj")
 text = "Spray Here!"
 
-[node name="Bottle" type="Sprite2D" parent="Shape/Control/UI"]
+[node name="Bottle" type="Sprite2D" parent="Control/UI"]
 unique_name_in_owner = true
 visible = false
 position = Vector2(366, 415)
@@ -985,14 +971,14 @@ offset = Vector2(100, 400)
 flip_h = true
 script = ExtResource("31_lqs54")
 
-[node name="Sprite2D" type="Sprite2D" parent="Shape/Control/UI/Bottle"]
+[node name="Sprite2D" type="Sprite2D" parent="Control/UI/Bottle"]
 show_behind_parent = true
 position = Vector2(-47.3023, -33.0338)
 rotation = -2.81718
 texture = SubResource("AtlasTexture_ko1jo")
 flip_v = true
 
-[node name="ProgressBar" type="ProgressBar" parent="Shape/Control/UI/Bottle"]
+[node name="ProgressBar" type="ProgressBar" parent="Control/UI/Bottle"]
 offset_left = 89.5062
 offset_top = 112.98
 offset_right = 124.506
@@ -1006,7 +992,7 @@ value = 3.0
 fill_mode = 2
 show_percentage = false
 
-[node name="Cotton" type="Sprite2D" parent="Shape/Control/UI"]
+[node name="Cotton" type="Sprite2D" parent="Control/UI"]
 unique_name_in_owner = true
 visible = false
 position = Vector2(366, 415)
@@ -1014,7 +1000,7 @@ scale = Vector2(0.3, 0.3)
 texture = SubResource("AtlasTexture_q1fyk")
 script = ExtResource("32_ayct5")
 
-[node name="GainBug" parent="Shape/Control/UI" instance=ExtResource("33_xx0r6")]
+[node name="GainBug" parent="Control/UI" instance=ExtResource("33_xx0r6")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -1085,39 +1071,42 @@ show_behind_parent = true
 wait_time = 5.0
 one_shot = true
 
-[node name="TextureButtonClick" type="AudioStreamPlayer" parent="."]
+[node name="Audio" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="TextureButtonClick" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("42_qom1s")
 
-[node name="TextureButtonUnClick" type="AudioStreamPlayer" parent="."]
+[node name="TextureButtonUnClick" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("43_n4xml")
 
-[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+[node name="ButtonClick" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("44_vioby")
 volume_db = -10.0
 
-[node name="ButtonHover" type="AudioStreamPlayer" parent="."]
+[node name="ButtonHover" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("45_ey6il")
 volume_db = -25.0
 pitch_scale = 0.9
 
-[node name="Spray" type="AudioStreamPlayer" parent="."]
+[node name="Spray" type="AudioStreamPlayer" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_d8ioa")
 
-[node name="Clean" type="AudioStreamPlayer" parent="."]
+[node name="Clean" type="AudioStreamPlayer" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_7lsfo")
 volume_db = -15.0
 pitch_scale = 0.96
 
-[node name="PlaceFood" type="AudioStreamPlayer" parent="."]
+[node name="PlaceFood" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("49_20uvn")
 volume_db = -4.87
 pitch_scale = 0.47
 
-[node name="Evolve" type="AudioStreamPlayer" parent="."]
+[node name="Evolve" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("50_yxdds")
 volume_db = -10.0
 
-[node name="Reveal" type="AudioStreamPlayer" parent="."]
+[node name="Reveal" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("50_yxdds")
 volume_db = -10.0
 pitch_scale = 2.5
@@ -1125,14 +1114,14 @@ pitch_scale = 2.5
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(386, 474)
 
-[connection signal="pressed" from="Shape/Control/Center Anchor/ActivateBug" to="." method="_on_bug_window_pressed"]
-[connection signal="toggled" from="Shape/Control/UI/LightButton" to="." method="_on_light_toggled"]
-[connection signal="toggled" from="Shape/Control/UI/MainButtons/Clean" to="Shape/Control/UI/MainButtons" method="_on_clean_toggled"]
-[connection signal="toggled" from="Shape/Control/UI/MainButtons/Hunger" to="Shape/Control/UI/MainButtons" method="_on_eat_toggled"]
-[connection signal="toggled" from="Shape/Control/UI/MainButtons/Info" to="Shape/Control/UI/MainButtons" method="_on_info_toggled"]
-[connection signal="pressed" from="Shape/Control/UI/MainButtons/Info/Evolve/Oh?" to="." method="_on_oh_pressed"]
-[connection signal="toggled" from="Shape/Control/UI/MainButtons/Happiness" to="Shape/Control/UI/MainButtons" method="_on_play_toggled"]
-[connection signal="toggled" from="Shape/Control/UI/MainButtons/Shop" to="Shape/Control/UI/MainButtons" method="_on_shop_toggled"]
-[connection signal="pressed" from="Shape/Control/UI/SprayHere/Button" to="Shape/Control/UI/Bottle" method="_on_button_pressed"]
-[connection signal="visibility_changed" from="Shape/Control/UI/Bottle" to="Shape/Control/UI/Bottle" method="_on_visibility_changed"]
+[connection signal="pressed" from="Control/Center Anchor/ActivateBug" to="." method="_on_bug_window_pressed"]
+[connection signal="toggled" from="Control/UI/LightButton" to="." method="_on_light_toggled"]
+[connection signal="toggled" from="Control/UI/MainButtons/Clean" to="Control/UI/MainButtons" method="_on_clean_toggled"]
+[connection signal="toggled" from="Control/UI/MainButtons/Hunger" to="Control/UI/MainButtons" method="_on_eat_toggled"]
+[connection signal="toggled" from="Control/UI/MainButtons/Info" to="Control/UI/MainButtons" method="_on_info_toggled"]
+[connection signal="pressed" from="Control/UI/MainButtons/Info/Evolve/Oh?" to="." method="_on_oh_pressed"]
+[connection signal="toggled" from="Control/UI/MainButtons/Happiness" to="Control/UI/MainButtons" method="_on_play_toggled"]
+[connection signal="toggled" from="Control/UI/MainButtons/Shop" to="Control/UI/MainButtons" method="_on_shop_toggled"]
+[connection signal="pressed" from="Control/UI/SprayHere/Button" to="Control/UI/Bottle" method="_on_button_pressed"]
+[connection signal="visibility_changed" from="Control/UI/Bottle" to="Control/UI/Bottle" method="_on_visibility_changed"]
 [connection signal="timeout" from="State Timer" to="." method="_on_state_timer_timeout"]

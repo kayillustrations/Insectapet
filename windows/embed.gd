@@ -20,7 +20,7 @@ var target_direction:int
 func _ready() -> void:
 	GameManager.habitat_window = self
 	$ColorRect2.visible = GameManager.isEmbed
-	$Shape/Control/ColorRect.visible = !GameManager.isEmbed
+	$Control/ColorRect.visible = !GameManager.isEmbed
 	$Camera2D.visible = !GameManager.isEmbed
 	#screens set
 	%SubViewportContainer.visible = false
@@ -92,7 +92,7 @@ func HabitatChecks():
 		%"Healthy Leaves".self_modulate = LEAF_SELFMODULATE
 		%"Healthy Leaves".visible = true
 		%"DryLeaves".visible = false
-	$Shape/Control/UI/MainButtons/Clean/Warning.visible = GameManager.habitat_warning
+	%MainButtons/Clean/Warning.visible = GameManager.habitat_warning
 
 func StatWarning(stat:String,activate:bool):
 	match stat:
@@ -187,8 +187,8 @@ func TextureButtonConfig():
 		buttons[i].connect("toggled",PlayTextureButtonAudio)
 
 func PlayTextureButtonAudio(pressed:bool):
-	if pressed:$TextureButtonClick.play()
-	else:$TextureButtonUnClick.play()
+	if pressed:%Audio/TextureButtonClick.play()
+	else:%Audio/TextureButtonUnClick.play()
 
 func _on_oh_pressed() -> void:
 	#evolve bug animation
