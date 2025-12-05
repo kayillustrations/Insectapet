@@ -1,7 +1,7 @@
 extends Control
 
 @onready var slots: Array = $GridContainer.get_children()
-@onready var place_food_audio: AudioStreamPlayer = $"../../../../PlaceFood"
+@onready var place_food_audio: AudioStreamPlayer = %Audio/PlaceFood
 
 var eaten_textures: Array = [
 	
@@ -100,7 +100,7 @@ func UpdateFood():
 	#%FoodIn.texture = eaten_textures[0]
 
 func _on_food_life_timeout() -> void:
-	print(GameManager.food_life)
+	#print(GameManager.food_life)
 	GameManager.food_life = GameManager.food_life - 3.0
 	if GameManager.food_life <= 20:
 		GameManager.habitat_stats["hasFood"] = false

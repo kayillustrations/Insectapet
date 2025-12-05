@@ -1256,7 +1256,7 @@ uv = PackedVector2Array(439.309, 374.552, 498.206, 320.704, 484.744, 307.803, 44
 bones = ["Torso", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/Thorax", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/Head", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/Head/AntennaL", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/Head/AntennaR", PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5), "Torso/Tail", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/ThighM", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/ThighM/LegM", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/ThighR", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/ThighR/LegR", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/ThighL", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/ThighL/LegL", PackedFloat32Array(0, 0, 0, 0, 0)]
 
 [node name="ThighL" type="Polygon2D" parent="Polygons"]
-position = Vector2(-299.966, -517)
+position = Vector2(-300, -522)
 texture = ExtResource("1_jgouw")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(218.081, 418.961, 234.993, 422.471, 232.76, 439.384, 184.894, 462.04, 168.301, 459.168, 170.215, 447.361)
@@ -1264,7 +1264,7 @@ uv = PackedVector2Array(218.081, 418.961, 234.993, 422.471, 232.76, 439.384, 184
 bones = ["Torso", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/Thorax", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/Head/AntennaL", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/Head/AntennaR", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/Tail", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/ThighM", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/ThighM/LegM", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/ThighR", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/ThighR/LegR", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/ThighL", PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5), "Torso/ThighL/LegL", PackedFloat32Array(0, 0, 0, 0, 0, 0)]
 
 [node name="ThighM" type="Polygon2D" parent="Polygons"]
-position = Vector2(-317.966, -516)
+position = Vector2(-319, -520)
 texture = ExtResource("1_jgouw")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(304.969, 416.461, 293.382, 425.44, 313.369, 462.807, 327.273, 466.283, 332.487, 452.379, 316.845, 418.488)
@@ -1272,7 +1272,7 @@ uv = PackedVector2Array(304.969, 416.461, 293.382, 425.44, 313.369, 462.807, 327
 bones = ["Torso", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/Thorax", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/Head/AntennaL", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/Head/AntennaR", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/Tail", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/ThighM", PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5), "Torso/ThighM/LegM", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/ThighR", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/ThighR/LegR", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/ThighL", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Torso/ThighL/LegL", PackedFloat32Array(0, 0, 0, 0, 0, 0)]
 
 [node name="ThighR" type="Polygon2D" parent="Polygons"]
-position = Vector2(-327.966, -516)
+position = Vector2(-328, -520)
 texture = ExtResource("1_jgouw")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(373.82, 413.958, 362.236, 429.789, 400.076, 449.094, 440.618, 450.639, 443.707, 437.897)
@@ -1280,7 +1280,7 @@ uv = PackedVector2Array(373.82, 413.958, 362.236, 429.789, 400.076, 449.094, 440
 bones = ["Torso", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/Thorax", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/Head", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/Head/AntennaL", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/Head/AntennaR", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/Tail", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/ThighM", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/ThighM/LegM", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/ThighR", PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5), "Torso/ThighR/LegR", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/ThighL", PackedFloat32Array(0, 0, 0, 0, 0), "Torso/ThighL/LegL", PackedFloat32Array(0, 0, 0, 0, 0)]
 
 [node name="LegL" type="Polygon2D" parent="Polygons"]
-position = Vector2(-301, -534)
+position = Vector2(-300, -537)
 texture = ExtResource("1_jgouw")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(171.601, 461.347, 198.171, 463.043, 190.822, 543.317, 173.863, 542.187)
@@ -1288,7 +1288,7 @@ uv = PackedVector2Array(171.601, 461.347, 198.171, 463.043, 190.822, 543.317, 17
 bones = ["Torso", PackedFloat32Array(0, 0, 0, 0), "Torso/Thorax", PackedFloat32Array(0, 0, 0, 0), "Torso/Head", PackedFloat32Array(0, 0, 0, 0), "Torso/Head/AntennaL", PackedFloat32Array(0, 0, 0, 0), "Torso/Head/AntennaR", PackedFloat32Array(0, 0, 0, 0), "Torso/Tail", PackedFloat32Array(0, 0, 0, 0), "Torso/ThighM", PackedFloat32Array(0, 0, 0, 0), "Torso/ThighM/LegM", PackedFloat32Array(0, 0, 0, 0), "Torso/ThighR", PackedFloat32Array(0, 0, 0, 0), "Torso/ThighR/LegR", PackedFloat32Array(0, 0, 0, 0), "Torso/ThighL", PackedFloat32Array(0, 0, 0, 0), "Torso/ThighL/LegL", PackedFloat32Array(1, 1, 1, 1)]
 
 [node name="LegM" type="Polygon2D" parent="Polygons"]
-position = Vector2(-313.966, -531)
+position = Vector2(-313.966, -534)
 texture = ExtResource("1_jgouw")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(306.662, 464.187, 330.023, 465.462, 324.501, 539.364, 307.087, 540.214)
@@ -1296,7 +1296,7 @@ uv = PackedVector2Array(306.662, 464.187, 330.023, 465.462, 324.501, 539.364, 30
 bones = ["Torso", PackedFloat32Array(0, 0, 0, 0), "Torso/Thorax", PackedFloat32Array(0, 0, 0, 0), "Torso/Head", PackedFloat32Array(0, 0, 0, 0), "Torso/Head/AntennaL", PackedFloat32Array(0, 0, 0, 0), "Torso/Head/AntennaR", PackedFloat32Array(0, 0, 0, 0), "Torso/Tail", PackedFloat32Array(0, 0, 0, 0), "Torso/ThighM", PackedFloat32Array(0, 0, 0, 0), "Torso/ThighM/LegM", PackedFloat32Array(1, 1, 1, 1), "Torso/ThighR", PackedFloat32Array(0, 0, 0, 0), "Torso/ThighR/LegR", PackedFloat32Array(0, 0, 0, 0), "Torso/ThighL", PackedFloat32Array(0, 0, 0, 0), "Torso/ThighL/LegL", PackedFloat32Array(0, 0, 0, 0)]
 
 [node name="LegR" type="Polygon2D" parent="Polygons"]
-position = Vector2(-336.966, -529)
+position = Vector2(-338, -531)
 texture = ExtResource("1_jgouw")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(433.614, 450.929, 455.713, 451.957, 427.447, 537.781, 411.002, 533.67)

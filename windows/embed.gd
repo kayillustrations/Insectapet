@@ -105,7 +105,7 @@ func StatWarning(stat:String,activate:bool):
 		"XP":
 			%MainButtons/Info/Evolve.visible = activate
 			if activate:
-				$Evolve.play()
+				%Audio/Evolve.play()
 	pass
 
 func ChangeState(new_state):
@@ -114,9 +114,13 @@ func ChangeState(new_state):
 		state_timer.stop()
 		bug_animator.play("idle")
 		return
-	if current_state == 2: #uncrouch
-		bug_animator.play("crouch",-1,-1,true)
-		await bug_animator.animation_finished
+	if current_state == 2 : #uncrouch
+		if GameManager.habitat_stats["isLampOn"]:
+			bug_animator.play("crouch",-1,-1,true)
+			await bug_animator.animation_finished
+		else:
+			current_state = 2 
+			return
 
 	match new_state:
 		0:#idle
@@ -124,6 +128,7 @@ func ChangeState(new_state):
 			print("idle")
 			bug_animator.play("idle")
 			state_timer.start(5)
+			isMoving = false
 			pass
 		1:#moving
 			print("moving")
@@ -144,6 +149,7 @@ func ChangeState(new_state):
 			print("crouching")
 			bug_animator.play("crouch")
 			state_timer.start(5)
+			isMoving = false
 			pass
 	current_state = new_state
 
@@ -160,14 +166,16 @@ func _on_bug_window_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_light_toggled(toggled_on: bool) -> void:
+	%LightButton.button_pressed = toggled_on
+	GameManager.habitat_stats["isLampOn"] = !toggled_on
 	if !toggled_on:
 		%Lamp.texture = INSECTAPET_LAMP
 		%Dark.visible = false
+		ChangeState(0)
 	else:
 		%Lamp.texture = INSECTAPET_LAMP_DARK
 		%Dark.visible = true
-	%LightButton.button_pressed = toggled_on
-	GameManager.habitat_stats["isLampOn"] = !toggled_on
+		ChangeState(2)
 	GameSave.SaveGame()
 	pass # Replace with function body.
 
@@ -197,7 +205,7 @@ func _on_oh_pressed() -> void:
 	GameManager.current_stats["Stage"] += 1
 	if GameManager.current_stats["Stage"] < 3:
 		GameManager.current_stats["XP"] = 0
-		$Reveal.play()
+		%Audio/Reveal.play()
 	print(GameManager.current_stats["Stage"])
 	%Bug.get_child(0).queue_free()
 	ConfigBug()

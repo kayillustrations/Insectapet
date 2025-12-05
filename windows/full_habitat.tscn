@@ -477,7 +477,7 @@ grow_vertical = 2
 color = Color(0.501961, 0.54902, 0.329412, 1)
 
 [node name="Shape" parent="." index="1"]
-polygon = PackedVector2Array(0, 321, 0, 910, 750, 910, 750, 324, 547, 53, 411.228, 0)
+polygon = PackedVector2Array(0, 346, 0, 910, 750, 910, 750, 346, 567.244, 72.9957, 411.228, 0)
 
 [node name="Control" type="Control" parent="Shape" index="0"]
 unique_name_in_owner = true

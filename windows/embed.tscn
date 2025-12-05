@@ -54,7 +54,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_dsxa4"]
 _data = {
-"points": PackedVector2Array(313.747, 87.7916, -313.747, -87.7916, 0, 0, 247.677, 33.3737, -247.677, -33.3737, -453.333, -223.333, -161.859, 219.758, 161.859, -219.758, -656.667, -666.667, -59.5481, -3.34565, 59.5481, 3.34565, -370, -893.333, -112.895, -87.807, 112.895, 87.807, 26.6666, -803.333, -231.535, -25.7172, 231.535, 25.7172, 480, -616.667, 140.954, -81.4216, -140.954, 81.4216, 621.212, 33.6365, 131.717, 34.1525, -131.717, -34.1525, 0, 0)
+"points": PackedVector2Array(313.747, 87.7916, -313.747, -87.7916, 0, 0, 247.677, 33.3737, -247.677, -33.3737, -453.333, -223.333, -140.089, 107.796, 140.089, -107.796, -672.727, -611.818, -190.17, 16.8697, 190.17, -16.8697, -351.515, -866.363, -125.313, -98.1557, 125.313, 98.1557, 87.8788, -772.424, -161.164, -27.7869, 161.164, 27.7869, 480, -616.667, 122.326, -91.7703, -122.326, 91.7703, 648.485, -33.03, 131.717, 34.1525, -131.717, -34.1525, 0, 0)
 }
 point_count = 8
 
@@ -205,7 +205,7 @@ tracks/4/path = NodePath("%Feeding")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.9, 1.06667),
+"times": PackedFloat32Array(0.9, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -625,7 +625,6 @@ texture = ExtResource("16_utmc8")
 region_rect = Rect2(264, 1276, 1969, 1049)
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -641,9 +640,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
-offset_top = 367.0
+offset_top = 326.364
 offset_right = 635.0
-offset_bottom = 825.0
+offset_bottom = 784.364
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -656,9 +655,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -656.0
-offset_top = 411.0
+offset_top = 450.909
 offset_right = -616.0
-offset_bottom = 451.0
+offset_bottom = 490.909
 grow_horizontal = 0
 size_flags_vertical = 0
 texture_normal = SubResource("AtlasTexture_21wi6")
@@ -1010,6 +1009,7 @@ mouse_filter = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_pbtga")
 offset_left = 82.0
 offset_top = 429.0
@@ -1022,7 +1022,7 @@ mouse_filter = 0
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(550, 330)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Screens" type="ColorRect" parent="SubViewportContainer/ScreenViewport"]
 unique_name_in_owner = true
@@ -1112,7 +1112,7 @@ volume_db = -10.0
 pitch_scale = 2.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(386, 474)
+position = Vector2(382, 465)
 
 [connection signal="pressed" from="Control/Center Anchor/ActivateBug" to="." method="_on_bug_window_pressed"]
 [connection signal="toggled" from="Control/UI/LightButton" to="." method="_on_light_toggled"]

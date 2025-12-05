@@ -32,8 +32,7 @@ func _input(event: InputEvent) -> void:
 
 func CleanFog():
 	if clean_sound.playing == false:
-		clean_sound.playing = true
-	print(clean_sound.playing)
+		clean_sound.play()
 	var min_value = min(dist_traveled.x,dist_traveled.y)
 	min_value *= .0002
 	min_value += 1-cleanliness_maths
@@ -41,14 +40,15 @@ func CleanFog():
 	if min_value >= 1:
 		print("CLEAN")
 		active = false
+		clean_sound.stop()
 		%Sparkles.emitting = true
 		%Cleaning.currently_holding.visible = false
+		GameManager.habitat_stats["Cleanliness"] = 100
+		GameManager.UpdateHabitat.emit()
+		GameSave.SaveGame()
 		await %Sparkles.finished
 		%MainButtons.ActivateAllButtons(true)
 		%MainButtons.clean.button_pressed = false
-		GameManager.habitat_stats["Cleanliness"] = 100
-		#GameManager.UpdateHabitat.emit()
-		GameSave.SaveGame()
 		return
 	var tween:Tween = create_tween()
 	tween.tween_property($Fog,"modulate",Color(1,1,1,1-min_value),0)
