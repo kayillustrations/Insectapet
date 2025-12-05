@@ -73,7 +73,7 @@ func PressedButton(button_name:String,b:bool):
 
 func _on_resume_pressed() -> void:
 	$"HUD/Pause Screen".visible = false
-	current_game.isPaused = !$"HUD/Pause Screen".visible
+	current_game.isPaused = false
 	pass # Replace with function body.
 
 func _on_exit_pressed() -> void:

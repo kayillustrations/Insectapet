@@ -62,7 +62,7 @@ func LockSlot(slot,doLock:bool):
 
 func StartFeed(food_id:int):
 	if GameManager.habitat_stats["hasFood"]:
-		Utils.Error(self,"FoodAlreadyGiven")
+		Utils.Error(self,"Food Already Given")
 		return
 	current_food_id = food_id
 	Feeding(true)

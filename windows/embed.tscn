@@ -1082,7 +1082,6 @@ layout_mode = 1
 show_behind_parent = true
 
 [node name="State Timer" type="Timer" parent="."]
-process_callback = 0
 wait_time = 5.0
 one_shot = true
 
@@ -1122,6 +1121,9 @@ volume_db = -10.0
 stream = ExtResource("50_yxdds")
 volume_db = -10.0
 pitch_scale = 2.5
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(386, 474)
 
 [connection signal="pressed" from="Shape/Control/Center Anchor/ActivateBug" to="." method="_on_bug_window_pressed"]
 [connection signal="toggled" from="Shape/Control/UI/LightButton" to="." method="_on_light_toggled"]

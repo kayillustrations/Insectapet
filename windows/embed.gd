@@ -7,6 +7,7 @@ const LEAF_SELFMODULATE = Color (.75,1,1,1)
 
 @onready var all_screens: Array = %Screens.get_children()
 @onready var bug_info: Control = %BugInfo
+@onready var state_timer = $"State Timer"
 
 @export_enum("IDLE","MOVING","CROUCHING","JUMPING") var current_state:int = 0
 @onready var current_spot:float = %PathFollow2D.progress_ratio
@@ -20,6 +21,7 @@ func _ready() -> void:
 	GameManager.habitat_window = self
 	$ColorRect2.visible = GameManager.isEmbed
 	$Shape/Control/ColorRect.visible = !GameManager.isEmbed
+	$Camera2D.visible = !GameManager.isEmbed
 	#screens set
 	%SubViewportContainer.visible = false
 	for i in all_screens.size():
@@ -109,7 +111,7 @@ func StatWarning(stat:String,activate:bool):
 func ChangeState(new_state):
 	if GameManager.current_stats["Stage"] == 0:
 		%PathFollow2D.progress_ratio = 0
-		$"State Timer".stop()
+		state_timer.stop()
 		bug_animator.play("idle")
 		return
 	if current_state == 2: #uncrouch
@@ -121,7 +123,7 @@ func ChangeState(new_state):
 			GameManager.current_path_location = %PathFollow2D.progress_ratio
 			print("idle")
 			bug_animator.play("idle")
-			$"State Timer".start(5)
+			state_timer.start(5)
 			pass
 		1:#moving
 			print("moving")
@@ -141,7 +143,7 @@ func ChangeState(new_state):
 		2:#crouching
 			print("crouching")
 			bug_animator.play("crouch")
-			$"State Timer".start(5)
+			state_timer.start(5)
 			pass
 	current_state = new_state
 
@@ -175,7 +177,7 @@ func _on_state_timer_timeout() -> void:
 	if temp_state != current_state:
 		ChangeState(temp_state)
 	else:
-		$"State Timer".start(5)
+		state_timer.start(5)
 
 func TextureButtonConfig():
 	var buttons = find_children("","TextureButton",true)
