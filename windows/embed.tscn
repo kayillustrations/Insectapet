@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://r2tsosqw2in3"]
+[gd_scene load_steps=119 format=3 uid="uid://r2tsosqw2in3"]
 
 [ext_resource type="Script" uid="uid://d2basqrda2ry2" path="res://windows/embed.gd" id="1_0wmug"]
 [ext_resource type="Texture2D" uid="uid://cax7ubmkjqyq3" path="res://art/habitat/insectapet_lamp.png" id="1_64mru"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bfysejrtg1gp3" path="res://ui/sparkles.tscn" id="5_ea2n3"]
 [ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="6_n48w3"]
 [ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="7_7nfam"]
+[ext_resource type="Texture2D" uid="uid://b8lgmu251q3vw" path="res://art/icons.png" id="8_jliwc"]
 [ext_resource type="Texture2D" uid="uid://rwf1jiduqbqj" path="res://iconhover.svg" id="8_ytq25"]
 [ext_resource type="Texture2D" uid="uid://bqadrk65i1edp" path="res://art/habitat/insectapet_Middleground.png" id="9_idh22"]
 [ext_resource type="Texture2D" uid="uid://b64lllghnybp1" path="res://art/buttons/lid_normal.png" id="10_pfg6a"]
@@ -61,6 +62,10 @@ point_count = 8
 [sub_resource type="AtlasTexture" id="AtlasTexture_or3aq"]
 atlas = ExtResource("6_n48w3")
 region = Rect2(2357, 677, 124, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6acf7"]
+atlas = ExtResource("8_jliwc")
+region = Rect2(1431, 5, 152, 156)
 
 [sub_resource type="Curve2D" id="Curve2D_ped76"]
 _data = {
@@ -528,6 +533,20 @@ emission_shape = 0
 gravity = Vector2(0, 0)
 initial_velocity_min = 0.0
 initial_velocity_max = 0.0
+scale_amount_max = 0.75
+color_initial_ramp = null
+
+[node name="Zs" parent="Control/Center Anchor/MainPath/PathFollow2D" instance=ExtResource("5_ea2n3")]
+position = Vector2(0.34668, 226.15)
+scale = Vector2(3, 3)
+amount = 1
+texture = SubResource("AtlasTexture_6acf7")
+lifetime = 2.0
+local_coords = true
+emission_shape = 0
+gravity = Vector2(0, 0)
+initial_velocity_min = 41.67
+initial_velocity_max = 83.34
 scale_amount_max = 0.75
 color_initial_ramp = null
 
