@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://ggob1vpx47ii"]
+
+[ext_resource type="Script" uid="uid://duo2hxpnwmj17" path="res://windows/desktop.gd" id="1_gexfd"]
+[ext_resource type="PackedScene" uid="uid://r2tsosqw2in3" path="res://windows/embed.tscn" id="2_j64pl"]
+
+[node name="FullHabitat" type="Window" node_paths=PackedStringArray("move_button")]
+transparent_bg = true
+mode = 2
+position = Vector2i(0, 36)
+size = Vector2i(800, 915)
+mouse_passthrough_polygon = PackedVector2Array(15, 372, 25, 915, 732, 915, 744, 339, 574, 99, 418, 14)
+exclusive = true
+unresizable = true
+always_on_top = true
+transparent = true
+sharp_corners = true
+script = ExtResource("1_gexfd")
+move_button = NodePath("Embed/Control/ColorRect/Panel/Move")
+move_buffer = 0.15
+
+[node name="Shape" type="Polygon2D" parent="."]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(15, 372, 25, 915, 732, 915, 744, 339, 574, 99, 418, 14)
+
+[node name="Embed" parent="." instance=ExtResource("2_j64pl")]
+
+[editable path="Embed"]

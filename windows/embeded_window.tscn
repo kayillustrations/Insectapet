@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbakgeusc5o8s"]
+
+[ext_resource type="Script" uid="uid://koruiql8cplj" path="res://embeded_window.gd" id="1_5xmvb"]
+[ext_resource type="PackedScene" uid="uid://r2tsosqw2in3" path="res://windows/embed.tscn" id="2_qfgd6"]
+
+[node name="Embeded Window" type="Window"]
+size = Vector2i(775, 915)
+unresizable = true
+borderless = true
+script = ExtResource("1_5xmvb")
+
+[node name="Embed" parent="." instance=ExtResource("2_qfgd6")]
+
+[editable path="Embed"]

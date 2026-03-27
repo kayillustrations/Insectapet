@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://1hicjuai576o"]
+
+[ext_resource type="Script" uid="uid://b6yfco2kehs4i" path="res://determine_type.gd" id="1_rcv30"]
+
+[node name="Determine Type" type="Node"]
+script = ExtResource("1_rcv30")
+isEmbed = false

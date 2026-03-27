@@ -29,7 +29,7 @@ var fall_pos
 
 func _enter_tree() -> void:
 	shape = find_child("Shape")
-	color_rect = shape.find_child("ColorRect")
+	color_rect = find_child("ColorRect2")
 	move_panel = move_button.find_parent("Panel")
 	shape_size = shape.polygon[2]*shape.scale
 	shape_offset = shape.position
