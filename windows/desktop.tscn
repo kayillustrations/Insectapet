@@ -5,21 +5,21 @@
 
 [node name="FullHabitat" type="Window" node_paths=PackedStringArray("move_button")]
 transparent_bg = true
-mode = 2
 position = Vector2i(0, 36)
-size = Vector2i(800, 915)
+size = Vector2i(800, 950)
 mouse_passthrough_polygon = PackedVector2Array(15, 372, 25, 915, 732, 915, 744, 339, 574, 99, 418, 14)
 exclusive = true
 unresizable = true
 always_on_top = true
 transparent = true
+mouse_passthrough = true
 sharp_corners = true
 script = ExtResource("1_gexfd")
 move_button = NodePath("Embed/Control/ColorRect/Panel/Move")
 move_buffer = 0.15
 
 [node name="Shape" type="Polygon2D" parent="."]
-color = Color(1, 1, 1, 0)
+color = Color(1, 1, 1, 0.309804)
 polygon = PackedVector2Array(15, 372, 25, 915, 732, 915, 744, 339, 574, 99, 418, 14)
 
 [node name="Embed" parent="." instance=ExtResource("2_j64pl")]

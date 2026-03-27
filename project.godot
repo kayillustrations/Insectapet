@@ -27,7 +27,7 @@ Exports="*res://_autoload/exports.tscn"
 [display]
 
 window/size/viewport_width=750
-window/size/viewport_height=915
+window/size/viewport_height=950
 window/size/initial_position_type=0
 window/size/resizable=false
 window/size/borderless=true

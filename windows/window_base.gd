@@ -47,8 +47,8 @@ func WindowSize():
 		shape_size = shape.polygon[2]
 		shape_offset = Vector2(shape_offset.x,WindowManager.title_size+shape_offset.y)
 		$Shape/ColorRect.size = shape_size
-	#print("shape:",shape_size)
-	#print("window:",shape_size)
+	print("shape:",shape_size)
+	print("window:",shape_size)
 	size = (shape_size * shape.scale) + shape_offset
 	anchor_dict = WindowManager.getScreenAnchors(
 		WindowManager.screen_size,shape_size,shape_offset)
