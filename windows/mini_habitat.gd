@@ -3,6 +3,7 @@ extends WindowBase
 var full_habitat_instance:WindowBase
 
 func _ready() -> void:
+	GameManager.isEmbed = false
 	WindowManager.main_window = self
 
 func _on_texture_button_toggled(toggled_on: bool) -> void:

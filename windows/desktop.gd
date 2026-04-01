@@ -1,9 +1,9 @@
 extends WindowBase
 
 func _ready() -> void:
-	WindowManager.main_window = self
-	OverrideSettings()
-	
+	#WindowManager.main_window = self
+	#OverrideSettings()
+	#
 	pass
 
 func OverrideSettings():

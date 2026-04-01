@@ -2,6 +2,7 @@ extends Node
 
 const BUG_WINDOW_PATH = "res://windows/bug_window.tscn"
 const FULL_HABITAT_PATH = "res://windows/desktop.tscn"
+const MINI_HABITAT_PATH = "res://windows/mini_habitat.tscn"
 
 var screen_size
 

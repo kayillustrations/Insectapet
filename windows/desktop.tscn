@@ -5,23 +5,32 @@
 
 [node name="FullHabitat" type="Window" node_paths=PackedStringArray("move_button")]
 transparent_bg = true
+mode = 2
 position = Vector2i(0, 36)
-size = Vector2i(800, 950)
-mouse_passthrough_polygon = PackedVector2Array(15, 372, 25, 915, 732, 915, 744, 339, 574, 99, 418, 14)
+size = Vector2i(755, 950)
+mouse_passthrough_polygon = PackedVector2Array(14.0175, 365, 25, 915, 769.808, 909.758, 768.876, 342.509, 574, 99, 436.484, 18, 300.902, 101)
 exclusive = true
 unresizable = true
 always_on_top = true
 transparent = true
-mouse_passthrough = true
 sharp_corners = true
 script = ExtResource("1_gexfd")
+anchor_position = "Center"
 move_button = NodePath("Embed/Control/ColorRect/Panel/Move")
 move_buffer = 0.15
 
 [node name="Shape" type="Polygon2D" parent="."]
-color = Color(1, 1, 1, 0.309804)
-polygon = PackedVector2Array(15, 372, 25, 915, 732, 915, 744, 339, 574, 99, 418, 14)
+position = Vector2(-30.3843, 0.120316)
+scale = Vector2(1.04621, 1.01227)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(14.0175, 365, 25, 915, 767.896, 915.647, 768.876, 342.509, 574, 99, 436.484, 18, 300.902, 101)
 
 [node name="Embed" parent="." instance=ExtResource("2_j64pl")]
+
+[node name="ColorRect2" parent="Embed" index="0"]
+visible = false
+
+[node name="PathFollow2D" parent="Embed/Control/Center Anchor/BurrowPath" index="0"]
+position = Vector2(-329.413, -42.4417)
 
 [editable path="Embed"]

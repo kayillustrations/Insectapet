@@ -25,7 +25,9 @@ atlas = ExtResource("3_do3m4")
 region = Rect2(61, 1720, 580, 533)
 
 [node name="MiniHabitat" node_paths=PackedStringArray("move_button") instance=ExtResource("1_jples")]
+mode = 0
 size = Vector2i(110, 110)
+unfocusable = false
 script = ExtResource("2_l2vge")
 anchor_position = "BotR"
 move_button = NodePath("Shape/ColorRect2/MarginContainer/Panel/TextureButton")

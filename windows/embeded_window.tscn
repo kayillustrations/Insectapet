@@ -3,12 +3,16 @@
 [ext_resource type="Script" uid="uid://koruiql8cplj" path="res://embeded_window.gd" id="1_5xmvb"]
 [ext_resource type="PackedScene" uid="uid://r2tsosqw2in3" path="res://windows/embed.tscn" id="2_qfgd6"]
 
-[node name="Embeded Window" type="Window"]
+[node name="Embeded Window" type="Window" node_paths=PackedStringArray("move_button")]
 size = Vector2i(775, 915)
 unresizable = true
 borderless = true
 script = ExtResource("1_5xmvb")
+move_button = NodePath("Embed/Control/ColorRect/Panel/Move")
 
 [node name="Embed" parent="." instance=ExtResource("2_qfgd6")]
+
+[node name="PathFollow2D" parent="Embed/Control/Center Anchor/BurrowPath" index="0"]
+position = Vector2(-329.413, -42.4417)
 
 [editable path="Embed"]

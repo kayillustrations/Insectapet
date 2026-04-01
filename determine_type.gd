@@ -12,4 +12,4 @@ func _ready() -> void:
 		get_tree().change_scene_to_file("res://windows/embed.tscn")
 	else:
 		GameManager.isEmbed = false
-		get_tree().change_scene_to_file("res://windows/desktop.tscn")
+		get_tree().change_scene_to_file("res://windows/mini_habitat.tscn")
