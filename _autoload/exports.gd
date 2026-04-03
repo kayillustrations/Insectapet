@@ -16,11 +16,13 @@ extends Node
 	"Love": emote_textures[3],
 	"Oh?": emote_textures[4]
 }
+
 func _ready() -> void:
 	for i in timers.size()-1:
-		timers[i].start(GameManager.default_times[i])
-		#if GameManager.habitat_window.isEmbed: 
-			#timers[i].ignore_time_scale = false
+		if GameManager.isEmbed:
+			timers[i].start(GameManager.default_times[i])
+		else:
+			timers[i].start(GameManager.default_times[i]*2)
 
 func LifeSpanTimer():
 	if GameManager.current_stats["Stage"] == 3: return

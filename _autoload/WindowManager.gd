@@ -6,7 +6,7 @@ const MINI_HABITAT_PATH = "res://windows/mini_habitat.tscn"
 
 var screen_size
 
-var title_size: float = 40
+var title_size: float = 20
 var main_window: WindowBase
 var bug:WindowBase
 

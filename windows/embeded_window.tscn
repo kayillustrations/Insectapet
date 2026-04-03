@@ -15,4 +15,9 @@ move_button = NodePath("Embed/Control/ColorRect/Panel/Move")
 [node name="PathFollow2D" parent="Embed/Control/Center Anchor/BurrowPath" index="0"]
 position = Vector2(-329.413, -42.4417)
 
+[node name="x" parent="Embed/Control/ColorRect" index="1"]
+visible = false
+
+[connection signal="pressed" from="Embed/Control/ColorRect/x" to="Embed" method="_on_x_pressed"]
+
 [editable path="Embed"]

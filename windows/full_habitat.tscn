@@ -457,6 +457,7 @@ stream_0/stream = ExtResource("47_4bi1g")
 
 [node name="FullHabitat" node_paths=PackedStringArray("move_button") instance=ExtResource("1_bigu7")]
 size = Vector2i(800, 915)
+mouse_passthrough_polygon = PackedVector2Array(0, 346, 0, 910, 750, 910, 750, 346, 560, 64, 411.228, 0)
 script = ExtResource("2_i2cyu")
 current_state = 0
 anchor_position = "Center"
@@ -477,7 +478,7 @@ grow_vertical = 2
 color = Color(0.501961, 0.54902, 0.329412, 1)
 
 [node name="Shape" parent="." index="1"]
-polygon = PackedVector2Array(0, 346, 0, 910, 750, 910, 750, 346, 567.244, 72.9957, 411.228, 0)
+polygon = PackedVector2Array(0, 346, 0, 910, 750, 910, 750, 346, 560, 64, 411.228, 0)
 
 [node name="Control" type="Control" parent="Shape" index="0"]
 unique_name_in_owner = true

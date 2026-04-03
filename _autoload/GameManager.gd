@@ -9,6 +9,7 @@ signal UpdateHabitat
 signal BugEmote(emote:Texture)
 signal StatWarning(stat:String, activate:bool)
 
+var embed_times: Array[float]=[60,40,80,30,20,50]
 var default_times: Array[float]=[60,40,80,30,20,50]
 var life_times: Array[float] = [10,60,60] #seconds * 20 (3.3 min, 20 min, 20 min)
 

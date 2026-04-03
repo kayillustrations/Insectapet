@@ -5,7 +5,8 @@ extends Node
 @onready var screen_rect = DisplayServer.screen_get_usable_rect().size
 
 func _ready() -> void:
-	WindowManager.anchor_dict = WindowManager.getScreenAnchors(screen_size,screen_size-screen_rect,Vector2(0,-10))
+	print(screen_size)
+	WindowManager.anchor_dict = WindowManager.getScreenAnchors(screen_size,Vector2(0,0),Vector2(0,0))
 	isEmbed = CheckForOverride()
 	if isEmbed:
 		GameManager.isEmbed = true
