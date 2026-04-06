@@ -23,7 +23,7 @@ move_buffer = 0.15
 position = Vector2(-30.3843, 0.120316)
 scale = Vector2(1.04621, 1.01227)
 color = Color(1, 1, 1, 0)
-polygon = PackedVector2Array(14.0175, 365, 23.337, 910, 767.896, 910, 768.876, 342.509, 577.689, 92.7417, 436.484, 18, 300.902, 101)
+polygon = PackedVector2Array(14.0175, 365, 23.337, 910, 767.896, 910, 768.876, 342.509, 568.131, 82.863, 436.484, 18, 300.902, 101)
 
 [node name="Embed" parent="." instance=ExtResource("2_j64pl")]
 

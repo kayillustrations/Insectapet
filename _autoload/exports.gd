@@ -32,7 +32,7 @@ func _on_happiness_timeout() -> void:
 	GameManager.EditStat("Happiness",1)
 
 func _on_hunger_timeout() -> void:
-	if GameManager.habitat_stats["hasFood"]:
+	if GameManager.habitat_stats["hasFood"] && GameManager.current_stats["Stage"] != 0:
 		GameManager.EditStat("Hunger",-5)
 	else: GameManager.EditStat("Hunger",3)
 
