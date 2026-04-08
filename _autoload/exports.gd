@@ -33,11 +33,13 @@ func _on_happiness_timeout() -> void:
 	GameManager.EditStat("Happiness",1)
 
 func _on_hunger_timeout() -> void:
+	if GameManager.isPaused: return
 	if GameManager.habitat_stats["hasFood"] && GameManager.current_stats["Stage"] != 0:
 		GameManager.EditStat("Hunger",-5)
 	else: GameManager.EditStat("Hunger",3)
 
 func _on_energy_timeout() -> void:
+	if GameManager.isPaused: return
 	if GameManager.habitat_stats["isLampOn"] == true:
 		if GameManager.current_stats["Hunger"] < 25:
 			GameManager.EditStat("Energy",2)
@@ -46,14 +48,17 @@ func _on_energy_timeout() -> void:
 	pass # Replace with function body.
 
 func _on_cleanliness_timeout() -> void:
+	if GameManager.isPaused: return
 	GameManager.EditHabitat("Cleanliness", 1)
 	pass # Replace with function body.
 
 func _on_hydration_timeout() -> void:
+	if GameManager.isPaused: return
 	GameManager.EditHabitat("Hydration", 1)
 	pass # Replace with function body.
 
 func _on_life_span_timeout() -> void:
+	if GameManager.isPaused: return
 	if GameManager.current_stats["Stage"] == 3: return
 	GameManager.EditStat("XP",-5)
 	LifeSpanTimer()

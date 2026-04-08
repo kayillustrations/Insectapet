@@ -28,6 +28,7 @@ region = Rect2(61, 1720, 580, 533)
 mode = 0
 size = Vector2i(110, 110)
 unfocusable = false
+min_size = Vector2i(1, 1)
 script = ExtResource("2_l2vge")
 anchor_position = "BotR"
 move_button = NodePath("Shape/ColorRect2/MarginContainer/Panel/TextureButton")

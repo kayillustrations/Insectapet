@@ -69,3 +69,4 @@ func ResetGainBug():
 	jars = $HBoxContainer.get_children()
 	for i in jars.size():
 		jars[i].disabled = false
+	GameManager.isPaused = false

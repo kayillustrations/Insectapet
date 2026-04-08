@@ -8,3 +8,7 @@ signal finished
 func StartAnim(bug_node:Node2D):
 	bug_node.reparent(bug_goes_here,false)
 	visible = true
+	
+	
+	
+	GameManager.isPaused = false

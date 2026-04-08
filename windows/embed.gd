@@ -48,6 +48,7 @@ func ConfigGame():
 	%Game.DecideGame()
 
 func ResetBug():
+	GameManager.isPaused = true
 	#turn off screen
 	%MainButtons._on_info_toggled(false)
 	%MainButtons.info.button_pressed = false 
@@ -66,6 +67,7 @@ func ResetBug():
 	
 
 func NewBugScreen(activate:bool):
+	GameManager.isPaused = true
 	GameManager.isNewBug = activate
 	%Bug.visible = !activate
 	%GainBug.visible = activate
