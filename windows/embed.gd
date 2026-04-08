@@ -30,10 +30,6 @@ func _ready() -> void:
 	GameManager.UpdateHabitat.connect(HabitatChecks)
 	GameManager.StatWarning.connect(StatWarning)
 	%ActivateBug.disabled = GameManager.isBugWindow
-	
-	ConfigBug()
-	%Game.DecideGame()
-	HabitatChecks()
 	TextureButtonConfig()
 	pass
 
@@ -45,6 +41,29 @@ func _physics_process(delta: float) -> void:
 			GameManager.current_path_location = target_location
 			GameSave.SaveGame()
 		else: %PathFollow2D.progress_ratio += .01*target_direction*delta
+
+func ConfigGame():
+	ConfigBug()
+	HabitatChecks()
+	%Game.DecideGame()
+
+func ResetBug():
+	#turn off screen
+	%MainButtons._on_info_toggled(false)
+	%MainButtons.info.button_pressed = false 
+	#bug release animation
+	%ReleaseAnim.StartAnim(%Bug.get_child(0))
+	await %ReleaseAnim.finished
+	#save bug info into archive
+	GameSave.bug_info["bug_archive"].append(GameSave.archive_dict)
+	#reset current bug
+	GameSave.bug_info["bug_color"] = Color.WHITE
+	GameManager.current_stats = GameSave.DefaultBugStats
+	#initiate new bug
+	GameManager.current_path_location = 0
+	ConfigBug()
+	GameSave.SaveGame()
+	
 
 func NewBugScreen(activate:bool):
 	GameManager.isNewBug = activate
@@ -110,7 +129,6 @@ func StatWarning(stat:String,activate:bool):
 func ChangeState(new_state):
 	bug_animator = %Bug.get_child(0).find_child("AnimationPlayer")
 	if GameManager.current_stats["Stage"] == 0:
-		%PathFollow2D.progress_ratio = 0
 		state_timer.stop()
 		bug_animator.play("idle")
 		return
@@ -124,8 +142,8 @@ func ChangeState(new_state):
 
 	match new_state:
 		0:#idle
-			GameManager.current_path_location = %PathFollow2D.progress_ratio
-			print("idle")
+			%PathFollow2D.progress_ratio = GameManager.current_path_location
+			print(GameManager.current_path_location)
 			bug_animator.play("idle")
 			state_timer.start(5)
 			isMoving = false
@@ -182,7 +200,7 @@ func _on_light_toggled(toggled_on: bool) -> void:
 
 func _on_state_timer_timeout() -> void:
 	var temp_state = randi() % 3
-	if temp_state != current_state:
+	if temp_state != current_state && !GameManager.isPaused:
 		ChangeState(temp_state)
 	else:
 		state_timer.start(5)

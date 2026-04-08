@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://r2tsosqw2in3"]
+[gd_scene load_steps=120 format=3 uid="uid://r2tsosqw2in3"]
 
 [ext_resource type="Script" uid="uid://d2basqrda2ry2" path="res://windows/embed.gd" id="1_0wmug"]
 [ext_resource type="Texture2D" uid="uid://cax7ubmkjqyq3" path="res://art/habitat/insectapet_lamp.png" id="1_64mru"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://cb315uw5l1fgu" path="res://ui/GainBug.tscn" id="33_xx0r6"]
 [ext_resource type="Shader" uid="uid://cfqt5vci8bwa" path="res://windows/ScreenSkew.gdshader" id="34_1gju3"]
 [ext_resource type="Script" uid="uid://kb3drv4jxuoy" path="res://ui/screen.gd" id="35_e2180"]
+[ext_resource type="PackedScene" uid="uid://n04txqblqjwv" path="res://ui/release_anim.tscn" id="36_6acf7"]
 [ext_resource type="PackedScene" uid="uid://bjhjvbu7suk3a" path="res://ui/feeding.tscn" id="36_t2bt1"]
 [ext_resource type="PackedScene" uid="uid://c4eqmbf8bloh" path="res://ui/cleaning.tscn" id="37_ojlpi"]
 [ext_resource type="PackedScene" uid="uid://dxsgw62s81q8n" path="res://ui/bug_info.tscn" id="38_0pt4j"]
@@ -1025,6 +1026,13 @@ layout_mode = 1
 offset_top = 51.8182
 offset_bottom = 301.818
 mouse_filter = 2
+
+[node name="ReleaseAnim" parent="Control/UI" instance=ExtResource("36_6acf7")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_top = 102.727
+offset_bottom = 102.727
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 unique_name_in_owner = true

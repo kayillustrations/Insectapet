@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dxsgw62s81q8n"]
+[gd_scene load_steps=20 format=3 uid="uid://dxsgw62s81q8n"]
 
 [ext_resource type="Script" uid="uid://d24h6d76pcw85" path="res://ui/bug_info_ui.gd" id="1_55fh1"]
 [ext_resource type="Texture2D" uid="uid://ccv6ryx87ktff" path="res://icon.svg" id="2_rdjj6"]
@@ -21,6 +21,12 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rdjj6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ayacq"]
+bg_color = Color(0.292, 0.4, 0.256, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vx5jr"]
+bg_color = Color(0.21585, 0.3, 0.201, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6obml"]
 atlas = ExtResource("4_ayacq")
@@ -161,10 +167,36 @@ layout_mode = 2
 
 [node name="XP" type="ProgressBar" parent="VBoxContainer/Top/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+clip_children = 2
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+
+[node name="ReleaseBug" type="Button" parent="VBoxContainer/Top/VBoxContainer/HBoxContainer/XP"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_ayacq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vx5jr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Top/VBoxContainer/HBoxContainer/XP/ReleaseBug"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[rainbow freq=1.0 sat=0.25 val=0.8 speed=1.0][wave amp=15.0 freq=5.0 connected=1]Release Bug!!![/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Bot" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
@@ -326,3 +358,5 @@ offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 color = Color(0.3182, 0.43, 0.349877, 0)
+
+[connection signal="pressed" from="VBoxContainer/Top/VBoxContainer/HBoxContainer/XP/ReleaseBug" to="." method="_on_release_bug_pressed"]

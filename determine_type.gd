@@ -13,6 +13,9 @@ func _ready() -> void:
 		get_tree().change_scene_to_file("res://windows/embed.tscn")
 	else:
 		GameManager.isEmbed = false
+		get_window().min_size = Vector2(1,1)
+		get_window().reset_size()
+		get_window().size_changed.emit()
 		get_tree().change_scene_to_file("res://windows/mini_habitat.tscn")
 
 func CheckForOverride():

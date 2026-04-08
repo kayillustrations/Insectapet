@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://ggob1vpx47ii"]
 
-[ext_resource type="Script" uid="uid://duo2hxpnwmj17" path="res://windows/desktop.gd" id="1_gexfd"]
+[ext_resource type="Script" uid="uid://df6v28qcvafv0" path="res://windows/window_base.gd" id="1_j64pl"]
 [ext_resource type="PackedScene" uid="uid://r2tsosqw2in3" path="res://windows/embed.tscn" id="2_j64pl"]
 
-[node name="FullHabitat" type="Window" node_paths=PackedStringArray("move_button")]
+[node name="FullHabitat" type="Window"]
 transparent_bg = true
 mode = 2
 position = Vector2i(0, 36)
@@ -14,10 +14,7 @@ unresizable = true
 always_on_top = true
 transparent = true
 sharp_corners = true
-script = ExtResource("1_gexfd")
-anchor_position = "Center"
-move_button = NodePath("Embed/Control/ColorRect/Panel/Move")
-move_buffer = 0.15
+script = ExtResource("1_j64pl")
 
 [node name="Shape" type="Polygon2D" parent="."]
 position = Vector2(-30.3843, 0.120316)
@@ -29,9 +26,6 @@ polygon = PackedVector2Array(14.0175, 365, 23.337, 910, 767.896, 910, 768.876, 3
 
 [node name="ColorRect2" parent="Embed" index="0"]
 visible = false
-
-[node name="PathFollow2D" parent="Embed/Control/Center Anchor/BurrowPath" index="0"]
-position = Vector2(-329.413, -42.4417)
 
 [node name="Panel" parent="Embed/Control/ColorRect" index="0"]
 offset_top = 326.0

@@ -57,6 +57,8 @@ func ChosenJar(jar_int:int):
 	ResetGainBug()
 
 func ResetGainBug():
+	$".".modulate = Color.WHITE
+	$Glow.modulate = Color.TRANSPARENT
 	$Center.position = Vector2(212.0,105)
 	$Center.rotation_degrees = 0
 	$Center.scale = Vector2(1,1)
@@ -65,3 +67,5 @@ func ResetGainBug():
 		if jars[i].get_child_count() == 0:
 			jars[i].add_child(JAR.instantiate())
 	jars = $HBoxContainer.get_children()
+	for i in jars.size():
+		jars[i].disabled = false

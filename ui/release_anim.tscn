@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=3 uid="uid://n04txqblqjwv"]
+
+[ext_resource type="Script" uid="uid://6o5yl6o2jh0f" path="res://ui/release_anim.gd" id="1_xip3b"]
+[ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="2_kt1wv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t603m"]
+atlas = ExtResource("2_kt1wv")
+region = Rect2(1686, 1026, 510, 776)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67uj7"]
+atlas = ExtResource("2_kt1wv")
+region = Rect2(917, 1300, 539, 287)
+
+[node name="ReleaseAnim" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_xip3b")
+
+[node name="JarControl" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+mouse_filter = 2
+
+[node name="Jar" type="TextureRect" parent="JarControl"]
+show_behind_parent = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -125.0
+offset_right = 50.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_t603m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BugGoesHere" type="Control" parent="JarControl"]
+modulate = Color(1, 1, 1, 0.784314)
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 70.0
+offset_right = 22.0
+offset_bottom = 70.0
+scale = Vector2(0.2, 0.2)
+
+[node name="Lid" type="TextureRect" parent="JarControl"]
+show_behind_parent = true
+z_index = 5
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -185.0
+offset_right = 49.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_67uj7")
+expand_mode = 1
+stretch_mode = 5

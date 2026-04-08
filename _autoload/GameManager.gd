@@ -9,8 +9,7 @@ signal UpdateHabitat
 signal BugEmote(emote:Texture)
 signal StatWarning(stat:String, activate:bool)
 
-var embed_times: Array[float]=[60,40,80,30,20,50]
-var default_times: Array[float]=[60,40,80,30,20,50]
+var default_times: Array[float]=[60,40,50,30,20,50]
 var life_times: Array[float] = [10,60,60] #seconds * 20 (3.3 min, 20 min, 20 min)
 
 var snooze_time: float = 2
@@ -34,6 +33,7 @@ var food_life: float = 100
 var habitat_warning: bool = false
 
 var isEmbed:bool = true
+var isPaused:bool = false
 
 #func _init() -> void:
 	#if ProjectSettings.get_setting("application/run/main_scene") == "uid://r2tsosqw2in3":
@@ -57,8 +57,6 @@ func NewBug(newBugInfo:BugInfo):
 	GameSave.SaveGame()
 	pass
 
-func ReleaseBug():
-	pass
 
 func SpawnBugWindow(b:bool):
 	isBugWindow = b

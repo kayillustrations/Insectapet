@@ -36,6 +36,7 @@ func UpdateStats():
 	Arrow(%Energy.get_child(0),!GameManager.habitat_stats["isLampOn"])
 	Arrow(%Hunger.get_child(0),GameManager.habitat_stats["hasFood"])
 	Arrow(%Happiness.get_child(0),false)
+	#CheckIfCanRelease()
 
 func Arrow(arrow:TextureRect, isPositive:bool):
 	if isPositive:
@@ -45,3 +46,16 @@ func Arrow(arrow:TextureRect, isPositive:bool):
 		arrow.flip_h = false
 		arrow.modulate = Color.INDIAN_RED
 	pass
+
+func CheckIfCanRelease():
+	if GameManager.current_stats["Stage"] == 3 && GameManager.current_stats["XP"] == 100:
+		%ReleaseBug.visible = true
+	else: 
+		%ReleaseBug.visible = false
+		
+	pass
+
+func _on_release_bug_pressed() -> void:
+	print("release bug")
+	GameManager.habitat_window.ResetBug()
+	pass # Replace with function body.

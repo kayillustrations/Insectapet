@@ -13,6 +13,7 @@ func _on_texture_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		full_habitat_instance = add_window(WindowManager.FULL_HABITAT_PATH)
 		GameSave.LoadGame()
+		GameManager.habitat_window.ConfigGame()
 	else: 
 		GameSave.SaveGame()
 		full_habitat_instance.queue_free()

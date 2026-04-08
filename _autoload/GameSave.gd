@@ -24,7 +24,8 @@ var habitat_locations: Dictionary = {
 }
 var bug_info: Dictionary = {
 	"bug_resource_name" : "stickbug",
-	"bug_color" : Color.WHITE
+	"bug_color" : Color.WHITE,
+	"bug_archive" : []
 }
 
 var highscores: Dictionary = {
@@ -44,6 +45,13 @@ var DefaultHabitatStats: Dictionary = {
 	"hasFood": false,
 	"Cleanliness" : 50,
 	"Hydration" : 100,
+}
+
+var archive_dict:Dictionary = {
+	"bug_type" : bug_info["bug_resource_name"],
+	"bug_color" : bug_info["bug_color"],
+	"bug_stats" : GameManager.current_stats
+	
 }
 
 func _ready() -> void:

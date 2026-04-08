@@ -29,6 +29,7 @@ func LifeSpanTimer():
 	$LifeSpan.start(GameManager.life_times[GameManager.current_stats["Stage"]])
 
 func _on_happiness_timeout() -> void:
+	if GameManager.isPaused: return
 	GameManager.EditStat("Happiness",1)
 
 func _on_hunger_timeout() -> void:
