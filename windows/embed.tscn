@@ -1029,10 +1029,9 @@ mouse_filter = 2
 
 [node name="ReleaseAnim" parent="Control/UI" instance=ExtResource("36_6acf7")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
-offset_top = 102.727
-offset_bottom = 102.727
+offset_top = 173.636
+offset_bottom = 173.636
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 unique_name_in_owner = true

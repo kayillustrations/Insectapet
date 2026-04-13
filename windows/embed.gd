@@ -2,6 +2,7 @@ extends Node2D
 
 const INSECTAPET_LAMP = preload("res://art/habitat/insectapet_lamp.png")
 const INSECTAPET_LAMP_DARK = preload("res://art/habitat/insectapet_lamp_dark.png")
+const RELEASE_ANIM = preload("res://ui/release_anim.tscn")
 
 const LEAF_SELFMODULATE = Color (.75,1,1,1)
 
@@ -53,8 +54,10 @@ func ResetBug():
 	%MainButtons._on_info_toggled(false)
 	%MainButtons.info.button_pressed = false 
 	#bug release animation
-	%ReleaseAnim.StartAnim(%Bug.get_child(0))
+	%ReleaseAnim.StartAnim(%Bug.get_child(0),%Bug.modulate)
 	await %ReleaseAnim.finished
+	
+	GameManager.isPaused = false
 	#save bug info into archive
 	GameSave.bug_info["bug_archive"].append(GameSave.archive_dict)
 	#reset current bug

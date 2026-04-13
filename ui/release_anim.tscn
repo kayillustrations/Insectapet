@@ -1,11 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://n04txqblqjwv"]
+[gd_scene load_steps=9 format=3 uid="uid://n04txqblqjwv"]
 
 [ext_resource type="Script" uid="uid://6o5yl6o2jh0f" path="res://ui/release_anim.gd" id="1_xip3b"]
 [ext_resource type="Texture2D" uid="uid://cyp6tcbl2hrfq" path="res://art/objects.png" id="2_kt1wv"]
+[ext_resource type="Texture2D" uid="uid://bi5dqxqdi0dyj" path="res://art/placeholders/ui_comps.png" id="3_kt1wv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t603m"]
 atlas = ExtResource("2_kt1wv")
 region = Rect2(1686, 1026, 510, 776)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc7cw"]
+atlas = ExtResource("3_kt1wv")
+region = Rect2(464, 831, 86, 85)
+
+[sub_resource type="Curve" id="Curve_brwc2"]
+_data = [Vector2(0.00819671, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.741573), 1.85056, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_dgavh"]
+offsets = PackedFloat32Array(0.427083, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_67uj7"]
 atlas = ExtResource("2_kt1wv")
@@ -59,6 +72,24 @@ texture = SubResource("AtlasTexture_t603m")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="JarControl"]
+position = Vector2(19.5, 31.5)
+scale = Vector2(0.2, 0.2)
+emitting = false
+amount = 5
+texture = SubResource("AtlasTexture_vc7cw")
+explosiveness = 0.5
+randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 100.0
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, -50)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_curve = SubResource("Curve_brwc2")
+color_ramp = SubResource("Gradient_dgavh")
+
 [node name="BugGoesHere" type="Control" parent="JarControl"]
 modulate = Color(1, 1, 1, 0.784314)
 anchors_preset = 0
@@ -88,3 +119,5 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_67uj7")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="JarControl"]

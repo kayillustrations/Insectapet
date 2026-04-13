@@ -43,6 +43,9 @@ offset_right = -599.455
 [node name="x" parent="Embed/Control/ColorRect" index="1"]
 visible = false
 
+[node name="ReleaseAnim" parent="Embed/Control/UI" index="7"]
+visible = false
+
 [connection signal="pressed" from="Embed/Control/ColorRect/x" to="Embed" method="_on_x_pressed"]
 
 [editable path="Embed"]
