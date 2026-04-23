@@ -36,7 +36,7 @@ func UpdateStats():
 	Arrow(%Energy.get_child(0),!GameManager.habitat_stats["isLampOn"])
 	Arrow(%Hunger.get_child(0),GameManager.habitat_stats["hasFood"])
 	Arrow(%Happiness.get_child(0),false)
-	#CheckIfCanRelease()
+	CheckIfCanRelease()
 
 func Arrow(arrow:TextureRect, isPositive:bool):
 	if isPositive:
