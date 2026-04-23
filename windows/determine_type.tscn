@@ -4,3 +4,4 @@
 
 [node name="Determine Type" type="Node"]
 script = ExtResource("1_rcv30")
+isEmbed = false

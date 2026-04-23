@@ -1,9 +1,9 @@
 extends Node
 
-const SCENE_SAVE_FOLDER:String = "res://saves/"
+const SCENE_SAVE_FOLDER:String = "user://"
 
-var game_config:ConfigFile = ConfigFile.new()
-var settings_config:ConfigFile = ConfigFile.new()
+var game_config := ConfigFile.new()
+var settings_config := ConfigFile.new()
 
 @onready var sfx_index: int = AudioServer.get_bus_index("SFX")
 @onready var music_index: int = AudioServer.get_bus_index("Music")
@@ -135,4 +135,5 @@ func ConfigAudio():
 func CheckSaveFolder(file_name:String):
 	if FileAccess.file_exists(SCENE_SAVE_FOLDER+file_name+".cfg"):
 		return true
-	else: return false
+	else: 
+		return false
